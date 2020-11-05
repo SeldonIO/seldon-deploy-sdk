@@ -1,0 +1,60 @@
+# coding: utf-8
+{{>partial_header}}
+
+import requests
+
+from urllib.parse import urlparse
+
+KF_SESSION_COOKIE_NAME = "authservice_session"
+
+
+class SessionAuthenticator:
+    """
+    Returns the cookie token.
+    """
+
+    def __init__(self, server: str):
+        self._server = server
+
+        url = urlparse(server)
+        self._host = f"{url.scheme}://{url.netloc}"
+
+    def authenticate(self, user: str, password: str) -> str:
+        auth_path = self._get_auth_path()
+        success_path = self._submit_auth(auth_path, user, password)
+        session_cookie = self._get_session_cookie(success_path)
+        return session_cookie
+
+    def _get_auth_path(self) -> str:
+        # Send unauthenticated request
+        res = requests.get(self._server, allow_redirects=False, verify=False)
+
+        # Follow the 302 redirect
+        oidc_path = res.headers["Location"]
+        oidc_endpoint = f"{self._host}{oidc_path}"
+        res = requests.get(oidc_endpoint, allow_redirects=False, verify=False)
+
+        return res.headers["Location"]
+
+    def _submit_auth(self, auth_path: str, user: str, password: str) -> str:
+        auth_endpoint = f"{self._host}{auth_path}"
+        auth_payload = {"login": user, "password": password}
+        res = requests.post(auth_endpoint, auth_payload, allow_redirects=False, verify=False)
+        
+        login_path = res.headers["Location"]
+        login_endpoint = f"{self._host}{login_path}"
+        res = requests.get(login_endpoint, allow_redirects=False, verify=False)
+
+        return res.headers["Location"]
+
+    def _get_session_cookie(self, success_path: str) -> str:
+        success_endpoint = f"{self._host}{success_path}"
+        res = requests.get(success_endpoint, allow_redirects=False, verify=False)
+        print(res.cookies)
+        return res.cookies[KF_SESSION_COOKIE_NAME]
+
+def authenticate():
+    authenticator = SessionAuthenticator(DEPLOY_SERVER)
+
+    cookie = authenticator.authenticate(DEPLOY_USER, DEPLOY_PASSWORD)
+    return cookie
