@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **replicas** | **int** |  | [optional] 
 **shadow** | **bool** |  | [optional] 
+**ssl** | [**SSL**](SSL.md) |  | [optional] 
 **svc_orch_spec** | [**SvcOrchSpec**](SvcOrchSpec.md) |  | [optional] 
 **traffic** | **int** |  | [optional] 
 

@@ -51,59 +51,131 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: APIKeyHeader
+configuration = seldon_deploy_client.Configuration()
+configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = seldon_deploy_client.EnvironmentApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+name = 'name_example' # str | Name identifies a resource
+namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
+drift_detector = seldon_deploy_client.AlibiDetectorData() # AlibiDetectorData | DriftDetector
 
 try:
-    api_response = api_instance.read_user()
+    api_response = api_instance.create_drift_detector_inference_service(name, namespace, drift_detector)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling EnvironmentApi->read_user: %s\n" % e)
+    print("Exception when calling DriftDetectorApi->create_drift_detector_inference_service: %s\n" % e)
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8000/seldon-deploy/api/v1alpha1*
+All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DriftDetectorApi* | [**create_drift_detector_inference_service**](docs/DriftDetectorApi.md#create_drift_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/driftdetector | 
+*DriftDetectorApi* | [**create_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#create_drift_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/driftdetector | 
+*DriftDetectorApi* | [**delete_drift_detector_inference_service**](docs/DriftDetectorApi.md#delete_drift_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservice/{name}/driftdetector | 
+*DriftDetectorApi* | [**delete_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#delete_drift_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/driftdetector | 
+*DriftDetectorApi* | [**read_drift_detector_inference_service**](docs/DriftDetectorApi.md#read_drift_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/driftdetector | 
+*DriftDetectorApi* | [**read_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#read_drift_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/driftdetector | 
+*EnvironmentApi* | [**read_analytics**](docs/EnvironmentApi.md#read_analytics) | **GET** /analytics | 
+*EnvironmentApi* | [**read_cluster**](docs/EnvironmentApi.md#read_cluster) | **GET** /cluster | 
+*EnvironmentApi* | [**read_env**](docs/EnvironmentApi.md#read_env) | **GET** /env | 
 *EnvironmentApi* | [**read_user**](docs/EnvironmentApi.md#read_user) | **GET** /user | 
 *EnvironmentApi* | [**read_version**](docs/EnvironmentApi.md#read_version) | **GET** /version | 
-*MldeploymentsApi* | [**create_inference_service**](docs/MldeploymentsApi.md#create_inference_service) | **POST** /namespaces/{namespace}/inferenceservices | 
-*MldeploymentsApi* | [**create_seldon_deployment**](docs/MldeploymentsApi.md#create_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments | 
-*MldeploymentsApi* | [**delete_inference_service**](docs/MldeploymentsApi.md#delete_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name} | 
-*MldeploymentsApi* | [**delete_seldon_deployment**](docs/MldeploymentsApi.md#delete_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name} | 
-*MldeploymentsApi* | [**list_inference_services**](docs/MldeploymentsApi.md#list_inference_services) | **GET** /namespaces/{namespace}/inferenceservices | 
-*MldeploymentsApi* | [**list_ml_deployments**](docs/MldeploymentsApi.md#list_ml_deployments) | **GET** /namespaces/{namespace}/mldeployments | 
-*MldeploymentsApi* | [**list_seldon_deployments**](docs/MldeploymentsApi.md#list_seldon_deployments) | **GET** /namespaces/{namespace}/seldondeployments | 
-*MldeploymentsApi* | [**read_inference_service**](docs/MldeploymentsApi.md#read_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name} | 
-*MldeploymentsApi* | [**read_seldon_deployment**](docs/MldeploymentsApi.md#read_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name} | 
-*MldeploymentsApi* | [**update_inference_service**](docs/MldeploymentsApi.md#update_inference_service) | **PUT** /namespaces/{namespace}/inferenceservices/{name} | 
-*MldeploymentsApi* | [**update_seldon_deployment**](docs/MldeploymentsApi.md#update_seldon_deployment) | **PUT** /namespaces/{namespace}/seldondeployments/{name} | 
+*EnvironmentApi* | [**u_r_ls**](docs/EnvironmentApi.md#u_r_ls) | **GET** /urls | 
+*ExplainerApi* | [**explain_inference_service**](docs/ExplainerApi.md#explain_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/explain | 
+*ExplainerApi* | [**explain_seldon_deployment**](docs/ExplainerApi.md#explain_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/explain | 
+*GitApi* | [**inference_service_git_restore**](docs/GitApi.md#inference_service_git_restore) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrestore | 
+*GitApi* | [**inference_service_git_revert**](docs/GitApi.md#inference_service_git_revert) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrevert | 
+*GitApi* | [**read_inference_service_git_diff**](docs/GitApi.md#read_inference_service_git_diff) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitdiff | 
+*GitApi* | [**read_inference_service_git_logs**](docs/GitApi.md#read_inference_service_git_logs) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitlogs | 
+*GitApi* | [**read_seldon_deployment_git_diff**](docs/GitApi.md#read_seldon_deployment_git_diff) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitdiff | 
+*GitApi* | [**read_seldon_deployment_git_logs**](docs/GitApi.md#read_seldon_deployment_git_logs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitlogs | 
+*GitApi* | [**seldon_deployment_git_restore**](docs/GitApi.md#seldon_deployment_git_restore) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
+*GitApi* | [**seldon_deployment_git_revert**](docs/GitApi.md#seldon_deployment_git_revert) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
+*GitopsApi* | [**read_git_ops_status**](docs/GitopsApi.md#read_git_ops_status) | **GET** /namespaces/{namespace}/gitops-status | 
+*InferenceServicesApi* | [**create_inference_service**](docs/InferenceServicesApi.md#create_inference_service) | **POST** /namespaces/{namespace}/inferenceservices | 
+*InferenceServicesApi* | [**delete_inference_service**](docs/InferenceServicesApi.md#delete_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name} | 
+*InferenceServicesApi* | [**list_inference_services**](docs/InferenceServicesApi.md#list_inference_services) | **GET** /namespaces/{namespace}/inferenceservices | 
+*InferenceServicesApi* | [**read_inference_service**](docs/InferenceServicesApi.md#read_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name} | 
+*InferenceServicesApi* | [**update_inference_service**](docs/InferenceServicesApi.md#update_inference_service) | **PUT** /namespaces/{namespace}/inferenceservices/{name} | 
+*JobsApi* | [**create_seldon_deployment_batch_job**](docs/JobsApi.md#create_seldon_deployment_batch_job) | **POST** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
+*JobsApi* | [**get_deployment_batch_job**](docs/JobsApi.md#get_deployment_batch_job) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{workflowName} | 
+*JobsApi* | [**list_seldon_deployment_batch_jobs**](docs/JobsApi.md#list_seldon_deployment_batch_jobs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
+*LoadtestApi* | [**loadtest_inference_service**](docs/LoadtestApi.md#loadtest_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/loadtest | 
+*LoadtestApi* | [**loadtest_seldon_deployment**](docs/LoadtestApi.md#loadtest_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/loadtest | 
+*LoggerApi* | [**create_logger_data**](docs/LoggerApi.md#create_logger_data) | **POST** /namespaces/{namespace}/logger | 
+*LoggerApi* | [**delete_logger_data**](docs/LoggerApi.md#delete_logger_data) | **DELETE** /namespaces/{namespace}/logger | 
+*LoggerApi* | [**read_logger_data**](docs/LoggerApi.md#read_logger_data) | **GET** /namespaces/{namespace}/logger | 
+*MetricsServerApi* | [**create_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
+*MetricsServerApi* | [**delete_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
+*MetricsServerApi* | [**read_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#read_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
+*MonitorApi* | [**monitor_all**](docs/MonitorApi.md#monitor_all) | **POST** /monitor | 
+*MonitorApi* | [**monitor_inference_service**](docs/MonitorApi.md#monitor_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor | 
+*MonitorApi* | [**monitor_namespace**](docs/MonitorApi.md#monitor_namespace) | **POST** /namespaces/{namespace}/monitor | 
+*MonitorApi* | [**monitor_seldon_deployment**](docs/MonitorApi.md#monitor_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor | 
+*OutlierDetectorApi* | [**create_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/outlierdetector | 
+*OutlierDetectorApi* | [**create_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/outlierdetector | 
+*OutlierDetectorApi* | [**delete_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservice/{name}/outlierdetector | 
+*OutlierDetectorApi* | [**delete_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#delete_outlier_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/outlierdetector | 
+*OutlierDetectorApi* | [**read_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#read_outlier_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/outlierdetector | 
+*OutlierDetectorApi* | [**read_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#read_outlier_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/outlierdetector | 
+*PredictApi* | [**predict_file_inference_service**](docs/PredictApi.md#predict_file_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/predictfile | 
+*PredictApi* | [**predict_file_seldon_deployment**](docs/PredictApi.md#predict_file_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/predictfile | 
+*PredictApi* | [**predict_inference_service**](docs/PredictApi.md#predict_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/predict | 
+*PredictApi* | [**predict_seldon_deployment**](docs/PredictApi.md#predict_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/predict | 
+*PredictApi* | [**read_predict_curl_inference_service**](docs/PredictApi.md#read_predict_curl_inference_service) | **PUT** /namespaces/{namespace}/inferenceservices/{name}/predictcurl | 
+*PredictApi* | [**read_predict_curl_seldon_deployment**](docs/PredictApi.md#read_predict_curl_seldon_deployment) | **PUT** /namespaces/{namespace}/seldondeployments/{name}/predictcurl | 
+*RequestsApi* | [**requests**](docs/RequestsApi.md#requests) | **POST** /requests | 
+*ResourcesApi* | [**list_inference_service_predictor_resources**](docs/ResourcesApi.md#list_inference_service_predictor_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/predictor/{predictorName}/resources | 
 *ResourcesApi* | [**list_inference_service_resources**](docs/ResourcesApi.md#list_inference_service_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/resources | 
+*ResourcesApi* | [**list_seldon_deployment_predictor_resources**](docs/ResourcesApi.md#list_seldon_deployment_predictor_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/predictor/{predictorName}/resources | 
 *ResourcesApi* | [**list_seldon_deployment_resources**](docs/ResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
+*SeldonDeploymentsApi* | [**create_seldon_deployment**](docs/SeldonDeploymentsApi.md#create_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments | 
+*SeldonDeploymentsApi* | [**delete_seldon_deployment**](docs/SeldonDeploymentsApi.md#delete_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name} | 
+*SeldonDeploymentsApi* | [**list_seldon_deployments**](docs/SeldonDeploymentsApi.md#list_seldon_deployments) | **GET** /namespaces/{namespace}/seldondeployments | 
+*SeldonDeploymentsApi* | [**read_seldon_deployment**](docs/SeldonDeploymentsApi.md#read_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name} | 
+*SeldonDeploymentsApi* | [**update_seldon_deployment**](docs/SeldonDeploymentsApi.md#update_seldon_deployment) | **PUT** /namespaces/{namespace}/seldondeployments/{name} | 
+*ValidateApi* | [**validate_inference_service**](docs/ValidateApi.md#validate_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/validate | 
+*ValidateApi* | [**validate_seldon_deployment**](docs/ValidateApi.md#validate_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/validate | 
 
 
 ## Documentation For Models
 
+ - [AIXExplainerSpec](docs/AIXExplainerSpec.md)
+ - [AIXExplainerType](docs/AIXExplainerType.md)
  - [AWSElasticBlockStoreVolumeSource](docs/AWSElasticBlockStoreVolumeSource.md)
  - [Addressable](docs/Addressable.md)
+ - [AdvancedConfig](docs/AdvancedConfig.md)
  - [Affinity](docs/Affinity.md)
+ - [AlibiDetectServerParams](docs/AlibiDetectServerParams.md)
+ - [AlibiDetectorData](docs/AlibiDetectorData.md)
  - [AlibiExplainerSpec](docs/AlibiExplainerSpec.md)
  - [AlibiExplainerType](docs/AlibiExplainerType.md)
+ - [AnalyticsProps](docs/AnalyticsProps.md)
  - [AzureDataDiskCachingMode](docs/AzureDataDiskCachingMode.md)
  - [AzureDataDiskKind](docs/AzureDataDiskKind.md)
  - [AzureDiskVolumeSource](docs/AzureDiskVolumeSource.md)
  - [AzureFileVolumeSource](docs/AzureFileVolumeSource.md)
+ - [BatchDefinition](docs/BatchDefinition.md)
+ - [BatchDescription](docs/BatchDescription.md)
+ - [BatchDescriptionList](docs/BatchDescriptionList.md)
+ - [BatchJob](docs/BatchJob.md)
+ - [Batcher](docs/Batcher.md)
  - [CSIVolumeSource](docs/CSIVolumeSource.md)
  - [Capabilities](docs/Capabilities.md)
  - [Capability](docs/Capability.md)
  - [CephFSVolumeSource](docs/CephFSVolumeSource.md)
  - [CinderVolumeSource](docs/CinderVolumeSource.md)
  - [ClientIPConfig](docs/ClientIPConfig.md)
+ - [ClusterInfo](docs/ClusterInfo.md)
  - [Component](docs/Component.md)
- - [ComponentStatusMap](docs/ComponentStatusMap.md)
  - [ConditionStatus](docs/ConditionStatus.md)
  - [Conditions](docs/Conditions.md)
  - [ConfigMapEnvSource](docs/ConfigMapEnvSource.md)
@@ -119,6 +191,7 @@ Class | Method | HTTP request | Description
  - [ContainerStatus](docs/ContainerStatus.md)
  - [CrossVersionObjectReference](docs/CrossVersionObjectReference.md)
  - [CustomSpec](docs/CustomSpec.md)
+ - [CustomThemeConfig](docs/CustomThemeConfig.md)
  - [DNSPolicy](docs/DNSPolicy.md)
  - [Deployment](docs/Deployment.md)
  - [DeploymentList](docs/DeploymentList.md)
@@ -134,6 +207,7 @@ Class | Method | HTTP request | Description
  - [EndpointSpec](docs/EndpointSpec.md)
  - [EndpointType](docs/EndpointType.md)
  - [EnvFromSource](docs/EnvFromSource.md)
+ - [EnvProps](docs/EnvProps.md)
  - [EnvVar](docs/EnvVar.md)
  - [EnvVarSource](docs/EnvVarSource.md)
  - [EphemeralContainer](docs/EphemeralContainer.md)
@@ -144,14 +218,22 @@ Class | Method | HTTP request | Description
  - [ExternalMetricSource](docs/ExternalMetricSource.md)
  - [FCVolumeSource](docs/FCVolumeSource.md)
  - [FieldsV1](docs/FieldsV1.md)
+ - [FileDiff](docs/FileDiff.md)
+ - [FinalizerName](docs/FinalizerName.md)
  - [FlexVolumeSource](docs/FlexVolumeSource.md)
  - [FlockerVolumeSource](docs/FlockerVolumeSource.md)
  - [GCEPersistentDiskVolumeSource](docs/GCEPersistentDiskVolumeSource.md)
+ - [GitCommit](docs/GitCommit.md)
  - [GitRepoVolumeSource](docs/GitRepoVolumeSource.md)
  - [GlusterfsVolumeSource](docs/GlusterfsVolumeSource.md)
+ - [HPAScalingPolicy](docs/HPAScalingPolicy.md)
+ - [HPAScalingPolicyType](docs/HPAScalingPolicyType.md)
+ - [HPAScalingRules](docs/HPAScalingRules.md)
  - [HTTPGetAction](docs/HTTPGetAction.md)
  - [HTTPHeader](docs/HTTPHeader.md)
  - [Handler](docs/Handler.md)
+ - [HorizontalPodAutoscalerBehavior](docs/HorizontalPodAutoscalerBehavior.md)
+ - [HorizontalPodAutoscalerConfig](docs/HorizontalPodAutoscalerConfig.md)
  - [HostAlias](docs/HostAlias.md)
  - [HostPathType](docs/HostPathType.md)
  - [HostPathVolumeSource](docs/HostPathVolumeSource.md)
@@ -167,17 +249,27 @@ Class | Method | HTTP request | Description
  - [LabelSelectorOperator](docs/LabelSelectorOperator.md)
  - [LabelSelectorRequirement](docs/LabelSelectorRequirement.md)
  - [Lifecycle](docs/Lifecycle.md)
+ - [ListMeta](docs/ListMeta.md)
  - [LocalObjectReference](docs/LocalObjectReference.md)
  - [Logger](docs/Logger.md)
+ - [LoggerDataType](docs/LoggerDataType.md)
  - [LoggerMode](docs/LoggerMode.md)
- - [MLDeploymentList](docs/MLDeploymentList.md)
  - [ManagedFieldsEntry](docs/ManagedFieldsEntry.md)
  - [ManagedFieldsOperationType](docs/ManagedFieldsOperationType.md)
+ - [Message](docs/Message.md)
  - [MetricSourceType](docs/MetricSourceType.md)
  - [MetricSpec](docs/MetricSpec.md)
+ - [MonitorInputData](docs/MonitorInputData.md)
  - [MountPropagationMode](docs/MountPropagationMode.md)
  - [NFSVolumeSource](docs/NFSVolumeSource.md)
+ - [Namespace](docs/Namespace.md)
+ - [NamespaceCondition](docs/NamespaceCondition.md)
+ - [NamespaceConditionType](docs/NamespaceConditionType.md)
+ - [NamespacePhase](docs/NamespacePhase.md)
+ - [NamespaceSpec](docs/NamespaceSpec.md)
+ - [NamespaceStatus](docs/NamespaceStatus.md)
  - [NodeAffinity](docs/NodeAffinity.md)
+ - [NodePhase](docs/NodePhase.md)
  - [NodeSelector](docs/NodeSelector.md)
  - [NodeSelectorOperator](docs/NodeSelectorOperator.md)
  - [NodeSelectorRequirement](docs/NodeSelectorRequirement.md)
@@ -198,6 +290,7 @@ Class | Method | HTTP request | Description
  - [PodConditionType](docs/PodConditionType.md)
  - [PodDNSConfig](docs/PodDNSConfig.md)
  - [PodDNSConfigOption](docs/PodDNSConfigOption.md)
+ - [PodFSGroupChangePolicy](docs/PodFSGroupChangePolicy.md)
  - [PodIP](docs/PodIP.md)
  - [PodList](docs/PodList.md)
  - [PodPhase](docs/PodPhase.md)
@@ -232,7 +325,11 @@ Class | Method | HTTP request | Description
  - [RestartPolicy](docs/RestartPolicy.md)
  - [RollingUpdateDeployment](docs/RollingUpdateDeployment.md)
  - [SELinuxOptions](docs/SELinuxOptions.md)
+ - [SSL](docs/SSL.md)
  - [ScaleIOVolumeSource](docs/ScaleIOVolumeSource.md)
+ - [ScaleTriggers](docs/ScaleTriggers.md)
+ - [ScaledObjectAuthRef](docs/ScaledObjectAuthRef.md)
+ - [ScalingPolicySelect](docs/ScalingPolicySelect.md)
  - [SecretEnvSource](docs/SecretEnvSource.md)
  - [SecretKeySelector](docs/SecretKeySelector.md)
  - [SecretProjection](docs/SecretProjection.md)
@@ -244,7 +341,10 @@ Class | Method | HTTP request | Description
  - [SeldonDeploymentSpec](docs/SeldonDeploymentSpec.md)
  - [SeldonDeploymentStatus](docs/SeldonDeploymentStatus.md)
  - [SeldonHpaSpec](docs/SeldonHpaSpec.md)
+ - [SeldonPdbSpec](docs/SeldonPdbSpec.md)
  - [SeldonPodSpec](docs/SeldonPodSpec.md)
+ - [SeldonScaledObjectSpec](docs/SeldonScaledObjectSpec.md)
+ - [ServerType](docs/ServerType.md)
  - [Service](docs/Service.md)
  - [ServiceAccountTokenProjection](docs/ServiceAccountTokenProjection.md)
  - [ServiceAffinity](docs/ServiceAffinity.md)
@@ -255,7 +355,6 @@ Class | Method | HTTP request | Description
  - [ServiceStatus](docs/ServiceStatus.md)
  - [ServiceType](docs/ServiceType.md)
  - [SessionAffinityConfig](docs/SessionAffinityConfig.md)
- - [StatusConfigurationSpec](docs/StatusConfigurationSpec.md)
  - [StatusState](docs/StatusState.md)
  - [StorageMedium](docs/StorageMedium.md)
  - [StorageOSVolumeSource](docs/StorageOSVolumeSource.md)
@@ -288,7 +387,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- All endpoints do not require authorization.
+
+## APIKeyHeader
+
+- **Type**: API key
+- **API key parameter name**: X-Auth-Token
+- **Location**: HTTP header
 
 
 ## Author

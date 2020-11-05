@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **termination_message_path** | **str** | Optional: Path at which the file to which the container&#39;s termination message will be written is mounted into the container&#39;s filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional | [optional] 
 **termination_message_policy** | [**TerminationMessagePolicy**](TerminationMessagePolicy.md) |  | [optional] 
 **tty** | **bool** | Whether this container should allocate a TTY for itself, also requires &#39;stdin&#39; to be true. Default is false. +optional | [optional] 
-**volume_devices** | [**list[VolumeDevice]**](VolumeDevice.md) | volumeDevices is the list of block devices to be used by the container. This is a beta feature. +patchMergeKey&#x3D;devicePath +patchStrategy&#x3D;merge +optional | [optional] 
+**volume_devices** | [**list[VolumeDevice]**](VolumeDevice.md) | volumeDevices is the list of block devices to be used by the container. +patchMergeKey&#x3D;devicePath +patchStrategy&#x3D;merge +optional | [optional] 
 **volume_mounts** | [**list[VolumeMount]**](VolumeMount.md) | Pod volumes to mount into the container&#39;s filesystem. Cannot be updated. +optional +patchMergeKey&#x3D;mountPath +patchStrategy&#x3D;merge | [optional] 
 **working_dir** | **str** | Container&#39;s working directory. If not specified, the container runtime&#39;s default will be used, which might be configured in the container image. Cannot be updated. +optional | [optional] 
 

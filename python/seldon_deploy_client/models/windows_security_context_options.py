@@ -61,7 +61,7 @@ class WindowsSecurityContextOptions(object):
     def gmsa_credential_spec(self):
         """Gets the gmsa_credential_spec of this WindowsSecurityContextOptions.  # noqa: E501
 
-        GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag. +optional  # noqa: E501
+        GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. +optional  # noqa: E501
 
         :return: The gmsa_credential_spec of this WindowsSecurityContextOptions.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class WindowsSecurityContextOptions(object):
     def gmsa_credential_spec(self, gmsa_credential_spec):
         """Sets the gmsa_credential_spec of this WindowsSecurityContextOptions.
 
-        GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag. +optional  # noqa: E501
+        GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. +optional  # noqa: E501
 
         :param gmsa_credential_spec: The gmsa_credential_spec of this WindowsSecurityContextOptions.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class WindowsSecurityContextOptions(object):
     def gmsa_credential_spec_name(self):
         """Gets the gmsa_credential_spec_name of this WindowsSecurityContextOptions.  # noqa: E501
 
-        GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag. +optional  # noqa: E501
+        GMSACredentialSpecName is the name of the GMSA credential spec to use. +optional  # noqa: E501
 
         :return: The gmsa_credential_spec_name of this WindowsSecurityContextOptions.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class WindowsSecurityContextOptions(object):
     def gmsa_credential_spec_name(self, gmsa_credential_spec_name):
         """Sets the gmsa_credential_spec_name of this WindowsSecurityContextOptions.
 
-        GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag. +optional  # noqa: E501
+        GMSACredentialSpecName is the name of the GMSA credential spec to use. +optional  # noqa: E501
 
         :param gmsa_credential_spec_name: The gmsa_credential_spec_name of this WindowsSecurityContextOptions.  # noqa: E501
         :type: str
@@ -107,7 +107,7 @@ class WindowsSecurityContextOptions(object):
     def run_as_user_name(self):
         """Gets the run_as_user_name of this WindowsSecurityContextOptions.  # noqa: E501
 
-        The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. This field is beta-level and may be disabled with the WindowsRunAsUserName feature flag. +optional  # noqa: E501
+        The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional  # noqa: E501
 
         :return: The run_as_user_name of this WindowsSecurityContextOptions.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class WindowsSecurityContextOptions(object):
     def run_as_user_name(self, run_as_user_name):
         """Sets the run_as_user_name of this WindowsSecurityContextOptions.
 
-        The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. This field is beta-level and may be disabled with the WindowsRunAsUserName feature flag. +optional  # noqa: E501
+        The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional  # noqa: E501
 
         :param run_as_user_name: The run_as_user_name of this WindowsSecurityContextOptions.  # noqa: E501
         :type: str

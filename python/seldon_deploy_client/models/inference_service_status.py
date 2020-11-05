@@ -32,10 +32,11 @@ class InferenceServiceStatus(object):
     """
     swagger_types = {
         'address': 'Addressable',
-        'canary': 'ComponentStatusMap',
+        'annotations': 'dict(str, str)',
+        'canary': 'object',
         'canary_traffic': 'int',
         'conditions': 'Conditions',
-        'default': 'ComponentStatusMap',
+        'default': 'object',
         'observed_generation': 'int',
         'traffic': 'int',
         'url': 'str'
@@ -43,6 +44,7 @@ class InferenceServiceStatus(object):
 
     attribute_map = {
         'address': 'address',
+        'annotations': 'annotations',
         'canary': 'canary',
         'canary_traffic': 'canaryTraffic',
         'conditions': 'conditions',
@@ -52,10 +54,11 @@ class InferenceServiceStatus(object):
         'url': 'url'
     }
 
-    def __init__(self, address=None, canary=None, canary_traffic=None, conditions=None, default=None, observed_generation=None, traffic=None, url=None):  # noqa: E501
+    def __init__(self, address=None, annotations=None, canary=None, canary_traffic=None, conditions=None, default=None, observed_generation=None, traffic=None, url=None):  # noqa: E501
         """InferenceServiceStatus - a model defined in Swagger"""  # noqa: E501
 
         self._address = None
+        self._annotations = None
         self._canary = None
         self._canary_traffic = None
         self._conditions = None
@@ -67,6 +70,8 @@ class InferenceServiceStatus(object):
 
         if address is not None:
             self.address = address
+        if annotations is not None:
+            self.annotations = annotations
         if canary is not None:
             self.canary = canary
         if canary_traffic is not None:
@@ -104,12 +109,36 @@ class InferenceServiceStatus(object):
         self._address = address
 
     @property
+    def annotations(self):
+        """Gets the annotations of this InferenceServiceStatus.  # noqa: E501
+
+        Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.  # noqa: E501
+
+        :return: The annotations of this InferenceServiceStatus.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._annotations
+
+    @annotations.setter
+    def annotations(self, annotations):
+        """Sets the annotations of this InferenceServiceStatus.
+
+        Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.  # noqa: E501
+
+        :param annotations: The annotations of this InferenceServiceStatus.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._annotations = annotations
+
+    @property
     def canary(self):
         """Gets the canary of this InferenceServiceStatus.  # noqa: E501
 
+        Statuses for the canary endpoints of the InferenceService  # noqa: E501
 
         :return: The canary of this InferenceServiceStatus.  # noqa: E501
-        :rtype: ComponentStatusMap
+        :rtype: object
         """
         return self._canary
 
@@ -117,9 +146,10 @@ class InferenceServiceStatus(object):
     def canary(self, canary):
         """Sets the canary of this InferenceServiceStatus.
 
+        Statuses for the canary endpoints of the InferenceService  # noqa: E501
 
         :param canary: The canary of this InferenceServiceStatus.  # noqa: E501
-        :type: ComponentStatusMap
+        :type: object
         """
 
         self._canary = canary
@@ -172,9 +202,10 @@ class InferenceServiceStatus(object):
     def default(self):
         """Gets the default of this InferenceServiceStatus.  # noqa: E501
 
+        Statuses for the default endpoints of the InferenceService  # noqa: E501
 
         :return: The default of this InferenceServiceStatus.  # noqa: E501
-        :rtype: ComponentStatusMap
+        :rtype: object
         """
         return self._default
 
@@ -182,9 +213,10 @@ class InferenceServiceStatus(object):
     def default(self, default):
         """Sets the default of this InferenceServiceStatus.
 
+        Statuses for the default endpoints of the InferenceService  # noqa: E501
 
         :param default: The default of this InferenceServiceStatus.  # noqa: E501
-        :type: ComponentStatusMap
+        :type: object
         """
 
         self._default = default

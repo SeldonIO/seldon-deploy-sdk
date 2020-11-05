@@ -38,6 +38,7 @@ class SeldonDeploymentSpec(object):
         'predictors': 'list[PredictorSpec]',
         'protocol': 'Protocol',
         'replicas': 'int',
+        'server_type': 'ServerType',
         'transport': 'Transport'
     }
 
@@ -49,10 +50,11 @@ class SeldonDeploymentSpec(object):
         'predictors': 'predictors',
         'protocol': 'protocol',
         'replicas': 'replicas',
+        'server_type': 'serverType',
         'transport': 'transport'
     }
 
-    def __init__(self, annotations=None, name=None, oauth_key=None, oauth_secret=None, predictors=None, protocol=None, replicas=None, transport=None):  # noqa: E501
+    def __init__(self, annotations=None, name=None, oauth_key=None, oauth_secret=None, predictors=None, protocol=None, replicas=None, server_type=None, transport=None):  # noqa: E501
         """SeldonDeploymentSpec - a model defined in Swagger"""  # noqa: E501
 
         self._annotations = None
@@ -62,6 +64,7 @@ class SeldonDeploymentSpec(object):
         self._predictors = None
         self._protocol = None
         self._replicas = None
+        self._server_type = None
         self._transport = None
         self.discriminator = None
 
@@ -79,6 +82,8 @@ class SeldonDeploymentSpec(object):
             self.protocol = protocol
         if replicas is not None:
             self.replicas = replicas
+        if server_type is not None:
+            self.server_type = server_type
         if transport is not None:
             self.transport = transport
 
@@ -230,6 +235,27 @@ class SeldonDeploymentSpec(object):
         """
 
         self._replicas = replicas
+
+    @property
+    def server_type(self):
+        """Gets the server_type of this SeldonDeploymentSpec.  # noqa: E501
+
+
+        :return: The server_type of this SeldonDeploymentSpec.  # noqa: E501
+        :rtype: ServerType
+        """
+        return self._server_type
+
+    @server_type.setter
+    def server_type(self, server_type):
+        """Sets the server_type of this SeldonDeploymentSpec.
+
+
+        :param server_type: The server_type of this SeldonDeploymentSpec.  # noqa: E501
+        :type: ServerType
+        """
+
+        self._server_type = server_type
 
     @property
     def transport(self):

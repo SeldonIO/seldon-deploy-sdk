@@ -577,7 +577,7 @@ class Container(object):
     def volume_devices(self):
         """Gets the volume_devices of this Container.  # noqa: E501
 
-        volumeDevices is the list of block devices to be used by the container. This is a beta feature. +patchMergeKey=devicePath +patchStrategy=merge +optional  # noqa: E501
+        volumeDevices is the list of block devices to be used by the container. +patchMergeKey=devicePath +patchStrategy=merge +optional  # noqa: E501
 
         :return: The volume_devices of this Container.  # noqa: E501
         :rtype: list[VolumeDevice]
@@ -588,7 +588,7 @@ class Container(object):
     def volume_devices(self, volume_devices):
         """Sets the volume_devices of this Container.
 
-        volumeDevices is the list of block devices to be used by the container. This is a beta feature. +patchMergeKey=devicePath +patchStrategy=merge +optional  # noqa: E501
+        volumeDevices is the list of block devices to be used by the container. +patchMergeKey=devicePath +patchStrategy=merge +optional  # noqa: E501
 
         :param volume_devices: The volume_devices of this Container.  # noqa: E501
         :type: list[VolumeDevice]

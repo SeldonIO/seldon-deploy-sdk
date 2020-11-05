@@ -31,6 +31,7 @@ class ServicePort(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'app_protocol': 'str',
         'name': 'str',
         'node_port': 'int',
         'port': 'int',
@@ -39,6 +40,7 @@ class ServicePort(object):
     }
 
     attribute_map = {
+        'app_protocol': 'appProtocol',
         'name': 'name',
         'node_port': 'nodePort',
         'port': 'port',
@@ -46,9 +48,10 @@ class ServicePort(object):
         'target_port': 'targetPort'
     }
 
-    def __init__(self, name=None, node_port=None, port=None, protocol=None, target_port=None):  # noqa: E501
+    def __init__(self, app_protocol=None, name=None, node_port=None, port=None, protocol=None, target_port=None):  # noqa: E501
         """ServicePort - a model defined in Swagger"""  # noqa: E501
 
+        self._app_protocol = None
         self._name = None
         self._node_port = None
         self._port = None
@@ -56,6 +59,8 @@ class ServicePort(object):
         self._target_port = None
         self.discriminator = None
 
+        if app_protocol is not None:
+            self.app_protocol = app_protocol
         if name is not None:
             self.name = name
         if node_port is not None:
@@ -66,6 +71,29 @@ class ServicePort(object):
             self.protocol = protocol
         if target_port is not None:
             self.target_port = target_port
+
+    @property
+    def app_protocol(self):
+        """Gets the app_protocol of this ServicePort.  # noqa: E501
+
+        The application protocol for this port. This field follows standard Kubernetes label syntax. Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as mycompany.com/my-custom-protocol. Field can be enabled with ServiceAppProtocol feature gate. +optional  # noqa: E501
+
+        :return: The app_protocol of this ServicePort.  # noqa: E501
+        :rtype: str
+        """
+        return self._app_protocol
+
+    @app_protocol.setter
+    def app_protocol(self, app_protocol):
+        """Sets the app_protocol of this ServicePort.
+
+        The application protocol for this port. This field follows standard Kubernetes label syntax. Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and http://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as mycompany.com/my-custom-protocol. Field can be enabled with ServiceAppProtocol feature gate. +optional  # noqa: E501
+
+        :param app_protocol: The app_protocol of this ServicePort.  # noqa: E501
+        :type: str
+        """
+
+        self._app_protocol = app_protocol
 
     @property
     def name(self):

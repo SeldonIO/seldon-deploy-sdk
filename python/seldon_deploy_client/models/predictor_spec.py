@@ -40,6 +40,7 @@ class PredictorSpec(object):
         'name': 'str',
         'replicas': 'int',
         'shadow': 'bool',
+        'ssl': 'SSL',
         'svc_orch_spec': 'SvcOrchSpec',
         'traffic': 'int'
     }
@@ -54,11 +55,12 @@ class PredictorSpec(object):
         'name': 'name',
         'replicas': 'replicas',
         'shadow': 'shadow',
+        'ssl': 'ssl',
         'svc_orch_spec': 'svcOrchSpec',
         'traffic': 'traffic'
     }
 
-    def __init__(self, annotations=None, component_specs=None, engine_resources=None, explainer=None, graph=None, labels=None, name=None, replicas=None, shadow=None, svc_orch_spec=None, traffic=None):  # noqa: E501
+    def __init__(self, annotations=None, component_specs=None, engine_resources=None, explainer=None, graph=None, labels=None, name=None, replicas=None, shadow=None, ssl=None, svc_orch_spec=None, traffic=None):  # noqa: E501
         """PredictorSpec - a model defined in Swagger"""  # noqa: E501
 
         self._annotations = None
@@ -70,6 +72,7 @@ class PredictorSpec(object):
         self._name = None
         self._replicas = None
         self._shadow = None
+        self._ssl = None
         self._svc_orch_spec = None
         self._traffic = None
         self.discriminator = None
@@ -92,6 +95,8 @@ class PredictorSpec(object):
             self.replicas = replicas
         if shadow is not None:
             self.shadow = shadow
+        if ssl is not None:
+            self.ssl = ssl
         if svc_orch_spec is not None:
             self.svc_orch_spec = svc_orch_spec
         if traffic is not None:
@@ -285,6 +290,27 @@ class PredictorSpec(object):
         """
 
         self._shadow = shadow
+
+    @property
+    def ssl(self):
+        """Gets the ssl of this PredictorSpec.  # noqa: E501
+
+
+        :return: The ssl of this PredictorSpec.  # noqa: E501
+        :rtype: SSL
+        """
+        return self._ssl
+
+    @ssl.setter
+    def ssl(self, ssl):
+        """Sets the ssl of this PredictorSpec.
+
+
+        :param ssl: The ssl of this PredictorSpec.  # noqa: E501
+        :type: SSL
+        """
+
+        self._ssl = ssl
 
     @property
     def svc_orch_spec(self):

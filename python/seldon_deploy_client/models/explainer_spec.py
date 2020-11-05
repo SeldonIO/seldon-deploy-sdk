@@ -31,7 +31,9 @@ class ExplainerSpec(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'aix': 'AIXExplainerSpec',
         'alibi': 'AlibiExplainerSpec',
+        'batcher': 'Batcher',
         'custom': 'CustomSpec',
         'logger': 'Logger',
         'max_replicas': 'int',
@@ -41,7 +43,9 @@ class ExplainerSpec(object):
     }
 
     attribute_map = {
+        'aix': 'aix',
         'alibi': 'alibi',
+        'batcher': 'batcher',
         'custom': 'custom',
         'logger': 'logger',
         'max_replicas': 'maxReplicas',
@@ -50,10 +54,12 @@ class ExplainerSpec(object):
         'service_account_name': 'serviceAccountName'
     }
 
-    def __init__(self, alibi=None, custom=None, logger=None, max_replicas=None, min_replicas=None, parallelism=None, service_account_name=None):  # noqa: E501
+    def __init__(self, aix=None, alibi=None, batcher=None, custom=None, logger=None, max_replicas=None, min_replicas=None, parallelism=None, service_account_name=None):  # noqa: E501
         """ExplainerSpec - a model defined in Swagger"""  # noqa: E501
 
+        self._aix = None
         self._alibi = None
+        self._batcher = None
         self._custom = None
         self._logger = None
         self._max_replicas = None
@@ -62,8 +68,12 @@ class ExplainerSpec(object):
         self._service_account_name = None
         self.discriminator = None
 
+        if aix is not None:
+            self.aix = aix
         if alibi is not None:
             self.alibi = alibi
+        if batcher is not None:
+            self.batcher = batcher
         if custom is not None:
             self.custom = custom
         if logger is not None:
@@ -76,6 +86,27 @@ class ExplainerSpec(object):
             self.parallelism = parallelism
         if service_account_name is not None:
             self.service_account_name = service_account_name
+
+    @property
+    def aix(self):
+        """Gets the aix of this ExplainerSpec.  # noqa: E501
+
+
+        :return: The aix of this ExplainerSpec.  # noqa: E501
+        :rtype: AIXExplainerSpec
+        """
+        return self._aix
+
+    @aix.setter
+    def aix(self, aix):
+        """Sets the aix of this ExplainerSpec.
+
+
+        :param aix: The aix of this ExplainerSpec.  # noqa: E501
+        :type: AIXExplainerSpec
+        """
+
+        self._aix = aix
 
     @property
     def alibi(self):
@@ -97,6 +128,27 @@ class ExplainerSpec(object):
         """
 
         self._alibi = alibi
+
+    @property
+    def batcher(self):
+        """Gets the batcher of this ExplainerSpec.  # noqa: E501
+
+
+        :return: The batcher of this ExplainerSpec.  # noqa: E501
+        :rtype: Batcher
+        """
+        return self._batcher
+
+    @batcher.setter
+    def batcher(self, batcher):
+        """Sets the batcher of this ExplainerSpec.
+
+
+        :param batcher: The batcher of this ExplainerSpec.  # noqa: E501
+        :type: Batcher
+        """
+
+        self._batcher = batcher
 
     @property
     def custom(self):
@@ -167,7 +219,7 @@ class ExplainerSpec(object):
     def min_replicas(self):
         """Gets the min_replicas of this ExplainerSpec.  # noqa: E501
 
-        Minimum number of replicas, pods won't scale down to 0 in case of no traffic +optional  # noqa: E501
+        Minimum number of replicas which defaults to 1, when minReplicas = 0 pods scale down to 0 in case of no traffic +optional  # noqa: E501
 
         :return: The min_replicas of this ExplainerSpec.  # noqa: E501
         :rtype: int
@@ -178,7 +230,7 @@ class ExplainerSpec(object):
     def min_replicas(self, min_replicas):
         """Sets the min_replicas of this ExplainerSpec.
 
-        Minimum number of replicas, pods won't scale down to 0 in case of no traffic +optional  # noqa: E501
+        Minimum number of replicas which defaults to 1, when minReplicas = 0 pods scale down to 0 in case of no traffic +optional  # noqa: E501
 
         :param min_replicas: The min_replicas of this ExplainerSpec.  # noqa: E501
         :type: int
@@ -190,7 +242,7 @@ class ExplainerSpec(object):
     def parallelism(self):
         """Gets the parallelism of this ExplainerSpec.  # noqa: E501
 
-        Parallelism specifies how many requests can be processed concurrently, this sets the target concurrency for Autoscaling(KPA). For model servers that support tuning parallelism will use this value, by default the parallelism is the number of the CPU cores for most of the model servers. +optional  # noqa: E501
+        Parallelism specifies how many requests can be processed concurrently, this sets the hard limit of the container concurrency(https://knative.dev/docs/serving/autoscaling/concurrency).  # noqa: E501
 
         :return: The parallelism of this ExplainerSpec.  # noqa: E501
         :rtype: int
@@ -201,7 +253,7 @@ class ExplainerSpec(object):
     def parallelism(self, parallelism):
         """Sets the parallelism of this ExplainerSpec.
 
-        Parallelism specifies how many requests can be processed concurrently, this sets the target concurrency for Autoscaling(KPA). For model servers that support tuning parallelism will use this value, by default the parallelism is the number of the CPU cores for most of the model servers. +optional  # noqa: E501
+        Parallelism specifies how many requests can be processed concurrently, this sets the hard limit of the container concurrency(https://knative.dev/docs/serving/autoscaling/concurrency).  # noqa: E501
 
         :param parallelism: The parallelism of this ExplainerSpec.  # noqa: E501
         :type: int

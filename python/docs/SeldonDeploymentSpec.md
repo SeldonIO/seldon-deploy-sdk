@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **predictors** | [**list[PredictorSpec]**](PredictorSpec.md) |  | [optional] 
 **protocol** | [**Protocol**](Protocol.md) |  | [optional] 
 **replicas** | **int** |  | [optional] 
+**server_type** | [**ServerType**](ServerType.md) |  | [optional] 
 **transport** | [**Transport**](Transport.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

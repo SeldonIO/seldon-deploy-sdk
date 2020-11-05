@@ -61,7 +61,7 @@ class Error(object):
     def code(self):
         """Gets the code of this Error.  # noqa: E501
 
-        code  # noqa: E501
+        Code  # noqa: E501
 
         :return: The code of this Error.  # noqa: E501
         :rtype: int
@@ -72,7 +72,7 @@ class Error(object):
     def code(self, code):
         """Sets the code of this Error.
 
-        code  # noqa: E501
+        Code  # noqa: E501
 
         :param code: The code of this Error.  # noqa: E501
         :type: int
@@ -84,7 +84,7 @@ class Error(object):
     def message(self):
         """Gets the message of this Error.  # noqa: E501
 
-        message  # noqa: E501
+        Message  # noqa: E501
 
         :return: The message of this Error.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class Error(object):
     def message(self, message):
         """Sets the message of this Error.
 
-        message  # noqa: E501
+        Message  # noqa: E501
 
         :param message: The message of this Error.  # noqa: E501
         :type: str
@@ -107,7 +107,7 @@ class Error(object):
     def request_id(self):
         """Gets the request_id of this Error.  # noqa: E501
 
-        requestId  # noqa: E501
+        RequestId  # noqa: E501
 
         :return: The request_id of this Error.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class Error(object):
     def request_id(self, request_id):
         """Sets the request_id of this Error.
 
-        requestId  # noqa: E501
+        RequestId  # noqa: E501
 
         :param request_id: The request_id of this Error.  # noqa: E501
         :type: str

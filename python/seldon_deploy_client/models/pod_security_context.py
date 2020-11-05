@@ -32,6 +32,7 @@ class PodSecurityContext(object):
     """
     swagger_types = {
         'fs_group': 'int',
+        'fs_group_change_policy': 'PodFSGroupChangePolicy',
         'run_as_group': 'int',
         'run_as_non_root': 'bool',
         'run_as_user': 'int',
@@ -43,6 +44,7 @@ class PodSecurityContext(object):
 
     attribute_map = {
         'fs_group': 'fsGroup',
+        'fs_group_change_policy': 'fsGroupChangePolicy',
         'run_as_group': 'runAsGroup',
         'run_as_non_root': 'runAsNonRoot',
         'run_as_user': 'runAsUser',
@@ -52,10 +54,11 @@ class PodSecurityContext(object):
         'windows_options': 'windowsOptions'
     }
 
-    def __init__(self, fs_group=None, run_as_group=None, run_as_non_root=None, run_as_user=None, se_linux_options=None, supplemental_groups=None, sysctls=None, windows_options=None):  # noqa: E501
+    def __init__(self, fs_group=None, fs_group_change_policy=None, run_as_group=None, run_as_non_root=None, run_as_user=None, se_linux_options=None, supplemental_groups=None, sysctls=None, windows_options=None):  # noqa: E501
         """PodSecurityContext - a model defined in Swagger"""  # noqa: E501
 
         self._fs_group = None
+        self._fs_group_change_policy = None
         self._run_as_group = None
         self._run_as_non_root = None
         self._run_as_user = None
@@ -67,6 +70,8 @@ class PodSecurityContext(object):
 
         if fs_group is not None:
             self.fs_group = fs_group
+        if fs_group_change_policy is not None:
+            self.fs_group_change_policy = fs_group_change_policy
         if run_as_group is not None:
             self.run_as_group = run_as_group
         if run_as_non_root is not None:
@@ -104,6 +109,27 @@ class PodSecurityContext(object):
         """
 
         self._fs_group = fs_group
+
+    @property
+    def fs_group_change_policy(self):
+        """Gets the fs_group_change_policy of this PodSecurityContext.  # noqa: E501
+
+
+        :return: The fs_group_change_policy of this PodSecurityContext.  # noqa: E501
+        :rtype: PodFSGroupChangePolicy
+        """
+        return self._fs_group_change_policy
+
+    @fs_group_change_policy.setter
+    def fs_group_change_policy(self, fs_group_change_policy):
+        """Sets the fs_group_change_policy of this PodSecurityContext.
+
+
+        :param fs_group_change_policy: The fs_group_change_policy of this PodSecurityContext.  # noqa: E501
+        :type: PodFSGroupChangePolicy
+        """
+
+        self._fs_group_change_policy = fs_group_change_policy
 
     @property
     def run_as_group(self):

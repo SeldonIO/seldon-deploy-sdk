@@ -40,7 +40,7 @@ class Configuration(object):
             return
 
         # Default Base url
-        self.host = "http://localhost:8000/seldon-deploy/api/v1alpha1"
+        self.host = "https://X.X.X.X/seldon-deploy/api/v1alpha1"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -229,6 +229,13 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         return {
+            'APIKeyHeader':
+                {
+                    'type': 'api_key',
+                    'in': 'header',
+                    'key': 'X-Auth-Token',
+                    'value': self.get_api_key_with_prefix('X-Auth-Token')
+                },
 
         }
 

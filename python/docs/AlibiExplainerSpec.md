@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config** | **dict(str, str)** | Inline custom parameter settings for explainer | [optional] 
 **resources** | [**ResourceRequirements**](ResourceRequirements.md) |  | [optional] 
-**runtime_version** | **str** | Defaults to latest Alibi Version | [optional] 
+**runtime_version** | **str** | Alibi docker image version which defaults to latest release | [optional] 
 **storage_uri** | **str** | The location of a trained explanation model | [optional] 
 **type** | [**AlibiExplainerType**](AlibiExplainerType.md) |  | [optional] 
 

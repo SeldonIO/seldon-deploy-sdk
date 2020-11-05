@@ -29,8 +29,20 @@ class TestResourcesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_list_inference_service_predictor_resources(self):
+        """Test case for list_inference_service_predictor_resources
+
+        """
+        pass
+
     def test_list_inference_service_resources(self):
         """Test case for list_inference_service_resources
+
+        """
+        pass
+
+    def test_list_seldon_deployment_predictor_resources(self):
+        """Test case for list_seldon_deployment_predictor_resources
 
         """
         pass

@@ -32,31 +32,41 @@ class SeldonPodSpec(object):
     """
     swagger_types = {
         'hpa_spec': 'SeldonHpaSpec',
+        'keda_spec': 'SeldonScaledObjectSpec',
         'metadata': 'ObjectMeta',
+        'pdb_spec': 'SeldonPdbSpec',
         'replicas': 'int',
         'spec': 'PodSpec'
     }
 
     attribute_map = {
         'hpa_spec': 'hpaSpec',
+        'keda_spec': 'kedaSpec',
         'metadata': 'metadata',
+        'pdb_spec': 'pdbSpec',
         'replicas': 'replicas',
         'spec': 'spec'
     }
 
-    def __init__(self, hpa_spec=None, metadata=None, replicas=None, spec=None):  # noqa: E501
+    def __init__(self, hpa_spec=None, keda_spec=None, metadata=None, pdb_spec=None, replicas=None, spec=None):  # noqa: E501
         """SeldonPodSpec - a model defined in Swagger"""  # noqa: E501
 
         self._hpa_spec = None
+        self._keda_spec = None
         self._metadata = None
+        self._pdb_spec = None
         self._replicas = None
         self._spec = None
         self.discriminator = None
 
         if hpa_spec is not None:
             self.hpa_spec = hpa_spec
+        if keda_spec is not None:
+            self.keda_spec = keda_spec
         if metadata is not None:
             self.metadata = metadata
+        if pdb_spec is not None:
+            self.pdb_spec = pdb_spec
         if replicas is not None:
             self.replicas = replicas
         if spec is not None:
@@ -84,6 +94,27 @@ class SeldonPodSpec(object):
         self._hpa_spec = hpa_spec
 
     @property
+    def keda_spec(self):
+        """Gets the keda_spec of this SeldonPodSpec.  # noqa: E501
+
+
+        :return: The keda_spec of this SeldonPodSpec.  # noqa: E501
+        :rtype: SeldonScaledObjectSpec
+        """
+        return self._keda_spec
+
+    @keda_spec.setter
+    def keda_spec(self, keda_spec):
+        """Sets the keda_spec of this SeldonPodSpec.
+
+
+        :param keda_spec: The keda_spec of this SeldonPodSpec.  # noqa: E501
+        :type: SeldonScaledObjectSpec
+        """
+
+        self._keda_spec = keda_spec
+
+    @property
     def metadata(self):
         """Gets the metadata of this SeldonPodSpec.  # noqa: E501
 
@@ -103,6 +134,27 @@ class SeldonPodSpec(object):
         """
 
         self._metadata = metadata
+
+    @property
+    def pdb_spec(self):
+        """Gets the pdb_spec of this SeldonPodSpec.  # noqa: E501
+
+
+        :return: The pdb_spec of this SeldonPodSpec.  # noqa: E501
+        :rtype: SeldonPdbSpec
+        """
+        return self._pdb_spec
+
+    @pdb_spec.setter
+    def pdb_spec(self, pdb_spec):
+        """Sets the pdb_spec of this SeldonPodSpec.
+
+
+        :param pdb_spec: The pdb_spec of this SeldonPodSpec.  # noqa: E501
+        :type: SeldonPdbSpec
+        """
+
+        self._pdb_spec = pdb_spec
 
     @property
     def replicas(self):
