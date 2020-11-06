@@ -34,7 +34,7 @@ You can see an example usage below:
 
 ```python
 from seldon_deploy_client import EnvironmentApi, Configuration, ApiClient
-from seldonDeploymentResponse.auth import SessionAuthenticator
+from seldon_deploy_client.auth import SessionAuthenticator
 
 config = Configuration()
 config.host = "http://157.245.28.216/seldon-deploy/api/v1alpha1"
@@ -49,6 +49,8 @@ user = env_api.read_user()
 
 print(user)
 ```
+
+You can find more details on the [Python SDK documentation](./python/docs).
 
 ## SDK Generation
 
