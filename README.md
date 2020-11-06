@@ -3,7 +3,7 @@
 This repository holds different SDK implementations to interact with the Seldon
 Deploy API.
 
-> :warning: The Seldon Deploy SDK only supports Seldon Deploy `>=0.9`.
+> :warning: **NOTE:** The Seldon Deploy SDK only supports Seldon Deploy `>=0.9`.
 
 ## Python
 
