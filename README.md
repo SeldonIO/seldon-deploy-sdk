@@ -50,7 +50,8 @@ user = env_api.read_user()
 print(user)
 ```
 
-You can find more details on the [Python SDK documentation](./python/docs).
+You can find more details on the [Python SDK
+documentation](./python/README.md).
 
 ## SDK Generation
 
