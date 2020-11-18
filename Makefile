@@ -15,4 +15,4 @@ python: swagger-v1alpha1.yml templates/python
 		-c /local/config/python.json \
 		-o /local/python
 	# Add extra files
-	cp ./templates/python/auth.py ./python/seldon_deploy_client/auth.py
+	cp -r ./templates/python/auth ./python/seldon_deploy_client/auth

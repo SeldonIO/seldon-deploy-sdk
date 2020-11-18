@@ -1,21 +1,19 @@
 from urllib3 import Retry
-from urllib.parse import urlparse
 
 from seldon_deploy_client.configuration import Configuration
 from seldon_deploy_client.rest import RESTClientObject
 
+from .base import Authenticator
 
-class SessionAuthenticator:
+
+class SessionAuthenticator(Authenticator):
     """
     Returns the cookie token.
     """
 
     def __init__(self, config: Configuration):
-        self._server = config.host
+        super().__init__(config)
         self._client = RESTClientObject(config)
-
-        url = urlparse(self._server)
-        self._host = f"{url.scheme}://{url.netloc}"
 
     def authenticate(self, user: str, password: str) -> str:
         auth_path = self._get_auth_path()
