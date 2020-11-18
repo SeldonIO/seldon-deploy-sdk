@@ -274,38 +274,51 @@ definitions:
   BatchDefinition:
     properties:
       batchDataType:
+        description: Batch Data Type (data, json or str)
         type: string
         x-go-name: DataType
       batchGatewayEndpoint:
+        description: Batch Gateway Endpoint
         type: string
         x-go-name: GatewayEndpoint
       batchGatewayType:
-        description: Batch Processor Settings
+        description: Batch Gateway Type (istio or seldon)
         type: string
         x-go-name: GatewayType
+      batchMethod:
+        description: Batch Method (predict)
+        type: string
+        x-go-name: Method
       batchPayloadType:
+        description: Batch Payload Type (ndarray, tensor, tftensor - only if DataType=data)
         type: string
         x-go-name: PayloadType
       batchRetries:
+        description: Number of retries for each instance
         type: string
         x-go-name: Retries
       batchTransportProtocol:
+        description: Batch Transport Protocol (rest or grpc)
         type: string
         x-go-name: TransportProtocol
       batchWorkers:
+        description: Number of batch workers
         type: string
         x-go-name: Workers
       inputData:
-        description: Input / Output settings
+        description: S3 URI of input data file
         type: string
         x-go-name: InputData
       objectStoreSecretName:
+        description: name of Kubernetes Secret with S3 credentials
         type: string
         x-go-name: ObjectStoreSecretName
       outputData:
+        description: S3 URI of output data file
         type: string
         x-go-name: OutputData
       pvcSize:
+        description: Size of PVC required for the batch job
         type: string
         x-go-name: PVCSize
     type: object
@@ -317,6 +330,7 @@ definitions:
       StartedAt:
         $ref: '#/definitions/Time'
       workflowName:
+        description: Name of related Argo Workflow
         type: string
         x-go-name: Name
       workflowStatus:
@@ -2003,7 +2017,7 @@ definitions:
       To:
         type: string
     type: object
-    x-go-package: github.com/seldonIO/seldon-deploy/internal/apis/v1alpha1/gitops
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/gitops
   FinalizerName:
     title: FinalizerName is the name identifying a finalizer during namespace lifecycle.
     type: string
@@ -2126,7 +2140,7 @@ definitions:
         type: string
         x-go-name: Message
     type: object
-    x-go-package: github.com/seldonIO/seldon-deploy/internal/apis/v1alpha1/gitops
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/gitops
   GitRepoVolumeSource:
     description: |-
       DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
@@ -6845,22 +6859,6 @@ info:
   title: Seldon-Deploy API.
   version: v1alpha1
 paths:
-  /analytics:
-    get:
-      description: Read the analyticts properties
-      operationId: ReadAnalytics
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/AnalyticsResponse'
-        "204":
-          $ref: '#/responses/GenericResponse'
-      schemes:
-      - http
-      - https
-      tags:
-      - Environment
   /cluster:
     get:
       consumes:
@@ -6879,48 +6877,6 @@ paths:
       - https
       tags:
       - Environment
-  /env:
-    get:
-      description: Read the seldon deploy environment
-      operationId: ReadEnv
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/EnvResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Environment
-  /monitor:
-    post:
-      consumes:
-      - application/json
-      description: Monitor
-      operationId: MonitorAll
-      parameters:
-      - description: Monitor Data
-        in: body
-        name: monitorData
-        required: true
-        schema:
-          $ref: '#/definitions/MonitorInputData'
-        x-go-name: MonitorData
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/GenericResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Monitor
   /namespaces/{namespace}/gitops-status:
     get:
       description: Read the GitOps status
@@ -6941,7 +6897,7 @@ paths:
       - http
       - https
       tags:
-      - Gitops
+      - GitOps
   /namespaces/{namespace}/inferenceservice/{name}/driftdetector:
     delete:
       description: Delete the specified Inference Service Drift Detector
@@ -7316,7 +7272,7 @@ paths:
       - http
       - https
       tags:
-      - Explainer
+      - Explain
   /namespaces/{namespace}/inferenceservices/{name}/gitdiff:
     get:
       description: Read the git diff
@@ -7350,7 +7306,7 @@ paths:
       - http
       - https
       tags:
-      - Git
+      - GitOps
   /namespaces/{namespace}/inferenceservices/{name}/gitlogs:
     get:
       description: Read the git commits
@@ -7379,7 +7335,7 @@ paths:
       - http
       - https
       tags:
-      - Git
+      - GitOps
   /namespaces/{namespace}/inferenceservices/{name}/gitrestore:
     get:
       description: Restore the git commit
@@ -7418,7 +7374,7 @@ paths:
       - http
       - https
       tags:
-      - Git
+      - GitOps
   /namespaces/{namespace}/inferenceservices/{name}/gitrevert:
     get:
       description: Revert the git commit
@@ -7457,27 +7413,55 @@ paths:
       - http
       - https
       tags:
-      - Git
-  /namespaces/{namespace}/inferenceservices/{name}/loadtest:
-    post:
-      consumes:
-      - application/json
-      - multipart/form-data
-      description: Create Inference Service load test
-      operationId: LoadtestInferenceService
+      - GitOps
+  /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs:
+    get:
+      description: List Inference Service load test jobs
+      operationId: ListLoadtestInferenceService
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
       - description: Name identifies a resource
         in: path
         name: name
         required: true
         type: string
         x-go-name: Name
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        type: string
+        x-go-name: Namespace
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/MessageResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      schemes:
+      - http
+      - https
+      tags:
+      - LoadtestJobs
+    post:
+      consumes:
+      - application/json
+      - multipart/form-data
+      description: Create Inference Service load test
+      operationId: CreateLoadtestInferenceService
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        type: string
+        x-go-name: Name
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        type: string
+        x-go-name: Namespace
       - description: Prediction contains predict payload
         in: formData
         name: loadFile
@@ -7510,14 +7494,18 @@ paths:
       - http
       - https
       tags:
-      - Loadtest
-  /namespaces/{namespace}/inferenceservices/{name}/monitor:
-    post:
-      consumes:
-      - application/json
-      description: Monitor the specified Inference Service
-      operationId: MonitorInferenceService
+      - LoadtestJobs
+  /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs/{jobName}:
+    delete:
+      description: Delete Inference Service load test jobs
+      operationId: DeleteLoadtestInferenceService
       parameters:
+      - description: JobName identifies a job name
+        in: path
+        name: jobName
+        required: true
+        type: string
+        x-go-name: JobName
       - description: Name identifies a resource
         in: path
         name: name
@@ -7530,25 +7518,18 @@ paths:
         required: true
         type: string
         x-go-name: Namespace
-      - description: Monitor Data
-        in: body
-        name: monitorData
-        required: true
-        schema:
-          $ref: '#/definitions/MonitorInputData'
-        x-go-name: MonitorData
       produces:
       - application/json
       responses:
         "200":
-          $ref: '#/responses/GenericResponse'
+          $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       schemes:
       - http
       - https
       tags:
-      - Monitor
+      - LoadtestJobs
   /namespaces/{namespace}/inferenceservices/{name}/outlierdetector:
     get:
       description: Read the specified Inference Service Outlier Detector
@@ -7782,7 +7763,7 @@ paths:
       - http
       - https
       tags:
-      - Resources
+      - KubernetesResources
   /namespaces/{namespace}/inferenceservices/{name}/resources:
     get:
       consumes:
@@ -7831,7 +7812,7 @@ paths:
       - http
       - https
       tags:
-      - Resources
+      - KubernetesResources
   /namespaces/{namespace}/inferenceservices/validate:
     get:
       consumes:
@@ -7863,118 +7844,7 @@ paths:
       - http
       - https
       tags:
-      - Validate
-  /namespaces/{namespace}/logger:
-    delete:
-      consumes:
-      - application/json
-      description: Delete logger data for the specified Namespace
-      operationId: DeleteLoggerData
-      parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/MessageResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Logger
-    get:
-      consumes:
-      - application/json
-      description: Read logger data for the specified Namespace
-      operationId: ReadLoggerData
-      parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/LoggerDataResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Logger
-    post:
-      consumes:
-      - application/json
-      description: Create logger data for the specified Namespace
-      operationId: CreateLoggerData
-      parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Logger Data
-        in: body
-        name: loggerData
-        schema:
-          $ref: '#/definitions/LoggerDataType'
-        x-go-name: LoggerData
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/MessageResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Logger
-  /namespaces/{namespace}/monitor:
-    post:
-      consumes:
-      - application/json
-      description: Monitor the specified namespace
-      operationId: MonitorNamespace
-      parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Monitor Data
-        in: body
-        name: monitorData
-        required: true
-        schema:
-          $ref: '#/definitions/MonitorInputData'
-        x-go-name: MonitorData
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/GenericResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Monitor
+      - InferenceServices
   /namespaces/{namespace}/seldondeployments:
     get:
       description: list objects of kind Seldon Deployment
@@ -8206,12 +8076,12 @@ paths:
         required: true
         type: string
         x-go-name: Namespace
-      - description: Limit
+      - description: Limit of items returned in one response
         in: query
         name: limit
         type: string
         x-go-name: Limit
-      - description: Page
+      - description: Requested page
         in: query
         name: Page
         type: string
@@ -8228,7 +8098,7 @@ paths:
       - http
       - https
       tags:
-      - Jobs
+      - BatchJobs
     post:
       consumes:
       - application/json
@@ -8267,8 +8137,8 @@ paths:
       - http
       - https
       tags:
-      - Jobs
-  /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{workflowName}:
+      - BatchJobs
+  /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName}:
     get:
       description: Get details on the seldondeployment's batch job
       operationId: GetDeploymentBatchJob
@@ -8285,12 +8155,12 @@ paths:
         required: true
         type: string
         x-go-name: Namespace
-      - description: WorkflowName identifies a workflow name
+      - description: JobName identifies a job name
         in: path
-        name: workflowName
+        name: jobName
         required: true
         type: string
-        x-go-name: WorkflowName
+        x-go-name: JobName
       produces:
       - application/json
       responses:
@@ -8302,7 +8172,7 @@ paths:
       - http
       - https
       tags:
-      - Jobs
+      - BatchJobs
   /namespaces/{namespace}/seldondeployments/{name}/driftdetector:
     delete:
       description: Delete the specified Seldon Deployment Drift Detector
@@ -8433,7 +8303,7 @@ paths:
       - http
       - https
       tags:
-      - Explainer
+      - Explain
   /namespaces/{namespace}/seldondeployments/{name}/gitdiff:
     get:
       description: Read the git diff
@@ -8467,7 +8337,7 @@ paths:
       - http
       - https
       tags:
-      - Git
+      - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitlogs:
     get:
       description: Read the git commits
@@ -8496,7 +8366,7 @@ paths:
       - http
       - https
       tags:
-      - Git
+      - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrestore:
     get:
       description: Restore the git commit
@@ -8535,7 +8405,7 @@ paths:
       - http
       - https
       tags:
-      - Git
+      - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrevert:
     get:
       description: Revert the git commit
@@ -8574,27 +8444,55 @@ paths:
       - http
       - https
       tags:
-      - Git
-  /namespaces/{namespace}/seldondeployments/{name}/loadtest:
-    post:
-      consumes:
-      - application/json
-      - multipart/form-data
-      description: Create Seldon Deployment load test
-      operationId: LoadtestSeldonDeployment
+      - GitOps
+  /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs:
+    get:
+      description: List Seldon Deployment load test jobs
+      operationId: ListLoadtestSeldonDeployment
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
       - description: Name identifies a resource
         in: path
         name: name
         required: true
         type: string
         x-go-name: Name
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        type: string
+        x-go-name: Namespace
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/MessageResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      schemes:
+      - http
+      - https
+      tags:
+      - LoadtestJobs
+    post:
+      consumes:
+      - application/json
+      - multipart/form-data
+      description: Create Seldon Deployment load test
+      operationId: CreateLoadtestSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        type: string
+        x-go-name: Name
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        type: string
+        x-go-name: Namespace
       - description: Prediction contains predict payload
         in: formData
         name: loadFile
@@ -8627,7 +8525,42 @@ paths:
       - http
       - https
       tags:
-      - Loadtest
+      - LoadtestJobs
+  /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName}:
+    delete:
+      description: Delete Seldon Deployment load test jobs
+      operationId: DeleteLoadtestSeldonDeployment
+      parameters:
+      - description: JobName identifies a job name
+        in: path
+        name: jobName
+        required: true
+        type: string
+        x-go-name: JobName
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        type: string
+        x-go-name: Name
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        type: string
+        x-go-name: Namespace
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/MessageResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      schemes:
+      - http
+      - https
+      tags:
+      - LoadtestJobs
   /namespaces/{namespace}/seldondeployments/{name}/metricsserver:
     delete:
       description: Delete the specified Seldon Deployment Metrics Server
@@ -8722,44 +8655,6 @@ paths:
       - https
       tags:
       - MetricsServer
-  /namespaces/{namespace}/seldondeployments/{name}/monitor:
-    post:
-      consumes:
-      - application/json
-      description: Monitor the specified Seldon Deployment
-      operationId: MonitorSeldonDeployment
-      parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Monitor Data
-        in: body
-        name: monitorData
-        required: true
-        schema:
-          $ref: '#/definitions/MonitorInputData'
-        x-go-name: MonitorData
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/GenericResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Monitor
   /namespaces/{namespace}/seldondeployments/{name}/outlierdetector:
     delete:
       description: Delete the specified Seldon Deployment Outlier Detector
@@ -9021,7 +8916,7 @@ paths:
       - http
       - https
       tags:
-      - Resources
+      - KubernetesResources
   /namespaces/{namespace}/seldondeployments/{name}/resources:
     get:
       consumes:
@@ -9070,7 +8965,7 @@ paths:
       - http
       - https
       tags:
-      - Resources
+      - KubernetesResources
   /namespaces/{namespace}/seldondeployments/validate:
     get:
       consumes:
@@ -9102,47 +8997,7 @@ paths:
       - http
       - https
       tags:
-      - Validate
-  /requests:
-    post:
-      consumes:
-      - application/json
-      description: Retrieve the requests
-      operationId: Requests
-      parameters:
-      - description: Prediction
-        in: body
-        name: searchQuery
-        required: true
-        schema:
-          type: object
-        x-go-name: SearchQuery
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/GenericResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
-      tags:
-      - Requests
-  /urls:
-    get:
-      description: Read the URLs
-      operationId: URLs
-      produces:
-      - application/json
-      responses:
-        "200":
-          $ref: '#/responses/URLsResponse'
-      schemes:
-      - http
-      - https
-      tags:
-      - Environment
+      - SeldonDeployments
   /user:
     get:
       description: Read the request user
@@ -9180,9 +9035,6 @@ responses:
       $ref: '#/definitions/AnalyticsProps'
   BatchJobPostResponse:
     description: Batch Job Response
-    headers:
-      workflowName:
-        type: string
     schema:
       $ref: '#/definitions/UID'
   BatchJobResponse:
@@ -9191,16 +9043,6 @@ responses:
       $ref: '#/definitions/BatchJob'
   BatchJobsListResponse:
     description: Batch Job List
-    headers:
-      limit:
-        format: int64
-        type: integer
-      page:
-        format: int64
-        type: integer
-      pagesCount:
-        format: int64
-        type: integer
     schema:
       $ref: '#/definitions/BatchDescriptionList'
   ClusterInfoResponse:
@@ -9288,13 +9130,41 @@ responses:
 schemes:
 - https
 security:
-- APIKeyHeader: []
+- OAuth2:
+  - '[]'
 securityDefinitions:
-  APIKeyHeader:
-    in: header
-    name: X-Auth-Token
-    type: apiKey
+  OAuth2:
+    flow: password
+    scopes:
+      email: ""
+      groups: ""
+      openid: ""
+      profile: ""
+    tokenUrl: https://Y.Y.Y.Y
+    type: oauth2
 swagger: "2.0"
 tags:
-- description: Lifecycle management of machine learning deployments.
-  name: mldeployments
+- description: Environment APIs for Seldon Deploy
+  name: Environment
+- description: SeldonDeployments APIs for Seldon Deploy
+  name: SeldonDeployments
+- description: InferenceServices APIs for Seldon Deploy
+  name: InferenceServices
+- description: Prediction APIs for Seldon Deploy
+  name: Predict
+- description: Explanation APIs for Seldon Deploy
+  name: Explain
+- description: GitOps APIs for Seldon Deploy
+  name: GitOps
+- description: Loadtest Jobs APIs for Seldon Deploy
+  name: LoadtestJobs
+- description: Batch Jobs APIs for Seldon Deploy
+  name: BatchJobs
+- description: Drift Detector APIs for Seldon Deploy
+  name: DriftDetector
+- description: Outlier Detector APIs for Seldon Deploy
+  name: OutlierDetector
+- description: Metrics Server APIs for Seldon Deploy
+  name: MetricsServer
+- description: KubernetesResources APIs for Seldon Deploy
+  name: KubernetesResources
