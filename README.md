@@ -34,15 +34,17 @@ You can see an example usage below:
 
 ```python
 from seldon_deploy_client import EnvironmentApi, Configuration, ApiClient
-from seldon_deploy_client.auth import SessionAuthenticator
+from seldon_deploy_client.auth import OIDCAuthenticator
 
 config = Configuration()
-config.host = "http://157.245.28.216/seldon-deploy/api/v1alpha1"
+config.host = "http://188.166.139.135/seldon-deploy/api/v1alpha1"
+config.oidc_client_id = "deploy-server"
+config.oidc_server = "http://188.166.139.135/auth/realms/deploy-realm"
 
-auth = SessionAuthenticator(confg)
-session_cookie = auth.authenticate("******", "*******")
+auth = OIDCAuthenticator(confg)
+config.access_token = auth.authenticate("admin@seldon.io", "12341234")
 
-api_client = ApiClient(confg, cookie=session_cookie)
+api_client = ApiClient(confg)
 
 env_api = EnvironmentApi(api_client)
 user = env_api.read_user()
