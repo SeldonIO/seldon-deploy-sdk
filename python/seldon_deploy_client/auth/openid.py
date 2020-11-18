@@ -27,5 +27,7 @@ class OIDCAuthenticator(Authenticator):
         self._app.load_server_metadata()
 
     def authenticate(self, user: str, password: str) -> str:
-        token = self._app.fetch_access_token(username=user, password=password)
+        token = self._app.fetch_access_token(
+            username=user, password=password, scope="openid"
+        )
         return token["access_token"]

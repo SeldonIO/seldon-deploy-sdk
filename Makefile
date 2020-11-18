@@ -3,7 +3,7 @@ SWAGGER_CODEGEN_IMAGE := swaggerapi/swagger-codegen-cli:2.4.17
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
 
-python: swagger-v1alpha1.yml templates/python
+python: swagger-v1alpha1.yml templates/python/**/*.py
 	rm -rf python/*
 	docker run -it --rm \
 		-v ${PWD}:/local \

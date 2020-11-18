@@ -41,10 +41,10 @@ config.host = "http://188.166.139.135/seldon-deploy/api/v1alpha1"
 config.oidc_client_id = "deploy-server"
 config.oidc_server = "http://188.166.139.135/auth/realms/deploy-realm"
 
-auth = OIDCAuthenticator(confg)
+auth = OIDCAuthenticator(config)
 config.access_token = auth.authenticate("admin@seldon.io", "12341234")
 
-api_client = ApiClient(confg)
+api_client = ApiClient(config)
 
 env_api = EnvironmentApi(api_client)
 user = env_api.read_user()
