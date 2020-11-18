@@ -59,6 +59,12 @@ class TestSeldonDeploymentsApi(unittest.TestCase):
         """
         pass
 
+    def test_validate_seldon_deployment(self):
+        """Test case for validate_seldon_deployment
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

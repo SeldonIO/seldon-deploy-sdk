@@ -113,6 +113,7 @@ class BatchDescription(object):
     def workflow_name(self):
         """Gets the workflow_name of this BatchDescription.  # noqa: E501
 
+        Name of related Argo Workflow  # noqa: E501
 
         :return: The workflow_name of this BatchDescription.  # noqa: E501
         :rtype: str
@@ -123,6 +124,7 @@ class BatchDescription(object):
     def workflow_name(self, workflow_name):
         """Sets the workflow_name of this BatchDescription.
 
+        Name of related Argo Workflow  # noqa: E501
 
         :param workflow_name: The workflow_name of this BatchDescription.  # noqa: E501
         :type: str

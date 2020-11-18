@@ -51,23 +51,21 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.BatchJobsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-drift_detector = seldon_deploy_client.AlibiDetectorData() # AlibiDetectorData | DriftDetector
+workflow = seldon_deploy_client.BatchDefinition() # BatchDefinition | WorkflowName
 
 try:
-    api_response = api_instance.create_drift_detector_inference_service(name, namespace, drift_detector)
+    api_response = api_instance.create_seldon_deployment_batch_job(name, namespace, workflow)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DriftDetectorApi->create_drift_detector_inference_service: %s\n" % e)
+    print("Exception when calling BatchJobsApi->create_seldon_deployment_batch_job: %s\n" % e)
 
 ```
 
@@ -77,49 +75,48 @@ All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*BatchJobsApi* | [**create_seldon_deployment_batch_job**](docs/BatchJobsApi.md#create_seldon_deployment_batch_job) | **POST** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
+*BatchJobsApi* | [**get_deployment_batch_job**](docs/BatchJobsApi.md#get_deployment_batch_job) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName} | 
+*BatchJobsApi* | [**list_seldon_deployment_batch_jobs**](docs/BatchJobsApi.md#list_seldon_deployment_batch_jobs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
 *DriftDetectorApi* | [**create_drift_detector_inference_service**](docs/DriftDetectorApi.md#create_drift_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/driftdetector | 
 *DriftDetectorApi* | [**create_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#create_drift_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/driftdetector | 
 *DriftDetectorApi* | [**delete_drift_detector_inference_service**](docs/DriftDetectorApi.md#delete_drift_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservice/{name}/driftdetector | 
 *DriftDetectorApi* | [**delete_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#delete_drift_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/driftdetector | 
 *DriftDetectorApi* | [**read_drift_detector_inference_service**](docs/DriftDetectorApi.md#read_drift_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/driftdetector | 
 *DriftDetectorApi* | [**read_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#read_drift_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/driftdetector | 
-*EnvironmentApi* | [**read_analytics**](docs/EnvironmentApi.md#read_analytics) | **GET** /analytics | 
 *EnvironmentApi* | [**read_cluster**](docs/EnvironmentApi.md#read_cluster) | **GET** /cluster | 
-*EnvironmentApi* | [**read_env**](docs/EnvironmentApi.md#read_env) | **GET** /env | 
 *EnvironmentApi* | [**read_user**](docs/EnvironmentApi.md#read_user) | **GET** /user | 
 *EnvironmentApi* | [**read_version**](docs/EnvironmentApi.md#read_version) | **GET** /version | 
-*EnvironmentApi* | [**u_r_ls**](docs/EnvironmentApi.md#u_r_ls) | **GET** /urls | 
-*ExplainerApi* | [**explain_inference_service**](docs/ExplainerApi.md#explain_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/explain | 
-*ExplainerApi* | [**explain_seldon_deployment**](docs/ExplainerApi.md#explain_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/explain | 
-*GitApi* | [**inference_service_git_restore**](docs/GitApi.md#inference_service_git_restore) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrestore | 
-*GitApi* | [**inference_service_git_revert**](docs/GitApi.md#inference_service_git_revert) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrevert | 
-*GitApi* | [**read_inference_service_git_diff**](docs/GitApi.md#read_inference_service_git_diff) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitdiff | 
-*GitApi* | [**read_inference_service_git_logs**](docs/GitApi.md#read_inference_service_git_logs) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitlogs | 
-*GitApi* | [**read_seldon_deployment_git_diff**](docs/GitApi.md#read_seldon_deployment_git_diff) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitdiff | 
-*GitApi* | [**read_seldon_deployment_git_logs**](docs/GitApi.md#read_seldon_deployment_git_logs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitlogs | 
-*GitApi* | [**seldon_deployment_git_restore**](docs/GitApi.md#seldon_deployment_git_restore) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
-*GitApi* | [**seldon_deployment_git_revert**](docs/GitApi.md#seldon_deployment_git_revert) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
-*GitopsApi* | [**read_git_ops_status**](docs/GitopsApi.md#read_git_ops_status) | **GET** /namespaces/{namespace}/gitops-status | 
+*ExplainApi* | [**explain_inference_service**](docs/ExplainApi.md#explain_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/explain | 
+*ExplainApi* | [**explain_seldon_deployment**](docs/ExplainApi.md#explain_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/explain | 
+*GitOpsApi* | [**inference_service_git_restore**](docs/GitOpsApi.md#inference_service_git_restore) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrestore | 
+*GitOpsApi* | [**inference_service_git_revert**](docs/GitOpsApi.md#inference_service_git_revert) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrevert | 
+*GitOpsApi* | [**read_git_ops_status**](docs/GitOpsApi.md#read_git_ops_status) | **GET** /namespaces/{namespace}/gitops-status | 
+*GitOpsApi* | [**read_inference_service_git_diff**](docs/GitOpsApi.md#read_inference_service_git_diff) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitdiff | 
+*GitOpsApi* | [**read_inference_service_git_logs**](docs/GitOpsApi.md#read_inference_service_git_logs) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitlogs | 
+*GitOpsApi* | [**read_seldon_deployment_git_diff**](docs/GitOpsApi.md#read_seldon_deployment_git_diff) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitdiff | 
+*GitOpsApi* | [**read_seldon_deployment_git_logs**](docs/GitOpsApi.md#read_seldon_deployment_git_logs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitlogs | 
+*GitOpsApi* | [**seldon_deployment_git_restore**](docs/GitOpsApi.md#seldon_deployment_git_restore) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
+*GitOpsApi* | [**seldon_deployment_git_revert**](docs/GitOpsApi.md#seldon_deployment_git_revert) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
 *InferenceServicesApi* | [**create_inference_service**](docs/InferenceServicesApi.md#create_inference_service) | **POST** /namespaces/{namespace}/inferenceservices | 
 *InferenceServicesApi* | [**delete_inference_service**](docs/InferenceServicesApi.md#delete_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name} | 
 *InferenceServicesApi* | [**list_inference_services**](docs/InferenceServicesApi.md#list_inference_services) | **GET** /namespaces/{namespace}/inferenceservices | 
 *InferenceServicesApi* | [**read_inference_service**](docs/InferenceServicesApi.md#read_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name} | 
 *InferenceServicesApi* | [**update_inference_service**](docs/InferenceServicesApi.md#update_inference_service) | **PUT** /namespaces/{namespace}/inferenceservices/{name} | 
-*JobsApi* | [**create_seldon_deployment_batch_job**](docs/JobsApi.md#create_seldon_deployment_batch_job) | **POST** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
-*JobsApi* | [**get_deployment_batch_job**](docs/JobsApi.md#get_deployment_batch_job) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{workflowName} | 
-*JobsApi* | [**list_seldon_deployment_batch_jobs**](docs/JobsApi.md#list_seldon_deployment_batch_jobs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
-*LoadtestApi* | [**loadtest_inference_service**](docs/LoadtestApi.md#loadtest_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/loadtest | 
-*LoadtestApi* | [**loadtest_seldon_deployment**](docs/LoadtestApi.md#loadtest_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/loadtest | 
-*LoggerApi* | [**create_logger_data**](docs/LoggerApi.md#create_logger_data) | **POST** /namespaces/{namespace}/logger | 
-*LoggerApi* | [**delete_logger_data**](docs/LoggerApi.md#delete_logger_data) | **DELETE** /namespaces/{namespace}/logger | 
-*LoggerApi* | [**read_logger_data**](docs/LoggerApi.md#read_logger_data) | **GET** /namespaces/{namespace}/logger | 
+*InferenceServicesApi* | [**validate_inference_service**](docs/InferenceServicesApi.md#validate_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/validate | 
+*KubernetesResourcesApi* | [**list_inference_service_predictor_resources**](docs/KubernetesResourcesApi.md#list_inference_service_predictor_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/predictor/{predictorName}/resources | 
+*KubernetesResourcesApi* | [**list_inference_service_resources**](docs/KubernetesResourcesApi.md#list_inference_service_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/resources | 
+*KubernetesResourcesApi* | [**list_seldon_deployment_predictor_resources**](docs/KubernetesResourcesApi.md#list_seldon_deployment_predictor_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/predictor/{predictorName}/resources | 
+*KubernetesResourcesApi* | [**list_seldon_deployment_resources**](docs/KubernetesResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
+*LoadtestJobsApi* | [**create_loadtest_inference_service**](docs/LoadtestJobsApi.md#create_loadtest_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs | 
+*LoadtestJobsApi* | [**create_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#create_loadtest_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs | 
+*LoadtestJobsApi* | [**delete_loadtest_inference_service**](docs/LoadtestJobsApi.md#delete_loadtest_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs/{jobName} | 
+*LoadtestJobsApi* | [**delete_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#delete_loadtest_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName} | 
+*LoadtestJobsApi* | [**list_loadtest_inference_service**](docs/LoadtestJobsApi.md#list_loadtest_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs | 
+*LoadtestJobsApi* | [**list_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#list_loadtest_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs | 
 *MetricsServerApi* | [**create_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
 *MetricsServerApi* | [**delete_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
 *MetricsServerApi* | [**read_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#read_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
-*MonitorApi* | [**monitor_all**](docs/MonitorApi.md#monitor_all) | **POST** /monitor | 
-*MonitorApi* | [**monitor_inference_service**](docs/MonitorApi.md#monitor_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor | 
-*MonitorApi* | [**monitor_namespace**](docs/MonitorApi.md#monitor_namespace) | **POST** /namespaces/{namespace}/monitor | 
-*MonitorApi* | [**monitor_seldon_deployment**](docs/MonitorApi.md#monitor_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor | 
 *OutlierDetectorApi* | [**create_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/outlierdetector | 
 *OutlierDetectorApi* | [**create_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/outlierdetector | 
 *OutlierDetectorApi* | [**delete_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservice/{name}/outlierdetector | 
@@ -132,18 +129,12 @@ Class | Method | HTTP request | Description
 *PredictApi* | [**predict_seldon_deployment**](docs/PredictApi.md#predict_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/predict | 
 *PredictApi* | [**read_predict_curl_inference_service**](docs/PredictApi.md#read_predict_curl_inference_service) | **PUT** /namespaces/{namespace}/inferenceservices/{name}/predictcurl | 
 *PredictApi* | [**read_predict_curl_seldon_deployment**](docs/PredictApi.md#read_predict_curl_seldon_deployment) | **PUT** /namespaces/{namespace}/seldondeployments/{name}/predictcurl | 
-*RequestsApi* | [**requests**](docs/RequestsApi.md#requests) | **POST** /requests | 
-*ResourcesApi* | [**list_inference_service_predictor_resources**](docs/ResourcesApi.md#list_inference_service_predictor_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/predictor/{predictorName}/resources | 
-*ResourcesApi* | [**list_inference_service_resources**](docs/ResourcesApi.md#list_inference_service_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/resources | 
-*ResourcesApi* | [**list_seldon_deployment_predictor_resources**](docs/ResourcesApi.md#list_seldon_deployment_predictor_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/predictor/{predictorName}/resources | 
-*ResourcesApi* | [**list_seldon_deployment_resources**](docs/ResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
 *SeldonDeploymentsApi* | [**create_seldon_deployment**](docs/SeldonDeploymentsApi.md#create_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments | 
 *SeldonDeploymentsApi* | [**delete_seldon_deployment**](docs/SeldonDeploymentsApi.md#delete_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name} | 
 *SeldonDeploymentsApi* | [**list_seldon_deployments**](docs/SeldonDeploymentsApi.md#list_seldon_deployments) | **GET** /namespaces/{namespace}/seldondeployments | 
 *SeldonDeploymentsApi* | [**read_seldon_deployment**](docs/SeldonDeploymentsApi.md#read_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name} | 
 *SeldonDeploymentsApi* | [**update_seldon_deployment**](docs/SeldonDeploymentsApi.md#update_seldon_deployment) | **PUT** /namespaces/{namespace}/seldondeployments/{name} | 
-*ValidateApi* | [**validate_inference_service**](docs/ValidateApi.md#validate_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/validate | 
-*ValidateApi* | [**validate_seldon_deployment**](docs/ValidateApi.md#validate_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/validate | 
+*SeldonDeploymentsApi* | [**validate_seldon_deployment**](docs/SeldonDeploymentsApi.md#validate_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/validate | 
 
 
 ## Documentation For Models
@@ -388,11 +379,16 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## APIKeyHeader
+## OAuth2
 
-- **Type**: API key
-- **API key parameter name**: X-Auth-Token
-- **Location**: HTTP header
+- **Type**: OAuth
+- **Flow**: password
+- **Authorization URL**: 
+- **Scopes**: 
+ - **email**: 
+ - **groups**: 
+ - **openid**: 
+ - **profile**: 
 
 
 ## Author

@@ -130,7 +130,7 @@ class MetricsServerApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/metricsserver', 'POST',
@@ -237,7 +237,7 @@ class MetricsServerApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/metricsserver', 'DELETE',
@@ -344,7 +344,7 @@ class MetricsServerApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/metricsserver', 'GET',

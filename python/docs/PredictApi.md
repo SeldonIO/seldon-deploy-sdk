@@ -27,11 +27,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.PredictApi(seldon_deploy_client.ApiClient(configuration))
@@ -60,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -84,11 +82,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.PredictApi(seldon_deploy_client.ApiClient(configuration))
@@ -117,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -141,11 +137,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.PredictApi(seldon_deploy_client.ApiClient(configuration))
@@ -174,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -198,11 +192,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.PredictApi(seldon_deploy_client.ApiClient(configuration))
@@ -231,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -255,11 +247,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.PredictApi(seldon_deploy_client.ApiClient(configuration))
@@ -288,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -312,11 +302,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.PredictApi(seldon_deploy_client.ApiClient(configuration))
@@ -345,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

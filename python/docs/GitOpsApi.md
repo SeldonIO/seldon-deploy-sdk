@@ -1,17 +1,18 @@
-# seldon_deploy_client.GitApi
+# seldon_deploy_client.GitOpsApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**inference_service_git_restore**](GitApi.md#inference_service_git_restore) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrestore | 
-[**inference_service_git_revert**](GitApi.md#inference_service_git_revert) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrevert | 
-[**read_inference_service_git_diff**](GitApi.md#read_inference_service_git_diff) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitdiff | 
-[**read_inference_service_git_logs**](GitApi.md#read_inference_service_git_logs) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitlogs | 
-[**read_seldon_deployment_git_diff**](GitApi.md#read_seldon_deployment_git_diff) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitdiff | 
-[**read_seldon_deployment_git_logs**](GitApi.md#read_seldon_deployment_git_logs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitlogs | 
-[**seldon_deployment_git_restore**](GitApi.md#seldon_deployment_git_restore) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
-[**seldon_deployment_git_revert**](GitApi.md#seldon_deployment_git_revert) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
+[**inference_service_git_restore**](GitOpsApi.md#inference_service_git_restore) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrestore | 
+[**inference_service_git_revert**](GitOpsApi.md#inference_service_git_revert) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitrevert | 
+[**read_git_ops_status**](GitOpsApi.md#read_git_ops_status) | **GET** /namespaces/{namespace}/gitops-status | 
+[**read_inference_service_git_diff**](GitOpsApi.md#read_inference_service_git_diff) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitdiff | 
+[**read_inference_service_git_logs**](GitOpsApi.md#read_inference_service_git_logs) | **GET** /namespaces/{namespace}/inferenceservices/{name}/gitlogs | 
+[**read_seldon_deployment_git_diff**](GitOpsApi.md#read_seldon_deployment_git_diff) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitdiff | 
+[**read_seldon_deployment_git_logs**](GitOpsApi.md#read_seldon_deployment_git_logs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitlogs | 
+[**seldon_deployment_git_restore**](GitOpsApi.md#seldon_deployment_git_restore) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
+[**seldon_deployment_git_revert**](GitOpsApi.md#seldon_deployment_git_revert) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
 
 
 # **inference_service_git_restore**
@@ -29,14 +30,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -46,7 +45,7 @@ try:
     api_response = api_instance.inference_service_git_restore(name, namespace, hash=hash, message=message)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->inference_service_git_restore: %s\n" % e)
+    print("Exception when calling GitOpsApi->inference_service_git_restore: %s\n" % e)
 ```
 
 ### Parameters
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -88,14 +87,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -105,7 +102,7 @@ try:
     api_response = api_instance.inference_service_git_revert(name, namespace, hash=hash, message=message)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->inference_service_git_revert: %s\n" % e)
+    print("Exception when calling GitOpsApi->inference_service_git_revert: %s\n" % e)
 ```
 
 ### Parameters
@@ -123,7 +120,58 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **read_git_ops_status**
+> object read_git_ops_status(namespace)
+
+
+
+Read the GitOps status
+
+### Example
+```python
+from __future__ import print_function
+import time
+import seldon_deploy_client
+from seldon_deploy_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = seldon_deploy_client.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
+
+try:
+    api_response = api_instance.read_git_ops_status(namespace)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GitOpsApi->read_git_ops_status: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **namespace** | **str**| Namespace provides a logical grouping of resources | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -147,14 +195,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -163,7 +209,7 @@ try:
     api_response = api_instance.read_inference_service_git_diff(name, namespace, hash=hash)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->read_inference_service_git_diff: %s\n" % e)
+    print("Exception when calling GitOpsApi->read_inference_service_git_diff: %s\n" % e)
 ```
 
 ### Parameters
@@ -180,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -204,14 +250,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -219,7 +263,7 @@ try:
     api_response = api_instance.read_inference_service_git_logs(name, namespace)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->read_inference_service_git_logs: %s\n" % e)
+    print("Exception when calling GitOpsApi->read_inference_service_git_logs: %s\n" % e)
 ```
 
 ### Parameters
@@ -235,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -259,14 +303,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -275,7 +317,7 @@ try:
     api_response = api_instance.read_seldon_deployment_git_diff(name, namespace, hash=hash)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->read_seldon_deployment_git_diff: %s\n" % e)
+    print("Exception when calling GitOpsApi->read_seldon_deployment_git_diff: %s\n" % e)
 ```
 
 ### Parameters
@@ -292,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -316,14 +358,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -331,7 +371,7 @@ try:
     api_response = api_instance.read_seldon_deployment_git_logs(name, namespace)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->read_seldon_deployment_git_logs: %s\n" % e)
+    print("Exception when calling GitOpsApi->read_seldon_deployment_git_logs: %s\n" % e)
 ```
 
 ### Parameters
@@ -347,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -371,14 +411,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -388,7 +426,7 @@ try:
     api_response = api_instance.seldon_deployment_git_restore(name, namespace, hash=hash, message=message)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->seldon_deployment_git_restore: %s\n" % e)
+    print("Exception when calling GitOpsApi->seldon_deployment_git_restore: %s\n" % e)
 ```
 
 ### Parameters
@@ -406,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -430,14 +468,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -447,7 +483,7 @@ try:
     api_response = api_instance.seldon_deployment_git_revert(name, namespace, hash=hash, message=message)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling GitApi->seldon_deployment_git_revert: %s\n" % e)
+    print("Exception when calling GitOpsApi->seldon_deployment_git_revert: %s\n" % e)
 ```
 
 ### Parameters
@@ -465,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

@@ -130,7 +130,7 @@ class PredictApi(object):
             ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/inferenceservices/{name}/predictfile', 'POST',
@@ -245,7 +245,7 @@ class PredictApi(object):
             ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/predictfile', 'POST',
@@ -360,7 +360,7 @@ class PredictApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/inferenceservices/{name}/predict', 'POST',
@@ -475,7 +475,7 @@ class PredictApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/predict', 'POST',
@@ -590,7 +590,7 @@ class PredictApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/inferenceservices/{name}/predictcurl', 'PUT',
@@ -705,7 +705,7 @@ class PredictApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/predictcurl', 'PUT',

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**list_inference_services**](InferenceServicesApi.md#list_inference_services) | **GET** /namespaces/{namespace}/inferenceservices | 
 [**read_inference_service**](InferenceServicesApi.md#read_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name} | 
 [**update_inference_service**](InferenceServicesApi.md#update_inference_service) | **PUT** /namespaces/{namespace}/inferenceservices/{name} | 
+[**validate_inference_service**](InferenceServicesApi.md#validate_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/validate | 
 
 
 # **create_inference_service**
@@ -26,11 +27,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
@@ -61,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -85,11 +84,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
@@ -120,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -144,11 +141,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
@@ -173,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -197,11 +192,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
@@ -228,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -252,11 +245,9 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
@@ -289,7 +280,60 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_inference_service**
+> Message validate_inference_service(namespace, mldeployment)
+
+
+
+Validate the given Inference Service
+
+### Example
+```python
+from __future__ import print_function
+import time
+import seldon_deploy_client
+from seldon_deploy_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = seldon_deploy_client.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
+namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
+mldeployment = seldon_deploy_client.InferenceService() # InferenceService | Inference Service
+
+try:
+    api_response = api_instance.validate_inference_service(namespace, mldeployment)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling InferenceServicesApi->validate_inference_service: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **namespace** | **str**| Namespace provides a logical grouping of resources | 
+ **mldeployment** | [**InferenceService**](InferenceService.md)| Inference Service | 
+
+### Return type
+
+[**Message**](Message.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

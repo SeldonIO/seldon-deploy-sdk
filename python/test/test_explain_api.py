@@ -16,27 +16,27 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_client
-from seldon_deploy_client.api.loadtest_api import LoadtestApi  # noqa: E501
+from seldon_deploy_client.api.explain_api import ExplainApi  # noqa: E501
 from seldon_deploy_client.rest import ApiException
 
 
-class TestLoadtestApi(unittest.TestCase):
-    """LoadtestApi unit test stubs"""
+class TestExplainApi(unittest.TestCase):
+    """ExplainApi unit test stubs"""
 
     def setUp(self):
-        self.api = seldon_deploy_client.api.loadtest_api.LoadtestApi()  # noqa: E501
+        self.api = seldon_deploy_client.api.explain_api.ExplainApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_loadtest_inference_service(self):
-        """Test case for loadtest_inference_service
+    def test_explain_inference_service(self):
+        """Test case for explain_inference_service
 
         """
         pass
 
-    def test_loadtest_seldon_deployment(self):
-        """Test case for loadtest_seldon_deployment
+    def test_explain_seldon_deployment(self):
+        """Test case for explain_seldon_deployment
 
         """
         pass

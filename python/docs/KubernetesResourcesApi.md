@@ -1,13 +1,13 @@
-# seldon_deploy_client.ResourcesApi
+# seldon_deploy_client.KubernetesResourcesApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_inference_service_predictor_resources**](ResourcesApi.md#list_inference_service_predictor_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/predictor/{predictorName}/resources | 
-[**list_inference_service_resources**](ResourcesApi.md#list_inference_service_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/resources | 
-[**list_seldon_deployment_predictor_resources**](ResourcesApi.md#list_seldon_deployment_predictor_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/predictor/{predictorName}/resources | 
-[**list_seldon_deployment_resources**](ResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
+[**list_inference_service_predictor_resources**](KubernetesResourcesApi.md#list_inference_service_predictor_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/predictor/{predictorName}/resources | 
+[**list_inference_service_resources**](KubernetesResourcesApi.md#list_inference_service_resources) | **GET** /namespaces/{namespace}/inferenceservices/{name}/resources | 
+[**list_seldon_deployment_predictor_resources**](KubernetesResourcesApi.md#list_seldon_deployment_predictor_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/predictor/{predictorName}/resources | 
+[**list_seldon_deployment_resources**](KubernetesResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
 
 
 # **list_inference_service_predictor_resources**
@@ -25,14 +25,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ResourcesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.KubernetesResourcesApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 predictor_name = 'predictor_name_example' # str | Predictor Name identifies a predictor resource
@@ -43,7 +41,7 @@ try:
     api_response = api_instance.list_inference_service_predictor_resources(name, namespace, predictor_name, component=component, endpoint=endpoint)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ResourcesApi->list_inference_service_predictor_resources: %s\n" % e)
+    print("Exception when calling KubernetesResourcesApi->list_inference_service_predictor_resources: %s\n" % e)
 ```
 
 ### Parameters
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -86,14 +84,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ResourcesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.KubernetesResourcesApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 component = 'component_example' # str | Component differentiates between types of model (e.g. predictor, explainer... etc) (optional)
@@ -103,7 +99,7 @@ try:
     api_response = api_instance.list_inference_service_resources(name, namespace, component=component, endpoint=endpoint)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ResourcesApi->list_inference_service_resources: %s\n" % e)
+    print("Exception when calling KubernetesResourcesApi->list_inference_service_resources: %s\n" % e)
 ```
 
 ### Parameters
@@ -121,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -145,14 +141,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ResourcesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.KubernetesResourcesApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 predictor_name = 'predictor_name_example' # str | Predictor Name identifies a predictor resource
@@ -163,7 +157,7 @@ try:
     api_response = api_instance.list_seldon_deployment_predictor_resources(name, namespace, predictor_name, component=component, endpoint=endpoint)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ResourcesApi->list_seldon_deployment_predictor_resources: %s\n" % e)
+    print("Exception when calling KubernetesResourcesApi->list_seldon_deployment_predictor_resources: %s\n" % e)
 ```
 
 ### Parameters
@@ -182,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -206,14 +200,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ResourcesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.KubernetesResourcesApi(seldon_deploy_client.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 component = 'component_example' # str | Component differentiates between types of model (e.g. predictor, explainer... etc) (optional)
@@ -223,7 +215,7 @@ try:
     api_response = api_instance.list_seldon_deployment_resources(name, namespace, component=component, endpoint=endpoint)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ResourcesApi->list_seldon_deployment_resources: %s\n" % e)
+    print("Exception when calling KubernetesResourcesApi->list_seldon_deployment_resources: %s\n" % e)
 ```
 
 ### Parameters
@@ -241,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

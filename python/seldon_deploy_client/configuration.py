@@ -56,6 +56,9 @@ class Configuration(object):
         # Password for HTTP basic authentication
         self.password = ""
 
+        # access token for OAuth
+        self.access_token = ""
+
         # Logging Settings
         self.logger = {}
         self.logger["package_logger"] = logging.getLogger("seldon_deploy_client")
@@ -229,12 +232,13 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         return {
-            'APIKeyHeader':
+
+            'OAuth2':
                 {
-                    'type': 'api_key',
+                    'type': 'oauth2',
                     'in': 'header',
-                    'key': 'X-Auth-Token',
-                    'value': self.get_api_key_with_prefix('X-Auth-Token')
+                    'key': 'Authorization',
+                    'value': 'Bearer ' + self.access_token
                 },
 
         }

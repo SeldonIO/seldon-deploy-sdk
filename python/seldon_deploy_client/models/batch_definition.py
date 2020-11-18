@@ -34,6 +34,7 @@ class BatchDefinition(object):
         'batch_data_type': 'str',
         'batch_gateway_endpoint': 'str',
         'batch_gateway_type': 'str',
+        'batch_method': 'str',
         'batch_payload_type': 'str',
         'batch_retries': 'str',
         'batch_transport_protocol': 'str',
@@ -48,6 +49,7 @@ class BatchDefinition(object):
         'batch_data_type': 'batchDataType',
         'batch_gateway_endpoint': 'batchGatewayEndpoint',
         'batch_gateway_type': 'batchGatewayType',
+        'batch_method': 'batchMethod',
         'batch_payload_type': 'batchPayloadType',
         'batch_retries': 'batchRetries',
         'batch_transport_protocol': 'batchTransportProtocol',
@@ -58,12 +60,13 @@ class BatchDefinition(object):
         'pvc_size': 'pvcSize'
     }
 
-    def __init__(self, batch_data_type=None, batch_gateway_endpoint=None, batch_gateway_type=None, batch_payload_type=None, batch_retries=None, batch_transport_protocol=None, batch_workers=None, input_data=None, object_store_secret_name=None, output_data=None, pvc_size=None):  # noqa: E501
+    def __init__(self, batch_data_type=None, batch_gateway_endpoint=None, batch_gateway_type=None, batch_method=None, batch_payload_type=None, batch_retries=None, batch_transport_protocol=None, batch_workers=None, input_data=None, object_store_secret_name=None, output_data=None, pvc_size=None):  # noqa: E501
         """BatchDefinition - a model defined in Swagger"""  # noqa: E501
 
         self._batch_data_type = None
         self._batch_gateway_endpoint = None
         self._batch_gateway_type = None
+        self._batch_method = None
         self._batch_payload_type = None
         self._batch_retries = None
         self._batch_transport_protocol = None
@@ -80,6 +83,8 @@ class BatchDefinition(object):
             self.batch_gateway_endpoint = batch_gateway_endpoint
         if batch_gateway_type is not None:
             self.batch_gateway_type = batch_gateway_type
+        if batch_method is not None:
+            self.batch_method = batch_method
         if batch_payload_type is not None:
             self.batch_payload_type = batch_payload_type
         if batch_retries is not None:
@@ -101,6 +106,7 @@ class BatchDefinition(object):
     def batch_data_type(self):
         """Gets the batch_data_type of this BatchDefinition.  # noqa: E501
 
+        Batch Data Type (data, json or str)  # noqa: E501
 
         :return: The batch_data_type of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -111,6 +117,7 @@ class BatchDefinition(object):
     def batch_data_type(self, batch_data_type):
         """Sets the batch_data_type of this BatchDefinition.
 
+        Batch Data Type (data, json or str)  # noqa: E501
 
         :param batch_data_type: The batch_data_type of this BatchDefinition.  # noqa: E501
         :type: str
@@ -122,6 +129,7 @@ class BatchDefinition(object):
     def batch_gateway_endpoint(self):
         """Gets the batch_gateway_endpoint of this BatchDefinition.  # noqa: E501
 
+        Batch Gateway Endpoint  # noqa: E501
 
         :return: The batch_gateway_endpoint of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -132,6 +140,7 @@ class BatchDefinition(object):
     def batch_gateway_endpoint(self, batch_gateway_endpoint):
         """Sets the batch_gateway_endpoint of this BatchDefinition.
 
+        Batch Gateway Endpoint  # noqa: E501
 
         :param batch_gateway_endpoint: The batch_gateway_endpoint of this BatchDefinition.  # noqa: E501
         :type: str
@@ -143,7 +152,7 @@ class BatchDefinition(object):
     def batch_gateway_type(self):
         """Gets the batch_gateway_type of this BatchDefinition.  # noqa: E501
 
-        Batch Processor Settings  # noqa: E501
+        Batch Gateway Type (istio or seldon)  # noqa: E501
 
         :return: The batch_gateway_type of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -154,7 +163,7 @@ class BatchDefinition(object):
     def batch_gateway_type(self, batch_gateway_type):
         """Sets the batch_gateway_type of this BatchDefinition.
 
-        Batch Processor Settings  # noqa: E501
+        Batch Gateway Type (istio or seldon)  # noqa: E501
 
         :param batch_gateway_type: The batch_gateway_type of this BatchDefinition.  # noqa: E501
         :type: str
@@ -163,9 +172,33 @@ class BatchDefinition(object):
         self._batch_gateway_type = batch_gateway_type
 
     @property
+    def batch_method(self):
+        """Gets the batch_method of this BatchDefinition.  # noqa: E501
+
+        Batch Method (predict)  # noqa: E501
+
+        :return: The batch_method of this BatchDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._batch_method
+
+    @batch_method.setter
+    def batch_method(self, batch_method):
+        """Sets the batch_method of this BatchDefinition.
+
+        Batch Method (predict)  # noqa: E501
+
+        :param batch_method: The batch_method of this BatchDefinition.  # noqa: E501
+        :type: str
+        """
+
+        self._batch_method = batch_method
+
+    @property
     def batch_payload_type(self):
         """Gets the batch_payload_type of this BatchDefinition.  # noqa: E501
 
+        Batch Payload Type (ndarray, tensor, tftensor - only if DataType=data)  # noqa: E501
 
         :return: The batch_payload_type of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -176,6 +209,7 @@ class BatchDefinition(object):
     def batch_payload_type(self, batch_payload_type):
         """Sets the batch_payload_type of this BatchDefinition.
 
+        Batch Payload Type (ndarray, tensor, tftensor - only if DataType=data)  # noqa: E501
 
         :param batch_payload_type: The batch_payload_type of this BatchDefinition.  # noqa: E501
         :type: str
@@ -187,6 +221,7 @@ class BatchDefinition(object):
     def batch_retries(self):
         """Gets the batch_retries of this BatchDefinition.  # noqa: E501
 
+        Number of retries for each instance  # noqa: E501
 
         :return: The batch_retries of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -197,6 +232,7 @@ class BatchDefinition(object):
     def batch_retries(self, batch_retries):
         """Sets the batch_retries of this BatchDefinition.
 
+        Number of retries for each instance  # noqa: E501
 
         :param batch_retries: The batch_retries of this BatchDefinition.  # noqa: E501
         :type: str
@@ -208,6 +244,7 @@ class BatchDefinition(object):
     def batch_transport_protocol(self):
         """Gets the batch_transport_protocol of this BatchDefinition.  # noqa: E501
 
+        Batch Transport Protocol (rest or grpc)  # noqa: E501
 
         :return: The batch_transport_protocol of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -218,6 +255,7 @@ class BatchDefinition(object):
     def batch_transport_protocol(self, batch_transport_protocol):
         """Sets the batch_transport_protocol of this BatchDefinition.
 
+        Batch Transport Protocol (rest or grpc)  # noqa: E501
 
         :param batch_transport_protocol: The batch_transport_protocol of this BatchDefinition.  # noqa: E501
         :type: str
@@ -229,6 +267,7 @@ class BatchDefinition(object):
     def batch_workers(self):
         """Gets the batch_workers of this BatchDefinition.  # noqa: E501
 
+        Number of batch workers  # noqa: E501
 
         :return: The batch_workers of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -239,6 +278,7 @@ class BatchDefinition(object):
     def batch_workers(self, batch_workers):
         """Sets the batch_workers of this BatchDefinition.
 
+        Number of batch workers  # noqa: E501
 
         :param batch_workers: The batch_workers of this BatchDefinition.  # noqa: E501
         :type: str
@@ -250,7 +290,7 @@ class BatchDefinition(object):
     def input_data(self):
         """Gets the input_data of this BatchDefinition.  # noqa: E501
 
-        Input / Output settings  # noqa: E501
+        S3 URI of input data file  # noqa: E501
 
         :return: The input_data of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -261,7 +301,7 @@ class BatchDefinition(object):
     def input_data(self, input_data):
         """Sets the input_data of this BatchDefinition.
 
-        Input / Output settings  # noqa: E501
+        S3 URI of input data file  # noqa: E501
 
         :param input_data: The input_data of this BatchDefinition.  # noqa: E501
         :type: str
@@ -273,6 +313,7 @@ class BatchDefinition(object):
     def object_store_secret_name(self):
         """Gets the object_store_secret_name of this BatchDefinition.  # noqa: E501
 
+        name of Kubernetes Secret with S3 credentials  # noqa: E501
 
         :return: The object_store_secret_name of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -283,6 +324,7 @@ class BatchDefinition(object):
     def object_store_secret_name(self, object_store_secret_name):
         """Sets the object_store_secret_name of this BatchDefinition.
 
+        name of Kubernetes Secret with S3 credentials  # noqa: E501
 
         :param object_store_secret_name: The object_store_secret_name of this BatchDefinition.  # noqa: E501
         :type: str
@@ -294,6 +336,7 @@ class BatchDefinition(object):
     def output_data(self):
         """Gets the output_data of this BatchDefinition.  # noqa: E501
 
+        S3 URI of output data file  # noqa: E501
 
         :return: The output_data of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -304,6 +347,7 @@ class BatchDefinition(object):
     def output_data(self, output_data):
         """Sets the output_data of this BatchDefinition.
 
+        S3 URI of output data file  # noqa: E501
 
         :param output_data: The output_data of this BatchDefinition.  # noqa: E501
         :type: str
@@ -315,6 +359,7 @@ class BatchDefinition(object):
     def pvc_size(self):
         """Gets the pvc_size of this BatchDefinition.  # noqa: E501
 
+        Size of PVC required for the batch job  # noqa: E501
 
         :return: The pvc_size of this BatchDefinition.  # noqa: E501
         :rtype: str
@@ -325,6 +370,7 @@ class BatchDefinition(object):
     def pvc_size(self, pvc_size):
         """Sets the pvc_size of this BatchDefinition.
 
+        Size of PVC required for the batch job  # noqa: E501
 
         :param pvc_size: The pvc_size of this BatchDefinition.  # noqa: E501
         :type: str

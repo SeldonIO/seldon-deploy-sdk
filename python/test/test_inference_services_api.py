@@ -59,6 +59,12 @@ class TestInferenceServicesApi(unittest.TestCase):
         """
         pass
 
+    def test_validate_inference_service(self):
+        """Test case for validate_inference_service
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

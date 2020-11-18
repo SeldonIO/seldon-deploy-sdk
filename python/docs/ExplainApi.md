@@ -1,11 +1,11 @@
-# seldon_deploy_client.ExplainerApi
+# seldon_deploy_client.ExplainApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**explain_inference_service**](ExplainerApi.md#explain_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/explain | 
-[**explain_seldon_deployment**](ExplainerApi.md#explain_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/explain | 
+[**explain_inference_service**](ExplainApi.md#explain_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/explain | 
+[**explain_seldon_deployment**](ExplainApi.md#explain_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/explain | 
 
 
 # **explain_inference_service**
@@ -23,14 +23,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ExplainerApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.ExplainApi(seldon_deploy_client.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 name = 'name_example' # str | Name identifies a resource
 explaindata = NULL # object | Prediction contains predict payload (optional)
@@ -39,7 +37,7 @@ try:
     api_response = api_instance.explain_inference_service(namespace, name, explaindata=explaindata)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExplainerApi->explain_inference_service: %s\n" % e)
+    print("Exception when calling ExplainApi->explain_inference_service: %s\n" % e)
 ```
 
 ### Parameters
@@ -56,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -80,14 +78,12 @@ import seldon_deploy_client
 from seldon_deploy_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: APIKeyHeader
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = seldon_deploy_client.Configuration()
-configuration.api_key['X-Auth-Token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-Auth-Token'] = 'Bearer'
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ExplainerApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_client.ExplainApi(seldon_deploy_client.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 name = 'name_example' # str | Name identifies a resource
 explaindata = NULL # object | Prediction contains predict payload (optional)
@@ -96,7 +92,7 @@ try:
     api_response = api_instance.explain_seldon_deployment(namespace, name, explaindata=explaindata)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExplainerApi->explain_seldon_deployment: %s\n" % e)
+    print("Exception when calling ExplainApi->explain_seldon_deployment: %s\n" % e)
 ```
 
 ### Parameters
@@ -113,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../README.md#APIKeyHeader)
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

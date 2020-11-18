@@ -16,15 +16,15 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_client
-from seldon_deploy_client.api.jobs_api import JobsApi  # noqa: E501
+from seldon_deploy_client.api.batch_jobs_api import BatchJobsApi  # noqa: E501
 from seldon_deploy_client.rest import ApiException
 
 
-class TestJobsApi(unittest.TestCase):
-    """JobsApi unit test stubs"""
+class TestBatchJobsApi(unittest.TestCase):
+    """BatchJobsApi unit test stubs"""
 
     def setUp(self):
-        self.api = seldon_deploy_client.api.jobs_api.JobsApi()  # noqa: E501
+        self.api = seldon_deploy_client.api.batch_jobs_api.BatchJobsApi()  # noqa: E501
 
     def tearDown(self):
         pass

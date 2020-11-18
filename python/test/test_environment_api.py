@@ -29,20 +29,8 @@ class TestEnvironmentApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_read_analytics(self):
-        """Test case for read_analytics
-
-        """
-        pass
-
     def test_read_cluster(self):
         """Test case for read_cluster
-
-        """
-        pass
-
-    def test_read_env(self):
-        """Test case for read_env
 
         """
         pass
@@ -55,12 +43,6 @@ class TestEnvironmentApi(unittest.TestCase):
 
     def test_read_version(self):
         """Test case for read_version
-
-        """
-        pass
-
-    def test_u_r_ls(self):
-        """Test case for u_r_ls
 
         """
         pass

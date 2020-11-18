@@ -130,7 +130,7 @@ class DriftDetectorApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/inferenceservices/{name}/driftdetector', 'POST',
@@ -245,7 +245,7 @@ class DriftDetectorApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/driftdetector', 'POST',
@@ -352,7 +352,7 @@ class DriftDetectorApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/inferenceservice/{name}/driftdetector', 'DELETE',
@@ -459,7 +459,7 @@ class DriftDetectorApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/driftdetector', 'DELETE',
@@ -566,7 +566,7 @@ class DriftDetectorApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/inferenceservices/{name}/driftdetector', 'GET',
@@ -673,7 +673,7 @@ class DriftDetectorApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['APIKeyHeader']  # noqa: E501
+        auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/namespaces/{namespace}/seldondeployments/{name}/driftdetector', 'GET',
