@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "seldon-deploy-client"
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -26,7 +26,8 @@ REQUIRES = [
     "certifi>=2017.4.17",
     "python-dateutil>=2.1",
     "six>=1.10",
-    "urllib3>=1.23"
+    "urllib3>=1.23",
+    "Authlib<=0.16.0",
 ]
     
 

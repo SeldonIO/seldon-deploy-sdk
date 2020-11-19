@@ -11,6 +11,7 @@ python: swagger-v1alpha1.yml templates/python/**/*.py
 		${SWAGGER_CODEGEN_IMAGE} \
 		generate \
 		-i /local/swagger-v1alpha1.yml \
+		-t /local/templates/python \
 		-l python \
 		-c /local/config/python.json \
 		-o /local/python
