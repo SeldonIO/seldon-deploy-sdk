@@ -9,26 +9,16 @@ Deploy API.
 
 ### Installation
 
-Since there is no published package yet, to install the Python version of the
-SDK you'll need to run:
+To install the Python version of the SDK run:
 
 ```bash
-pip install 'git+https://github.com/SeldonIO/seldon-deploy-client#egg=seldon-deploy-client&subdirectory=python'
-```
-
-Alternatively, you can go into the [`./python`](./python) folder and run:
-
-```bash
-pip install -e .
+pip install seldon-deploy-sdk
 ```
 
 ### Usage
 
 The Python version of the SDK includes support for sommon common authentication
 workflows.
-
-> :warning: **NOTE:** The SDK currently only supports the authentication flow
-> using cookies and Dex.
 
 You can see an example usage below:
 

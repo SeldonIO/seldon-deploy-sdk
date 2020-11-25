@@ -1,4 +1,3 @@
-PACKAGE_NAME := seldon-deploy-client
 SWAGGER_CODEGEN_IMAGE := swaggerapi/swagger-codegen-cli:2.4.17
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
