@@ -17,4 +17,8 @@ python: swagger-v1alpha1.yml templates/python/**/*.py templates/python/*
 		-o /local/python
 	# Add extra files
 	cp -r ./templates/python/auth ./python/seldon_deploy_client/auth
-	cp -r ./templates/python/dev-requirements.txt ./python/seldon_deploy_client/dev-requirements.txt
+	cp -r ./templates/python/Makefile ./python/Makefile
+
+licenses: python
+	make -C python licenses
+
