@@ -1,4 +1,4 @@
-.PHONY: licenses install-dev
+.PHONY: licenses install-dev test
 
 licenses:
 	tox --recreate -e licenses
@@ -7,3 +7,6 @@ licenses:
 
 install-dev:
 	pip install -e . -r test-requirements.txt
+
+test:
+	tox
