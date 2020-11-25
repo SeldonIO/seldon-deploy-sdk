@@ -1,8 +1,8 @@
 # coding: utf-8
 """
-    Seldon-Deploy API.
+    Seldon Deploy API
 
-    Documentation of Seldon-Deploy API.  # noqa: E501
+    API to interact and manage the lifecycle of your machine learning models deployed through Seldon Deploy.  # noqa: E501
 
     OpenAPI spec version: v1alpha1
     Contact: hello@seldon.io

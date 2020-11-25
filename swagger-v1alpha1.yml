@@ -148,6 +148,9 @@ definitions:
       deployment:
         type: string
         x-go-name: DeploymentName
+      deployment_namespace:
+        type: string
+        x-go-name: DeploymentNamespace
       namespace:
         type: string
         x-go-name: Namespace
@@ -6855,8 +6858,10 @@ definitions:
     x-go-package: k8s.io/api/core/v1
 host: X.X.X.X
 info:
-  description: Documentation of Seldon-Deploy API.
-  title: Seldon-Deploy API.
+  description: |-
+    API to interact and manage the lifecycle of your machine learning models
+    deployed through Seldon Deploy.
+  title: Seldon Deploy API
   version: v1alpha1
 paths:
   /cluster:

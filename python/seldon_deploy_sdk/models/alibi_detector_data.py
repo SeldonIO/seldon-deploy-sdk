@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Seldon-Deploy API.
+    Seldon Deploy API
 
-    Documentation of Seldon-Deploy API.  # noqa: E501
+    API to interact and manage the lifecycle of your machine learning models deployed through Seldon Deploy.  # noqa: E501
 
     OpenAPI spec version: v1alpha1
     Contact: hello@seldon.io
@@ -32,6 +32,7 @@ class AlibiDetectorData(object):
     """
     swagger_types = {
         'deployment': 'str',
+        'deployment_namespace': 'str',
         'namespace': 'str',
         'params': 'AlibiDetectServerParams',
         'prom_scraping': 'bool',
@@ -40,16 +41,18 @@ class AlibiDetectorData(object):
 
     attribute_map = {
         'deployment': 'deployment',
+        'deployment_namespace': 'deployment_namespace',
         'namespace': 'namespace',
         'params': 'params',
         'prom_scraping': 'prom_scraping',
         'url': 'url'
     }
 
-    def __init__(self, deployment=None, namespace=None, params=None, prom_scraping=None, url=None):  # noqa: E501
+    def __init__(self, deployment=None, deployment_namespace=None, namespace=None, params=None, prom_scraping=None, url=None):  # noqa: E501
         """AlibiDetectorData - a model defined in Swagger"""  # noqa: E501
 
         self._deployment = None
+        self._deployment_namespace = None
         self._namespace = None
         self._params = None
         self._prom_scraping = None
@@ -58,6 +61,8 @@ class AlibiDetectorData(object):
 
         if deployment is not None:
             self.deployment = deployment
+        if deployment_namespace is not None:
+            self.deployment_namespace = deployment_namespace
         if namespace is not None:
             self.namespace = namespace
         if params is not None:
@@ -87,6 +92,27 @@ class AlibiDetectorData(object):
         """
 
         self._deployment = deployment
+
+    @property
+    def deployment_namespace(self):
+        """Gets the deployment_namespace of this AlibiDetectorData.  # noqa: E501
+
+
+        :return: The deployment_namespace of this AlibiDetectorData.  # noqa: E501
+        :rtype: str
+        """
+        return self._deployment_namespace
+
+    @deployment_namespace.setter
+    def deployment_namespace(self, deployment_namespace):
+        """Sets the deployment_namespace of this AlibiDetectorData.
+
+
+        :param deployment_namespace: The deployment_namespace of this AlibiDetectorData.  # noqa: E501
+        :type: str
+        """
+
+        self._deployment_namespace = deployment_namespace
 
     @property
     def namespace(self):

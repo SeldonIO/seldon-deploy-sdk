@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deployment** | **str** |  | [optional] 
+**deployment_namespace** | **str** |  | [optional] 
 **namespace** | **str** |  | [optional] 
 **params** | [**AlibiDetectServerParams**](AlibiDetectServerParams.md) |  | [optional] 
 **prom_scraping** | **bool** |  | [optional] 

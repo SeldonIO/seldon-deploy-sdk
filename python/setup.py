@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Seldon-Deploy API.
+    Seldon Deploy API
 
-    Documentation of Seldon-Deploy API.  # noqa: E501
+    API to interact and manage the lifecycle of your machine learning models deployed through Seldon Deploy.  # noqa: E501
 
     OpenAPI spec version: v1alpha1
     Contact: hello@seldon.io
@@ -34,14 +34,14 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Seldon-Deploy API.",
+    description="Seldon Deploy API",
     author_email="hello@seldon.io",
     url="https://deploy.seldon.io",
-    keywords=["Swagger", "Seldon-Deploy API."],
+    keywords=["Swagger", "Seldon Deploy API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    Documentation of Seldon-Deploy API.  # noqa: E501
+    API to interact and manage the lifecycle of your machine learning models deployed through Seldon Deploy.  # noqa: E501
     """
 )
