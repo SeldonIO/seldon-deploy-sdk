@@ -3,7 +3,7 @@ SWAGGER_CODEGEN_IMAGE := swaggerapi/swagger-codegen-cli:2.4.17
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
 
-python: swagger-v1alpha1.yml templates/python/**/*.py
+python: swagger-v1alpha1.yml templates/python/**/*.py templates/python/*
 	rm -rf python/*
 	docker run -it --rm \
 		-v ${PWD}:/local \
@@ -17,3 +17,4 @@ python: swagger-v1alpha1.yml templates/python/**/*.py
 		-o /local/python
 	# Add extra files
 	cp -r ./templates/python/auth ./python/seldon_deploy_client/auth
+	cp -r ./templates/python/dev-requirements.txt ./python/seldon_deploy_client/dev-requirements.txt
