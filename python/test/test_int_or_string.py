@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.int_or_string import IntOrString  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.int_or_string import IntOrString  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestIntOrString(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestIntOrString(unittest.TestCase):
     def testIntOrString(self):
         """Test IntOrString"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.int_or_string.IntOrString()  # noqa: E501
+        # model = seldon_deploy_sdk.models.int_or_string.IntOrString()  # noqa: E501
         pass
 
 

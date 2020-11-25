@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.volume_projection import VolumeProjection  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.volume_projection import VolumeProjection  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestVolumeProjection(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestVolumeProjection(unittest.TestCase):
     def testVolumeProjection(self):
         """Test VolumeProjection"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.volume_projection.VolumeProjection()  # noqa: E501
+        # model = seldon_deploy_sdk.models.volume_projection.VolumeProjection()  # noqa: E501
         pass
 
 

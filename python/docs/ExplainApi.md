@@ -1,4 +1,4 @@
-# seldon_deploy_client.ExplainApi
+# seldon_deploy_sdk.ExplainApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
@@ -19,16 +19,16 @@ Create Inference Service explanation
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ExplainApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.ExplainApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 name = 'name_example' # str | Name identifies a resource
 explaindata = NULL # object | Prediction contains predict payload (optional)
@@ -74,16 +74,16 @@ Create Seldon Deployment explanation
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.ExplainApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.ExplainApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 name = 'name_example' # str | Name identifies a resource
 explaindata = NULL # object | Prediction contains predict payload (optional)

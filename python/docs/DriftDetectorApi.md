@@ -1,4 +1,4 @@
-# seldon_deploy_client.DriftDetectorApi
+# seldon_deploy_sdk.DriftDetectorApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
@@ -23,19 +23,19 @@ Create the specified Inference Service Drift Detector
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.DriftDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-drift_detector = seldon_deploy_client.AlibiDetectorData() # AlibiDetectorData | DriftDetector
+drift_detector = seldon_deploy_sdk.AlibiDetectorData() # AlibiDetectorData | DriftDetector
 
 try:
     api_response = api_instance.create_drift_detector_inference_service(name, namespace, drift_detector)
@@ -78,19 +78,19 @@ Create the specified Seldon Deployment Drift Detector
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.DriftDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-drift_detector = seldon_deploy_client.AlibiDetectorData() # AlibiDetectorData | DriftDetector
+drift_detector = seldon_deploy_sdk.AlibiDetectorData() # AlibiDetectorData | DriftDetector
 
 try:
     api_response = api_instance.create_drift_detector_seldon_deployment(name, namespace, drift_detector)
@@ -133,16 +133,16 @@ Delete the specified Inference Service Drift Detector
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.DriftDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -186,16 +186,16 @@ Delete the specified Seldon Deployment Drift Detector
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.DriftDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -239,16 +239,16 @@ Read the specified Inference Service Drift Detector
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.DriftDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -292,16 +292,16 @@ Read the specified Seldon Deployment Drift Detector
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.DriftDetectorApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.DriftDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 

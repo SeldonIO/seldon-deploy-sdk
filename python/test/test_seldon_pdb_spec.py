@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.seldon_pdb_spec import SeldonPdbSpec  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.seldon_pdb_spec import SeldonPdbSpec  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestSeldonPdbSpec(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestSeldonPdbSpec(unittest.TestCase):
     def testSeldonPdbSpec(self):
         """Test SeldonPdbSpec"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.seldon_pdb_spec.SeldonPdbSpec()  # noqa: E501
+        # model = seldon_deploy_sdk.models.seldon_pdb_spec.SeldonPdbSpec()  # noqa: E501
         pass
 
 

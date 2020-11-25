@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.node_selector_term import NodeSelectorTerm  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.node_selector_term import NodeSelectorTerm  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestNodeSelectorTerm(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestNodeSelectorTerm(unittest.TestCase):
     def testNodeSelectorTerm(self):
         """Test NodeSelectorTerm"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.node_selector_term.NodeSelectorTerm()  # noqa: E501
+        # model = seldon_deploy_sdk.models.node_selector_term.NodeSelectorTerm()  # noqa: E501
         pass
 
 

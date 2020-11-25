@@ -1,5 +1,5 @@
 {
-  "packageName": "seldon_deploy_client",
+  "packageName": "seldon_deploy_sdk",
   "packageVersion": "0.2.0",
-  "projectName": "seldon-deploy-client"
+  "projectName": "seldon-deploy-sdk"
 }

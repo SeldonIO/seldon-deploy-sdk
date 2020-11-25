@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.api.metrics_server_api import MetricsServerApi  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.api.metrics_server_api import MetricsServerApi  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestMetricsServerApi(unittest.TestCase):
     """MetricsServerApi unit test stubs"""
 
     def setUp(self):
-        self.api = seldon_deploy_client.api.metrics_server_api.MetricsServerApi()  # noqa: E501
+        self.api = seldon_deploy_sdk.api.metrics_server_api.MetricsServerApi()  # noqa: E501
 
     def tearDown(self):
         pass

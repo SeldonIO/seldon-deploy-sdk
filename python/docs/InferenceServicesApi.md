@@ -1,4 +1,4 @@
-# seldon_deploy_client.InferenceServicesApi
+# seldon_deploy_sdk.InferenceServicesApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
@@ -23,17 +23,17 @@ Create an Inference Service
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
-mldeployment = seldon_deploy_client.InferenceService() # InferenceService | Inference Service
+api_instance = seldon_deploy_sdk.InferenceServicesApi(seldon_deploy_sdk.ApiClient(configuration))
+mldeployment = seldon_deploy_sdk.InferenceService() # InferenceService | Inference Service
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 action = 'action_example' # str | Action (optional)
 message = 'message_example' # str | Message (optional)
@@ -80,16 +80,16 @@ Delete the specified Inference Service
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.InferenceServicesApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 action = 'action_example' # str | Action (optional)
@@ -137,16 +137,16 @@ list objects of kind Inference Service
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.InferenceServicesApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
 try:
@@ -188,16 +188,16 @@ Read the specified Inference Service
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.InferenceServicesApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -241,17 +241,17 @@ Update the specified Inference Service
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
-mldeployment = seldon_deploy_client.InferenceService() # InferenceService | Inference Service
+api_instance = seldon_deploy_sdk.InferenceServicesApi(seldon_deploy_sdk.ApiClient(configuration))
+mldeployment = seldon_deploy_sdk.InferenceService() # InferenceService | Inference Service
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 action = 'action_example' # str | Action (optional)
@@ -300,18 +300,18 @@ Validate the given Inference Service
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.InferenceServicesApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.InferenceServicesApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-mldeployment = seldon_deploy_client.InferenceService() # InferenceService | Inference Service
+mldeployment = seldon_deploy_sdk.InferenceService() # InferenceService | Inference Service
 
 try:
     api_response = api_instance.validate_inference_service(namespace, mldeployment)

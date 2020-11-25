@@ -33,8 +33,8 @@ workflows.
 You can see an example usage below:
 
 ```python
-from seldon_deploy_client import EnvironmentApi, Configuration, ApiClient
-from seldon_deploy_client.auth import OIDCAuthenticator
+from seldon_deploy_sdk import EnvironmentApi, Configuration, ApiClient
+from seldon_deploy_sdk.auth import OIDCAuthenticator
 
 config = Configuration()
 config.host = "http://188.166.139.135/seldon-deploy/api/v1alpha1"

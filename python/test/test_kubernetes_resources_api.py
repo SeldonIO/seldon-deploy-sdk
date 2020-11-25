@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.api.kubernetes_resources_api import KubernetesResourcesApi  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.api.kubernetes_resources_api import KubernetesResourcesApi  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestKubernetesResourcesApi(unittest.TestCase):
     """KubernetesResourcesApi unit test stubs"""
 
     def setUp(self):
-        self.api = seldon_deploy_client.api.kubernetes_resources_api.KubernetesResourcesApi()  # noqa: E501
+        self.api = seldon_deploy_sdk.api.kubernetes_resources_api.KubernetesResourcesApi()  # noqa: E501
 
     def tearDown(self):
         pass

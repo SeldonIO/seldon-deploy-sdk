@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.cross_version_object_reference import CrossVersionObjectReference  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.cross_version_object_reference import CrossVersionObjectReference  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestCrossVersionObjectReference(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestCrossVersionObjectReference(unittest.TestCase):
     def testCrossVersionObjectReference(self):
         """Test CrossVersionObjectReference"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.cross_version_object_reference.CrossVersionObjectReference()  # noqa: E501
+        # model = seldon_deploy_sdk.models.cross_version_object_reference.CrossVersionObjectReference()  # noqa: E501
         pass
 
 

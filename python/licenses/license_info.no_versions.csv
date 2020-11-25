@@ -5,6 +5,6 @@
 "cryptography","Apache Software License
 "pycparser","BSD License"
 "python-dateutil","BSD License
-"seldon-deploy-client","UNKNOWN"
+"seldon-deploy-sdk","UNKNOWN"
 "six","MIT License"
 "urllib3","MIT License"

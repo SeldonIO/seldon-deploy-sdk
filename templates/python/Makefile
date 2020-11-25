@@ -1,4 +1,4 @@
-.PHONY: licenses install-dev test
+.PHONY: licenses install-dev test build push-test push
 
 licenses:
 	tox --recreate -e licenses
@@ -10,3 +10,12 @@ install-dev:
 
 test:
 	tox
+
+build:
+	python setup.py sdist bdist_wheel
+
+push-test:
+	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
+push:
+	twine upload dist/*

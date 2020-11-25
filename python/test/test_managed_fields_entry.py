@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.managed_fields_entry import ManagedFieldsEntry  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.managed_fields_entry import ManagedFieldsEntry  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestManagedFieldsEntry(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestManagedFieldsEntry(unittest.TestCase):
     def testManagedFieldsEntry(self):
         """Test ManagedFieldsEntry"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.managed_fields_entry.ManagedFieldsEntry()  # noqa: E501
+        # model = seldon_deploy_sdk.models.managed_fields_entry.ManagedFieldsEntry()  # noqa: E501
         pass
 
 

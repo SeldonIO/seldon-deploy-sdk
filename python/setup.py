@@ -13,7 +13,7 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "seldon-deploy-client"
+NAME = "seldon-deploy-sdk"
 VERSION = "0.2.0"
 # To install the library, run the following
 #

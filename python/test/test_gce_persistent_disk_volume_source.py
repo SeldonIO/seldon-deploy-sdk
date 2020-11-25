@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.gce_persistent_disk_volume_source import GCEPersistentDiskVolumeSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.gce_persistent_disk_volume_source import GCEPersistentDiskVolumeSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestGCEPersistentDiskVolumeSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestGCEPersistentDiskVolumeSource(unittest.TestCase):
     def testGCEPersistentDiskVolumeSource(self):
         """Test GCEPersistentDiskVolumeSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.gce_persistent_disk_volume_source.GCEPersistentDiskVolumeSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.gce_persistent_disk_volume_source.GCEPersistentDiskVolumeSource()  # noqa: E501
         pass
 
 

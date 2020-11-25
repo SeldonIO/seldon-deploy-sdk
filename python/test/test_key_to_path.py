@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.key_to_path import KeyToPath  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.key_to_path import KeyToPath  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestKeyToPath(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestKeyToPath(unittest.TestCase):
     def testKeyToPath(self):
         """Test KeyToPath"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.key_to_path.KeyToPath()  # noqa: E501
+        # model = seldon_deploy_sdk.models.key_to_path.KeyToPath()  # noqa: E501
         pass
 
 

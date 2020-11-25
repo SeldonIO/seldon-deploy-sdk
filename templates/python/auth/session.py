@@ -1,7 +1,7 @@
 from urllib3 import Retry
 
-from seldon_deploy_client.configuration import Configuration
-from seldon_deploy_client.rest import RESTClientObject
+from seldon_deploy_sdk.configuration import Configuration
+from seldon_deploy_sdk.rest import RESTClientObject
 
 from .base import Authenticator
 

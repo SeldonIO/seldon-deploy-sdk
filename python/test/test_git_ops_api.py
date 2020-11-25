@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.api.git_ops_api import GitOpsApi  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.api.git_ops_api import GitOpsApi  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestGitOpsApi(unittest.TestCase):
     """GitOpsApi unit test stubs"""
 
     def setUp(self):
-        self.api = seldon_deploy_client.api.git_ops_api.GitOpsApi()  # noqa: E501
+        self.api = seldon_deploy_sdk.api.git_ops_api.GitOpsApi()  # noqa: E501
 
     def tearDown(self):
         pass

@@ -18,7 +18,7 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from seldon_deploy_client.api_client import ApiClient
+from seldon_deploy_sdk.api_client import ApiClient
 
 
 class KubernetesResourcesApi(object):

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.config_map_projection import ConfigMapProjection  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.config_map_projection import ConfigMapProjection  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestConfigMapProjection(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestConfigMapProjection(unittest.TestCase):
     def testConfigMapProjection(self):
         """Test ConfigMapProjection"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.config_map_projection.ConfigMapProjection()  # noqa: E501
+        # model = seldon_deploy_sdk.models.config_map_projection.ConfigMapProjection()  # noqa: E501
         pass
 
 

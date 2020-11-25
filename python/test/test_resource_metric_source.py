@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.resource_metric_source import ResourceMetricSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.resource_metric_source import ResourceMetricSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestResourceMetricSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestResourceMetricSource(unittest.TestCase):
     def testResourceMetricSource(self):
         """Test ResourceMetricSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.resource_metric_source.ResourceMetricSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.resource_metric_source.ResourceMetricSource()  # noqa: E501
         pass
 
 

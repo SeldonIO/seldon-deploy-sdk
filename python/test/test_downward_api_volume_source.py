@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.downward_api_volume_source import DownwardAPIVolumeSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.downward_api_volume_source import DownwardAPIVolumeSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestDownwardAPIVolumeSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestDownwardAPIVolumeSource(unittest.TestCase):
     def testDownwardAPIVolumeSource(self):
         """Test DownwardAPIVolumeSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.downward_api_volume_source.DownwardAPIVolumeSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.downward_api_volume_source.DownwardAPIVolumeSource()  # noqa: E501
         pass
 
 

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.flex_volume_source import FlexVolumeSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.flex_volume_source import FlexVolumeSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestFlexVolumeSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestFlexVolumeSource(unittest.TestCase):
     def testFlexVolumeSource(self):
         """Test FlexVolumeSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.flex_volume_source.FlexVolumeSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.flex_volume_source.FlexVolumeSource()  # noqa: E501
         pass
 
 

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.pod_condition import PodCondition  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.pod_condition import PodCondition  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestPodCondition(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestPodCondition(unittest.TestCase):
     def testPodCondition(self):
         """Test PodCondition"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.pod_condition.PodCondition()  # noqa: E501
+        # model = seldon_deploy_sdk.models.pod_condition.PodCondition()  # noqa: E501
         pass
 
 

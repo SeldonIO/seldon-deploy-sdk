@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.ceph_fs_volume_source import CephFSVolumeSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.ceph_fs_volume_source import CephFSVolumeSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestCephFSVolumeSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestCephFSVolumeSource(unittest.TestCase):
     def testCephFSVolumeSource(self):
         """Test CephFSVolumeSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.ceph_fs_volume_source.CephFSVolumeSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.ceph_fs_volume_source.CephFSVolumeSource()  # noqa: E501
         pass
 
 

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.azure_disk_volume_source import AzureDiskVolumeSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.azure_disk_volume_source import AzureDiskVolumeSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestAzureDiskVolumeSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestAzureDiskVolumeSource(unittest.TestCase):
     def testAzureDiskVolumeSource(self):
         """Test AzureDiskVolumeSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.azure_disk_volume_source.AzureDiskVolumeSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.azure_disk_volume_source.AzureDiskVolumeSource()  # noqa: E501
         pass
 
 

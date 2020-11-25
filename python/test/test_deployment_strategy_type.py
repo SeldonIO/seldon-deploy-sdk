@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.deployment_strategy_type import DeploymentStrategyType  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.deployment_strategy_type import DeploymentStrategyType  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestDeploymentStrategyType(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestDeploymentStrategyType(unittest.TestCase):
     def testDeploymentStrategyType(self):
         """Test DeploymentStrategyType"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.deployment_strategy_type.DeploymentStrategyType()  # noqa: E501
+        # model = seldon_deploy_sdk.models.deployment_strategy_type.DeploymentStrategyType()  # noqa: E501
         pass
 
 

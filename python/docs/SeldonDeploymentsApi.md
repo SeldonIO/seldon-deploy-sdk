@@ -1,4 +1,4 @@
-# seldon_deploy_client.SeldonDeploymentsApi
+# seldon_deploy_sdk.SeldonDeploymentsApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
@@ -23,18 +23,18 @@ Create a Seldon Deployment
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.SeldonDeploymentsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.SeldonDeploymentsApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-mldeployment = seldon_deploy_client.SeldonDeployment() # SeldonDeployment | Seldon Deployment
+mldeployment = seldon_deploy_sdk.SeldonDeployment() # SeldonDeployment | Seldon Deployment
 action = 'action_example' # str | Action (optional)
 message = 'message_example' # str | Message (optional)
 
@@ -80,16 +80,16 @@ Delete the specified Seldon Deployment
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.SeldonDeploymentsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.SeldonDeploymentsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 action = 'action_example' # str | Action (optional)
@@ -137,16 +137,16 @@ list objects of kind Seldon Deployment
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.SeldonDeploymentsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.SeldonDeploymentsApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
 try:
@@ -188,16 +188,16 @@ Read the specified Seldon Deployment
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.SeldonDeploymentsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.SeldonDeploymentsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -241,19 +241,19 @@ Update the specified Seldon Deployment
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.SeldonDeploymentsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.SeldonDeploymentsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-mldeployment = seldon_deploy_client.SeldonDeployment() # SeldonDeployment | Seldon Deployment
+mldeployment = seldon_deploy_sdk.SeldonDeployment() # SeldonDeployment | Seldon Deployment
 action = 'action_example' # str | Action (optional)
 message = 'message_example' # str | Message (optional)
 
@@ -300,18 +300,18 @@ Validate the given Seldon Deployment
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.SeldonDeploymentsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.SeldonDeploymentsApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-mldeployment = seldon_deploy_client.SeldonDeployment() # SeldonDeployment | Seldon Deployment
+mldeployment = seldon_deploy_sdk.SeldonDeployment() # SeldonDeployment | Seldon Deployment
 
 try:
     api_response = api_instance.validate_seldon_deployment(namespace, mldeployment)

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.inference_service_status import InferenceServiceStatus  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.inference_service_status import InferenceServiceStatus  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestInferenceServiceStatus(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestInferenceServiceStatus(unittest.TestCase):
     def testInferenceServiceStatus(self):
         """Test InferenceServiceStatus"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.inference_service_status.InferenceServiceStatus()  # noqa: E501
+        # model = seldon_deploy_sdk.models.inference_service_status.InferenceServiceStatus()  # noqa: E501
         pass
 
 

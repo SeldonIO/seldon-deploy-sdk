@@ -1,4 +1,4 @@
-# seldon_deploy_client.LoadtestJobsApi
+# seldon_deploy_sdk.LoadtestJobsApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
@@ -23,16 +23,16 @@ Create Inference Service load test
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.LoadtestJobsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.LoadtestJobsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 load_file = '/path/to/file.txt' # file | Prediction contains predict payload
@@ -84,16 +84,16 @@ Create Seldon Deployment load test
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.LoadtestJobsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.LoadtestJobsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 load_file = '/path/to/file.txt' # file | Prediction contains predict payload
@@ -145,16 +145,16 @@ Delete Inference Service load test jobs
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.LoadtestJobsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.LoadtestJobsApi(seldon_deploy_sdk.ApiClient(configuration))
 job_name = 'job_name_example' # str | JobName identifies a job name
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
@@ -200,16 +200,16 @@ Delete Seldon Deployment load test jobs
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.LoadtestJobsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.LoadtestJobsApi(seldon_deploy_sdk.ApiClient(configuration))
 job_name = 'job_name_example' # str | JobName identifies a job name
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
@@ -255,16 +255,16 @@ List Inference Service load test jobs
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.LoadtestJobsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.LoadtestJobsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -308,16 +308,16 @@ List Seldon Deployment load test jobs
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.LoadtestJobsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.LoadtestJobsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 

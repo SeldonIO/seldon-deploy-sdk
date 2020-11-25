@@ -1,6 +1,6 @@
 from urllib.parse import urlparse
 
-from seldon_deploy_client.configuration import Configuration
+from seldon_deploy_sdk.configuration import Configuration
 
 
 class Authenticator:

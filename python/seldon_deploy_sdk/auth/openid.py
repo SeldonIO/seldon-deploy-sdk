@@ -1,7 +1,7 @@
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
 from authlib.integrations.requests_client import OAuth2Session
 
-from seldon_deploy_client.configuration import Configuration
+from seldon_deploy_sdk.configuration import Configuration
 
 from .base import Authenticator
 

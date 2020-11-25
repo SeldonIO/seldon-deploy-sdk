@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.restart_policy import RestartPolicy  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.restart_policy import RestartPolicy  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestRestartPolicy(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestRestartPolicy(unittest.TestCase):
     def testRestartPolicy(self):
         """Test RestartPolicy"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.restart_policy.RestartPolicy()  # noqa: E501
+        # model = seldon_deploy_sdk.models.restart_policy.RestartPolicy()  # noqa: E501
         pass
 
 

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.capabilities import Capabilities  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.capabilities import Capabilities  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestCapabilities(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestCapabilities(unittest.TestCase):
     def testCapabilities(self):
         """Test Capabilities"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.capabilities.Capabilities()  # noqa: E501
+        # model = seldon_deploy_sdk.models.capabilities.Capabilities()  # noqa: E501
         pass
 
 

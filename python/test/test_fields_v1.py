@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.fields_v1 import FieldsV1  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.fields_v1 import FieldsV1  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestFieldsV1(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestFieldsV1(unittest.TestCase):
     def testFieldsV1(self):
         """Test FieldsV1"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.fields_v1.FieldsV1()  # noqa: E501
+        # model = seldon_deploy_sdk.models.fields_v1.FieldsV1()  # noqa: E501
         pass
 
 

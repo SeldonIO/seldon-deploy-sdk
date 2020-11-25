@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.affinity import Affinity  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.affinity import Affinity  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestAffinity(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestAffinity(unittest.TestCase):
     def testAffinity(self):
         """Test Affinity"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.affinity.Affinity()  # noqa: E501
+        # model = seldon_deploy_sdk.models.affinity.Affinity()  # noqa: E501
         pass
 
 

@@ -1,4 +1,4 @@
-# seldon_deploy_client.GitOpsApi
+# seldon_deploy_sdk.GitOpsApi
 
 All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
@@ -26,16 +26,16 @@ Restore the git commit
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -83,16 +83,16 @@ Revert the git commit
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -140,16 +140,16 @@ Read the GitOps status
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
 try:
@@ -191,16 +191,16 @@ Read the git diff
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -246,16 +246,16 @@ Read the git commits
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -299,16 +299,16 @@ Read the git diff
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -354,16 +354,16 @@ Read the git commits
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 
@@ -407,16 +407,16 @@ Restore the git commit
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)
@@ -464,16 +464,16 @@ Revert the git commit
 ```python
 from __future__ import print_function
 import time
-import seldon_deploy_client
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = seldon_deploy_client.Configuration()
+configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_client.GitOpsApi(seldon_deploy_client.ApiClient(configuration))
+api_instance = seldon_deploy_sdk.GitOpsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
 hash = 'hash_example' # str | Hash (optional)

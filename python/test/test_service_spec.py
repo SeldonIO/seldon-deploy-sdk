@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.service_spec import ServiceSpec  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.service_spec import ServiceSpec  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestServiceSpec(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestServiceSpec(unittest.TestCase):
     def testServiceSpec(self):
         """Test ServiceSpec"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.service_spec.ServiceSpec()  # noqa: E501
+        # model = seldon_deploy_sdk.models.service_spec.ServiceSpec()  # noqa: E501
         pass
 
 

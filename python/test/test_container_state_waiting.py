@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.container_state_waiting import ContainerStateWaiting  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.container_state_waiting import ContainerStateWaiting  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestContainerStateWaiting(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestContainerStateWaiting(unittest.TestCase):
     def testContainerStateWaiting(self):
         """Test ContainerStateWaiting"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.container_state_waiting.ContainerStateWaiting()  # noqa: E501
+        # model = seldon_deploy_sdk.models.container_state_waiting.ContainerStateWaiting()  # noqa: E501
         pass
 
 

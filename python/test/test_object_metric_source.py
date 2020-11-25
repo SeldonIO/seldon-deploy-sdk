@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.object_metric_source import ObjectMetricSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.object_metric_source import ObjectMetricSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestObjectMetricSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestObjectMetricSource(unittest.TestCase):
     def testObjectMetricSource(self):
         """Test ObjectMetricSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.object_metric_source.ObjectMetricSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.object_metric_source.ObjectMetricSource()  # noqa: E501
         pass
 
 

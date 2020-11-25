@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.cinder_volume_source import CinderVolumeSource  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.cinder_volume_source import CinderVolumeSource  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestCinderVolumeSource(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestCinderVolumeSource(unittest.TestCase):
     def testCinderVolumeSource(self):
         """Test CinderVolumeSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.cinder_volume_source.CinderVolumeSource()  # noqa: E501
+        # model = seldon_deploy_sdk.models.cinder_volume_source.CinderVolumeSource()  # noqa: E501
         pass
 
 

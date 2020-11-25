@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.alibi_detect_server_params import AlibiDetectServerParams  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.alibi_detect_server_params import AlibiDetectServerParams  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestAlibiDetectServerParams(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestAlibiDetectServerParams(unittest.TestCase):
     def testAlibiDetectServerParams(self):
         """Test AlibiDetectServerParams"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.alibi_detect_server_params.AlibiDetectServerParams()  # noqa: E501
+        # model = seldon_deploy_sdk.models.alibi_detect_server_params.AlibiDetectServerParams()  # noqa: E501
         pass
 
 

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.hpa_scaling_policy_type import HPAScalingPolicyType  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.hpa_scaling_policy_type import HPAScalingPolicyType  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestHPAScalingPolicyType(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestHPAScalingPolicyType(unittest.TestCase):
     def testHPAScalingPolicyType(self):
         """Test HPAScalingPolicyType"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.hpa_scaling_policy_type.HPAScalingPolicyType()  # noqa: E501
+        # model = seldon_deploy_sdk.models.hpa_scaling_policy_type.HPAScalingPolicyType()  # noqa: E501
         pass
 
 

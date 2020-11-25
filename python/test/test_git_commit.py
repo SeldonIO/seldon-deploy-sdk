@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.models.git_commit import GitCommit  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.models.git_commit import GitCommit  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestGitCommit(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestGitCommit(unittest.TestCase):
     def testGitCommit(self):
         """Test GitCommit"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_client.models.git_commit.GitCommit()  # noqa: E501
+        # model = seldon_deploy_sdk.models.git_commit.GitCommit()  # noqa: E501
         pass
 
 

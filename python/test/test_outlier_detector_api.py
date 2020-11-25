@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import seldon_deploy_client
-from seldon_deploy_client.api.outlier_detector_api import OutlierDetectorApi  # noqa: E501
-from seldon_deploy_client.rest import ApiException
+import seldon_deploy_sdk
+from seldon_deploy_sdk.api.outlier_detector_api import OutlierDetectorApi  # noqa: E501
+from seldon_deploy_sdk.rest import ApiException
 
 
 class TestOutlierDetectorApi(unittest.TestCase):
     """OutlierDetectorApi unit test stubs"""
 
     def setUp(self):
-        self.api = seldon_deploy_client.api.outlier_detector_api.OutlierDetectorApi()  # noqa: E501
+        self.api = seldon_deploy_sdk.api.outlier_detector_api.OutlierDetectorApi()  # noqa: E501
 
     def tearDown(self):
         pass
