@@ -15,6 +15,7 @@ python:
 		-t /local/templates/python \
 		-l python \
 		-c /local/config/python.json \
+		--additional-properties 'infoEmail=hello@seldon.io' \
 		-o /local/python
 	# Add extra files
 	cp -r ./templates/python/auth ./python/seldon_deploy_sdk/auth

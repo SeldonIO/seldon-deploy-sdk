@@ -393,5 +393,5 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-
+hello@seldon.io
 
