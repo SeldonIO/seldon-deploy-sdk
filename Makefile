@@ -19,7 +19,7 @@ python: swagger-v1alpha1.yml templates/python/**/*.py templates/python/*
 	cp -r ./templates/python/auth ./python/seldon_deploy_client/auth
 	cp -r ./templates/python/Makefile ./python/Makefile
 	# Generate licenses
-	mkdir licenses
+	mkdir python/licenses
 	make -C python licenses
 
 
