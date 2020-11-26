@@ -27,12 +27,12 @@ from seldon_deploy_sdk import EnvironmentApi, Configuration, ApiClient
 from seldon_deploy_sdk.auth import OIDCAuthenticator
 
 config = Configuration()
-config.host = "http://188.166.139.135/seldon-deploy/api/v1alpha1"
-config.oidc_client_id = "deploy-server"
-config.oidc_server = "http://188.166.139.135/auth/realms/deploy-realm"
+config.host = "http://X.X.X.X/seldon-deploy/api/v1alpha1"
+config.oidc_client_id = "sd-api"
+config.oidc_server = "http://X.X.X.X/auth/realms/deploy-realm"
 
 auth = OIDCAuthenticator(config)
-config.access_token = auth.authenticate("admin@seldon.io", "12341234")
+config.access_token = auth.authenticate("*******", "*******")
 
 api_client = ApiClient(config)
 
