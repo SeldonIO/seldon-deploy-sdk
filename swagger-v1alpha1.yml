@@ -1,10 +1,9 @@
 basePath: /seldon-deploy/api/v1alpha1
 consumes:
-- application/json
+  - application/json
 definitions:
   AIXExplainerSpec:
-    description: AIXExplainerSpec defines the arguments for configuring an AIX Explanation
-      Server
+    description: AIXExplainerSpec defines the arguments for configuring an AIX Explanation Server
     properties:
       config:
         additionalProperties:
@@ -165,8 +164,7 @@ definitions:
     type: object
     x-go-package: github.com/seldonIO/seldon-deploy/internal/util/detectutil
   AlibiExplainerSpec:
-    description: AlibiExplainerSpec defines the arguments for configuring an Alibi
-      Explanation Server
+    description: AlibiExplainerSpec defines the arguments for configuring an Alibi Explanation Server
     properties:
       config:
         additionalProperties:
@@ -213,6 +211,23 @@ definitions:
         x-go-name: Token
     type: object
     x-go-package: github.com/seldonIO/seldon-deploy/internal/apis/v1alpha1
+  AuditLog:
+    properties:
+      AuthorName:
+        type: string
+      AuthorWhen:
+        format: date-time
+        type: string
+      CommitterName:
+        type: string
+      CommitterWhen:
+        format: date-time
+        type: string
+      Hash:
+        type: string
+        x-go-name: Message
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
   AzureDataDiskCachingMode:
     type: string
     x-go-package: k8s.io/api/core/v1
@@ -248,8 +263,7 @@ definitions:
           +optional
         type: boolean
         x-go-name: ReadOnly
-    title: AzureDisk represents an Azure Data Disk mount on the host and bind mount
-      to the pod.
+    title: AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
     type: object
     x-go-package: k8s.io/api/core/v1
   AzureFileVolumeSource:
@@ -262,16 +276,14 @@ definitions:
         type: boolean
         x-go-name: ReadOnly
       secretName:
-        description: the name of secret that contains Azure Storage Account Name and
-          Key
+        description: the name of secret that contains Azure Storage Account Name and Key
         type: string
         x-go-name: SecretName
       shareName:
         description: Share Name
         type: string
         x-go-name: ShareName
-    title: AzureFile represents an Azure File Service mount on the host and bind mount
-      to the pod.
+    title: AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
     type: object
     x-go-package: k8s.io/api/core/v1
   BatchDefinition:
@@ -385,8 +397,7 @@ definitions:
     type: object
     x-go-package: github.com/kubeflow/kfserving/pkg/apis/serving/v1alpha2
   CSIVolumeSource:
-    description: Represents a source location of a volume to mount, managed by an
-      external CSI driver
+    description: Represents a source location of a volume to mount, managed by an external CSI driver
     properties:
       driver:
         description: |-
@@ -537,8 +548,7 @@ definitions:
         format: int32
         type: integer
         x-go-name: TimeoutSeconds
-    title: ClientIPConfig represents the configurations of Client IP based session
-      affinity.
+    title: ClientIPConfig represents the configurations of Client IP based session affinity.
     type: object
     x-go-package: k8s.io/api/core/v1
   ClusterInfo:
@@ -663,8 +673,10 @@ definitions:
     properties:
       defaultMode:
         description: |-
-          Optional: mode bits to use on created files by default. Must be a
-          value between 0 and 0777. Defaults to 0644.
+          Optional: mode bits used to set permissions on created files by default.
+          Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+          YAML accepts both octal and decimal values, JSON requires decimal values for mode bits.
+          Defaults to 0644.
           Directories within the path are not affected by this setting.
           This might be in conflict with other options that affect the file
           mode, like fsGroup, and the result can be other mode bits set.
@@ -1067,8 +1079,7 @@ definitions:
         description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
         type: string
         x-go-name: Name
-    title: CrossVersionObjectReference contains enough information to let you identify
-      the referred resource.
+    title: CrossVersionObjectReference contains enough information to let you identify the referred resource.
     type: object
     x-go-package: k8s.io/api/autoscaling/v2beta1
   CustomSpec:
@@ -1234,7 +1245,7 @@ definitions:
         x-go-name: Name
       namespace:
         description: |-
-          Namespace defines the space within each name must be unique. An empty namespace is
+          Namespace defines the space within which each name must be unique. An empty namespace is
           equivalent to the "default" namespace, but "default" is the canonical representation.
           Not all objects are required to be scoped to a namespace - the value of this field for
           those objects will be empty.
@@ -1479,15 +1490,16 @@ definitions:
     type: object
     x-go-package: k8s.io/api/core/v1
   DownwardAPIVolumeFile:
-    description: DownwardAPIVolumeFile represents information to create the file containing
-      the pod field
+    description: DownwardAPIVolumeFile represents information to create the file containing the pod field
     properties:
       fieldRef:
         $ref: '#/definitions/ObjectFieldSelector'
       mode:
         description: |-
-          Optional: mode bits to use on this file, must be a value between 0
-          and 0777. If not specified, the volume defaultMode will be used.
+          Optional: mode bits used to set permissions on this file, must be an octal value
+          between 0000 and 0777 or a decimal value between 0 and 511.
+          YAML accepts both octal and decimal values, JSON requires decimal values for mode bits.
+          If not specified, the volume defaultMode will be used.
           This might be in conflict with other options that affect the file
           mode, like fsGroup, and the result can be other mode bits set.
           +optional
@@ -1495,9 +1507,7 @@ definitions:
         type: integer
         x-go-name: Mode
       path:
-        description: 'Required: Path is  the relative path name of the file to be
-          created. Must not be absolute or contain the ''..'' path. Must be utf-8
-          encoded. The first item of the relative path must not start with ''..'''
+        description: 'Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the ''..'' path. Must be utf-8 encoded. The first item of the relative path must not start with ''..'''
         type: string
         x-go-name: Path
       resourceFieldRef:
@@ -1510,7 +1520,10 @@ definitions:
       defaultMode:
         description: |-
           Optional: mode bits to use on created files by default. Must be a
-          value between 0 and 0777. Defaults to 0644.
+          Optional: mode bits used to set permissions on created files by default.
+          Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+          YAML accepts both octal and decimal values, JSON requires decimal values for mode bits.
+          Defaults to 0644.
           Directories within the path are not affected by this setting.
           This might be in conflict with other options that affect the file
           mode, like fsGroup, and the result can be other mode bits set.
@@ -1530,8 +1543,7 @@ definitions:
     type: object
     x-go-package: k8s.io/api/core/v1
   EmptyDirVolumeSource:
-    description: Empty directory volumes support ownership management and SELinux
-      relabeling.
+    description: Empty directory volumes support ownership management and SELinux relabeling.
     properties:
       medium:
         $ref: '#/definitions/StorageMedium'
@@ -1812,6 +1824,20 @@ definitions:
         x-go-name: WorkingDir
     type: object
     x-go-package: k8s.io/api/core/v1
+  EphemeralVolumeSource:
+    properties:
+      readOnly:
+        description: |-
+          Specifies a read-only configuration for the volume.
+          Defaults to false (read/write).
+          +optional
+        type: boolean
+        x-go-name: ReadOnly
+      volumeClaimTemplate:
+        $ref: '#/definitions/PersistentVolumeClaimTemplate'
+    title: Represents an ephemeral volume that is handled by a normal storage driver.
+    type: object
+    x-go-package: k8s.io/api/core/v1
   Error:
     description: Error Error
     properties:
@@ -1872,8 +1898,7 @@ definitions:
     type: object
     x-go-package: github.com/seldonio/seldon-core/operator/apis/machinelearning.seldon.io/v1
   ExplainerSpec:
-    description: The following fields follow a "1-of" semantic. Users must specify
-      exactly one spec.
+    description: The following fields follow a "1-of" semantic. Users must specify exactly one spec.
     properties:
       aix:
         $ref: '#/definitions/AIXExplainerSpec'
@@ -1993,8 +2018,8 @@ definitions:
       If a key maps to an empty Fields value, the field that key represents is part of the set.
 
       The exact format is defined in sigs.k8s.io/structured-merge-diff
-    title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON
-      format.
+      +protobuf.options.(gogoproto.goproto_stringer)=false
+    title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
     type: object
     x-go-package: k8s.io/apimachinery/pkg/apis/meta/v1
   FileDiff:
@@ -2127,23 +2152,6 @@ definitions:
     title: Represents a Persistent Disk resource in Google Compute Engine.
     type: object
     x-go-package: k8s.io/api/core/v1
-  GitCommit:
-    properties:
-      AuthorName:
-        type: string
-      AuthorWhen:
-        format: date-time
-        type: string
-      CommitterName:
-        type: string
-      CommitterWhen:
-        format: date-time
-        type: string
-      Hash:
-        type: string
-        x-go-name: Message
-    type: object
-    x-go-package: github.com/seldonIO/seldon-deploy/internal/gitops
   GitRepoVolumeSource:
     description: |-
       DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
@@ -2176,8 +2184,7 @@ definitions:
     type: object
     x-go-package: k8s.io/api/core/v1
   GlusterfsVolumeSource:
-    description: Glusterfs volumes do not support ownership management or SELinux
-      relabeling.
+    description: Glusterfs volumes do not support ownership management or SELinux relabeling.
     properties:
       endpoints:
         description: |-
@@ -2220,13 +2227,11 @@ definitions:
         format: int32
         type: integer
         x-go-name: Value
-    title: HPAScalingPolicy is a single policy which must hold true for a specified
-      past interval.
+    title: HPAScalingPolicy is a single policy which must hold true for a specified past interval.
     type: object
     x-go-package: k8s.io/api/autoscaling/v2beta2
   HPAScalingPolicyType:
-    title: HPAScalingPolicyType is the type of the policy which could be used while
-      making scaling decisions.
+    title: HPAScalingPolicyType is the type of the policy which could be used while making scaling decisions.
     type: string
     x-go-package: k8s.io/api/autoscaling/v2beta2
   HPAScalingRules:
@@ -2363,8 +2368,7 @@ definitions:
     type: string
     x-go-package: k8s.io/api/core/v1
   HostPathVolumeSource:
-    description: Host path volumes do not support ownership management or SELinux
-      relabeling.
+    description: Host path volumes do not support ownership management or SELinux relabeling.
     properties:
       path:
         description: |-
@@ -2611,8 +2615,10 @@ definitions:
         x-go-name: Key
       mode:
         description: |-
-          Optional: mode bits to use on this file, must be a value between 0
-          and 0777. If not specified, the volume defaultMode will be used.
+          Optional: mode bits used to set permissions on this file.
+          Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+          YAML accepts both octal and decimal values, JSON requires decimal values for mode bits.
+          If not specified, the volume defaultMode will be used.
           This might be in conflict with other options that affect the file
           mode, like fsGroup, and the result can be other mode bits set.
           +optional
@@ -2657,8 +2663,7 @@ definitions:
     type: object
     x-go-package: k8s.io/apimachinery/pkg/apis/meta/v1
   LabelSelectorOperator:
-    title: A label selector operator is the set of operators that can be used in a
-      selector requirement.
+    title: A label selector operator is the set of operators that can be used in a selector requirement.
     type: string
     x-go-package: k8s.io/apimachinery/pkg/apis/meta/v1
   LabelSelectorRequirement:
@@ -2854,8 +2859,7 @@ definitions:
     type: object
     x-go-package: k8s.io/apimachinery/pkg/apis/meta/v1
   ManagedFieldsOperationType:
-    title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry
-      being created.
+    title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry being created.
     type: string
     x-go-package: k8s.io/apimachinery/pkg/apis/meta/v1
   Message:
@@ -3108,7 +3112,7 @@ definitions:
         x-go-name: Name
       namespace:
         description: |-
-          Namespace defines the space within each name must be unique. An empty namespace is
+          Namespace defines the space within which each name must be unique. An empty namespace is
           equivalent to the "default" namespace, but "default" is the canonical representation.
           Not all objects are required to be scoped to a namespace - the value of this field for
           those objects will be empty.
@@ -3461,7 +3465,7 @@ definitions:
         x-go-name: Name
       namespace:
         description: |-
-          Namespace defines the space within each name must be unique. An empty namespace is
+          Namespace defines the space within which each name must be unique. An empty namespace is
           equivalent to the "default" namespace, but "default" is the canonical representation.
           Not all objects are required to be scoped to a namespace - the value of this field for
           those objects will be empty.
@@ -3593,6 +3597,229 @@ definitions:
   ParmeterType:
     type: string
     x-go-package: github.com/seldonio/seldon-core/operator/apis/machinelearning.seldon.io/v1
+  PersistentVolumeAccessMode:
+    type: string
+    x-go-package: k8s.io/api/core/v1
+  PersistentVolumeClaimSpec:
+    description: |-
+      PersistentVolumeClaimSpec describes the common attributes of storage devices
+      and allows a Source for provider-specific attributes
+    properties:
+      accessModes:
+        description: |-
+          AccessModes contains the desired access modes the volume should have.
+          More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+          +optional
+        items:
+          $ref: '#/definitions/PersistentVolumeAccessMode'
+        type: array
+        x-go-name: AccessModes
+      dataSource:
+        $ref: '#/definitions/TypedLocalObjectReference'
+      resources:
+        $ref: '#/definitions/ResourceRequirements'
+      selector:
+        $ref: '#/definitions/LabelSelector'
+      storageClassName:
+        description: |-
+          Name of the StorageClass required by the claim.
+          More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+          +optional
+        type: string
+        x-go-name: StorageClassName
+      volumeMode:
+        $ref: '#/definitions/PersistentVolumeMode'
+      volumeName:
+        description: |-
+          VolumeName is the binding reference to the PersistentVolume backing this claim.
+          +optional
+        type: string
+        x-go-name: VolumeName
+    type: object
+    x-go-package: k8s.io/api/core/v1
+  PersistentVolumeClaimTemplate:
+    description: |-
+      PersistentVolumeClaimTemplate is used to produce
+      PersistentVolumeClaim objects as part of an EphemeralVolumeSource.
+    properties:
+      annotations:
+        additionalProperties:
+          type: string
+        description: |-
+          Annotations is an unstructured key value map stored with a resource that may be
+          set by external tools to store and retrieve arbitrary metadata. They are not
+          queryable and should be preserved when modifying objects.
+          More info: http://kubernetes.io/docs/user-guide/annotations
+          +optional
+        type: object
+        x-go-name: Annotations
+      clusterName:
+        description: |-
+          The name of the cluster which the object belongs to.
+          This is used to distinguish resources with same name and namespace in different clusters.
+          This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+          +optional
+        type: string
+        x-go-name: ClusterName
+      creationTimestamp:
+        $ref: '#/definitions/Time'
+      deletionGracePeriodSeconds:
+        description: |-
+          Number of seconds allowed for this object to gracefully terminate before
+          it will be removed from the system. Only set when deletionTimestamp is also set.
+          May only be shortened.
+          Read-only.
+          +optional
+        format: int64
+        type: integer
+        x-go-name: DeletionGracePeriodSeconds
+      deletionTimestamp:
+        $ref: '#/definitions/Time'
+      finalizers:
+        description: |-
+          Must be empty before the object is deleted from the registry. Each entry
+          is an identifier for the responsible component that will remove the entry
+          from the list. If the deletionTimestamp of the object is non-nil, entries
+          in this list can only be removed.
+          Finalizers may be processed and removed in any order.  Order is NOT enforced
+          because it introduces significant risk of stuck finalizers.
+          finalizers is a shared field, any actor with permission can reorder it.
+          If the finalizer list is processed in order, then this can lead to a situation
+          in which the component responsible for the first finalizer in the list is
+          waiting for a signal (field value, external system, or other) produced by a
+          component responsible for a finalizer later in the list, resulting in a deadlock.
+          Without enforced ordering finalizers are free to order amongst themselves and
+          are not vulnerable to ordering changes in the list.
+          +optional
+          +patchStrategy=merge
+        items:
+          type: string
+        type: array
+        x-go-name: Finalizers
+      generateName:
+        description: |-
+          GenerateName is an optional prefix, used by the server, to generate a unique
+          name ONLY IF the Name field has not been provided.
+          If this field is used, the name returned to the client will be different
+          than the name passed. This value will also be combined with a unique suffix.
+          The provided value has the same validation rules as the Name field,
+          and may be truncated by the length of the suffix required to make the value
+          unique on the server.
+
+          If this field is specified and the generated name exists, the server will
+          NOT return a 409 - instead, it will either return 201 Created or 500 with Reason
+          ServerTimeout indicating a unique name could not be found in the time allotted, and the client
+          should retry (optionally after the time indicated in the Retry-After header).
+
+          Applied only if Name is not specified.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency
+          +optional
+        type: string
+        x-go-name: GenerateName
+      generation:
+        description: |-
+          A sequence number representing a specific generation of the desired state.
+          Populated by the system. Read-only.
+          +optional
+        format: int64
+        type: integer
+        x-go-name: Generation
+      labels:
+        additionalProperties:
+          type: string
+        description: |-
+          Map of string keys and values that can be used to organize and categorize
+          (scope and select) objects. May match selectors of replication controllers
+          and services.
+          More info: http://kubernetes.io/docs/user-guide/labels
+          +optional
+        type: object
+        x-go-name: Labels
+      managedFields:
+        description: |-
+          ManagedFields maps workflow-id and version to the set of fields
+          that are managed by that workflow. This is mostly for internal
+          housekeeping, and users typically shouldn't need to set or
+          understand this field. A workflow can be the user's name, a
+          controller's name, or the name of a specific apply path like
+          "ci-cd". The set of fields is always in the version that the
+          workflow used when modifying the object.
+
+          +optional
+        items:
+          $ref: '#/definitions/ManagedFieldsEntry'
+        type: array
+        x-go-name: ManagedFields
+      name:
+        description: |-
+          Name must be unique within a namespace. Is required when creating resources, although
+          some resources may allow a client to request the generation of an appropriate name
+          automatically. Name is primarily intended for creation idempotence and configuration
+          definition.
+          Cannot be updated.
+          More info: http://kubernetes.io/docs/user-guide/identifiers#names
+          +optional
+        type: string
+        x-go-name: Name
+      namespace:
+        description: |-
+          Namespace defines the space within which each name must be unique. An empty namespace is
+          equivalent to the "default" namespace, but "default" is the canonical representation.
+          Not all objects are required to be scoped to a namespace - the value of this field for
+          those objects will be empty.
+
+          Must be a DNS_LABEL.
+          Cannot be updated.
+          More info: http://kubernetes.io/docs/user-guide/namespaces
+          +optional
+        type: string
+        x-go-name: Namespace
+      ownerReferences:
+        description: |-
+          List of objects depended by this object. If ALL objects in the list have
+          been deleted, this object will be garbage collected. If this object is managed by a controller,
+          then an entry in this list will point to this controller, with the controller field set to true.
+          There cannot be more than one managing controller.
+          +optional
+          +patchMergeKey=uid
+          +patchStrategy=merge
+        items:
+          $ref: '#/definitions/OwnerReference'
+        type: array
+        x-go-name: OwnerReferences
+      resourceVersion:
+        description: |-
+          An opaque value that represents the internal version of this object that can
+          be used by clients to determine when objects have changed. May be used for optimistic
+          concurrency, change detection, and the watch operation on a resource or set of resources.
+          Clients must treat these values as opaque and passed unmodified back to the server.
+          They may only be valid for a particular resource or set of resources.
+
+          Populated by the system.
+          Read-only.
+          Value must be treated as opaque by clients and .
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+          +optional
+        type: string
+        x-go-name: ResourceVersion
+      selfLink:
+        description: |-
+          SelfLink is a URL representing this object.
+          Populated by the system.
+          Read-only.
+
+          DEPRECATED
+          Kubernetes will stop propagating this field in 1.20 release and the field is planned
+          to be removed in 1.21 release.
+          +optional
+        type: string
+        x-go-name: SelfLink
+      spec:
+        $ref: '#/definitions/PersistentVolumeClaimSpec'
+      uid:
+        $ref: '#/definitions/UID'
+    type: object
+    x-go-package: k8s.io/api/core/v1
   PersistentVolumeClaimVolumeSource:
     description: |-
       This volume finds the bound PV and mounts that volume for the pod. A
@@ -3612,9 +3839,12 @@ definitions:
           +optional
         type: boolean
         x-go-name: ReadOnly
-    title: PersistentVolumeClaimVolumeSource references the user's PVC in the same
-      namespace.
+    title: PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace.
     type: object
+    x-go-package: k8s.io/api/core/v1
+  PersistentVolumeMode:
+    title: PersistentVolumeMode describes how a volume is intended to be consumed, either Block or Filesystem.
+    type: string
     x-go-package: k8s.io/api/core/v1
   PhotonPersistentDiskVolumeSource:
     properties:
@@ -3777,7 +4007,7 @@ definitions:
         x-go-name: Name
       namespace:
         description: |-
-          Namespace defines the space within each name must be unique. An empty namespace is
+          Namespace defines the space within which each name must be unique. An empty namespace is
           equivalent to the "default" namespace, but "default" is the canonical representation.
           Not all objects are required to be scoped to a namespace - the value of this field for
           those objects will be empty.
@@ -4188,6 +4418,8 @@ definitions:
         x-go-name: RunAsUser
       seLinuxOptions:
         $ref: '#/definitions/SELinuxOptions'
+      seccompProfile:
+        $ref: '#/definitions/SeccompProfile'
       supplementalGroups:
         description: |-
           A list of groups applied to the first process run in each container, in addition
@@ -4210,8 +4442,7 @@ definitions:
         x-go-name: Sysctls
       windowsOptions:
         $ref: '#/definitions/WindowsSecurityContextOptions'
-    title: PodSecurityContext holds pod-level security attributes and common container
-      settings.
+    title: PodSecurityContext holds pod-level security attributes and common container settings.
     type: object
     x-go-package: k8s.io/api/core/v1
   PodSpec:
@@ -4440,6 +4671,16 @@ definitions:
           +optional
         type: string
         x-go-name: ServiceAccountName
+      setHostnameAsFQDN:
+        description: |-
+          If true the pod's hostname will be configured as the pod's FQDN, rather than the leaf name (the default).
+          In Linux containers, this means setting the FQDN in the hostname field of the kernel (the nodename field of struct utsname).
+          In Windows containers, this means setting the registry value of hostname for the registry key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters to FQDN.
+          If a pod does not have FQDN, this has no effect.
+          Default to false.
+          +optional
+        type: boolean
+        x-go-name: SetHostnameAsFQDN
       shareProcessNamespace:
         description: |-
           Share a single process namespace between all of the containers in a pod.
@@ -4483,7 +4724,6 @@ definitions:
         description: |-
           TopologySpreadConstraints describes how a group of pods ought to spread across topology
           domains. Scheduler will schedule pods in a way which abides by the constraints.
-          This field is only honored by clusters that enable the EvenPodsSpread feature.
           All topologySpreadConstraints are ANDed.
           +optional
           +patchMergeKey=topologyKey
@@ -4614,8 +4854,7 @@ definitions:
     type: object
     x-go-package: k8s.io/api/core/v1
   PodTemplateSpec:
-    description: PodTemplateSpec describes the data a pod should have when created
-      from a template
+    description: PodTemplateSpec describes the data a pod should have when created from a template
     properties:
       annotations:
         additionalProperties:
@@ -4738,7 +4977,7 @@ definitions:
         x-go-name: Name
       namespace:
         description: |-
-          Namespace defines the space within each name must be unique. An empty namespace is
+          Namespace defines the space within which each name must be unique. An empty namespace is
           equivalent to the "default" namespace, but "default" is the canonical representation.
           Not all objects are required to be scoped to a namespace - the value of this field for
           those objects will be empty.
@@ -4938,8 +5177,7 @@ definitions:
       preference:
         $ref: '#/definitions/NodeSelectorTerm'
       weight:
-        description: Weight associated with matching the corresponding nodeSelectorTerm,
-          in the range 1-100.
+        description: Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
         format: int32
         type: integer
         x-go-name: Weight
@@ -5007,8 +5245,9 @@ definitions:
     properties:
       defaultMode:
         description: |-
-          Mode bits to use on created files by default. Must be a value between
-          0 and 0777.
+          Mode bits used to set permissions on created files by default.
+          Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+          YAML accepts both octal and decimal values, JSON requires decimal values for mode bits.
           Directories within the path are not affected by this setting.
           This might be in conflict with other options that affect the file
           mode, like fsGroup, and the result can be other mode bits set.
@@ -5132,8 +5371,7 @@ definitions:
         type: string
         x-go-name: User
       volume:
-        description: Volume is a string that references an already created Quobyte
-          volume by name.
+        description: Volume is a string that references an already created Quobyte volume by name.
         type: string
         x-go-name: Volume
     title: Represents a Quobyte mount that lasts the lifetime of a pod.
@@ -5204,8 +5442,7 @@ definitions:
     type: object
     x-go-package: k8s.io/api/core/v1
   ResourceFieldSelector:
-    description: ResourceFieldSelector represents container resources (cpu, memory)
-      and their output format
+    description: ResourceFieldSelector represents container resources (cpu, memory) and their output format
     properties:
       containerName:
         description: |-
@@ -5410,10 +5647,32 @@ definitions:
     type: object
     x-go-package: github.com/kedacore/keda/api/v1alpha1
   ScalingPolicySelect:
-    description: ScalingPolicySelect is used to specify which policy should be used
-      while scaling in a certain direction
+    description: ScalingPolicySelect is used to specify which policy should be used while scaling in a certain direction
     type: string
     x-go-package: k8s.io/api/autoscaling/v2beta2
+  SeccompProfile:
+    description: |-
+      Only one profile source may be set.
+      +union
+    properties:
+      localhostProfile:
+        description: |-
+          localhostProfile indicates a profile defined in a file on the node should be used.
+          The profile must be preconfigured on the node to work.
+          Must be a descending path, relative to the kubelet's configured seccomp profile location.
+          Must only be set if type is "Localhost".
+          +optional
+        type: string
+        x-go-name: LocalhostProfile
+      type:
+        $ref: '#/definitions/SeccompProfileType'
+    title: SeccompProfile defines a pod/container's seccomp profile settings.
+    type: object
+    x-go-package: k8s.io/api/core/v1
+  SeccompProfileType:
+    title: SeccompProfileType defines the supported seccomp profile types.
+    type: string
+    x-go-package: k8s.io/api/core/v1
   SecretEnvSource:
     description: |-
       The contents of the target Secret's Data field will represent the
@@ -5441,8 +5700,7 @@ definitions:
   SecretKeySelector:
     properties:
       key:
-        description: The key of the secret to select from.  Must be a valid secret
-          key.
+        description: The key of the secret to select from.  Must be a valid secret key.
         type: string
         x-go-name: Key
       name:
@@ -5508,8 +5766,10 @@ definitions:
     properties:
       defaultMode:
         description: |-
-          Optional: mode bits to use on created files by default. Must be a
-          value between 0 and 0777. Defaults to 0644.
+          Optional: mode bits used to set permissions on created files by default.
+          Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+          YAML accepts both octal and decimal values, JSON requires decimal values
+          for mode bits. Defaults to 0644.
           Directories within the path are not affected by this setting.
           This might be in conflict with other options that affect the file
           mode, like fsGroup, and the result can be other mode bits set.
@@ -5615,10 +5875,11 @@ definitions:
         x-go-name: RunAsUser
       seLinuxOptions:
         $ref: '#/definitions/SELinuxOptions'
+      seccompProfile:
+        $ref: '#/definitions/SeccompProfile'
       windowsOptions:
         $ref: '#/definitions/WindowsSecurityContextOptions'
-    title: SecurityContext holds security configuration that will be applied to a
-      container.
+    title: SecurityContext holds security configuration that will be applied to a container.
     type: object
     x-go-package: k8s.io/api/core/v1
   SeldonAddressable:
@@ -5972,7 +6233,7 @@ definitions:
         x-go-name: Name
       namespace:
         description: |-
-          Namespace defines the space within each name must be unique. An empty namespace is
+          Namespace defines the space within which each name must be unique. An empty namespace is
           equivalent to the "default" namespace, but "default" is the canonical representation.
           Not all objects are required to be scoped to a namespace - the value of this field for
           those objects will be empty.
@@ -6164,7 +6425,8 @@ definitions:
           RFC-6335 and http://www.iana.org/assignments/service-names).
           Non-standard protocols should use prefixed names such as
           mycompany.com/my-custom-protocol.
-          Field can be enabled with ServiceAppProtocol feature gate.
+          This is a beta field that is guarded by the ServiceAppProtocol feature
+          gate and enabled by default.
           +optional
         type: string
         x-go-name: AppProtocol
@@ -6289,12 +6551,14 @@ definitions:
         x-go-name: Ports
       publishNotReadyAddresses:
         description: |-
-          publishNotReadyAddresses, when set to true, indicates that DNS implementations
-          must publish the notReadyAddresses of subsets for the Endpoints associated with
-          the Service. The default value is false.
-          The primary use case for setting this field is to use a StatefulSet's Headless Service
-          to propagate SRV records for its Pods without respect to their readiness for purpose
-          of peer discovery.
+          publishNotReadyAddresses indicates that any agent which deals with endpoints for this
+          Service should disregard any indications of ready/not-ready.
+          The primary use case for setting this field is for a StatefulSet's Headless Service to
+          propagate SRV DNS records for its Pods for the purpose of peer discovery.
+          The Kubernetes controllers that generate Endpoints and EndpointSlice resources for
+          Services interpret this to mean that all endpoints are considered "ready" even if the
+          Pods themselves are not. Agents which consume only Kubernetes generated endpoints
+          through the Endpoints or EndpointSlice resources can safely assume this behavior.
           +optional
         type: boolean
         x-go-name: PublishNotReadyAddresses
@@ -6457,8 +6721,7 @@ definitions:
     type: string
     x-go-package: k8s.io/api/core/v1
   TerminationMessagePolicy:
-    title: TerminationMessagePolicy describes how termination messages are retrieved
-      from a container.
+    title: TerminationMessagePolicy describes how termination messages are retrieved from a container.
     type: string
     x-go-package: k8s.io/api/core/v1
   Time:
@@ -6518,8 +6781,8 @@ definitions:
       maxSkew:
         description: |-
           MaxSkew describes the degree to which pods may be unevenly distributed.
-          It's the maximum permitted difference between the number of matching pods in
-          any two topology domains of a given topology type.
+          When `whenUnsatisfiable=DoNotSchedule`, it is the maximum permitted difference
+          between the number of matching pods in the target topology and the global minimum.
           For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same
           labelSelector spread as 1/1/0:
           +-------+-------+-------+
@@ -6531,6 +6794,8 @@ definitions:
           scheduling it onto zone1(zone2) would make the ActualSkew(2-0) on zone1(zone2)
           violate MaxSkew(1).
           if MaxSkew is 2, incoming pod can be scheduled onto any zone.
+          When `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence
+          to topologies that satisfy it.
           It's a required field. Default value is 1 and 0 is not allowed.
         format: int32
         type: integer
@@ -6546,8 +6811,7 @@ definitions:
         x-go-name: TopologyKey
       whenUnsatisfiable:
         $ref: '#/definitions/UnsatisfiableConstraintAction'
-    title: TopologySpreadConstraint specifies how to spread matching pods among the
-      given topology.
+    title: TopologySpreadConstraint specifies how to spread matching pods among the given topology.
     type: object
     x-go-package: k8s.io/api/core/v1
   TransformerSpec:
@@ -6596,6 +6860,29 @@ definitions:
     title: Type represents the stored type of IntOrString.
     type: integer
     x-go-package: k8s.io/apimachinery/pkg/util/intstr
+  TypedLocalObjectReference:
+    description: |-
+      TypedLocalObjectReference contains enough information to let you locate the
+      typed referenced object inside the same namespace.
+    properties:
+      apiGroup:
+        description: |-
+          APIGroup is the group for the resource being referenced.
+          If APIGroup is not specified, the specified Kind must be in the core API group.
+          For any other third-party types, APIGroup is required.
+          +optional
+        type: string
+        x-go-name: APIGroup
+      kind:
+        description: Kind is the type of resource being referenced
+        type: string
+        x-go-name: Kind
+      name:
+        description: Name is the name of resource being referenced
+        type: string
+        x-go-name: Name
+    type: object
+    x-go-package: k8s.io/api/core/v1
   UID:
     description: |-
       UID is a type that holds unique ID values, including UUIDs.  Because we
@@ -6604,8 +6891,7 @@ definitions:
     type: string
     x-go-package: k8s.io/apimachinery/pkg/types
   URIScheme:
-    description: URIScheme identifies the scheme used for connection to a host for
-      Get actions
+    description: URIScheme identifies the scheme used for connection to a host for Get actions
     type: string
     x-go-package: k8s.io/api/core/v1
   URL:
@@ -6646,7 +6932,7 @@ definitions:
       ReleaseType:
         type: string
     type: object
-    x-go-package: github.com/seldonIO/seldon-deploy/internal/version
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
   Volume:
     properties:
       awsElasticBlockStore:
@@ -6667,6 +6953,8 @@ definitions:
         $ref: '#/definitions/DownwardAPIVolumeSource'
       emptyDir:
         $ref: '#/definitions/EmptyDirVolumeSource'
+      ephemeral:
+        $ref: '#/definitions/EphemeralVolumeSource'
       fc:
         $ref: '#/definitions/FCVolumeSource'
       flexVolume:
@@ -6712,15 +7000,13 @@ definitions:
         $ref: '#/definitions/StorageOSVolumeSource'
       vsphereVolume:
         $ref: '#/definitions/VsphereVirtualDiskVolumeSource'
-    title: Volume represents a named volume in a pod that may be accessed by any container
-      in the pod.
+    title: Volume represents a named volume in a pod that may be accessed by any container in the pod.
     type: object
     x-go-package: k8s.io/api/core/v1
   VolumeDevice:
     properties:
       devicePath:
-        description: devicePath is the path inside of the container that the device
-          will be mapped to.
+        description: devicePath is the path inside of the container that the device will be mapped to.
         type: string
         x-go-name: DevicePath
       name:
@@ -6771,8 +7057,7 @@ definitions:
     type: object
     x-go-package: k8s.io/api/core/v1
   VolumeProjection:
-    description: Projection that may be projected along with other supported volume
-      types
+    description: Projection that may be projected along with other supported volume types
     properties:
       configMap:
         $ref: '#/definitions/ConfigMapProjection'
@@ -6814,8 +7099,7 @@ definitions:
     type: object
     x-go-package: k8s.io/api/core/v1
   WeightedPodAffinityTerm:
-    description: The weights of all of the matched WeightedPodAffinityTerm fields
-      are added per-node to find the most preferred node(s)
+    description: The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
     properties:
       podAffinityTerm:
         $ref: '#/definitions/PodAffinityTerm'
@@ -6856,6 +7140,138 @@ definitions:
     title: WindowsSecurityContextOptions contain Windows-specific options and credentials.
     type: object
     x-go-package: k8s.io/api/core/v1
+  protobufAny:
+    type: object
+    properties:
+      typeUrl:
+        type: string
+      value:
+        type: string
+        format: byte
+  rpcStatus:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/protobufAny'
+  v1DeploymentType:
+    type: string
+    enum:
+      - SeldonDeployment
+      - InferenceService
+    default: SeldonDeployment
+  v1Model:
+    type: object
+    properties:
+      URI:
+        type: string
+        example: gs://seldon-models/sklearn/iris
+        description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+        required:
+          - URI
+      name:
+        type: string
+        example: Iris Classifier
+        description: The name of the model.
+      version:
+        type: string
+        example: v1.2.3
+        default: '"v0.0.1"'
+        description: The version of the model.
+      implementation:
+        type: string
+        example: SKLEARN
+        description: The implementation used for serving the model.
+      taskType:
+        type: string
+        example: classification
+        description: The task type of the model.
+      tags:
+        type: object
+        example:
+          dayOfWeek: Mon
+        additionalProperties:
+          type: string
+        description: Key-value pairs of arbitrary metadata associated with the model
+    required:
+      - URI
+  v1ModelMetadataCreateResponse:
+    type: object
+  v1ModelMetadataDeleteResponse:
+    type: object
+  v1ModelMetadataListResponse:
+    type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: '#/definitions/v1Model'
+      nextPageToken:
+        type: string
+        description: |-
+          A pagination token returned from a previous call to `List`
+          that indicates from where listing should continue.
+  v1ModelMetadataUpdateResponse:
+    type: object
+  v1RuntimeMetadata:
+    type: object
+    properties:
+      modelUri:
+        type: string
+        example: gs://seldon-models/sklearn/iris
+        description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+      deploymentName:
+        type: string
+        example: iris
+        description: The name of the Kubernetes deployment that is associated with a model.
+      deploymentNamespace:
+        type: string
+        example: seldon
+        description: The Kubernetes namespace in which this deployment is running in.
+      deploymentKubernetesUid:
+        type: string
+        example: 2c60bdb0-8a8e-46bf-a3c5-627ad507f76b
+        description: The Kubernetes UID of the deployment associated with a model. See https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids for details
+      predictorName:
+        type: string
+        example: default
+        description: The name of the predictor inside the deployment that contains the referenced model.
+      nodeName:
+        type: string
+        example: default-node
+        description: The name of the node inside the predictor that contains the referenced model. This is relevant and populated only for SeldonDeployment deployment types.
+      deploymentStatus:
+        type: string
+        example: Running
+        description: The status of the Kubernetes deployment associated with a model.
+      deploymentType:
+        $ref: '#/definitions/v1DeploymentType'
+        description: The type of deployment - either SeldonDeployment or InferenceService.
+      traffic:
+        type: string
+        format: int64
+        description: The amount of traffic server by this model in the deployment.
+      shadow:
+        type: boolean
+        description: True if this model is a shadow in the deployment.
+  v1RuntimeMetadataListResponse:
+    type: object
+    properties:
+      runtimeMetadata:
+        type: array
+        items:
+          $ref: '#/definitions/v1RuntimeMetadata'
+      nextPageToken:
+        type: string
+        description: |-
+          A pagination token returned from a previous call to `List`
+          that indicates from where listing should continue.
 host: X.X.X.X
 info:
   description: |-
@@ -6866,114 +7282,90 @@ info:
 paths:
   /cluster:
     get:
-      consumes:
-      - application/json
       description: Read the cluster info
       operationId: ReadCluster
-      produces:
-      - application/json
       responses:
         "200":
           $ref: '#/responses/ClusterInfoResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Environment
+        - Environment
   /namespaces/{namespace}/gitops-status:
     get:
       description: Read the GitOps status
       operationId: ReadGitOpsStatus
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/inferenceservice/{name}/driftdetector:
     delete:
       description: Delete the specified Inference Service Drift Detector
       operationId: DeleteDriftDetectorInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - DriftDetector
+        - DriftDetector
   /namespaces/{namespace}/inferenceservice/{name}/outlierdetector:
     delete:
       description: Delete the specified Inference Service Outlier Detector
       operationId: DeleteOutlierDetectorInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - OutlierDetector
+        - OutlierDetector
   /namespaces/{namespace}/inferenceservices:
     get:
       description: list objects of kind Inference Service
       operationId: ListInferenceServices
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/InferenceServiceListResponse'
@@ -6985,42 +7377,35 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - InferenceServices
+        - InferenceServices
     post:
-      consumes:
-      - application/json
       description: Create an Inference Service
       operationId: CreateInferenceService
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-        x-go-name: Action
-      - description: Inference Service
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/InferenceService'
-        x-go-name: InferenceService
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Action
+          in: query
+          name: action
+          type: string
+          x-go-name: Action
+        - description: Inference Service
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/InferenceService'
+          x-go-name: InferenceService
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/InferenceServiceResponse'
@@ -7034,40 +7419,35 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - InferenceServices
+        - InferenceServices
   /namespaces/{namespace}/inferenceservices/{name}:
     delete:
       description: Delete the specified Inference Service
       operationId: DeleteInferenceService
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-        x-go-name: Action
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Action
+          in: query
+          name: action
+          type: string
+          x-go-name: Action
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -7081,29 +7461,24 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - InferenceServices
+        - InferenceServices
     get:
       description: Read the specified Inference Service
       operationId: ReadInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/InferenceServiceResponse'
@@ -7115,48 +7490,41 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - InferenceServices
+        - InferenceServices
     put:
-      consumes:
-      - application/json
       description: Update the specified Inference Service
       operationId: UpdateInferenceService
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-        x-go-name: Action
-      - description: Inference Service
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/InferenceService'
-        x-go-name: InferenceService
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Action
+          in: query
+          name: action
+          type: string
+          x-go-name: Action
+        - description: Inference Service
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/InferenceService'
+          x-go-name: InferenceService
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/InferenceServiceResponse'
@@ -7170,589 +7538,494 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - InferenceServices
+        - InferenceServices
   /namespaces/{namespace}/inferenceservices/{name}/driftdetector:
     get:
       description: Read the specified Inference Service Drift Detector
       operationId: ReadDriftDetectorInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/DriftDetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - DriftDetector
+        - DriftDetector
     post:
-      consumes:
-      - application/json
       description: Create the specified Inference Service Drift Detector
       operationId: CreateDriftDetectorInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: DriftDetector
-        in: body
-        name: driftDetector
-        required: true
-        schema:
-          $ref: '#/definitions/AlibiDetectorData'
-        x-go-name: DriftDetector
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: DriftDetector
+          in: body
+          name: driftDetector
+          required: true
+          schema:
+            $ref: '#/definitions/AlibiDetectorData'
+          x-go-name: DriftDetector
       responses:
         "200":
           $ref: '#/responses/DriftDetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - DriftDetector
+        - DriftDetector
   /namespaces/{namespace}/inferenceservices/{name}/explain:
     post:
-      consumes:
-      - application/json
       description: Create Inference Service explanation
       operationId: ExplainInferenceService
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Prediction contains predict payload
-        in: body
-        name: explaindata
-        schema:
-          type: object
-        x-go-name: ExplainData
-      produces:
-      - application/json
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Prediction contains predict payload
+          in: body
+          name: explaindata
+          schema:
+            type: object
+          x-go-name: ExplainData
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Explain
+        - Explain
   /namespaces/{namespace}/inferenceservices/{name}/gitdiff:
     get:
       description: Read the git diff
       operationId: ReadInferenceServiceGitDiff
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-        x-go-name: Hash
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+          x-go-name: Hash
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/GitDiffResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/inferenceservices/{name}/gitlogs:
     get:
       description: Read the git commits
       operationId: ReadInferenceServiceGitLogs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/GitLogsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/inferenceservices/{name}/gitrestore:
     get:
       description: Restore the git commit
       operationId: InferenceServiceGitRestore
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-        x-go-name: Hash
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+          x-go-name: Hash
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/inferenceservices/{name}/gitrevert:
     get:
       description: Revert the git commit
       operationId: InferenceServiceGitRevert
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-        x-go-name: Hash
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+          x-go-name: Hash
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs:
     get:
       description: List Inference Service load test jobs
       operationId: ListLoadtestInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
     post:
-      consumes:
-      - application/json
-      - multipart/form-data
-      description: Create Inference Service load test
+      description: |-
+        Create Inference Service load test
+        multipart/form-data
       operationId: CreateLoadtestInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Prediction contains predict payload
-        in: formData
-        name: loadFile
-        required: true
-        type: file
-        x-go-name: LoadFile
-      - description: Connections Number provides number of allowed connections
-        in: formData
-        name: connectionsNumber
-        type: string
-        x-go-name: ConnectionsNumber
-      - description: Requests Number provides number of allowed requests
-        in: formData
-        name: requestsNumber
-        type: string
-        x-go-name: RequestsNumber
-      - description: Duration of load test in seconds
-        in: formData
-        name: duration
-        type: string
-        x-go-name: Duration
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Prediction contains predict payload
+          in: formData
+          name: loadFile
+          required: true
+          type: file
+          x-go-name: LoadFile
+        - description: Connections Number provides number of allowed connections
+          in: formData
+          name: connectionsNumber
+          type: string
+          x-go-name: ConnectionsNumber
+        - description: Requests Number provides number of allowed requests
+          in: formData
+          name: requestsNumber
+          type: string
+          x-go-name: RequestsNumber
+        - description: Duration of load test in seconds
+          in: formData
+          name: duration
+          type: string
+          x-go-name: Duration
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs/{jobName}:
     delete:
       description: Delete Inference Service load test jobs
       operationId: DeleteLoadtestInferenceService
       parameters:
-      - description: JobName identifies a job name
-        in: path
-        name: jobName
-        required: true
-        type: string
-        x-go-name: JobName
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
+          x-go-name: JobName
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/inferenceservices/{name}/outlierdetector:
     get:
       description: Read the specified Inference Service Outlier Detector
       operationId: ReadOutlierDetectorInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/OutlierDetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - OutlierDetector
+        - OutlierDetector
     post:
-      consumes:
-      - application/json
       description: Create the specified Inference Service Outlier Detector
       operationId: CreateOutlierDetectorInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: OutlierDetector
-        in: body
-        name: outlierDetector
-        required: true
-        schema:
-          $ref: '#/definitions/AlibiDetectorData'
-        x-go-name: OutlierDetector
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: OutlierDetector
+          in: body
+          name: outlierDetector
+          required: true
+          schema:
+            $ref: '#/definitions/AlibiDetectorData'
+          x-go-name: OutlierDetector
       responses:
         "200":
           $ref: '#/responses/OutlierDetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - OutlierDetector
+        - OutlierDetector
   /namespaces/{namespace}/inferenceservices/{name}/predict:
     post:
-      consumes:
-      - application/json
       description: Create Inference Service prediction
       operationId: PredictInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Prediction
-        in: body
-        name: prediction
-        required: true
-        schema:
-          type: object
-        x-go-name: Prediction
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Prediction
+          in: body
+          name: prediction
+          required: true
+          schema:
+            type: object
+          x-go-name: Prediction
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/inferenceservices/{name}/predictcurl:
     put:
-      consumes:
-      - application/json
       description: Read the specified Inference Service predict curl
       operationId: ReadPredictCurlInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Prediction
-        in: body
-        name: prediction
-        required: true
-        schema:
-          type: object
-        x-go-name: Prediction
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Prediction
+          in: body
+          name: prediction
+          required: true
+          schema:
+            type: object
+          x-go-name: Prediction
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/inferenceservices/{name}/predictfile:
     post:
       consumes:
-      - multipart/form-data
+        - multipart/form-data
       description: Create Inference Service prediction
       operationId: PredictFileInferenceService
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: PredictionFile
-        in: formData
-        name: predictFile
-        required: true
-        type: file
-        x-go-name: PredictFile
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: PredictionFile
+          in: formData
+          name: predictFile
+          required: true
+          type: file
+          x-go-name: PredictFile
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/inferenceservices/{name}/predictor/{predictorName}/resources:
     get:
-      consumes:
-      - application/json
       description: list objects of kind resource for Inference Service predictor
       operationId: ListInferenceServicePredictorResources
       parameters:
-      - description: Component differentiates between types of model (e.g. predictor,
-          explainer... etc)
-        in: query
-        name: component
-        type: string
-        x-go-name: Component
-      - description: Endpoint differentiates between versions of model (e.g. default,
-          canary... etc)
-        in: query
-        name: endpoint
-        type: string
-        x-go-name: Endpoint
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Predictor Name identifies a predictor resource
-        in: path
-        name: predictorName
-        required: true
-        type: string
-        x-go-name: PredictorName
-      produces:
-      - application/json
+        - description: Component differentiates between types of model (e.g. predictor, explainer... etc)
+          in: query
+          name: component
+          type: string
+          x-go-name: Component
+        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
+          in: query
+          name: endpoint
+          type: string
+          x-go-name: Endpoint
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Predictor Name identifies a predictor resource
+          in: path
+          name: predictorName
+          required: true
+          type: string
+          x-go-name: PredictorName
       responses:
         "200":
           $ref: '#/responses/ResourceListResponse'
@@ -7764,44 +8037,35 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - KubernetesResources
+        - KubernetesResources
   /namespaces/{namespace}/inferenceservices/{name}/resources:
     get:
-      consumes:
-      - application/json
       description: list objects of kind resource for Inference Service
       operationId: ListInferenceServiceResources
       parameters:
-      - description: Component differentiates between types of model (e.g. predictor,
-          explainer... etc)
-        in: query
-        name: component
-        type: string
-        x-go-name: Component
-      - description: Endpoint differentiates between versions of model (e.g. default,
-          canary... etc)
-        in: query
-        name: endpoint
-        type: string
-        x-go-name: Endpoint
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Component differentiates between types of model (e.g. predictor, explainer... etc)
+          in: query
+          name: component
+          type: string
+          x-go-name: Component
+        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
+          in: query
+          name: endpoint
+          type: string
+          x-go-name: Endpoint
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/ResourceListResponse'
@@ -7813,56 +8077,44 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - KubernetesResources
+        - KubernetesResources
   /namespaces/{namespace}/inferenceservices/validate:
     get:
-      consumes:
-      - application/json
       description: Validate the given Inference Service
       operationId: ValidateInferenceService
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Inference Service
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/InferenceService'
-        x-go-name: InferenceService
-      produces:
-      - application/json
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Inference Service
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/InferenceService'
+          x-go-name: InferenceService
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - InferenceServices
+        - InferenceServices
   /namespaces/{namespace}/seldondeployments:
     get:
       description: list objects of kind Seldon Deployment
       operationId: ListSeldonDeployments
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentListResponse'
@@ -7874,42 +8126,35 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
     post:
-      consumes:
-      - application/json
       description: Create a Seldon Deployment
       operationId: CreateSeldonDeployment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-        x-go-name: Action
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Seldon Deployment
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/SeldonDeployment'
-        x-go-name: SeldonDeployment
-      produces:
-      - application/json
+        - description: Action
+          in: query
+          name: action
+          type: string
+          x-go-name: Action
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Seldon Deployment
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/SeldonDeployment'
+          x-go-name: SeldonDeployment
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentResponse'
@@ -7923,40 +8168,35 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
   /namespaces/{namespace}/seldondeployments/{name}:
     delete:
       description: Delete the specified Seldon Deployment
       operationId: DeleteSeldonDeployment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-        x-go-name: Action
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Action
+          in: query
+          name: action
+          type: string
+          x-go-name: Action
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -7970,29 +8210,24 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
     get:
       description: Read the specified Seldon Deployment
       operationId: ReadSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentResponse'
@@ -8004,48 +8239,41 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
     put:
-      consumes:
-      - application/json
       description: Update the specified Seldon Deployment
       operationId: UpdateSeldonDeployment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-        x-go-name: Action
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Seldon Deployment
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/SeldonDeployment'
-        x-go-name: SeldonDeployment
-      produces:
-      - application/json
+        - description: Action
+          in: query
+          name: action
+          type: string
+          x-go-name: Action
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Seldon Deployment
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/SeldonDeployment'
+          x-go-name: SeldonDeployment
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentResponse'
@@ -8059,39 +8287,34 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
   /namespaces/{namespace}/seldondeployments/{name}/batchjobs:
     get:
       description: Read the seldondeployment's batch jobs
       operationId: ListSeldonDeploymentBatchJobs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Limit of items returned in one response
-        in: query
-        name: limit
-        type: string
-        x-go-name: Limit
-      - description: Requested page
-        in: query
-        name: Page
-        type: string
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Limit of items returned in one response
+          in: query
+          name: limit
+          type: string
+          x-go-name: Limit
+        - description: Requested page
+          in: query
+          name: Page
+          type: string
       responses:
         "200":
           $ref: '#/responses/BatchJobsListResponse'
@@ -8099,38 +8322,31 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - BatchJobs
+        - BatchJobs
     post:
-      consumes:
-      - application/json
       description: Create the seldondeployment's batch jobs
       operationId: CreateSeldonDeploymentBatchJob
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: WorkflowName
-        in: body
-        name: workflow
-        required: true
-        schema:
-          $ref: '#/definitions/BatchDefinition'
-        x-go-name: Workflow
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: WorkflowName
+          in: body
+          name: workflow
+          required: true
+          schema:
+            $ref: '#/definitions/BatchDefinition'
+          x-go-name: Workflow
       responses:
         "200":
           $ref: '#/responses/BatchJobPostResponse'
@@ -8138,774 +8354,651 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - BatchJobs
+        - BatchJobs
   /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName}:
     get:
       description: Get details on the seldondeployment's batch job
       operationId: GetDeploymentBatchJob
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: JobName identifies a job name
-        in: path
-        name: jobName
-        required: true
-        type: string
-        x-go-name: JobName
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
+          x-go-name: JobName
       responses:
         "200":
           $ref: '#/responses/BatchJobResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - BatchJobs
+        - BatchJobs
   /namespaces/{namespace}/seldondeployments/{name}/driftdetector:
     delete:
       description: Delete the specified Seldon Deployment Drift Detector
       operationId: DeleteDriftDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - DriftDetector
+        - DriftDetector
     get:
       description: Read the specified Seldon Deployment Drift Detector
       operationId: ReadDriftDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/DriftDetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - DriftDetector
+        - DriftDetector
     post:
-      consumes:
-      - application/json
       description: Create the specified Seldon Deployment Drift Detector
       operationId: CreateDriftDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: DriftDetector
-        in: body
-        name: driftDetector
-        required: true
-        schema:
-          $ref: '#/definitions/AlibiDetectorData'
-        x-go-name: DriftDetector
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: DriftDetector
+          in: body
+          name: driftDetector
+          required: true
+          schema:
+            $ref: '#/definitions/AlibiDetectorData'
+          x-go-name: DriftDetector
       responses:
         "200":
           $ref: '#/responses/DriftDetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - DriftDetector
+        - DriftDetector
   /namespaces/{namespace}/seldondeployments/{name}/explain:
     post:
-      consumes:
-      - application/json
       description: Create Seldon Deployment explanation
       operationId: ExplainSeldonDeployment
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Prediction contains predict payload
-        in: body
-        name: explaindata
-        schema:
-          type: object
-        x-go-name: ExplainData
-      produces:
-      - application/json
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Prediction contains predict payload
+          in: body
+          name: explaindata
+          schema:
+            type: object
+          x-go-name: ExplainData
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Explain
+        - Explain
   /namespaces/{namespace}/seldondeployments/{name}/gitdiff:
     get:
       description: Read the git diff
       operationId: ReadSeldonDeploymentGitDiff
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-        x-go-name: Hash
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+          x-go-name: Hash
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/GitDiffResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitlogs:
     get:
       description: Read the git commits
       operationId: ReadSeldonDeploymentGitLogs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/GitLogsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrestore:
     get:
       description: Restore the git commit
       operationId: SeldonDeploymentGitRestore
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-        x-go-name: Hash
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+          x-go-name: Hash
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrevert:
     get:
       description: Revert the git commit
       operationId: SeldonDeploymentGitRevert
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-        x-go-name: Hash
-      - description: Message
-        in: query
-        name: message
-        type: string
-        x-go-name: Message
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+          x-go-name: Hash
+        - description: Message
+          in: query
+          name: message
+          type: string
+          x-go-name: Message
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs:
     get:
       description: List Seldon Deployment load test jobs
       operationId: ListLoadtestSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
     post:
-      consumes:
-      - application/json
-      - multipart/form-data
-      description: Create Seldon Deployment load test
+      description: |-
+        Create Seldon Deployment load test
+        multipart/form-data
       operationId: CreateLoadtestSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Prediction contains predict payload
-        in: formData
-        name: loadFile
-        required: true
-        type: file
-        x-go-name: LoadFile
-      - description: Connections Number provides number of allowed connections
-        in: formData
-        name: connectionsNumber
-        type: string
-        x-go-name: ConnectionsNumber
-      - description: Requests Number provides number of allowed requests
-        in: formData
-        name: requestsNumber
-        type: string
-        x-go-name: RequestsNumber
-      - description: Duration of load test in seconds
-        in: formData
-        name: duration
-        type: string
-        x-go-name: Duration
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Prediction contains predict payload
+          in: formData
+          name: loadFile
+          required: true
+          type: file
+          x-go-name: LoadFile
+        - description: Connections Number provides number of allowed connections
+          in: formData
+          name: connectionsNumber
+          type: string
+          x-go-name: ConnectionsNumber
+        - description: Requests Number provides number of allowed requests
+          in: formData
+          name: requestsNumber
+          type: string
+          x-go-name: RequestsNumber
+        - description: Duration of load test in seconds
+          in: formData
+          name: duration
+          type: string
+          x-go-name: Duration
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName}:
     delete:
       description: Delete Seldon Deployment load test jobs
       operationId: DeleteLoadtestSeldonDeployment
       parameters:
-      - description: JobName identifies a job name
-        in: path
-        name: jobName
-        required: true
-        type: string
-        x-go-name: JobName
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
+          x-go-name: JobName
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/seldondeployments/{name}/metricsserver:
     delete:
       description: Delete the specified Seldon Deployment Metrics Server
       operationId: DeleteMetricsServerSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - MetricsServer
+        - MetricsServer
     get:
       description: Read the specified Seldon Deployment Metrics Server
       operationId: ReadMetricsServerSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MetricsServerResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - MetricsServer
+        - MetricsServer
     post:
-      consumes:
-      - application/json
       description: Create the specified Seldon Deployment Metrics Server
       operationId: CreateMetricsServerSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: MetricsServer
-        in: body
-        name: metricsServer
-        required: true
-        schema:
-          $ref: '#/definitions/AlibiDetectorData'
-        x-go-name: MetricsServer
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: MetricsServer
+          in: body
+          name: metricsServer
+          required: true
+          schema:
+            $ref: '#/definitions/AlibiDetectorData'
+          x-go-name: MetricsServer
       responses:
         "200":
           $ref: '#/responses/MetricsServerResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - MetricsServer
+        - MetricsServer
   /namespaces/{namespace}/seldondeployments/{name}/outlierdetector:
     delete:
       description: Delete the specified Seldon Deployment Outlier Detector
       operationId: DeleteOutlierDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - OutlierDetector
+        - OutlierDetector
     get:
       description: Read the specified Seldon Deployment Outlier Detector
       operationId: ReadOutlierDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/OutlierDetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - OutlierDetector
+        - OutlierDetector
     post:
-      consumes:
-      - application/json
       description: Create the specified Seldon Deployment Outlier Detector
       operationId: CreateOutlierDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: OutlierDetector
-        in: body
-        name: outlierDetector
-        required: true
-        schema:
-          $ref: '#/definitions/AlibiDetectorData'
-        x-go-name: OutlierDetector
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: OutlierDetector
+          in: body
+          name: outlierDetector
+          required: true
+          schema:
+            $ref: '#/definitions/AlibiDetectorData'
+          x-go-name: OutlierDetector
       responses:
         "200":
           $ref: '#/responses/OutlierDetectorResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - OutlierDetector
+        - OutlierDetector
   /namespaces/{namespace}/seldondeployments/{name}/predict:
     post:
-      consumes:
-      - application/json
       description: Create Seldon Deployment prediction
       operationId: PredictSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Prediction
-        in: body
-        name: prediction
-        required: true
-        schema:
-          type: object
-        x-go-name: Prediction
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Prediction
+          in: body
+          name: prediction
+          required: true
+          schema:
+            type: object
+          x-go-name: Prediction
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/seldondeployments/{name}/predictcurl:
     put:
-      consumes:
-      - application/json
       description: Read the specified Seldon Deployment predict curl
       operationId: ReadPredictCurlSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Prediction
-        in: body
-        name: prediction
-        required: true
-        schema:
-          type: object
-        x-go-name: Prediction
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Prediction
+          in: body
+          name: prediction
+          required: true
+          schema:
+            type: object
+          x-go-name: Prediction
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/seldondeployments/{name}/predictfile:
     post:
       consumes:
-      - multipart/form-data
+        - multipart/form-data
       description: Create Seldon Deployment prediction
       operationId: PredictFileSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: PredictionFile
-        in: formData
-        name: predictFile
-        required: true
-        type: file
-        x-go-name: PredictFile
-      produces:
-      - application/json
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: PredictionFile
+          in: formData
+          name: predictFile
+          required: true
+          type: file
+          x-go-name: PredictFile
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/seldondeployments/{name}/predictor/{predictorName}/resources:
     get:
-      consumes:
-      - application/json
       description: list objects of kind resource for Seldon Deployment predictor
       operationId: ListSeldonDeploymentPredictorResources
       parameters:
-      - description: Component differentiates between types of model (e.g. predictor,
-          explainer... etc)
-        in: query
-        name: component
-        type: string
-        x-go-name: Component
-      - description: Endpoint differentiates between versions of model (e.g. default,
-          canary... etc)
-        in: query
-        name: endpoint
-        type: string
-        x-go-name: Endpoint
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Predictor Name identifies a predictor resource
-        in: path
-        name: predictorName
-        required: true
-        type: string
-        x-go-name: PredictorName
-      produces:
-      - application/json
+        - description: Component differentiates between types of model (e.g. predictor, explainer... etc)
+          in: query
+          name: component
+          type: string
+          x-go-name: Component
+        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
+          in: query
+          name: endpoint
+          type: string
+          x-go-name: Endpoint
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Predictor Name identifies a predictor resource
+          in: path
+          name: predictorName
+          required: true
+          type: string
+          x-go-name: PredictorName
       responses:
         "200":
           $ref: '#/responses/ResourceListResponse'
@@ -8917,44 +9010,35 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - KubernetesResources
+        - KubernetesResources
   /namespaces/{namespace}/seldondeployments/{name}/resources:
     get:
-      consumes:
-      - application/json
       description: list objects of kind resource for Seldon Deployment
       operationId: ListSeldonDeploymentResources
       parameters:
-      - description: Component differentiates between types of model (e.g. predictor,
-          explainer... etc)
-        in: query
-        name: component
-        type: string
-        x-go-name: Component
-      - description: Endpoint differentiates between versions of model (e.g. default,
-          canary... etc)
-        in: query
-        name: endpoint
-        type: string
-        x-go-name: Endpoint
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-        x-go-name: Name
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      produces:
-      - application/json
+        - description: Component differentiates between types of model (e.g. predictor, explainer... etc)
+          in: query
+          name: component
+          type: string
+          x-go-name: Component
+        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
+          in: query
+          name: endpoint
+          type: string
+          x-go-name: Endpoint
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
       responses:
         "200":
           $ref: '#/responses/ResourceListResponse'
@@ -8966,73 +9050,258 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - KubernetesResources
+        - KubernetesResources
   /namespaces/{namespace}/seldondeployments/validate:
     get:
-      consumes:
-      - application/json
       description: Validate the given Seldon Deployment
       operationId: ValidateSeldonDeployment
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-        x-go-name: Namespace
-      - description: Seldon Deployment
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/SeldonDeployment'
-        x-go-name: SeldonDeployment
-      produces:
-      - application/json
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Seldon Deployment
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/SeldonDeployment'
+          x-go-name: SeldonDeployment
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
-      schemes:
-      - http
-      - https
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
   /user:
     get:
       description: Read the request user
       operationId: ReadUser
-      produces:
-      - application/json
       responses:
         "200":
           $ref: '#/responses/UserResponse'
-      schemes:
-      - http
-      - https
       tags:
-      - Environment
+        - Environment
   /version:
     get:
       description: Read the version
       operationId: ReadVersion
-      produces:
-      - application/json
       responses:
         "200":
           $ref: '#/responses/VersionResponse'
-      schemes:
-      - http
-      - https
       tags:
-      - Environment
+        - Environment
+  /seldon-deploy/api/v1alpha1/model/metadata:
+    get:
+      summary: List Model Metadata entries.
+      description: List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. For more complex queries where other logical operators like OR, NOT, etc. are needed you can use the `query` parameter. The `query` parameter takes precedence if present.
+      operationId: ModelMetadataService_ListModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataListResponse'
+        "204":
+          description: No Content
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: URI
+          in: query
+          required: false
+          type: string
+        - name: name
+          in: query
+          required: false
+          type: string
+        - name: version
+          in: query
+          required: false
+          type: string
+        - name: implementation
+          in: query
+          required: false
+          type: string
+        - name: taskType
+          in: query
+          required: false
+          type: string
+        - name: modelType
+          in: query
+          required: false
+          type: string
+        - name: query
+          in: query
+          required: false
+          type: string
+        - name: pageSize
+          description: Optional. The maximum number of Folders to return in the response.
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: pageToken
+          description: |-
+            Optional. A pagination token returned from a previous call to `List`
+            that indicates where this listing should continue from.
+          in: query
+          required: false
+          type: string
+      tags:
+        - ModelMetadataService
+    delete:
+      summary: Delete a Model Metadata entry.
+      operationId: ModelMetadataService_DeleteModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataDeleteResponse'
+        "204":
+          description: No Content
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: URI
+          description: The URL-encoded URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+          in: query
+          required: true
+          type: string
+      tags:
+        - ModelMetadataService
+    post:
+      summary: Create a Model Metadata entry.
+      operationId: ModelMetadataService_CreateModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataCreateResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1Model'
+      tags:
+        - ModelMetadataService
+    put:
+      summary: Update a Model Metadata entry.
+      operationId: ModelMetadataService_UpdateModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataUpdateResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1Model'
+      tags:
+        - ModelMetadataService
+  /seldon-deploy/api/v1alpha1/model/metadata/runtime:
+    get:
+      summary: List Runtime Metadata for all deployments associated with a model.
+      operationId: ModelMetadataService_ListRuntimeMetadataForModel
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1RuntimeMetadataListResponse'
+        "204":
+          description: No Content
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: ModelURI
+          in: query
+          required: false
+          type: string
+        - name: DeploymentUID
+          in: query
+          required: false
+          type: string
+        - name: DeploymentName
+          in: query
+          required: false
+          type: string
+        - name: DeploymentNamespace
+          in: query
+          required: false
+          type: string
+        - name: DeploymentStatus
+          in: query
+          required: false
+          type: string
+        - name: PredictorName
+          in: query
+          required: false
+          type: string
+        - name: NodeName
+          in: query
+          required: false
+          type: string
+        - name: pageSize
+          description: Optional. The maximum number of Folders to return in the response.
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: pageToken
+          description: |-
+            Optional. A pagination token returned from a previous call to `List`
+            that indicates where this listing should continue from.
+          in: query
+          required: false
+          type: string
+      tags:
+        - ModelMetadataService
 produces:
-- application/json
+  - application/json
 responses:
   AnalyticsResponse:
     description: Analytics
@@ -9078,7 +9347,7 @@ responses:
     description: Git Logs
     schema:
       items:
-        $ref: '#/definitions/GitCommit'
+        $ref: '#/definitions/AuditLog'
       type: array
   InferenceServiceListResponse:
     description: Inference Service list
@@ -9133,10 +9402,10 @@ responses:
     schema:
       $ref: '#/definitions/VersionInfo'
 schemes:
-- https
+  - https
 security:
-- OAuth2:
-  - '[]'
+  - OAuth2:
+      - '[]'
 securityDefinitions:
   OAuth2:
     flow: password
@@ -9149,27 +9418,27 @@ securityDefinitions:
     type: oauth2
 swagger: "2.0"
 tags:
-- description: Environment APIs for Seldon Deploy
-  name: Environment
-- description: SeldonDeployments APIs for Seldon Deploy
-  name: SeldonDeployments
-- description: InferenceServices APIs for Seldon Deploy
-  name: InferenceServices
-- description: Prediction APIs for Seldon Deploy
-  name: Predict
-- description: Explanation APIs for Seldon Deploy
-  name: Explain
-- description: GitOps APIs for Seldon Deploy
-  name: GitOps
-- description: Loadtest Jobs APIs for Seldon Deploy
-  name: LoadtestJobs
-- description: Batch Jobs APIs for Seldon Deploy
-  name: BatchJobs
-- description: Drift Detector APIs for Seldon Deploy
-  name: DriftDetector
-- description: Outlier Detector APIs for Seldon Deploy
-  name: OutlierDetector
-- description: Metrics Server APIs for Seldon Deploy
-  name: MetricsServer
-- description: KubernetesResources APIs for Seldon Deploy
-  name: KubernetesResources
+  - description: Environment APIs for Seldon Deploy
+    name: Environment
+  - description: SeldonDeployments APIs for Seldon Deploy
+    name: SeldonDeployments
+  - description: InferenceServices APIs for Seldon Deploy
+    name: InferenceServices
+  - description: Prediction APIs for Seldon Deploy
+    name: Predict
+  - description: Explanation APIs for Seldon Deploy
+    name: Explain
+  - description: GitOps APIs for Seldon Deploy
+    name: GitOps
+  - description: Loadtest Jobs APIs for Seldon Deploy
+    name: LoadtestJobs
+  - description: Batch Jobs APIs for Seldon Deploy
+    name: BatchJobs
+  - description: Drift Detector APIs for Seldon Deploy
+    name: DriftDetector
+  - description: Outlier Detector APIs for Seldon Deploy
+    name: OutlierDetector
+  - description: Metrics Server APIs for Seldon Deploy
+    name: MetricsServer
+  - description: KubernetesResources APIs for Seldon Deploy
+    name: KubernetesResources

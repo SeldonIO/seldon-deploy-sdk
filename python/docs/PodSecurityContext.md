@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **run_as_non_root** | **bool** | Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional | [optional] 
 **run_as_user** | **int** | The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. +optional | [optional] 
 **se_linux_options** | [**SELinuxOptions**](SELinuxOptions.md) |  | [optional] 
+**seccomp_profile** | [**SeccompProfile**](SeccompProfile.md) |  | [optional] 
 **supplemental_groups** | **list[int]** | A list of groups applied to the first process run in each container, in addition to the container&#39;s primary GID.  If unspecified, no groups will be added to any container. +optional | [optional] 
 **sysctls** | [**list[Sysctl]**](Sysctl.md) | Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. +optional | [optional] 
 **windows_options** | [**WindowsSecurityContextOptions**](WindowsSecurityContextOptions.md) |  | [optional] 

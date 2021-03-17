@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **read_inference_service_git_logs**
-> list[GitCommit] read_inference_service_git_logs(name, namespace)
+> list[AuditLog] read_inference_service_git_logs(name, namespace)
 
 
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[GitCommit]**](GitCommit.md)
+[**list[AuditLog]**](AuditLog.md)
 
 ### Authorization
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **read_seldon_deployment_git_logs**
-> list[GitCommit] read_seldon_deployment_git_logs(name, namespace)
+> list[AuditLog] read_seldon_deployment_git_logs(name, namespace)
 
 
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[GitCommit]**](GitCommit.md)
+[**list[AuditLog]**](AuditLog.md)
 
 ### Authorization
 

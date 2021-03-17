@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 
-Create Inference Service load test
+Create Inference Service load test multipart/form-data
 
 ### Example
 ```python
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 
 
-Create Seldon Deployment load test
+Create Seldon Deployment load test multipart/form-data
 
 ### Example
 ```python
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

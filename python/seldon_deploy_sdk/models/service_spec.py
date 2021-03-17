@@ -324,7 +324,7 @@ class ServiceSpec(object):
     def publish_not_ready_addresses(self):
         """Gets the publish_not_ready_addresses of this ServiceSpec.  # noqa: E501
 
-        publishNotReadyAddresses, when set to true, indicates that DNS implementations must publish the notReadyAddresses of subsets for the Endpoints associated with the Service. The default value is false. The primary use case for setting this field is to use a StatefulSet's Headless Service to propagate SRV records for its Pods without respect to their readiness for purpose of peer discovery. +optional  # noqa: E501
+        publishNotReadyAddresses indicates that any agent which deals with endpoints for this Service should disregard any indications of ready/not-ready. The primary use case for setting this field is for a StatefulSet's Headless Service to propagate SRV DNS records for its Pods for the purpose of peer discovery. The Kubernetes controllers that generate Endpoints and EndpointSlice resources for Services interpret this to mean that all endpoints are considered \"ready\" even if the Pods themselves are not. Agents which consume only Kubernetes generated endpoints through the Endpoints or EndpointSlice resources can safely assume this behavior. +optional  # noqa: E501
 
         :return: The publish_not_ready_addresses of this ServiceSpec.  # noqa: E501
         :rtype: bool
@@ -335,7 +335,7 @@ class ServiceSpec(object):
     def publish_not_ready_addresses(self, publish_not_ready_addresses):
         """Sets the publish_not_ready_addresses of this ServiceSpec.
 
-        publishNotReadyAddresses, when set to true, indicates that DNS implementations must publish the notReadyAddresses of subsets for the Endpoints associated with the Service. The default value is false. The primary use case for setting this field is to use a StatefulSet's Headless Service to propagate SRV records for its Pods without respect to their readiness for purpose of peer discovery. +optional  # noqa: E501
+        publishNotReadyAddresses indicates that any agent which deals with endpoints for this Service should disregard any indications of ready/not-ready. The primary use case for setting this field is for a StatefulSet's Headless Service to propagate SRV DNS records for its Pods for the purpose of peer discovery. The Kubernetes controllers that generate Endpoints and EndpointSlice resources for Services interpret this to mean that all endpoints are considered \"ready\" even if the Pods themselves are not. Agents which consume only Kubernetes generated endpoints through the Endpoints or EndpointSlice resources can safely assume this behavior. +optional  # noqa: E501
 
         :param publish_not_ready_addresses: The publish_not_ready_addresses of this ServiceSpec.  # noqa: E501
         :type: bool
