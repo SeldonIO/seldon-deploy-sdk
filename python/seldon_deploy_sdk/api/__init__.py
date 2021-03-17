@@ -12,6 +12,7 @@ from seldon_deploy_sdk.api.inference_services_api import InferenceServicesApi
 from seldon_deploy_sdk.api.kubernetes_resources_api import KubernetesResourcesApi
 from seldon_deploy_sdk.api.loadtest_jobs_api import LoadtestJobsApi
 from seldon_deploy_sdk.api.metrics_server_api import MetricsServerApi
+from seldon_deploy_sdk.api.model_metadata_service_api import ModelMetadataServiceApi
 from seldon_deploy_sdk.api.outlier_detector_api import OutlierDetectorApi
 from seldon_deploy_sdk.api.predict_api import PredictApi
 from seldon_deploy_sdk.api.seldon_deployments_api import SeldonDeploymentsApi

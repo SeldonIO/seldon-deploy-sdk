@@ -117,6 +117,11 @@ Class | Method | HTTP request | Description
 *MetricsServerApi* | [**create_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
 *MetricsServerApi* | [**delete_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
 *MetricsServerApi* | [**read_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#read_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/metricsserver | 
+*ModelMetadataServiceApi* | [**model_metadata_service_create_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_create_model_metadata) | **POST** /seldon-deploy/api/v1alpha1/model/metadata | Create a Model Metadata entry.
+*ModelMetadataServiceApi* | [**model_metadata_service_delete_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_delete_model_metadata) | **DELETE** /seldon-deploy/api/v1alpha1/model/metadata | Delete a Model Metadata entry.
+*ModelMetadataServiceApi* | [**model_metadata_service_list_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_list_model_metadata) | **GET** /seldon-deploy/api/v1alpha1/model/metadata | List Model Metadata entries.
+*ModelMetadataServiceApi* | [**model_metadata_service_list_runtime_metadata_for_model**](docs/ModelMetadataServiceApi.md#model_metadata_service_list_runtime_metadata_for_model) | **GET** /seldon-deploy/api/v1alpha1/model/metadata/runtime | List Runtime Metadata for all deployments associated with a model.
+*ModelMetadataServiceApi* | [**model_metadata_service_update_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_update_model_metadata) | **PUT** /seldon-deploy/api/v1alpha1/model/metadata | Update a Model Metadata entry.
 *OutlierDetectorApi* | [**create_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/outlierdetector | 
 *OutlierDetectorApi* | [**create_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/outlierdetector | 
 *OutlierDetectorApi* | [**delete_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservice/{name}/outlierdetector | 
@@ -150,6 +155,7 @@ Class | Method | HTTP request | Description
  - [AlibiExplainerSpec](docs/AlibiExplainerSpec.md)
  - [AlibiExplainerType](docs/AlibiExplainerType.md)
  - [AnalyticsProps](docs/AnalyticsProps.md)
+ - [AuditLog](docs/AuditLog.md)
  - [AzureDataDiskCachingMode](docs/AzureDataDiskCachingMode.md)
  - [AzureDataDiskKind](docs/AzureDataDiskKind.md)
  - [AzureDiskVolumeSource](docs/AzureDiskVolumeSource.md)
@@ -202,6 +208,7 @@ Class | Method | HTTP request | Description
  - [EnvVar](docs/EnvVar.md)
  - [EnvVarSource](docs/EnvVarSource.md)
  - [EphemeralContainer](docs/EphemeralContainer.md)
+ - [EphemeralVolumeSource](docs/EphemeralVolumeSource.md)
  - [Error](docs/Error.md)
  - [ExecAction](docs/ExecAction.md)
  - [Explainer](docs/Explainer.md)
@@ -214,7 +221,6 @@ Class | Method | HTTP request | Description
  - [FlexVolumeSource](docs/FlexVolumeSource.md)
  - [FlockerVolumeSource](docs/FlockerVolumeSource.md)
  - [GCEPersistentDiskVolumeSource](docs/GCEPersistentDiskVolumeSource.md)
- - [GitCommit](docs/GitCommit.md)
  - [GitRepoVolumeSource](docs/GitRepoVolumeSource.md)
  - [GlusterfsVolumeSource](docs/GlusterfsVolumeSource.md)
  - [HPAScalingPolicy](docs/HPAScalingPolicy.md)
@@ -271,7 +277,11 @@ Class | Method | HTTP request | Description
  - [OwnerReference](docs/OwnerReference.md)
  - [Parameter](docs/Parameter.md)
  - [ParmeterType](docs/ParmeterType.md)
+ - [PersistentVolumeAccessMode](docs/PersistentVolumeAccessMode.md)
+ - [PersistentVolumeClaimSpec](docs/PersistentVolumeClaimSpec.md)
+ - [PersistentVolumeClaimTemplate](docs/PersistentVolumeClaimTemplate.md)
  - [PersistentVolumeClaimVolumeSource](docs/PersistentVolumeClaimVolumeSource.md)
+ - [PersistentVolumeMode](docs/PersistentVolumeMode.md)
  - [PhotonPersistentDiskVolumeSource](docs/PhotonPersistentDiskVolumeSource.md)
  - [Pod](docs/Pod.md)
  - [PodAffinity](docs/PodAffinity.md)
@@ -303,6 +313,7 @@ Class | Method | HTTP request | Description
  - [Probe](docs/Probe.md)
  - [ProcMountType](docs/ProcMountType.md)
  - [ProjectedVolumeSource](docs/ProjectedVolumeSource.md)
+ - [ProtobufAny](docs/ProtobufAny.md)
  - [Protocol](docs/Protocol.md)
  - [PullPolicy](docs/PullPolicy.md)
  - [Quantity](docs/Quantity.md)
@@ -315,12 +326,15 @@ Class | Method | HTTP request | Description
  - [ResourceRequirements](docs/ResourceRequirements.md)
  - [RestartPolicy](docs/RestartPolicy.md)
  - [RollingUpdateDeployment](docs/RollingUpdateDeployment.md)
+ - [RpcStatus](docs/RpcStatus.md)
  - [SELinuxOptions](docs/SELinuxOptions.md)
  - [SSL](docs/SSL.md)
  - [ScaleIOVolumeSource](docs/ScaleIOVolumeSource.md)
  - [ScaleTriggers](docs/ScaleTriggers.md)
  - [ScaledObjectAuthRef](docs/ScaledObjectAuthRef.md)
  - [ScalingPolicySelect](docs/ScalingPolicySelect.md)
+ - [SeccompProfile](docs/SeccompProfile.md)
+ - [SeccompProfileType](docs/SeccompProfileType.md)
  - [SecretEnvSource](docs/SecretEnvSource.md)
  - [SecretKeySelector](docs/SecretKeySelector.md)
  - [SecretProjection](docs/SecretProjection.md)
@@ -361,11 +375,20 @@ Class | Method | HTTP request | Description
  - [TransformerSpec](docs/TransformerSpec.md)
  - [Transport](docs/Transport.md)
  - [Type](docs/Type.md)
+ - [TypedLocalObjectReference](docs/TypedLocalObjectReference.md)
  - [UID](docs/UID.md)
  - [URIScheme](docs/URIScheme.md)
  - [URL](docs/URL.md)
  - [UnsatisfiableConstraintAction](docs/UnsatisfiableConstraintAction.md)
  - [UserInfo](docs/UserInfo.md)
+ - [V1DeploymentType](docs/V1DeploymentType.md)
+ - [V1Model](docs/V1Model.md)
+ - [V1ModelMetadataCreateResponse](docs/V1ModelMetadataCreateResponse.md)
+ - [V1ModelMetadataDeleteResponse](docs/V1ModelMetadataDeleteResponse.md)
+ - [V1ModelMetadataListResponse](docs/V1ModelMetadataListResponse.md)
+ - [V1ModelMetadataUpdateResponse](docs/V1ModelMetadataUpdateResponse.md)
+ - [V1RuntimeMetadata](docs/V1RuntimeMetadata.md)
+ - [V1RuntimeMetadataListResponse](docs/V1RuntimeMetadataListResponse.md)
  - [VersionInfo](docs/VersionInfo.md)
  - [Volume](docs/Volume.md)
  - [VolumeDevice](docs/VolumeDevice.md)

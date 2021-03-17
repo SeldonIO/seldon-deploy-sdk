@@ -36,7 +36,7 @@ class LoadtestJobsApi(object):
     def create_loadtest_inference_service(self, name, namespace, load_file, **kwargs):  # noqa: E501
         """create_loadtest_inference_service  # noqa: E501
 
-        Create Inference Service load test  # noqa: E501
+        Create Inference Service load test multipart/form-data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_loadtest_inference_service(name, namespace, load_file, async_req=True)
@@ -63,7 +63,7 @@ class LoadtestJobsApi(object):
     def create_loadtest_inference_service_with_http_info(self, name, namespace, load_file, **kwargs):  # noqa: E501
         """create_loadtest_inference_service  # noqa: E501
 
-        Create Inference Service load test  # noqa: E501
+        Create Inference Service load test multipart/form-data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_loadtest_inference_service_with_http_info(name, namespace, load_file, async_req=True)
@@ -139,7 +139,7 @@ class LoadtestJobsApi(object):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'multipart/form-data'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['OAuth2']  # noqa: E501
@@ -163,7 +163,7 @@ class LoadtestJobsApi(object):
     def create_loadtest_seldon_deployment(self, name, namespace, load_file, **kwargs):  # noqa: E501
         """create_loadtest_seldon_deployment  # noqa: E501
 
-        Create Seldon Deployment load test  # noqa: E501
+        Create Seldon Deployment load test multipart/form-data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_loadtest_seldon_deployment(name, namespace, load_file, async_req=True)
@@ -190,7 +190,7 @@ class LoadtestJobsApi(object):
     def create_loadtest_seldon_deployment_with_http_info(self, name, namespace, load_file, **kwargs):  # noqa: E501
         """create_loadtest_seldon_deployment  # noqa: E501
 
-        Create Seldon Deployment load test  # noqa: E501
+        Create Seldon Deployment load test multipart/form-data  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_loadtest_seldon_deployment_with_http_info(name, namespace, load_file, async_req=True)
@@ -266,7 +266,7 @@ class LoadtestJobsApi(object):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'multipart/form-data'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['OAuth2']  # noqa: E501

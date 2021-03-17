@@ -380,7 +380,7 @@ class PodTemplateSpec(object):
     def namespace(self):
         """Gets the namespace of this PodTemplateSpec.  # noqa: E501
 
-        Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces +optional  # noqa: E501
+        Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces +optional  # noqa: E501
 
         :return: The namespace of this PodTemplateSpec.  # noqa: E501
         :rtype: str
@@ -391,7 +391,7 @@ class PodTemplateSpec(object):
     def namespace(self, namespace):
         """Sets the namespace of this PodTemplateSpec.
 
-        Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces +optional  # noqa: E501
+        Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces +optional  # noqa: E501
 
         :param namespace: The namespace of this PodTemplateSpec.  # noqa: E501
         :type: str

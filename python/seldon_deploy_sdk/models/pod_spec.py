@@ -59,6 +59,7 @@ class PodSpec(object):
         'security_context': 'PodSecurityContext',
         'service_account': 'str',
         'service_account_name': 'str',
+        'set_hostname_as_fqdn': 'bool',
         'share_process_namespace': 'bool',
         'subdomain': 'str',
         'termination_grace_period_seconds': 'int',
@@ -96,6 +97,7 @@ class PodSpec(object):
         'security_context': 'securityContext',
         'service_account': 'serviceAccount',
         'service_account_name': 'serviceAccountName',
+        'set_hostname_as_fqdn': 'setHostnameAsFQDN',
         'share_process_namespace': 'shareProcessNamespace',
         'subdomain': 'subdomain',
         'termination_grace_period_seconds': 'terminationGracePeriodSeconds',
@@ -104,7 +106,7 @@ class PodSpec(object):
         'volumes': 'volumes'
     }
 
-    def __init__(self, active_deadline_seconds=None, affinity=None, automount_service_account_token=None, containers=None, dns_config=None, dns_policy=None, enable_service_links=None, ephemeral_containers=None, host_aliases=None, host_ipc=None, host_network=None, host_pid=None, hostname=None, image_pull_secrets=None, init_containers=None, node_name=None, node_selector=None, overhead=None, preemption_policy=None, priority=None, priority_class_name=None, readiness_gates=None, restart_policy=None, runtime_class_name=None, scheduler_name=None, security_context=None, service_account=None, service_account_name=None, share_process_namespace=None, subdomain=None, termination_grace_period_seconds=None, tolerations=None, topology_spread_constraints=None, volumes=None):  # noqa: E501
+    def __init__(self, active_deadline_seconds=None, affinity=None, automount_service_account_token=None, containers=None, dns_config=None, dns_policy=None, enable_service_links=None, ephemeral_containers=None, host_aliases=None, host_ipc=None, host_network=None, host_pid=None, hostname=None, image_pull_secrets=None, init_containers=None, node_name=None, node_selector=None, overhead=None, preemption_policy=None, priority=None, priority_class_name=None, readiness_gates=None, restart_policy=None, runtime_class_name=None, scheduler_name=None, security_context=None, service_account=None, service_account_name=None, set_hostname_as_fqdn=None, share_process_namespace=None, subdomain=None, termination_grace_period_seconds=None, tolerations=None, topology_spread_constraints=None, volumes=None):  # noqa: E501
         """PodSpec - a model defined in Swagger"""  # noqa: E501
 
         self._active_deadline_seconds = None
@@ -135,6 +137,7 @@ class PodSpec(object):
         self._security_context = None
         self._service_account = None
         self._service_account_name = None
+        self._set_hostname_as_fqdn = None
         self._share_process_namespace = None
         self._subdomain = None
         self._termination_grace_period_seconds = None
@@ -199,6 +202,8 @@ class PodSpec(object):
             self.service_account = service_account
         if service_account_name is not None:
             self.service_account_name = service_account_name
+        if set_hostname_as_fqdn is not None:
+            self.set_hostname_as_fqdn = set_hostname_as_fqdn
         if share_process_namespace is not None:
             self.share_process_namespace = share_process_namespace
         if subdomain is not None:
@@ -843,6 +848,29 @@ class PodSpec(object):
         self._service_account_name = service_account_name
 
     @property
+    def set_hostname_as_fqdn(self):
+        """Gets the set_hostname_as_fqdn of this PodSpec.  # noqa: E501
+
+        If true the pod's hostname will be configured as the pod's FQDN, rather than the leaf name (the default). In Linux containers, this means setting the FQDN in the hostname field of the kernel (the nodename field of struct utsname). In Windows containers, this means setting the registry value of hostname for the registry key HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip\\\\Parameters to FQDN. If a pod does not have FQDN, this has no effect. Default to false. +optional  # noqa: E501
+
+        :return: The set_hostname_as_fqdn of this PodSpec.  # noqa: E501
+        :rtype: bool
+        """
+        return self._set_hostname_as_fqdn
+
+    @set_hostname_as_fqdn.setter
+    def set_hostname_as_fqdn(self, set_hostname_as_fqdn):
+        """Sets the set_hostname_as_fqdn of this PodSpec.
+
+        If true the pod's hostname will be configured as the pod's FQDN, rather than the leaf name (the default). In Linux containers, this means setting the FQDN in the hostname field of the kernel (the nodename field of struct utsname). In Windows containers, this means setting the registry value of hostname for the registry key HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip\\\\Parameters to FQDN. If a pod does not have FQDN, this has no effect. Default to false. +optional  # noqa: E501
+
+        :param set_hostname_as_fqdn: The set_hostname_as_fqdn of this PodSpec.  # noqa: E501
+        :type: bool
+        """
+
+        self._set_hostname_as_fqdn = set_hostname_as_fqdn
+
+    @property
     def share_process_namespace(self):
         """Gets the share_process_namespace of this PodSpec.  # noqa: E501
 
@@ -938,7 +966,7 @@ class PodSpec(object):
     def topology_spread_constraints(self):
         """Gets the topology_spread_constraints of this PodSpec.  # noqa: E501
 
-        TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. This field is only honored by clusters that enable the EvenPodsSpread feature. All topologySpreadConstraints are ANDed. +optional +patchMergeKey=topologyKey +patchStrategy=merge +listType=map +listMapKey=topologyKey +listMapKey=whenUnsatisfiable  # noqa: E501
+        TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints are ANDed. +optional +patchMergeKey=topologyKey +patchStrategy=merge +listType=map +listMapKey=topologyKey +listMapKey=whenUnsatisfiable  # noqa: E501
 
         :return: The topology_spread_constraints of this PodSpec.  # noqa: E501
         :rtype: list[TopologySpreadConstraint]
@@ -949,7 +977,7 @@ class PodSpec(object):
     def topology_spread_constraints(self, topology_spread_constraints):
         """Sets the topology_spread_constraints of this PodSpec.
 
-        TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. This field is only honored by clusters that enable the EvenPodsSpread feature. All topologySpreadConstraints are ANDed. +optional +patchMergeKey=topologyKey +patchStrategy=merge +listType=map +listMapKey=topologyKey +listMapKey=whenUnsatisfiable  # noqa: E501
+        TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints are ANDed. +optional +patchMergeKey=topologyKey +patchStrategy=merge +listType=map +listMapKey=topologyKey +listMapKey=whenUnsatisfiable  # noqa: E501
 
         :param topology_spread_constraints: The topology_spread_constraints of this PodSpec.  # noqa: E501
         :type: list[TopologySpreadConstraint]

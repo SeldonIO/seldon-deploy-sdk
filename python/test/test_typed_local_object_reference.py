@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.git_commit import GitCommit  # noqa: E501
+from seldon_deploy_sdk.models.typed_local_object_reference import TypedLocalObjectReference  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestGitCommit(unittest.TestCase):
-    """GitCommit unit test stubs"""
+class TestTypedLocalObjectReference(unittest.TestCase):
+    """TypedLocalObjectReference unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestGitCommit(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testGitCommit(self):
-        """Test GitCommit"""
+    def testTypedLocalObjectReference(self):
+        """Test TypedLocalObjectReference"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.git_commit.GitCommit()  # noqa: E501
+        # model = seldon_deploy_sdk.models.typed_local_object_reference.TypedLocalObjectReference()  # noqa: E501
         pass
 
 

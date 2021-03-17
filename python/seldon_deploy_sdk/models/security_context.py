@@ -40,6 +40,7 @@ class SecurityContext(object):
         'run_as_non_root': 'bool',
         'run_as_user': 'int',
         'se_linux_options': 'SELinuxOptions',
+        'seccomp_profile': 'SeccompProfile',
         'windows_options': 'WindowsSecurityContextOptions'
     }
 
@@ -53,10 +54,11 @@ class SecurityContext(object):
         'run_as_non_root': 'runAsNonRoot',
         'run_as_user': 'runAsUser',
         'se_linux_options': 'seLinuxOptions',
+        'seccomp_profile': 'seccompProfile',
         'windows_options': 'windowsOptions'
     }
 
-    def __init__(self, allow_privilege_escalation=None, capabilities=None, privileged=None, proc_mount=None, read_only_root_filesystem=None, run_as_group=None, run_as_non_root=None, run_as_user=None, se_linux_options=None, windows_options=None):  # noqa: E501
+    def __init__(self, allow_privilege_escalation=None, capabilities=None, privileged=None, proc_mount=None, read_only_root_filesystem=None, run_as_group=None, run_as_non_root=None, run_as_user=None, se_linux_options=None, seccomp_profile=None, windows_options=None):  # noqa: E501
         """SecurityContext - a model defined in Swagger"""  # noqa: E501
 
         self._allow_privilege_escalation = None
@@ -68,6 +70,7 @@ class SecurityContext(object):
         self._run_as_non_root = None
         self._run_as_user = None
         self._se_linux_options = None
+        self._seccomp_profile = None
         self._windows_options = None
         self.discriminator = None
 
@@ -89,6 +92,8 @@ class SecurityContext(object):
             self.run_as_user = run_as_user
         if se_linux_options is not None:
             self.se_linux_options = se_linux_options
+        if seccomp_profile is not None:
+            self.seccomp_profile = seccomp_profile
         if windows_options is not None:
             self.windows_options = windows_options
 
@@ -292,6 +297,27 @@ class SecurityContext(object):
         """
 
         self._se_linux_options = se_linux_options
+
+    @property
+    def seccomp_profile(self):
+        """Gets the seccomp_profile of this SecurityContext.  # noqa: E501
+
+
+        :return: The seccomp_profile of this SecurityContext.  # noqa: E501
+        :rtype: SeccompProfile
+        """
+        return self._seccomp_profile
+
+    @seccomp_profile.setter
+    def seccomp_profile(self, seccomp_profile):
+        """Sets the seccomp_profile of this SecurityContext.
+
+
+        :param seccomp_profile: The seccomp_profile of this SecurityContext.  # noqa: E501
+        :type: SeccompProfile
+        """
+
+        self._seccomp_profile = seccomp_profile
 
     @property
     def windows_options(self):

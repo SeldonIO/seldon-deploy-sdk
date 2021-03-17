@@ -40,6 +40,7 @@ class Volume(object):
         'csi': 'CSIVolumeSource',
         'downward_api': 'DownwardAPIVolumeSource',
         'empty_dir': 'EmptyDirVolumeSource',
+        'ephemeral': 'EphemeralVolumeSource',
         'fc': 'FCVolumeSource',
         'flex_volume': 'FlexVolumeSource',
         'flocker': 'FlockerVolumeSource',
@@ -72,6 +73,7 @@ class Volume(object):
         'csi': 'csi',
         'downward_api': 'downwardAPI',
         'empty_dir': 'emptyDir',
+        'ephemeral': 'ephemeral',
         'fc': 'fc',
         'flex_volume': 'flexVolume',
         'flocker': 'flocker',
@@ -94,7 +96,7 @@ class Volume(object):
         'vsphere_volume': 'vsphereVolume'
     }
 
-    def __init__(self, aws_elastic_block_store=None, azure_disk=None, azure_file=None, cephfs=None, cinder=None, config_map=None, csi=None, downward_api=None, empty_dir=None, fc=None, flex_volume=None, flocker=None, gce_persistent_disk=None, git_repo=None, glusterfs=None, host_path=None, iscsi=None, name=None, nfs=None, persistent_volume_claim=None, photon_persistent_disk=None, portworx_volume=None, projected=None, quobyte=None, rbd=None, scale_io=None, secret=None, storageos=None, vsphere_volume=None):  # noqa: E501
+    def __init__(self, aws_elastic_block_store=None, azure_disk=None, azure_file=None, cephfs=None, cinder=None, config_map=None, csi=None, downward_api=None, empty_dir=None, ephemeral=None, fc=None, flex_volume=None, flocker=None, gce_persistent_disk=None, git_repo=None, glusterfs=None, host_path=None, iscsi=None, name=None, nfs=None, persistent_volume_claim=None, photon_persistent_disk=None, portworx_volume=None, projected=None, quobyte=None, rbd=None, scale_io=None, secret=None, storageos=None, vsphere_volume=None):  # noqa: E501
         """Volume - a model defined in Swagger"""  # noqa: E501
 
         self._aws_elastic_block_store = None
@@ -106,6 +108,7 @@ class Volume(object):
         self._csi = None
         self._downward_api = None
         self._empty_dir = None
+        self._ephemeral = None
         self._fc = None
         self._flex_volume = None
         self._flocker = None
@@ -146,6 +149,8 @@ class Volume(object):
             self.downward_api = downward_api
         if empty_dir is not None:
             self.empty_dir = empty_dir
+        if ephemeral is not None:
+            self.ephemeral = ephemeral
         if fc is not None:
             self.fc = fc
         if flex_volume is not None:
@@ -375,6 +380,27 @@ class Volume(object):
         """
 
         self._empty_dir = empty_dir
+
+    @property
+    def ephemeral(self):
+        """Gets the ephemeral of this Volume.  # noqa: E501
+
+
+        :return: The ephemeral of this Volume.  # noqa: E501
+        :rtype: EphemeralVolumeSource
+        """
+        return self._ephemeral
+
+    @ephemeral.setter
+    def ephemeral(self, ephemeral):
+        """Sets the ephemeral of this Volume.
+
+
+        :param ephemeral: The ephemeral of this Volume.  # noqa: E501
+        :type: EphemeralVolumeSource
+        """
+
+        self._ephemeral = ephemeral
 
     @property
     def fc(self):

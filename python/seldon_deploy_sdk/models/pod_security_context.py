@@ -37,6 +37,7 @@ class PodSecurityContext(object):
         'run_as_non_root': 'bool',
         'run_as_user': 'int',
         'se_linux_options': 'SELinuxOptions',
+        'seccomp_profile': 'SeccompProfile',
         'supplemental_groups': 'list[int]',
         'sysctls': 'list[Sysctl]',
         'windows_options': 'WindowsSecurityContextOptions'
@@ -49,12 +50,13 @@ class PodSecurityContext(object):
         'run_as_non_root': 'runAsNonRoot',
         'run_as_user': 'runAsUser',
         'se_linux_options': 'seLinuxOptions',
+        'seccomp_profile': 'seccompProfile',
         'supplemental_groups': 'supplementalGroups',
         'sysctls': 'sysctls',
         'windows_options': 'windowsOptions'
     }
 
-    def __init__(self, fs_group=None, fs_group_change_policy=None, run_as_group=None, run_as_non_root=None, run_as_user=None, se_linux_options=None, supplemental_groups=None, sysctls=None, windows_options=None):  # noqa: E501
+    def __init__(self, fs_group=None, fs_group_change_policy=None, run_as_group=None, run_as_non_root=None, run_as_user=None, se_linux_options=None, seccomp_profile=None, supplemental_groups=None, sysctls=None, windows_options=None):  # noqa: E501
         """PodSecurityContext - a model defined in Swagger"""  # noqa: E501
 
         self._fs_group = None
@@ -63,6 +65,7 @@ class PodSecurityContext(object):
         self._run_as_non_root = None
         self._run_as_user = None
         self._se_linux_options = None
+        self._seccomp_profile = None
         self._supplemental_groups = None
         self._sysctls = None
         self._windows_options = None
@@ -80,6 +83,8 @@ class PodSecurityContext(object):
             self.run_as_user = run_as_user
         if se_linux_options is not None:
             self.se_linux_options = se_linux_options
+        if seccomp_profile is not None:
+            self.seccomp_profile = seccomp_profile
         if supplemental_groups is not None:
             self.supplemental_groups = supplemental_groups
         if sysctls is not None:
@@ -220,6 +225,27 @@ class PodSecurityContext(object):
         """
 
         self._se_linux_options = se_linux_options
+
+    @property
+    def seccomp_profile(self):
+        """Gets the seccomp_profile of this PodSecurityContext.  # noqa: E501
+
+
+        :return: The seccomp_profile of this PodSecurityContext.  # noqa: E501
+        :rtype: SeccompProfile
+        """
+        return self._seccomp_profile
+
+    @seccomp_profile.setter
+    def seccomp_profile(self, seccomp_profile):
+        """Sets the seccomp_profile of this PodSecurityContext.
+
+
+        :param seccomp_profile: The seccomp_profile of this PodSecurityContext.  # noqa: E501
+        :type: SeccompProfile
+        """
+
+        self._seccomp_profile = seccomp_profile
 
     @property
     def supplemental_groups(self):

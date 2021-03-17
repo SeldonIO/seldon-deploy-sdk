@@ -1,5 +1,5 @@
 Authlib
-0.15.2
+0.15.3
 BSD License
 BSD 3-Clause License
 
@@ -33,7 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 certifi
-2020.11.8
+2020.12.5
 Mozilla Public License 2.0 (MPL 2.0)
 This packge contains a modified version of ca-bundle.crt:
 
@@ -59,7 +59,7 @@ one at http://mozilla.org/MPL/2.0/.
 
 
 cffi
-1.14.4
+1.14.5
 MIT License
 
 Except when otherwise stated (look for LICENSE files in directories or
@@ -90,14 +90,14 @@ documentation is licensed as follows:
 
 
 cryptography
-3.2.1
+3.4.6
 Apache Software License, BSD License
 This software is made available under the terms of *either* of the licenses
 found in LICENSE.APACHE or LICENSE.BSD. Contributions to cryptography are made
 under the terms of *both* these licenses.
 
-The code used in the OpenSSL locking callback and OS random engine is derived
-from CPython, and is licensed under the terms of the PSF License Agreement.
+The code used in the OS random engine is derived from CPython, and is licensed
+under the terms of the PSF License Agreement.
 
 
 pycparser
@@ -219,7 +219,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 urllib3
-1.26.2
+1.26.4
 MIT License
 MIT License
 
