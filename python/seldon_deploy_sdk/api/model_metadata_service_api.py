@@ -243,6 +243,7 @@ class ModelMetadataServiceApi(object):
         :param str implementation:
         :param str task_type:
         :param str model_type:
+        :param dict tags:
         :param str query:
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
@@ -273,6 +274,7 @@ class ModelMetadataServiceApi(object):
         :param str implementation:
         :param str task_type:
         :param str model_type:
+        :param dict tags:
         :param str query:
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
@@ -281,7 +283,7 @@ class ModelMetadataServiceApi(object):
                  returns the request thread.
         """
 
-        all_params = ['uri', 'name', 'version', 'implementation', 'task_type', 'model_type', 'query', 'page_size', 'page_token']  # noqa: E501
+        all_params = ['uri', 'name', 'version', 'implementation', 'task_type', 'model_type', 'query', 'page_size', 'page_token', "tags"]  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -320,6 +322,9 @@ class ModelMetadataServiceApi(object):
             query_params.append(('pageSize', params['page_size']))  # noqa: E501
         if 'page_token' in params:
             query_params.append(('pageToken', params['page_token']))  # noqa: E501
+        if 'tags' in params:
+            for key, val in params["tags"].items():
+                query_params.append((f"tags[{key}]", val))
 
         header_params = {}
 
