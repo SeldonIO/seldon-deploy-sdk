@@ -138,13 +138,14 @@ version = 'version_example' # str |  (optional)
 implementation = 'implementation_example' # str |  (optional)
 task_type = 'task_type_example' # str |  (optional)
 model_type = 'model_type_example' # str |  (optional)
+tags = {"tag_key_example": "tag_value_example"} # dict (optional)
 query = 'query_example' # str |  (optional)
 page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
 
 try:
     # List Model Metadata entries.
-    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, implementation=implementation, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token)
+    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, implementation=implementation, task_type=task_type, model_type=model_type, tags=tags, query=query, page_size=page_size, page_token=page_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_model_metadata: %s\n" % e)
@@ -160,6 +161,7 @@ Name | Type | Description  | Notes
  **implementation** | **str**|  | [optional] 
  **task_type** | **str**|  | [optional] 
  **model_type** | **str**|  | [optional] 
+ **tags** | **dict**|  | [optional]
  **query** | **str**|  | [optional] 
  **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 

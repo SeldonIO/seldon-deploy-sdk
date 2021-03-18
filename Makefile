@@ -4,7 +4,7 @@ CURRENT_GID := $(shell id -g)
 
 .PHONY: python
 
-python: 
+python:
 	rm -rf python/*
 	docker run -it --rm \
 		-v ${PWD}:/local \
@@ -24,3 +24,4 @@ python:
 	mkdir python/licenses
 	make -C python licenses
 
+	git apply templates/python/metadata_tags.patch
