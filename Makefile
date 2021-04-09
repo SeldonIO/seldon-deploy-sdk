@@ -24,4 +24,4 @@ python:
 	mkdir python/licenses
 	make -C python licenses
 
-	#git apply templates/python/metadata_tags.patch
+	git apply templates/python/metadata_tags.patch

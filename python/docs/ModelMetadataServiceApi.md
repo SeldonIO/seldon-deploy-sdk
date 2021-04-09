@@ -138,6 +138,8 @@ version = 'version_example' # str |  (optional)
 implementation = 'UNKNOWN' # str |  (optional) (default to UNKNOWN)
 task_type = 'task_type_example' # str |  (optional)
 model_type = 'model_type_example' # str |  (optional)
+tags = {"tag_key_example": "tag_value_example"} # dict (optional)
+metrics = {"metric_key_example": 123} # dict (optional)
 query = 'query_example' # str |  (optional)
 page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
@@ -145,7 +147,7 @@ list_mask = 'list_mask_example' # str | Optional. Can be used to specify which f
 
 try:
     # List Model Metadata entries.
-    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, implementation=implementation, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask)
+    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, implementation=implementation, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_model_metadata: %s\n" % e)
@@ -160,7 +162,9 @@ Name | Type | Description  | Notes
  **version** | **str**|  | [optional] 
  **implementation** | **str**|  | [optional] [default to UNKNOWN]
  **task_type** | **str**|  | [optional] 
- **model_type** | **str**|  | [optional] 
+ **model_type** | **str**|  | [optional]
+ **tags** | **dict**|  | [optional]
+ **metrics** | **dict**|  | [optional]
  **query** | **str**|  | [optional] 
  **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
