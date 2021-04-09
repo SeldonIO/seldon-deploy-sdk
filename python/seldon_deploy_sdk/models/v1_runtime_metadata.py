@@ -37,10 +37,11 @@ class V1RuntimeMetadata(object):
         'deployment_kubernetes_uid': 'str',
         'predictor_name': 'str',
         'node_name': 'str',
-        'deployment_status': 'str',
+        'deployment_status': 'V1DeploymentStatus',
         'deployment_type': 'V1DeploymentType',
         'traffic': 'str',
-        'shadow': 'bool'
+        'shadow': 'bool',
+        'creation_time': 'datetime'
     }
 
     attribute_map = {
@@ -53,10 +54,11 @@ class V1RuntimeMetadata(object):
         'deployment_status': 'deploymentStatus',
         'deployment_type': 'deploymentType',
         'traffic': 'traffic',
-        'shadow': 'shadow'
+        'shadow': 'shadow',
+        'creation_time': 'creationTime'
     }
 
-    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None):  # noqa: E501
+    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None, creation_time=None):  # noqa: E501
         """V1RuntimeMetadata - a model defined in Swagger"""  # noqa: E501
 
         self._model_uri = None
@@ -69,6 +71,7 @@ class V1RuntimeMetadata(object):
         self._deployment_type = None
         self._traffic = None
         self._shadow = None
+        self._creation_time = None
         self.discriminator = None
 
         if model_uri is not None:
@@ -91,6 +94,8 @@ class V1RuntimeMetadata(object):
             self.traffic = traffic
         if shadow is not None:
             self.shadow = shadow
+        if creation_time is not None:
+            self.creation_time = creation_time
 
     @property
     def model_uri(self):
@@ -237,7 +242,7 @@ class V1RuntimeMetadata(object):
         The status of the Kubernetes deployment associated with a model.  # noqa: E501
 
         :return: The deployment_status of this V1RuntimeMetadata.  # noqa: E501
-        :rtype: str
+        :rtype: V1DeploymentStatus
         """
         return self._deployment_status
 
@@ -248,7 +253,7 @@ class V1RuntimeMetadata(object):
         The status of the Kubernetes deployment associated with a model.  # noqa: E501
 
         :param deployment_status: The deployment_status of this V1RuntimeMetadata.  # noqa: E501
-        :type: str
+        :type: V1DeploymentStatus
         """
 
         self._deployment_status = deployment_status
@@ -321,6 +326,29 @@ class V1RuntimeMetadata(object):
         """
 
         self._shadow = shadow
+
+    @property
+    def creation_time(self):
+        """Gets the creation_time of this V1RuntimeMetadata.  # noqa: E501
+
+        The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/  # noqa: E501
+
+        :return: The creation_time of this V1RuntimeMetadata.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._creation_time
+
+    @creation_time.setter
+    def creation_time(self, creation_time):
+        """Sets the creation_time of this V1RuntimeMetadata.
+
+        The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/  # noqa: E501
+
+        :param creation_time: The creation_time of this V1RuntimeMetadata.  # noqa: E501
+        :type: datetime
+        """
+
+        self._creation_time = creation_time
 
     def to_dict(self):
         """Returns the model properties as a dict"""

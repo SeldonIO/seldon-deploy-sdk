@@ -34,9 +34,11 @@ class V1Model(object):
         'uri': 'str',
         'name': 'str',
         'version': 'str',
-        'implementation': 'str',
+        'implementation': 'V1ModelImplementation',
         'task_type': 'str',
-        'tags': 'dict(str, str)'
+        'tags': 'dict(str, str)',
+        'metrics': 'dict(str, float)',
+        'creation_time': 'datetime'
     }
 
     attribute_map = {
@@ -45,10 +47,12 @@ class V1Model(object):
         'version': 'version',
         'implementation': 'implementation',
         'task_type': 'taskType',
-        'tags': 'tags'
+        'tags': 'tags',
+        'metrics': 'metrics',
+        'creation_time': 'creationTime'
     }
 
-    def __init__(self, uri=None, name=None, version='"v0.0.1"', implementation=None, task_type=None, tags=None):  # noqa: E501
+    def __init__(self, uri=None, name=None, version='"v0.0.1"', implementation=None, task_type=None, tags=None, metrics=None, creation_time=None):  # noqa: E501
         """V1Model - a model defined in Swagger"""  # noqa: E501
 
         self._uri = None
@@ -57,6 +61,8 @@ class V1Model(object):
         self._implementation = None
         self._task_type = None
         self._tags = None
+        self._metrics = None
+        self._creation_time = None
         self.discriminator = None
 
         self.uri = uri
@@ -70,12 +76,16 @@ class V1Model(object):
             self.task_type = task_type
         if tags is not None:
             self.tags = tags
+        if metrics is not None:
+            self.metrics = metrics
+        if creation_time is not None:
+            self.creation_time = creation_time
 
     @property
     def uri(self):
         """Gets the uri of this V1Model.  # noqa: E501
 
-        The URI for the storage bucket containing the model, or the URI to the docker image for custom models.  # noqa: E501
+        The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.  # noqa: E501
 
         :return: The uri of this V1Model.  # noqa: E501
         :rtype: str
@@ -86,7 +96,7 @@ class V1Model(object):
     def uri(self, uri):
         """Sets the uri of this V1Model.
 
-        The URI for the storage bucket containing the model, or the URI to the docker image for custom models.  # noqa: E501
+        The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.  # noqa: E501
 
         :param uri: The uri of this V1Model.  # noqa: E501
         :type: str
@@ -100,7 +110,7 @@ class V1Model(object):
     def name(self):
         """Gets the name of this V1Model.  # noqa: E501
 
-        The name of the model.  # noqa: E501
+        The name of the model. It must not exceed 200 characters.  # noqa: E501
 
         :return: The name of this V1Model.  # noqa: E501
         :rtype: str
@@ -111,7 +121,7 @@ class V1Model(object):
     def name(self, name):
         """Sets the name of this V1Model.
 
-        The name of the model.  # noqa: E501
+        The name of the model. It must not exceed 200 characters.  # noqa: E501
 
         :param name: The name of this V1Model.  # noqa: E501
         :type: str
@@ -123,7 +133,7 @@ class V1Model(object):
     def version(self):
         """Gets the version of this V1Model.  # noqa: E501
 
-        The version of the model.  # noqa: E501
+        The version of the model. It must not exceed 50 characters.  # noqa: E501
 
         :return: The version of this V1Model.  # noqa: E501
         :rtype: str
@@ -134,7 +144,7 @@ class V1Model(object):
     def version(self, version):
         """Sets the version of this V1Model.
 
-        The version of the model.  # noqa: E501
+        The version of the model. It must not exceed 50 characters.  # noqa: E501
 
         :param version: The version of this V1Model.  # noqa: E501
         :type: str
@@ -149,7 +159,7 @@ class V1Model(object):
         The implementation used for serving the model.  # noqa: E501
 
         :return: The implementation of this V1Model.  # noqa: E501
-        :rtype: str
+        :rtype: V1ModelImplementation
         """
         return self._implementation
 
@@ -160,7 +170,7 @@ class V1Model(object):
         The implementation used for serving the model.  # noqa: E501
 
         :param implementation: The implementation of this V1Model.  # noqa: E501
-        :type: str
+        :type: V1ModelImplementation
         """
 
         self._implementation = implementation
@@ -169,7 +179,7 @@ class V1Model(object):
     def task_type(self):
         """Gets the task_type of this V1Model.  # noqa: E501
 
-        The task type of the model.  # noqa: E501
+        The task type of the model. It must not exceed 50 characters.  # noqa: E501
 
         :return: The task_type of this V1Model.  # noqa: E501
         :rtype: str
@@ -180,7 +190,7 @@ class V1Model(object):
     def task_type(self, task_type):
         """Sets the task_type of this V1Model.
 
-        The task type of the model.  # noqa: E501
+        The task type of the model. It must not exceed 50 characters.  # noqa: E501
 
         :param task_type: The task_type of this V1Model.  # noqa: E501
         :type: str
@@ -192,7 +202,7 @@ class V1Model(object):
     def tags(self):
         """Gets the tags of this V1Model.  # noqa: E501
 
-        Key-value pairs of arbitrary metadata associated with the model  # noqa: E501
+        Key-value pairs of arbitrary metadata associated with the model. Each key and value must not exceed 100 and 500 characters respectively.  # noqa: E501
 
         :return: The tags of this V1Model.  # noqa: E501
         :rtype: dict(str, str)
@@ -203,13 +213,59 @@ class V1Model(object):
     def tags(self, tags):
         """Sets the tags of this V1Model.
 
-        Key-value pairs of arbitrary metadata associated with the model  # noqa: E501
+        Key-value pairs of arbitrary metadata associated with the model. Each key and value must not exceed 100 and 500 characters respectively.  # noqa: E501
 
         :param tags: The tags of this V1Model.  # noqa: E501
         :type: dict(str, str)
         """
 
         self._tags = tags
+
+    @property
+    def metrics(self):
+        """Gets the metrics of this V1Model.  # noqa: E501
+
+        Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters.  # noqa: E501
+
+        :return: The metrics of this V1Model.  # noqa: E501
+        :rtype: dict(str, float)
+        """
+        return self._metrics
+
+    @metrics.setter
+    def metrics(self, metrics):
+        """Sets the metrics of this V1Model.
+
+        Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters.  # noqa: E501
+
+        :param metrics: The metrics of this V1Model.  # noqa: E501
+        :type: dict(str, float)
+        """
+
+        self._metrics = metrics
+
+    @property
+    def creation_time(self):
+        """Gets the creation_time of this V1Model.  # noqa: E501
+
+        The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/  # noqa: E501
+
+        :return: The creation_time of this V1Model.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._creation_time
+
+    @creation_time.setter
+    def creation_time(self, creation_time):
+        """Sets the creation_time of this V1Model.
+
+        The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/  # noqa: E501
+
+        :param creation_time: The creation_time of this V1Model.  # noqa: E501
+        :type: datetime
+        """
+
+        self._creation_time = creation_time
 
     def to_dict(self):
         """Returns the model properties as a dict"""

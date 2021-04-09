@@ -40,7 +40,7 @@ class Configuration(object):
             return
 
         # Default Base url
-        self.host = "https://X.X.X.X/seldon-deploy/api/v1alpha1"
+        self.host = "http://X.X.X.X/seldon-deploy/api/v1alpha1"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 

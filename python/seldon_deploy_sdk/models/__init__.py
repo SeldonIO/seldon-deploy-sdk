@@ -100,6 +100,7 @@ from seldon_deploy_sdk.models.hpa_scaling_rules import HPAScalingRules
 from seldon_deploy_sdk.models.http_get_action import HTTPGetAction
 from seldon_deploy_sdk.models.http_header import HTTPHeader
 from seldon_deploy_sdk.models.handler import Handler
+from seldon_deploy_sdk.models.health_check_info import HealthCheckInfo
 from seldon_deploy_sdk.models.horizontal_pod_autoscaler_behavior import HorizontalPodAutoscalerBehavior
 from seldon_deploy_sdk.models.horizontal_pod_autoscaler_config import HorizontalPodAutoscalerConfig
 from seldon_deploy_sdk.models.host_alias import HostAlias
@@ -252,8 +253,10 @@ from seldon_deploy_sdk.models.uri_scheme import URIScheme
 from seldon_deploy_sdk.models.url import URL
 from seldon_deploy_sdk.models.unsatisfiable_constraint_action import UnsatisfiableConstraintAction
 from seldon_deploy_sdk.models.user_info import UserInfo
+from seldon_deploy_sdk.models.v1_deployment_status import V1DeploymentStatus
 from seldon_deploy_sdk.models.v1_deployment_type import V1DeploymentType
 from seldon_deploy_sdk.models.v1_model import V1Model
+from seldon_deploy_sdk.models.v1_model_implementation import V1ModelImplementation
 from seldon_deploy_sdk.models.v1_model_metadata_create_response import V1ModelMetadataCreateResponse
 from seldon_deploy_sdk.models.v1_model_metadata_delete_response import V1ModelMetadataDeleteResponse
 from seldon_deploy_sdk.models.v1_model_metadata_list_response import V1ModelMetadataListResponse
