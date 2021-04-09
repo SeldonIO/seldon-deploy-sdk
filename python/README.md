@@ -71,7 +71,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://X.X.X.X/seldon-deploy/api/v1alpha1*
+All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

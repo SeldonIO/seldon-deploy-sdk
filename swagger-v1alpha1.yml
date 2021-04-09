@@ -9490,7 +9490,6 @@ responses:
     schema:
       $ref: '#/definitions/VersionInfo'
 schemes:
-  - http
   - https
 security:
   - OAuth2:
