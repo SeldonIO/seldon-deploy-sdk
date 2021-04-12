@@ -35,6 +35,12 @@ class TestEnvironmentApi(unittest.TestCase):
         """
         pass
 
+    def test_read_health_check(self):
+        """Test case for read_health_check
+
+        """
+        pass
+
     def test_read_user(self):
         """Test case for read_user
 

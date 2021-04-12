@@ -2324,6 +2324,15 @@ definitions:
         $ref: '#/definitions/TCPSocketAction'
     type: object
     x-go-package: k8s.io/api/core/v1
+  HealthCheckInfo:
+    description: for checking health of dependencies
+    properties:
+      Elastic:
+        type: string
+      Prometheus:
+        type: string
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
   HorizontalPodAutoscalerBehavior:
     description: |-
       HorizontalPodAutoscalerBehavior configures the scaling behavior of the target
@@ -7160,6 +7169,13 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/protobufAny'
+  v1DeploymentStatus:
+    type: string
+    enum:
+      - Running
+      - Stopped
+      - Unknown
+    default: Running
   v1DeploymentType:
     type: string
     enum:
@@ -7172,35 +7188,61 @@ definitions:
       URI:
         type: string
         example: gs://seldon-models/sklearn/iris
-        description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+        description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
         required:
           - URI
       name:
         type: string
         example: Iris Classifier
-        description: The name of the model.
+        description: The name of the model. It must not exceed 200 characters.
       version:
         type: string
         example: v1.2.3
         default: '"v0.0.1"'
-        description: The version of the model.
+        description: The version of the model. It must not exceed 50 characters.
       implementation:
-        type: string
+        $ref: '#/definitions/v1ModelImplementation'
         example: SKLEARN
         description: The implementation used for serving the model.
       taskType:
         type: string
         example: classification
-        description: The task type of the model.
+        description: The task type of the model. It must not exceed 50 characters.
       tags:
         type: object
         example:
-          dayOfWeek: Mon
+          author: Jon
         additionalProperties:
           type: string
-        description: Key-value pairs of arbitrary metadata associated with the model
+        description: Key-value pairs of arbitrary metadata associated with the model. Each key and value must not exceed 100 and 500 characters respectively.
+      metrics:
+        type: object
+        example:
+          trainingPrecision: 0.78
+          trainingRecall: 0.87
+        additionalProperties:
+          type: number
+          format: double
+        description: Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters.
+      creationTime:
+        type: string
+        format: date-time
+        example: "2017-01-15T01:30:15.01Z"
+        description: The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
     required:
       - URI
+  v1ModelImplementation:
+    type: string
+    enum:
+      - UNKNOWN
+      - TENSORFLOW
+      - SKLEARN
+      - XGBOOST
+      - MLFLOW
+      - TRITON
+      - PYTORCH
+      - CUSTOM
+    default: UNKNOWN
   v1ModelMetadataCreateResponse:
     type: object
   v1ModelMetadataDeleteResponse:
@@ -7247,8 +7289,7 @@ definitions:
         example: default-node
         description: The name of the node inside the predictor that contains the referenced model. This is relevant and populated only for SeldonDeployment deployment types.
       deploymentStatus:
-        type: string
-        example: Running
+        $ref: '#/definitions/v1DeploymentStatus'
         description: The status of the Kubernetes deployment associated with a model.
       deploymentType:
         $ref: '#/definitions/v1DeploymentType'
@@ -7260,6 +7301,11 @@ definitions:
       shadow:
         type: boolean
         description: True if this model is a shadow in the deployment.
+      creationTime:
+        type: string
+        format: date-time
+        example: "2017-01-15T01:30:15.01Z"
+        description: The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
   v1RuntimeMetadataListResponse:
     type: object
     properties:
@@ -7289,6 +7335,15 @@ paths:
           $ref: '#/responses/ClusterInfoResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
+      tags:
+        - Environment
+  /healthcheck:
+    get:
+      description: Read the healthcheck
+      operationId: ReadHealthCheck
+      responses:
+        "200":
+          $ref: '#/responses/HealthCheckResponse'
       tags:
         - Environment
   /namespaces/{namespace}/gitops-status:
@@ -9132,6 +9187,16 @@ paths:
           in: query
           required: false
           type: string
+          enum:
+            - UNKNOWN
+            - TENSORFLOW
+            - SKLEARN
+            - XGBOOST
+            - MLFLOW
+            - TRITON
+            - PYTORCH
+            - CUSTOM
+          default: UNKNOWN
         - name: taskType
           in: query
           required: false
@@ -9157,6 +9222,13 @@ paths:
           in: query
           required: false
           type: string
+        - name: listMask
+          description: |-
+            Optional. Can be used to specify which fields of Model you wish to return in the response.
+            If left empty all fields will be returned.
+          in: query
+          required: false
+          type: string
       tags:
         - ModelMetadataService
     delete:
@@ -9179,7 +9251,7 @@ paths:
             $ref: '#/definitions/rpcStatus'
       parameters:
         - name: URI
-          description: The URL-encoded URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+          description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
           in: query
           required: true
           type: string
@@ -9277,6 +9349,11 @@ paths:
           in: query
           required: false
           type: string
+          enum:
+            - Running
+            - Stopped
+            - Unknown
+          default: Running
         - name: PredictorName
           in: query
           required: false
@@ -9295,6 +9372,13 @@ paths:
           description: |-
             Optional. A pagination token returned from a previous call to `List`
             that indicates where this listing should continue from.
+          in: query
+          required: false
+          type: string
+        - name: listMask
+          description: |-
+            Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response.
+            If left empty all fields will be returned.
           in: query
           required: false
           type: string
@@ -9349,6 +9433,10 @@ responses:
       items:
         $ref: '#/definitions/AuditLog'
       type: array
+  HealthCheckResponse:
+    description: Version
+    schema:
+      $ref: '#/definitions/HealthCheckInfo'
   InferenceServiceListResponse:
     description: Inference Service list
     schema:

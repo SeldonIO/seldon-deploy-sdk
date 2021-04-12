@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *DriftDetectorApi* | [**read_drift_detector_inference_service**](docs/DriftDetectorApi.md#read_drift_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/driftdetector | 
 *DriftDetectorApi* | [**read_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#read_drift_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/driftdetector | 
 *EnvironmentApi* | [**read_cluster**](docs/EnvironmentApi.md#read_cluster) | **GET** /cluster | 
+*EnvironmentApi* | [**read_health_check**](docs/EnvironmentApi.md#read_health_check) | **GET** /healthcheck | 
 *EnvironmentApi* | [**read_user**](docs/EnvironmentApi.md#read_user) | **GET** /user | 
 *EnvironmentApi* | [**read_version**](docs/EnvironmentApi.md#read_version) | **GET** /version | 
 *ExplainApi* | [**explain_inference_service**](docs/ExplainApi.md#explain_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/explain | 
@@ -229,6 +230,7 @@ Class | Method | HTTP request | Description
  - [HTTPGetAction](docs/HTTPGetAction.md)
  - [HTTPHeader](docs/HTTPHeader.md)
  - [Handler](docs/Handler.md)
+ - [HealthCheckInfo](docs/HealthCheckInfo.md)
  - [HorizontalPodAutoscalerBehavior](docs/HorizontalPodAutoscalerBehavior.md)
  - [HorizontalPodAutoscalerConfig](docs/HorizontalPodAutoscalerConfig.md)
  - [HostAlias](docs/HostAlias.md)
@@ -381,8 +383,10 @@ Class | Method | HTTP request | Description
  - [URL](docs/URL.md)
  - [UnsatisfiableConstraintAction](docs/UnsatisfiableConstraintAction.md)
  - [UserInfo](docs/UserInfo.md)
+ - [V1DeploymentStatus](docs/V1DeploymentStatus.md)
  - [V1DeploymentType](docs/V1DeploymentType.md)
  - [V1Model](docs/V1Model.md)
+ - [V1ModelImplementation](docs/V1ModelImplementation.md)
  - [V1ModelMetadataCreateResponse](docs/V1ModelMetadataCreateResponse.md)
  - [V1ModelMetadataDeleteResponse](docs/V1ModelMetadataDeleteResponse.md)
  - [V1ModelMetadataListResponse](docs/V1ModelMetadataListResponse.md)
