@@ -230,7 +230,7 @@ class ModelMetadataServiceApi(object):
     def model_metadata_service_list_model_metadata(self, **kwargs):  # noqa: E501
         """List Model Metadata entries.  # noqa: E501
 
-        List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. For more complex queries where other logical operators like OR, NOT, etc. are needed you can use the `query` parameter. The `query` parameter takes precedence if present.  # noqa: E501
+        List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.model_metadata_service_list_model_metadata(async_req=True)
@@ -240,12 +240,9 @@ class ModelMetadataServiceApi(object):
         :param str uri:
         :param str name:
         :param str version:
-        :param str implementation:
+        :param str artifact_type:
         :param str task_type:
         :param str model_type:
-        :param dict tags:
-        :param dict metrics:
-        :param str query:
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
@@ -263,7 +260,7 @@ class ModelMetadataServiceApi(object):
     def model_metadata_service_list_model_metadata_with_http_info(self, **kwargs):  # noqa: E501
         """List Model Metadata entries.  # noqa: E501
 
-        List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. For more complex queries where other logical operators like OR, NOT, etc. are needed you can use the `query` parameter. The `query` parameter takes precedence if present.  # noqa: E501
+        List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.model_metadata_service_list_model_metadata_with_http_info(async_req=True)
@@ -273,12 +270,9 @@ class ModelMetadataServiceApi(object):
         :param str uri:
         :param str name:
         :param str version:
-        :param str implementation:
+        :param str artifact_type:
         :param str task_type:
         :param str model_type:
-        :param dict tags:
-        :param dict metrics:
-        :param str query:
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
@@ -287,7 +281,7 @@ class ModelMetadataServiceApi(object):
                  returns the request thread.
         """
 
-        all_params = ['uri', 'name', 'version', 'implementation', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', "tags", "metrics"]  # noqa: E501
+        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'page_size', 'page_token', 'list_mask']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -314,26 +308,18 @@ class ModelMetadataServiceApi(object):
             query_params.append(('name', params['name']))  # noqa: E501
         if 'version' in params:
             query_params.append(('version', params['version']))  # noqa: E501
-        if 'implementation' in params:
-            query_params.append(('implementation', params['implementation']))  # noqa: E501
+        if 'artifact_type' in params:
+            query_params.append(('artifactType', params['artifact_type']))  # noqa: E501
         if 'task_type' in params:
             query_params.append(('taskType', params['task_type']))  # noqa: E501
         if 'model_type' in params:
             query_params.append(('modelType', params['model_type']))  # noqa: E501
-        if 'query' in params:
-            query_params.append(('query', params['query']))  # noqa: E501
         if 'page_size' in params:
             query_params.append(('pageSize', params['page_size']))  # noqa: E501
         if 'page_token' in params:
             query_params.append(('pageToken', params['page_token']))  # noqa: E501
         if 'list_mask' in params:
             query_params.append(('listMask', params['list_mask']))  # noqa: E501
-        if 'tags' in params:
-            for key, val in params["tags"].items():
-                query_params.append((f"tags[{key}]", val))
-        if 'metrics' in params:
-            for key, val in params["metrics"].items():
-                query_params.append((f"metrics[{key}]", val))
 
         header_params = {}
 

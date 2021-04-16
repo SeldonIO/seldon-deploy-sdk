@@ -7169,6 +7169,19 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/protobufAny'
+  v1ArtifactType:
+    type: string
+    enum:
+      - UNKNOWN
+      - CUSTOM
+      - TENSORFLOW
+      - SKLEARN
+      - XGBOOST
+      - MLFLOW
+      - PYTORCH
+      - ONNX
+      - TENSORRT
+    default: UNKNOWN
   v1DeploymentStatus:
     type: string
     enum:
@@ -7200,10 +7213,10 @@ definitions:
         example: v1.2.3
         default: '"v0.0.1"'
         description: The version of the model. It must not exceed 50 characters.
-      implementation:
-        $ref: '#/definitions/v1ModelImplementation'
+      artifactType:
+        $ref: '#/definitions/v1ArtifactType'
         example: SKLEARN
-        description: The implementation used for serving the model.
+        description: The artifact type of the model. This is the library used to develop the model.
       taskType:
         type: string
         example: classification
@@ -7231,18 +7244,6 @@ definitions:
         description: The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
     required:
       - URI
-  v1ModelImplementation:
-    type: string
-    enum:
-      - UNKNOWN
-      - TENSORFLOW
-      - SKLEARN
-      - XGBOOST
-      - MLFLOW
-      - TRITON
-      - PYTORCH
-      - CUSTOM
-    default: UNKNOWN
   v1ModelMetadataCreateResponse:
     type: object
   v1ModelMetadataDeleteResponse:
@@ -9153,7 +9154,7 @@ paths:
   /seldon-deploy/api/v1alpha1/model/metadata:
     get:
       summary: List Model Metadata entries.
-      description: List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. For more complex queries where other logical operators like OR, NOT, etc. are needed you can use the `query` parameter. The `query` parameter takes precedence if present.
+      description: 'List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.'
       operationId: ModelMetadataService_ListModelMetadata
       responses:
         "200":
@@ -9162,6 +9163,9 @@ paths:
             $ref: '#/definitions/v1ModelMetadataListResponse'
         "204":
           description: No Content
+          schema: {}
+        "400":
+          description: Bad Request
           schema: {}
         "500":
           description: Internal Server Error
@@ -9183,29 +9187,26 @@ paths:
           in: query
           required: false
           type: string
-        - name: implementation
+        - name: artifactType
           in: query
           required: false
           type: string
           enum:
             - UNKNOWN
+            - CUSTOM
             - TENSORFLOW
             - SKLEARN
             - XGBOOST
             - MLFLOW
-            - TRITON
             - PYTORCH
-            - CUSTOM
+            - ONNX
+            - TENSORRT
           default: UNKNOWN
         - name: taskType
           in: query
           required: false
           type: string
         - name: modelType
-          in: query
-          required: false
-          type: string
-        - name: query
           in: query
           required: false
           type: string
@@ -9320,6 +9321,9 @@ paths:
             $ref: '#/definitions/v1RuntimeMetadataListResponse'
         "204":
           description: No Content
+          schema: {}
+        "400":
+          description: Bad Request
           schema: {}
         "500":
           description: Internal Server Error

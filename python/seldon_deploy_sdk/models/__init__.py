@@ -253,10 +253,10 @@ from seldon_deploy_sdk.models.uri_scheme import URIScheme
 from seldon_deploy_sdk.models.url import URL
 from seldon_deploy_sdk.models.unsatisfiable_constraint_action import UnsatisfiableConstraintAction
 from seldon_deploy_sdk.models.user_info import UserInfo
+from seldon_deploy_sdk.models.v1_artifact_type import V1ArtifactType
 from seldon_deploy_sdk.models.v1_deployment_status import V1DeploymentStatus
 from seldon_deploy_sdk.models.v1_deployment_type import V1DeploymentType
 from seldon_deploy_sdk.models.v1_model import V1Model
-from seldon_deploy_sdk.models.v1_model_implementation import V1ModelImplementation
 from seldon_deploy_sdk.models.v1_model_metadata_create_response import V1ModelMetadataCreateResponse
 from seldon_deploy_sdk.models.v1_model_metadata_delete_response import V1ModelMetadataDeleteResponse
 from seldon_deploy_sdk.models.v1_model_metadata_list_response import V1ModelMetadataListResponse

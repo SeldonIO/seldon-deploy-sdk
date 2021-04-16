@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **uri** | **str** | The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters. | 
 **name** | **str** | The name of the model. It must not exceed 200 characters. | [optional] 
 **version** | **str** | The version of the model. It must not exceed 50 characters. | [optional] [default to '"v0.0.1"']
-**implementation** | [**V1ModelImplementation**](V1ModelImplementation.md) | The implementation used for serving the model. | [optional] 
+**artifact_type** | [**V1ArtifactType**](V1ArtifactType.md) | The artifact type of the model. This is the library used to develop the model. | [optional] 
 **task_type** | **str** | The task type of the model. It must not exceed 50 characters. | [optional] 
 **tags** | **dict(str, str)** | Key-value pairs of arbitrary metadata associated with the model. Each key and value must not exceed 100 and 500 characters respectively. | [optional] 
 **metrics** | **dict(str, float)** | Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters. | [optional] 
