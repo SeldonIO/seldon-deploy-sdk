@@ -112,11 +112,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **model_metadata_service_list_model_metadata**
-> V1ModelMetadataListResponse model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, implementation=implementation, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask)
+> V1ModelMetadataListResponse model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, page_size=page_size, page_token=page_token, list_mask=list_mask)
 
 List Model Metadata entries.
 
-List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. For more complex queries where other logical operators like OR, NOT, etc. are needed you can use the `query` parameter. The `query` parameter takes precedence if present.
+List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.
 
 ### Example
 ```python
@@ -135,19 +135,18 @@ api_instance = seldon_deploy_sdk.ModelMetadataServiceApi(seldon_deploy_sdk.ApiCl
 uri = 'uri_example' # str |  (optional)
 name = 'name_example' # str |  (optional)
 version = 'version_example' # str |  (optional)
-implementation = 'UNKNOWN' # str |  (optional) (default to UNKNOWN)
+artifact_type = 'UNKNOWN' # str |  (optional) (default to UNKNOWN)
 task_type = 'task_type_example' # str |  (optional)
 model_type = 'model_type_example' # str |  (optional)
 tags = {"tag_key_example": "tag_value_example"} # dict (optional)
 metrics = {"metric_key_example": 123} # dict (optional)
-query = 'query_example' # str |  (optional)
 page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
 list_mask = 'list_mask_example' # str | Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. (optional)
 
 try:
     # List Model Metadata entries.
-    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, implementation=implementation, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask)
+    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, page_size=page_size, page_token=page_token, list_mask=list_mask)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_model_metadata: %s\n" % e)
@@ -160,12 +159,11 @@ Name | Type | Description  | Notes
  **uri** | **str**|  | [optional] 
  **name** | **str**|  | [optional] 
  **version** | **str**|  | [optional] 
- **implementation** | **str**|  | [optional] [default to UNKNOWN]
+ **artifact_type** | **str**|  | [optional] [default to UNKNOWN]
  **task_type** | **str**|  | [optional] 
- **model_type** | **str**|  | [optional]
+ **model_type** | **str**|  | [optional] 
  **tags** | **dict**|  | [optional]
  **metrics** | **dict**|  | [optional]
- **query** | **str**|  | [optional] 
  **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
  **list_mask** | **str**| Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. | [optional] 

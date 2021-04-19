@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.v1_model_implementation import V1ModelImplementation  # noqa: E501
+from seldon_deploy_sdk.models.v1_artifact_type import V1ArtifactType  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestV1ModelImplementation(unittest.TestCase):
-    """V1ModelImplementation unit test stubs"""
+class TestV1ArtifactType(unittest.TestCase):
+    """V1ArtifactType unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestV1ModelImplementation(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testV1ModelImplementation(self):
-        """Test V1ModelImplementation"""
+    def testV1ArtifactType(self):
+        """Test V1ArtifactType"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.v1_model_implementation.V1ModelImplementation()  # noqa: E501
+        # model = seldon_deploy_sdk.models.v1_artifact_type.V1ArtifactType()  # noqa: E501
         pass
 
 

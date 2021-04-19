@@ -34,7 +34,7 @@ class V1Model(object):
         'uri': 'str',
         'name': 'str',
         'version': 'str',
-        'implementation': 'V1ModelImplementation',
+        'artifact_type': 'V1ArtifactType',
         'task_type': 'str',
         'tags': 'dict(str, str)',
         'metrics': 'dict(str, float)',
@@ -45,20 +45,20 @@ class V1Model(object):
         'uri': 'URI',
         'name': 'name',
         'version': 'version',
-        'implementation': 'implementation',
+        'artifact_type': 'artifactType',
         'task_type': 'taskType',
         'tags': 'tags',
         'metrics': 'metrics',
         'creation_time': 'creationTime'
     }
 
-    def __init__(self, uri=None, name=None, version='"v0.0.1"', implementation=None, task_type=None, tags=None, metrics=None, creation_time=None):  # noqa: E501
+    def __init__(self, uri=None, name=None, version='"v0.0.1"', artifact_type=None, task_type=None, tags=None, metrics=None, creation_time=None):  # noqa: E501
         """V1Model - a model defined in Swagger"""  # noqa: E501
 
         self._uri = None
         self._name = None
         self._version = None
-        self._implementation = None
+        self._artifact_type = None
         self._task_type = None
         self._tags = None
         self._metrics = None
@@ -70,8 +70,8 @@ class V1Model(object):
             self.name = name
         if version is not None:
             self.version = version
-        if implementation is not None:
-            self.implementation = implementation
+        if artifact_type is not None:
+            self.artifact_type = artifact_type
         if task_type is not None:
             self.task_type = task_type
         if tags is not None:
@@ -153,27 +153,27 @@ class V1Model(object):
         self._version = version
 
     @property
-    def implementation(self):
-        """Gets the implementation of this V1Model.  # noqa: E501
+    def artifact_type(self):
+        """Gets the artifact_type of this V1Model.  # noqa: E501
 
-        The implementation used for serving the model.  # noqa: E501
+        The artifact type of the model. This is the library used to develop the model.  # noqa: E501
 
-        :return: The implementation of this V1Model.  # noqa: E501
-        :rtype: V1ModelImplementation
+        :return: The artifact_type of this V1Model.  # noqa: E501
+        :rtype: V1ArtifactType
         """
-        return self._implementation
+        return self._artifact_type
 
-    @implementation.setter
-    def implementation(self, implementation):
-        """Sets the implementation of this V1Model.
+    @artifact_type.setter
+    def artifact_type(self, artifact_type):
+        """Sets the artifact_type of this V1Model.
 
-        The implementation used for serving the model.  # noqa: E501
+        The artifact type of the model. This is the library used to develop the model.  # noqa: E501
 
-        :param implementation: The implementation of this V1Model.  # noqa: E501
-        :type: V1ModelImplementation
+        :param artifact_type: The artifact_type of this V1Model.  # noqa: E501
+        :type: V1ArtifactType
         """
 
-        self._implementation = implementation
+        self._artifact_type = artifact_type
 
     @property
     def task_type(self):

@@ -1,4 +1,4 @@
-# V1ModelImplementation
+# V1ArtifactType
 
 ## Properties
 Name | Type | Description | Notes
