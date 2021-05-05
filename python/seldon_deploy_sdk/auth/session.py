@@ -11,14 +11,27 @@ class SessionAuthenticator(Authenticator):
     Returns the cookie token.
     """
 
-    def __init__(self, config: Configuration):
-        super().__init__(config)
+    def __init__(self, config: Configuration,auth_method='password_grant'):
+        super().__init__(config,auth_method)
+
         self._client = RESTClientObject(config)
 
-    def authenticate(self, user: str, password: str) -> str:
+    def authenticate(self, **kwargs) -> str:
+
         auth_path = self._get_auth_path()
-        session_cookie = self._submit_auth(auth_path, user, password)
-        return session_cookie
+        if self._auth_method == 'password_grant':
+            user = kwargs.get('username', None)
+            password = kwargs.get('password', None)
+            if user is None:
+                user = self._config.username
+            if password is None:
+                user = self._config.password
+
+            session_cookie = self._submit_auth(auth_path, user, password)
+            return session_cookie
+
+        raise NotImplementedError("Auth method not specified or not supported")
+
 
     def _get_auth_path(self) -> str:
         # Send unauthenticated request

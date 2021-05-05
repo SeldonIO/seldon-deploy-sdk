@@ -61,13 +61,14 @@ class ApiClient(object):
     }
 
     def __init__(self, configuration=None, header_name=None, header_value=None,
-                 cookie=None):
+                 cookie=None, authenticator=None):
         if configuration is None:
             configuration = Configuration()
         self.configuration = configuration
 
         # Use the pool property to lazily initialize the ThreadPool.
         self._pool = None
+        self.authenticator = authenticator
         self.rest_client = rest.RESTClientObject(configuration)
         self.default_headers = {}
         if header_name is not None:
@@ -98,6 +99,31 @@ class ApiClient(object):
 
     def set_default_header(self, header_name, header_value):
         self.default_headers[header_name] = header_value
+
+    def __call_api_with_retry(
+            self, resource_path, method, path_params=None,
+            query_params=None, header_params=None, body=None, post_params=None,
+            files=None, response_type=None, auth_settings=None,
+            _return_http_data_only=None, collection_formats=None,
+            _preload_content=True, _request_timeout=None):
+        try:
+            return self.__call_api(resource_path=resource_path,method=method,path_params=path_params,query_params=query_params,
+                            header_params=header_params,body=body,post_params=post_params,files=files,
+                            response_type=response_type, auth_settings=auth_settings,
+                            _return_http_data_only=_return_http_data_only, collection_formats=collection_formats,
+                            _preload_content=_preload_content,_request_timeout=_request_timeout)
+        except seldon_deploy_sdk.rest.ApiException as e:
+            #if unauthenticated and have authenticator try refreshing in case token expired
+            if e.status == 401 and self.authenticator is not None:
+                token = self.authenticator.authenticate()
+                self.configuration.access_token = token
+                return self.__call_api(resource_path=resource_path,method=method,path_params=path_params,query_params=query_params,
+                            header_params=header_params,body=body,post_params=post_params,files=files,
+                            response_type=response_type, auth_settings=auth_settings,
+                            _return_http_data_only=_return_http_data_only, collection_formats=collection_formats,
+                            _preload_content=_preload_content,_request_timeout=_request_timeout)
+            else:
+                raise e
 
     def __call_api(
             self, resource_path, method, path_params=None,
@@ -322,14 +348,14 @@ class ApiClient(object):
             then the method will return the response directly.
         """
         if not async_req:
-            return self.__call_api(resource_path, method,
+            return self.__call_api_with_retry(resource_path, method,
                                    path_params, query_params, header_params,
                                    body, post_params, files,
                                    response_type, auth_settings,
                                    _return_http_data_only, collection_formats,
                                    _preload_content, _request_timeout)
         else:
-            thread = self.pool.apply_async(self.__call_api, (resource_path,
+            thread = self.pool.apply_async(self.__call_api_with_retry, (resource_path,
                                            method, path_params, query_params,
                                            header_params, body,
                                            post_params, files,

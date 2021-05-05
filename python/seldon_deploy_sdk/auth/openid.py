@@ -11,11 +11,13 @@ class OIDCIntegration(FrameworkIntegration):
 
 
 class OIDCAuthenticator(Authenticator):
-    def __init__(self, config: Configuration):
-        super().__init__(config)
+    def __init__(self, config: Configuration,auth_method='password_grant'):
+        super().__init__(config,auth_method)
 
-        # TODO: Check that `config.oidc_server` and `config.oidc_client_id` are
-        # set.
+        if config.oidc_server is None:
+            raise ValueError("config.oidc_server is required")
+        if config.oidc_client_id is None:
+            raise ValueError("config.oidc_client_id is required")
 
         server_metadata_url = f"{config.oidc_server}/.well-known/openid-configuration"
         self._app = RemoteApp(
@@ -26,8 +28,21 @@ class OIDCAuthenticator(Authenticator):
         )
         self._app.load_server_metadata()
 
-    def authenticate(self, user: str, password: str) -> str:
-        token = self._app.fetch_access_token(
-            username=user, password=password, scope="openid"
-        )
-        return token["access_token"]
+    def authenticate(self, **kwargs) -> str:
+
+        if self._auth_method == 'password_grant':
+            user = kwargs.get('username', None)
+            password = kwargs.get('password', None)
+            password = kwargs.get('scope', 'openid profile email groups')
+
+            if user is None:
+                user = self._config.username
+            if password is None:
+                user = self._config.password
+
+            token = self._app.fetch_access_token(
+                username=user, password=password, scope=scope
+            )
+            return token["access_token"]
+
+        raise NotImplementedError("Auth method not specified or not supported")
