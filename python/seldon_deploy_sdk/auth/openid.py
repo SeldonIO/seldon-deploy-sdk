@@ -33,7 +33,7 @@ class OIDCAuthenticator(Authenticator):
         if self._auth_method == 'password_grant':
             user = kwargs.get('username', None)
             password = kwargs.get('password', None)
-            password = kwargs.get('scope', 'openid profile email groups')
+            scope = kwargs.get('scope', 'openid profile email groups')
 
             if user is None:
                 user = self._config.username
