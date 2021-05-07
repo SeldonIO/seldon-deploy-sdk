@@ -25,11 +25,15 @@ class OIDCAuthenticator(Authenticator):
             if not config.password:
                 raise ValueError("config.password is required for password_grant")
 
+        if config.auth_method == 'client_credentials':
+            if not config.oidc_client_secret:
+                raise ValueError("config.oidc_client_secret is required for client_credentials")
+
         server_metadata_url = f"{config.oidc_server}/.well-known/openid-configuration"
         self._app = RemoteApp(
             framework=OIDCIntegration,
             client_id=config.oidc_client_id,
-            client_secret=getattr(config, "oidc_client_secret", None),
+            client_secret=config.oidc_client_secret,
             server_metadata_url=server_metadata_url,
         )
         self._app.load_server_metadata()
@@ -42,7 +46,8 @@ class OIDCAuthenticator(Authenticator):
                 username=self._config.username, password=self._config.password, scope=self._config.scope
             )
             return token["access_token"]
-        elif self._auth_method == 'client_credentials':
-            raise NotImplementedError("Client credentials flow not yet supported")
+        elif self._config.auth_method == 'client_credentials':
+            token = self._app.fetch_access_token(scope=self._config.scope, grant_type='client_credentials')
+            return token["access_token"]
 
         raise NotImplementedError("Auth method not specified or not supported")
