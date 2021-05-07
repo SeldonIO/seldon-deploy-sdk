@@ -28,6 +28,7 @@ config.password = password
 config.auth_method = 'password_grant'
 #to use client credential set above to client_credentials and uncomment and set config.oidc_client_secret
 #config.oidc_client_secret = 'xxxxx'
+#note client has to be configured in identity provider for client_credentials
 
 auth = OIDCAuthenticator(config)
 
