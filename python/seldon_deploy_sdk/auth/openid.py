@@ -11,13 +11,19 @@ class OIDCIntegration(FrameworkIntegration):
 
 
 class OIDCAuthenticator(Authenticator):
-    def __init__(self, config: Configuration,auth_method='password_grant'):
-        super().__init__(config,auth_method)
+    def __init__(self, config: Configuration):
+        super().__init__(config)
 
         if config.oidc_server is None:
             raise ValueError("config.oidc_server is required")
         if config.oidc_client_id is None:
             raise ValueError("config.oidc_client_id is required")
+
+        if config.auth_method == 'password_grant':
+            if not config.username:
+                raise ValueError("config.username is required for password_grant")
+            if not config.password:
+                raise ValueError("config.password is required for password_grant")
 
         server_metadata_url = f"{config.oidc_server}/.well-known/openid-configuration"
         self._app = RemoteApp(
@@ -28,21 +34,15 @@ class OIDCAuthenticator(Authenticator):
         )
         self._app.load_server_metadata()
 
-    def authenticate(self, **kwargs) -> str:
+    def authenticate(self) -> str:
 
-        if self._auth_method == 'password_grant':
-            user = kwargs.get('username', None)
-            password = kwargs.get('password', None)
-            scope = kwargs.get('scope', 'openid profile email groups')
-
-            if user is None:
-                user = self._config.username
-            if password is None:
-                user = self._config.password
+        if self._config.auth_method == 'password_grant':
 
             token = self._app.fetch_access_token(
-                username=user, password=password, scope=scope
+                username=self._config.username, password=self._config.password, scope=self._config.scope
             )
             return token["access_token"]
+        elif self._auth_method == 'client_credentials':
+            raise NotImplementedError("Client credentials flow not yet supported")
 
         raise NotImplementedError("Auth method not specified or not supported")

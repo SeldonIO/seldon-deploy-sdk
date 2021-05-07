@@ -59,6 +59,12 @@ class Configuration(object):
         # access token for OAuth
         self.access_token = ""
 
+        # oidc config
+        self.oidc_server = ""
+        self.oidc_client_id = ""
+        self.auth_method = 'password_grant'
+        self.scope = 'openid profile email groups'
+
         # Logging Settings
         self.logger = {}
         self.logger["package_logger"] = logging.getLogger("seldon_deploy_sdk")

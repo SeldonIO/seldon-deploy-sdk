@@ -4,13 +4,12 @@ from seldon_deploy_sdk.configuration import Configuration
 
 
 class Authenticator:
-    def __init__(self, config: Configuration, auth_method=None):
+    def __init__(self, config: Configuration):
         self._server = config.host
         self._host = self._get_host()
         self._config = config
-        self._auth_method = auth_method
 
-    def authenticate(self, **kwargs) -> str:
+    def authenticate(self) -> str:
         raise NotImplementedError("Authenticate method not implemented")
 
     def _get_host(self) -> str:

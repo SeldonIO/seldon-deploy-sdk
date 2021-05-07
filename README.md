@@ -17,8 +17,7 @@ pip install seldon-deploy-sdk
 
 ### Usage
 
-The Python version of the SDK includes support for sommon common authentication
-workflows.
+The Python version of the SDK includes support for common authentication workflows.
 
 You can see an example usage below:
 
@@ -30,11 +29,14 @@ config = Configuration()
 config.host = "http://X.X.X.X/seldon-deploy/api/v1alpha1"
 config.oidc_client_id = "sd-api"
 config.oidc_server = "http://X.X.X.X/auth/realms/deploy-realm"
+config.username = "*******"
+config.password = "*******"
+config.auth_method = 'password_grant'
 
 auth = OIDCAuthenticator(config)
-config.access_token = auth.authenticate("*******", "*******")
+config.access_token = auth.authenticate()
 
-api_client = ApiClient(config)
+api_client = ApiClient(config, auth)
 
 env_api = EnvironmentApi(api_client)
 user = env_api.read_user()
