@@ -1,6 +1,6 @@
 {
   "projectName": "seldon-deploy-sdk",
   "packageName": "seldon_deploy_sdk",
-  "packageVersion": "0.2.1",
+  "packageVersion": "1.2.0",
   "packageUrl": "https://deploy.seldon.io"
 }
