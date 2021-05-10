@@ -38,7 +38,8 @@ class V1Model(object):
         'task_type': 'str',
         'tags': 'dict(str, str)',
         'metrics': 'dict(str, float)',
-        'creation_time': 'datetime'
+        'creation_time': 'datetime',
+        'prediction_schema': 'V1PredictionSchema'
     }
 
     attribute_map = {
@@ -49,10 +50,11 @@ class V1Model(object):
         'task_type': 'taskType',
         'tags': 'tags',
         'metrics': 'metrics',
-        'creation_time': 'creationTime'
+        'creation_time': 'creationTime',
+        'prediction_schema': 'predictionSchema'
     }
 
-    def __init__(self, uri=None, name=None, version='"v0.0.1"', artifact_type=None, task_type=None, tags=None, metrics=None, creation_time=None):  # noqa: E501
+    def __init__(self, uri=None, name=None, version='"v0.0.1"', artifact_type=None, task_type=None, tags=None, metrics=None, creation_time=None, prediction_schema=None):  # noqa: E501
         """V1Model - a model defined in Swagger"""  # noqa: E501
 
         self._uri = None
@@ -63,6 +65,7 @@ class V1Model(object):
         self._tags = None
         self._metrics = None
         self._creation_time = None
+        self._prediction_schema = None
         self.discriminator = None
 
         self.uri = uri
@@ -80,6 +83,8 @@ class V1Model(object):
             self.metrics = metrics
         if creation_time is not None:
             self.creation_time = creation_time
+        if prediction_schema is not None:
+            self.prediction_schema = prediction_schema
 
     @property
     def uri(self):
@@ -266,6 +271,29 @@ class V1Model(object):
         """
 
         self._creation_time = creation_time
+
+    @property
+    def prediction_schema(self):
+        """Gets the prediction_schema of this V1Model.  # noqa: E501
+
+        The schema defining the inputs/outputs for the given model.  # noqa: E501
+
+        :return: The prediction_schema of this V1Model.  # noqa: E501
+        :rtype: V1PredictionSchema
+        """
+        return self._prediction_schema
+
+    @prediction_schema.setter
+    def prediction_schema(self, prediction_schema):
+        """Sets the prediction_schema of this V1Model.
+
+        The schema defining the inputs/outputs for the given model.  # noqa: E501
+
+        :param prediction_schema: The prediction_schema of this V1Model.  # noqa: E501
+        :type: V1PredictionSchema
+        """
+
+        self._prediction_schema = prediction_schema
 
     def to_dict(self):
         """Returns the model properties as a dict"""

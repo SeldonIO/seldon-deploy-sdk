@@ -7182,6 +7182,15 @@ definitions:
       - ONNX
       - TENSORRT
     default: UNKNOWN
+  v1DataType:
+    type: string
+    enum:
+      - FLOAT
+      - INT
+      - BOOL
+      - STRING
+      - BYTES
+    default: FLOAT
   v1DeploymentStatus:
     type: string
     enum:
@@ -7195,6 +7204,56 @@ definitions:
       - SeldonDeployment
       - InferenceService
     default: SeldonDeployment
+  v1FeatureCategorySchema:
+    type: object
+    properties:
+      name:
+        type: string
+        required:
+          - name
+      dataType:
+        $ref: '#/definitions/v1DataType'
+    required:
+      - name
+  v1FeatureSchema:
+    type: object
+    properties:
+      name:
+        type: string
+        required:
+          - name
+      type:
+        $ref: '#/definitions/v1FeatureType'
+      dataType:
+        $ref: '#/definitions/v1DataType'
+      nCategories:
+        type: string
+        format: int64
+      categoryMap:
+        type: object
+        additionalProperties:
+          type: string
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/v1FeatureCategorySchema'
+      shape:
+        type: array
+        items:
+          type: string
+          format: int64
+    required:
+      - name
+  v1FeatureType:
+    type: string
+    enum:
+      - REAL
+      - CATEGORICAL
+      - PROBA
+      - ONE_HOT
+      - TEXT
+      - TENSOR
+    default: REAL
   v1Model:
     type: object
     properties:
@@ -7242,6 +7301,34 @@ definitions:
         format: date-time
         example: "2017-01-15T01:30:15.01Z"
         description: The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
+      predictionSchema:
+        $ref: '#/definitions/v1PredictionSchema'
+        example:
+          requests:
+            - name: Input Image
+              type: MATRIX
+              data_type: FLOAT
+              shape:
+                - 32
+                - 32
+                - 3
+          responses:
+            - name: Image Class
+              type: CATEGORICAL
+              data_type: INT32
+              n_categories: 10
+              category_map:
+                "0": Airplane
+                "1": Automobile
+                "2": Bird
+                "3": Cat
+                "4": Deer
+                "5": Dog
+                "6": Frog
+                "7": Horse
+                "8": Ship
+                "9": Truck
+        description: The schema defining the inputs/outputs for the given model.
     required:
       - URI
   v1ModelMetadataCreateResponse:
@@ -7262,6 +7349,24 @@ definitions:
           that indicates from where listing should continue.
   v1ModelMetadataUpdateResponse:
     type: object
+  v1PredictionSchema:
+    type: object
+    properties:
+      requests:
+        type: array
+        items:
+          $ref: '#/definitions/v1FeatureSchema'
+        required:
+          - requests
+      responses:
+        type: array
+        items:
+          $ref: '#/definitions/v1FeatureSchema'
+        required:
+          - responses
+    required:
+      - requests
+      - responses
   v1RuntimeMetadata:
     type: object
     properties:
