@@ -8,9 +8,11 @@ licenses:
 install-dev:
 	pip install -e . -r test-requirements.txt
 
+#install test requirements first
 test:
 	tox
 
+#requires pip install wheel
 build:
 	python setup.py sdist bdist_wheel
 
