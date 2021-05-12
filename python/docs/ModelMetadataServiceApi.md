@@ -4,11 +4,11 @@ All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**model_metadata_service_create_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_create_model_metadata) | **POST** /seldon-deploy/api/v1alpha1/model/metadata | Create a Model Metadata entry.
-[**model_metadata_service_delete_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_delete_model_metadata) | **DELETE** /seldon-deploy/api/v1alpha1/model/metadata | Delete a Model Metadata entry.
-[**model_metadata_service_list_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_list_model_metadata) | **GET** /seldon-deploy/api/v1alpha1/model/metadata | List Model Metadata entries.
-[**model_metadata_service_list_runtime_metadata_for_model**](ModelMetadataServiceApi.md#model_metadata_service_list_runtime_metadata_for_model) | **GET** /seldon-deploy/api/v1alpha1/model/metadata/runtime | List Runtime Metadata for all deployments associated with a model.
-[**model_metadata_service_update_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_update_model_metadata) | **PUT** /seldon-deploy/api/v1alpha1/model/metadata | Update a Model Metadata entry.
+[**model_metadata_service_create_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_create_model_metadata) | **POST** /model/metadata | Create a Model Metadata entry.
+[**model_metadata_service_delete_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_delete_model_metadata) | **DELETE** /model/metadata | Delete a Model Metadata entry.
+[**model_metadata_service_list_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_list_model_metadata) | **GET** /model/metadata | List Model Metadata entries.
+[**model_metadata_service_list_runtime_metadata_for_model**](ModelMetadataServiceApi.md#model_metadata_service_list_runtime_metadata_for_model) | **GET** /model/metadata/runtime | List Runtime Metadata for all deployments associated with a model.
+[**model_metadata_service_update_model_metadata**](ModelMetadataServiceApi.md#model_metadata_service_update_model_metadata) | **PUT** /model/metadata | Update a Model Metadata entry.
 
 
 # **model_metadata_service_create_model_metadata**
@@ -138,15 +138,13 @@ version = 'version_example' # str |  (optional)
 artifact_type = 'UNKNOWN' # str |  (optional) (default to UNKNOWN)
 task_type = 'task_type_example' # str |  (optional)
 model_type = 'model_type_example' # str |  (optional)
-tags = {"tag_key_example": "tag_value_example"} # dict (optional)
-metrics = {"metric_key_example": 123} # dict (optional)
 page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
 list_mask = 'list_mask_example' # str | Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. (optional)
 
 try:
     # List Model Metadata entries.
-    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, page_size=page_size, page_token=page_token, list_mask=list_mask)
+    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, page_size=page_size, page_token=page_token, list_mask=list_mask)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_model_metadata: %s\n" % e)
@@ -162,8 +160,6 @@ Name | Type | Description  | Notes
  **artifact_type** | **str**|  | [optional] [default to UNKNOWN]
  **task_type** | **str**|  | [optional] 
  **model_type** | **str**|  | [optional] 
- **tags** | **dict**|  | [optional]
- **metrics** | **dict**|  | [optional]
  **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
  **list_mask** | **str**| Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. | [optional] 

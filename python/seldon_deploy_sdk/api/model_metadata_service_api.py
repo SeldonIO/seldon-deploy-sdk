@@ -115,7 +115,7 @@ class ModelMetadataServiceApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/seldon-deploy/api/v1alpha1/model/metadata', 'POST',
+            '/model/metadata', 'POST',
             path_params,
             query_params,
             header_params,
@@ -212,7 +212,7 @@ class ModelMetadataServiceApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/seldon-deploy/api/v1alpha1/model/metadata', 'DELETE',
+            '/model/metadata', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -349,7 +349,7 @@ class ModelMetadataServiceApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/seldon-deploy/api/v1alpha1/model/metadata', 'GET',
+            '/model/metadata', 'GET',
             path_params,
             query_params,
             header_params,
@@ -478,7 +478,7 @@ class ModelMetadataServiceApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/seldon-deploy/api/v1alpha1/model/metadata/runtime', 'GET',
+            '/model/metadata/runtime', 'GET',
             path_params,
             query_params,
             header_params,
@@ -575,7 +575,7 @@ class ModelMetadataServiceApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/seldon-deploy/api/v1alpha1/model/metadata', 'PUT',
+            '/model/metadata', 'PUT',
             path_params,
             query_params,
             header_params,
