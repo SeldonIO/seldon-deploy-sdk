@@ -9256,7 +9256,7 @@ paths:
           $ref: '#/responses/VersionResponse'
       tags:
         - Environment
-  /seldon-deploy/api/v1alpha1/model/metadata:
+  /model/metadata:
     get:
       summary: List Model Metadata entries.
       description: 'List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.'
@@ -9415,7 +9415,7 @@ paths:
             $ref: '#/definitions/v1Model'
       tags:
         - ModelMetadataService
-  /seldon-deploy/api/v1alpha1/model/metadata/runtime:
+  /model/metadata/runtime:
     get:
       summary: List Runtime Metadata for all deployments associated with a model.
       operationId: ModelMetadataService_ListRuntimeMetadataForModel
