@@ -32,8 +32,8 @@ class OIDCAuthenticator(Authenticator):
                 )
 
         access_token_params = None
-        if hasattr(config, "resource"):
-            access_token_params = {"resource": config.resource}
+        if config.oidc_resource is not None:
+            access_token_params = {"resource": config.oidc_resource}
 
         server_metadata_url = f"{config.oidc_server}/.well-known/openid-configuration"
 
