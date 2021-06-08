@@ -1,9 +1,23 @@
+import logging
+
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
 from authlib.integrations.requests_client import OAuth2Session
 
 from seldon_deploy_sdk.configuration import Configuration
 
 from .base import Authenticator
+
+logger = logging.getLogger(__name__)
+
+
+def _deprecation_warning(field: str):
+    logger.warning(
+        "DEPRECATED!! "
+        f"Future versions of seldon_deploy_sdk will require that the {field} "
+        "field is set in the Configuration object (under config.{field})."
+        "Subsequently, the authenticate() method won't accept a username and "
+        "password parameters."
+    )
 
 
 class OIDCIntegration(FrameworkIntegration):
@@ -21,9 +35,12 @@ class OIDCAuthenticator(Authenticator):
 
         if config.auth_method == "password_grant":
             if not config.username:
-                raise ValueError("config.username is required for password_grant")
+                _deprecation_warning("username")
+                #  raise ValueError("config.username is required for password_grant")
+
             if not config.password:
-                raise ValueError("config.password is required for password_grant")
+                _deprecation_warning("password")
+                #  raise ValueError("config.username is required for password_grant")
 
         if config.auth_method == "client_credentials":
             if not config.oidc_client_secret:
@@ -46,13 +63,17 @@ class OIDCAuthenticator(Authenticator):
         )
         self._app.load_server_metadata()
 
-    def authenticate(self) -> str:
-
+    def authenticate(self, username: str = None, password: str = None) -> str:
         if self._config.auth_method == "password_grant":
+            if username:
+                _deprecation_warning("username")
+
+            if password:
+                _deprecation_warning("password")
 
             token = self._app.fetch_access_token(
-                username=self._config.username,
-                password=self._config.password,
+                username=username or self._config.username,
+                password=password or self._config.password,
                 scope=self._config.scope,
             )
             return token["access_token"]
