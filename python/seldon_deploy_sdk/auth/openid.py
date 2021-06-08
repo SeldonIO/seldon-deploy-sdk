@@ -5,19 +5,9 @@ from authlib.integrations.requests_client import OAuth2Session
 
 from seldon_deploy_sdk.configuration import Configuration
 
-from .base import Authenticator
+from .base import Authenticator, _soft_deprecate
 
 logger = logging.getLogger(__name__)
-
-
-def _deprecation_warning(field: str):
-    logger.warning(
-        "DEPRECATED!! "
-        f"Future versions of seldon_deploy_sdk will require that the {field} "
-        "field is set in the Configuration object (under config.{field})."
-        "Subsequently, the authenticate() method won't accept a username and "
-        "password parameters."
-    )
 
 
 class OIDCIntegration(FrameworkIntegration):
@@ -32,15 +22,6 @@ class OIDCAuthenticator(Authenticator):
             raise ValueError("config.oidc_server is required")
         if config.oidc_client_id is None:
             raise ValueError("config.oidc_client_id is required")
-
-        if config.auth_method == "password_grant":
-            if not config.username:
-                _deprecation_warning("username")
-                #  raise ValueError("config.username is required for password_grant")
-
-            if not config.password:
-                _deprecation_warning("password")
-                #  raise ValueError("config.username is required for password_grant")
 
         if config.auth_method == "client_credentials":
             if not config.oidc_client_secret:
@@ -63,14 +44,9 @@ class OIDCAuthenticator(Authenticator):
         )
         self._app.load_server_metadata()
 
+    @_soft_deprecate  # type: ignore
     def authenticate(self, username: str = None, password: str = None) -> str:
         if self._config.auth_method == "password_grant":
-            if username:
-                _deprecation_warning("username")
-
-            if password:
-                _deprecation_warning("password")
-
             token = self._app.fetch_access_token(
                 username=username or self._config.username,
                 password=password or self._config.password,
