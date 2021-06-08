@@ -63,6 +63,7 @@ class Configuration(object):
         self.oidc_server = ""
         self.oidc_client_id = ""
         self.oidc_client_secret = None
+        self.oidc_resource = None
         self.auth_method = 'password_grant'
         self.scope = 'openid profile email groups'
 

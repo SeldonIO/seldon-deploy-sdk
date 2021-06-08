@@ -1,5 +1,5 @@
 Authlib
-0.15.3
+0.15.4
 BSD License
 BSD 3-Clause License
 
@@ -33,9 +33,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 certifi
-2020.12.5
+2021.5.30
 Mozilla Public License 2.0 (MPL 2.0)
-This packge contains a modified version of ca-bundle.crt:
+This package contains a modified version of ca-bundle.crt:
 
 ca-bundle.crt -- Bundle of CA Root Certificates
 
@@ -219,7 +219,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 urllib3
-1.26.4
+1.26.5
 MIT License
 MIT License
 
