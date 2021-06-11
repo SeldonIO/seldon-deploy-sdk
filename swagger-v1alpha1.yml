@@ -211,6 +211,66 @@ definitions:
         x-go-name: Token
     type: object
     x-go-package: github.com/seldonIO/seldon-deploy/internal/apis/v1alpha1
+  ApplicationLog:
+    description: |-
+      ApplicationLog represents the message and timestamp of a single
+      application log entry.
+    properties:
+      message:
+        type: string
+        x-go-name: Message
+      timestamp:
+        format: date-time
+        type: string
+        x-go-name: Timestamp
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  ApplicationLogsParams:
+    description: |-
+      ApplicationLogsParams describes a set of parameters that can be
+      used to build a search query for an application's logs.
+      In most cases, only ContainerId, From, and Size are required in
+      order to create a search query.
+    properties:
+      container_id:
+        type: string
+        x-go-name: ContainerId
+      container_name:
+        type: string
+        x-go-name: ContainerName
+      deployment_namespace:
+        type: string
+        x-go-name: DeploymentNamespace
+      from:
+        format: int64
+        type: integer
+        x-go-name: From
+      pod_name:
+        type: string
+        x-go-name: PodName
+      size:
+        format: int64
+        type: integer
+        x-go-name: Size
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  ApplicationLogsResponse:
+    description: |-
+      ApplicationLogsResponse represents the collection of application logs
+      and their total size after being parsed from their raw forms
+      e.g. from json strings or map[string]interface{} types.
+    properties:
+      logs:
+        items:
+          $ref: '#/definitions/ApplicationLog'
+        type: array
+        x-go-name: Logs
+      total:
+        format: int64
+        type: integer
+        x-go-name: Total
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
   AuditLog:
     properties:
       AuthorName:
@@ -1305,6 +1365,41 @@ definitions:
     title: Deployment enables declarative updates for Pods and ReplicaSets.
     type: object
     x-go-package: k8s.io/api/apps/v1
+  DeploymentFeatureData:
+    description: DeploymentFeatureData represents a deployment level feature data
+    properties:
+      aggregate_over_time:
+        description: AggregateOverTime is a boolean to decide if the distribution response is to be aggregated over the time period selected
+        type: boolean
+        x-go-name: AggregateOverTime
+      deployment_kind:
+        description: DeploymentType refers to kubernetes kind of the deployment relevant to the feature distribution query
+        type: string
+        x-go-name: DeploymentType
+      deployment_name:
+        description: DeploymentName refers to name of the deployment relevant to the feature distribution query
+        type: string
+        x-go-name: DeploymentName
+      deployment_namespace:
+        description: DeploymentNamespace refers to namespace of the deployment relevant to the feature distribution query
+        type: string
+        x-go-name: DeploymentNamespace
+      feature:
+        description: FeatureName refers to the name of feature as per the model predictions schema
+        type: string
+        x-go-name: FeatureName
+      filters:
+        description: Filters is a set of time, feature and/or outlier filters for the distribution/stats query
+        items:
+          $ref: '#/definitions/FeatureFilter'
+        type: array
+        x-go-name: Filters
+      interaction:
+        $ref: '#/definitions/FeatureInteraction'
+      parameters:
+        $ref: '#/definitions/FeatureDistributionParameters'
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
   DeploymentList:
     properties:
       apiVersion:
@@ -2007,6 +2102,197 @@ definitions:
     title: Represents a Fibre Channel volume.
     type: object
     x-go-package: k8s.io/api/core/v1
+  FeatureDistribution:
+    description: FeatureDistribution represents feature level distribution
+    properties:
+      buckets:
+        description: Buckets in a feature distribution
+        items:
+          $ref: '#/definitions/FeatureDistributionBucket'
+        type: array
+        x-go-name: Buckets
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureDistributionBucket:
+    description: FeatureDistribution represents feature level distribution bucket
+    properties:
+      count:
+        description: Bucket Count in a feature distribution
+        format: double
+        type: number
+        x-go-name: Count
+      distribution:
+        $ref: '#/definitions/FeatureDistribution'
+      key:
+        description: Bucket Key in a feature distribution
+        type: string
+        x-go-name: Key
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureDistributionParameters:
+    description: FeatureDistributionParameters represents user defined feature distribution parameters
+    properties:
+      histogram_interval:
+        description: HistogramInterval refers to the size of bins in a aggregated feature distribution or statistics queries for real features
+        format: double
+        type: number
+        x-go-name: HistogramInterval
+      minimum_bucket_count:
+        description: MinimumBucketCount refers to the minimum bucket size to filter in case of categorical, proba or one_hot feature queries
+        format: int64
+        type: integer
+        x-go-name: MinimumBucketCount
+      number_of_time_buckets:
+        description: NumberOfTimeBuckets refers to the number of time bins in a non time-aggregated feature distribution or statistics queries
+        format: int64
+        type: integer
+        x-go-name: NumberOfTimeBuckets
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureDistributionResponse:
+    description: FeatureDistributionResponse represents a feature distribution response
+    properties:
+      distribution:
+        $ref: '#/definitions/FeatureDistribution'
+      feature:
+        description: FeatureName refers to the name of feature as per the model predictions schema
+        type: string
+        x-go-name: FeatureName
+      interaction:
+        $ref: '#/definitions/FeatureInteraction'
+      total_instances:
+        description: TotalInstances represents the total prediction over which the distribution is computed
+        format: int64
+        type: integer
+        x-go-name: TotalInstances
+      type:
+        description: FeatureType refers to the type of feature as per the model predictions schema
+        type: string
+        x-go-name: FeatureType
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureFilter:
+    description: FeatureFilter represents a feature distribution filter
+    properties:
+      category_name:
+        description: CategoryName refers to name of the feature category relevant to PROBA and ONE_HOT features
+        type: string
+        x-go-name: CategoryName
+      feature:
+        description: FeatureName refers to the name of feature as per the model predictions schema
+        type: string
+        x-go-name: FeatureName
+      gt:
+        description: GreaterThan refers to numerical value of the feature filter relevant for timestamps or REAL features
+        type: string
+        x-go-name: GreaterThan
+      gte:
+        description: GreaterThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
+        type: string
+        x-go-name: GreaterThanOrEqual
+      interaction:
+        $ref: '#/definitions/FeatureInteraction'
+      is_outlier:
+        description: IsOutlier refers to boolean for outlier filters
+        type: boolean
+        x-go-name: IsOutlier
+      is_timestamp:
+        description: IsTimestamp refers to boolean for timestamp filters
+        type: boolean
+        x-go-name: IsTimestamp
+      lt:
+        description: LessThan refers to numerical value of the feature filter relevant for timestamps or REAL features
+        type: string
+        x-go-name: LessThan
+      lte:
+        description: LessThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
+        type: string
+        x-go-name: LessThanOrEqual
+      terms:
+        description: Terms refers to set of feature categories to filter relevant to CATEGORICAL features
+        items:
+          type: string
+        type: array
+        x-go-name: Terms
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureInteraction:
+    description: Feature Prediction Interaction
+    type: string
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureStatisticsResponse:
+    description: FeatureStatisticsResponse represents a feature statistics response
+    properties:
+      feature:
+        description: FeatureName refers to the name of feature as per the model predictions schema
+        type: string
+        x-go-name: FeatureName
+      interaction:
+        $ref: '#/definitions/FeatureInteraction'
+      stats:
+        $ref: '#/definitions/FeatureStats'
+      total_instances:
+        description: TotalInstances represents the total prediction over which the distribution is computed
+        format: int64
+        type: integer
+        x-go-name: TotalInstances
+      type:
+        description: FeatureType refers to the type of feature as per the model predictions schema
+        type: string
+        x-go-name: FeatureType
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureStats:
+    description: FeatureStats represents feature level statistics
+    properties:
+      avg:
+        description: Statistical Average of a feature value (relevant to REAL features)
+        format: double
+        type: number
+        x-go-name: Average
+      buckets:
+        description: Buckets in a feature statistics
+        items:
+          $ref: '#/definitions/FeatureStatsBucket'
+        type: array
+        x-go-name: Buckets
+      count:
+        description: Statistical Count of a feature value (relevant to REAL features)
+        format: int64
+        type: integer
+        x-go-name: Count
+      max:
+        description: Statistical Maximum of a feature value (relevant to REAL features)
+        format: double
+        type: number
+        x-go-name: Max
+      min:
+        description: Statistical Minimum of a feature value (relevant to REAL features)
+        format: double
+        type: number
+        x-go-name: Min
+      most_frequent_category:
+        description: Statistical Most Frequent Category Name of a feature value (relevant to CATEGORICAL, PROBA and ONE_HOT features)
+        type: string
+        x-go-name: MostFrequentCategory
+      most_frequent_category_count:
+        description: Statistical Most Frequent Category Count of a feature value (relevant to CATEGORICAL, PROBA and ONE_HOT features)
+        format: double
+        type: number
+        x-go-name: MostFrequentCategoryCount
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
+  FeatureStatsBucket:
+    description: FeatureDistribution represents feature level statistics bucket
+    properties:
+      key:
+        description: Bucket Key in a feature statistics
+        type: string
+        x-go-name: Key
+      stats:
+        $ref: '#/definitions/FeatureStats'
+    type: object
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
   FieldsV1:
     description: |-
       Each key is either a '.' representing the field itself, and will always map to an empty set,
@@ -6925,7 +7211,7 @@ definitions:
       Name:
         type: string
     type: object
-    x-go-package: github.com/seldonIO/seldon-deploy/internal/util/authutil
+    x-go-package: github.com/seldonIO/seldon-deploy/internal/types
   VersionInfo:
     properties:
       BuildTime:
@@ -7201,9 +7487,10 @@ definitions:
   v1DeploymentType:
     type: string
     enum:
+      - UndefinedDeploymentType
       - SeldonDeployment
       - InferenceService
-    default: SeldonDeployment
+    default: UndefinedDeploymentType
   v1FeatureCategorySchema:
     type: object
     properties:
@@ -7329,6 +7616,10 @@ definitions:
                 "8": Ship
                 "9": Truck
         description: The schema defining the inputs/outputs for the given model.
+      project:
+        type: string
+        example: project_1
+        description: The project that this model belongs to.
     required:
       - URI
   v1ModelMetadataCreateResponse:
@@ -7412,6 +7703,9 @@ definitions:
         format: date-time
         example: "2017-01-15T01:30:15.01Z"
         description: The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
+      model:
+        $ref: '#/definitions/v1Model'
+        description: Detailed metadata of the model referenced in this runtime metadata entry.
   v1RuntimeMetadataListResponse:
     type: object
     properties:
@@ -7432,6 +7726,26 @@ info:
   title: Seldon Deploy API
   version: v1alpha1
 paths:
+  /applicationlogs:
+    post:
+      operationId: ReadApplicationLogs
+      parameters:
+        - description: ApplicationLogs
+          in: body
+          name: Body
+          required: true
+          schema:
+            $ref: '#/definitions/ApplicationLogsParams'
+      responses:
+        "200":
+          $ref: '#/responses/ApplicationLogsResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      summary: Read application container logs from elastic search.
+      tags:
+        - ApplicationLogs
   /cluster:
     get:
       description: Read the cluster info
@@ -8006,6 +8320,72 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - LoadtestJobs
+  /namespaces/{namespace}/inferenceservices/{name}/monitor/featuredistributions:
+    post:
+      description: Get the specified Inference Service predictions feature distribution
+      operationId: InferenceServiceFeatureDistributions
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Deployment Feature Data
+          in: body
+          name: feature_data
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
+          x-go-name: DeploymentFeatureData
+      responses:
+        "200":
+          $ref: '#/responses/FeatureDistResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Monitor
+  /namespaces/{namespace}/inferenceservices/{name}/monitor/featurestatistics:
+    post:
+      description: Get the specified Inference Service predictions feature statistics
+      operationId: InferenceServiceFeatureStatistics
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Deployment Feature Data
+          in: body
+          name: feature_data
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
+          x-go-name: DeploymentFeatureData
+      responses:
+        "200":
+          $ref: '#/responses/FeatureStatResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Monitor
   /namespaces/{namespace}/inferenceservices/{name}/outlierdetector:
     get:
       description: Read the specified Inference Service Outlier Detector
@@ -8954,6 +9334,72 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - MetricsServer
+  /namespaces/{namespace}/seldondeployments/{name}/monitor/featuredistributions:
+    post:
+      description: Get the specified Seldon Deployment predictions feature distribution
+      operationId: SeldonDeploymentFeatureDistributions
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Deployment Feature Data
+          in: body
+          name: feature_data
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
+          x-go-name: DeploymentFeatureData
+      responses:
+        "200":
+          $ref: '#/responses/FeatureDistResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Monitor
+  /namespaces/{namespace}/seldondeployments/{name}/monitor/featurestatistics:
+    post:
+      description: Get the specified Seldon Deployment predictions feature statistics
+      operationId: SeldonDeploymentFeatureStatistics
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+          x-go-name: Name
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+          x-go-name: Namespace
+        - description: Deployment Feature Data
+          in: body
+          name: feature_data
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
+          x-go-name: DeploymentFeatureData
+      responses:
+        "200":
+          $ref: '#/responses/FeatureStatResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Monitor
   /namespaces/{namespace}/seldondeployments/{name}/outlierdetector:
     delete:
       description: Delete the specified Seldon Deployment Outlier Detector
@@ -9315,6 +9761,11 @@ paths:
           in: query
           required: false
           type: string
+        - name: query
+          description: For more complex queries where other logical operators like OR, NOT, etc.
+          in: query
+          required: false
+          type: string
         - name: pageSize
           description: Optional. The maximum number of Folders to return in the response.
           in: query
@@ -9332,6 +9783,10 @@ paths:
           description: |-
             Optional. Can be used to specify which fields of Model you wish to return in the response.
             If left empty all fields will be returned.
+          in: query
+          required: false
+          type: string
+        - name: project
           in: query
           required: false
           type: string
@@ -9360,6 +9815,11 @@ paths:
           description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
           in: query
           required: true
+          type: string
+        - name: project
+          description: The project that this model belongs to.
+          in: query
+          required: false
           type: string
       tags:
         - ModelMetadataService
@@ -9491,6 +9951,15 @@ paths:
           in: query
           required: false
           type: string
+        - name: deploymentType
+          in: query
+          required: false
+          type: string
+          enum:
+            - UndefinedDeploymentType
+            - SeldonDeployment
+            - InferenceService
+          default: UndefinedDeploymentType
       tags:
         - ModelMetadataService
 produces:
@@ -9500,6 +9969,10 @@ responses:
     description: Analytics
     schema:
       $ref: '#/definitions/AnalyticsProps'
+  ApplicationLogsResponse:
+    description: Application Logs
+    schema:
+      $ref: '#/definitions/ApplicationLogsResponse'
   BatchJobPostResponse:
     description: Batch Job Response
     schema:
@@ -9528,6 +10001,14 @@ responses:
     description: ErrorDefault Error
     schema:
       $ref: '#/definitions/Error'
+  FeatureDistResponse:
+    description: Feature Distribution Response
+    schema:
+      $ref: '#/definitions/FeatureDistributionResponse'
+  FeatureStatResponse:
+    description: Feature Statistics Response
+    schema:
+      $ref: '#/definitions/FeatureStatisticsResponse'
   GenericResponse:
     description: Generic
     schema:
@@ -9639,3 +10120,5 @@ tags:
     name: MetricsServer
   - description: KubernetesResources APIs for Seldon Deploy
     name: KubernetesResources
+  - description: ApplicationLogs APIs for Seldon Deploy
+    name: ApplicationLogs
