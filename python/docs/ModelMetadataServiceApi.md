@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **model_metadata_service_delete_model_metadata**
-> V1ModelMetadataDeleteResponse model_metadata_service_delete_model_metadata(uri)
+> V1ModelMetadataDeleteResponse model_metadata_service_delete_model_metadata(uri, project=project)
 
 Delete a Model Metadata entry.
 
@@ -81,10 +81,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = seldon_deploy_sdk.ModelMetadataServiceApi(seldon_deploy_sdk.ApiClient(configuration))
 uri = 'uri_example' # str | The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
+project = 'project_example' # str | The project that this model belongs to. (optional)
 
 try:
     # Delete a Model Metadata entry.
-    api_response = api_instance.model_metadata_service_delete_model_metadata(uri)
+    api_response = api_instance.model_metadata_service_delete_model_metadata(uri, project=project)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_delete_model_metadata: %s\n" % e)
@@ -95,6 +96,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uri** | **str**| The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters. | 
+ **project** | **str**| The project that this model belongs to. | [optional] 
 
 ### Return type
 
@@ -112,7 +114,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **model_metadata_service_list_model_metadata**
-> V1ModelMetadataListResponse model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, page_size=page_size, page_token=page_token, list_mask=list_mask)
+> V1ModelMetadataListResponse model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project)
 
 List Model Metadata entries.
 
@@ -140,13 +142,15 @@ task_type = 'task_type_example' # str |  (optional)
 model_type = 'model_type_example' # str |  (optional)
 tags = {"tag_key_example": "tag_value_example"} # dict (optional)
 metrics = {"metric_key_example": 123} # dict (optional)
+query = 'query_example' # str | For more complex queries where other logical operators like OR, NOT, etc. (optional)
 page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
 list_mask = 'list_mask_example' # str | Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. (optional)
+project = 'project_example' # str |  (optional)
 
 try:
     # List Model Metadata entries.
-    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, page_size=page_size, page_token=page_token, list_mask=list_mask)
+    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_model_metadata: %s\n" % e)
@@ -164,9 +168,11 @@ Name | Type | Description  | Notes
  **model_type** | **str**|  | [optional] 
  **tags** | **dict**|  | [optional]
  **metrics** | **dict**|  | [optional]
+ **query** | **str**| For more complex queries where other logical operators like OR, NOT, etc. | [optional]
  **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
  **list_mask** | **str**| Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. | [optional] 
+ **project** | **str**|  | [optional] 
 
 ### Return type
 
@@ -184,7 +190,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **model_metadata_service_list_runtime_metadata_for_model**
-> V1RuntimeMetadataListResponse model_metadata_service_list_runtime_metadata_for_model(model_uri=model_uri, deployment_uid=deployment_uid, deployment_name=deployment_name, deployment_namespace=deployment_namespace, deployment_status=deployment_status, predictor_name=predictor_name, node_name=node_name, page_size=page_size, page_token=page_token, list_mask=list_mask)
+> V1RuntimeMetadataListResponse model_metadata_service_list_runtime_metadata_for_model(model_uri=model_uri, deployment_uid=deployment_uid, deployment_name=deployment_name, deployment_namespace=deployment_namespace, deployment_status=deployment_status, predictor_name=predictor_name, node_name=node_name, page_size=page_size, page_token=page_token, list_mask=list_mask, deployment_type=deployment_type)
 
 List Runtime Metadata for all deployments associated with a model.
 
@@ -212,10 +218,11 @@ node_name = 'node_name_example' # str |  (optional)
 page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
 list_mask = 'list_mask_example' # str | Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response. If left empty all fields will be returned. (optional)
+deployment_type = 'UndefinedDeploymentType' # str |  (optional) (default to UndefinedDeploymentType)
 
 try:
     # List Runtime Metadata for all deployments associated with a model.
-    api_response = api_instance.model_metadata_service_list_runtime_metadata_for_model(model_uri=model_uri, deployment_uid=deployment_uid, deployment_name=deployment_name, deployment_namespace=deployment_namespace, deployment_status=deployment_status, predictor_name=predictor_name, node_name=node_name, page_size=page_size, page_token=page_token, list_mask=list_mask)
+    api_response = api_instance.model_metadata_service_list_runtime_metadata_for_model(model_uri=model_uri, deployment_uid=deployment_uid, deployment_name=deployment_name, deployment_namespace=deployment_namespace, deployment_status=deployment_status, predictor_name=predictor_name, node_name=node_name, page_size=page_size, page_token=page_token, list_mask=list_mask, deployment_type=deployment_type)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_runtime_metadata_for_model: %s\n" % e)
@@ -235,6 +242,7 @@ Name | Type | Description  | Notes
  **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
  **list_mask** | **str**| Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response. If left empty all fields will be returned. | [optional] 
+ **deployment_type** | **str**|  | [optional] [default to UndefinedDeploymentType]
 
 ### Return type
 

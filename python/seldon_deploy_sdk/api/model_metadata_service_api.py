@@ -140,6 +140,7 @@ class ModelMetadataServiceApi(object):
 
         :param async_req bool
         :param str uri: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters. (required)
+        :param str project: The project that this model belongs to.
         :return: V1ModelMetadataDeleteResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -161,12 +162,13 @@ class ModelMetadataServiceApi(object):
 
         :param async_req bool
         :param str uri: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters. (required)
+        :param str project: The project that this model belongs to.
         :return: V1ModelMetadataDeleteResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['uri']  # noqa: E501
+        all_params = ['uri', 'project']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -193,6 +195,8 @@ class ModelMetadataServiceApi(object):
         query_params = []
         if 'uri' in params:
             query_params.append(('URI', params['uri']))  # noqa: E501
+        if 'project' in params:
+            query_params.append(('project', params['project']))  # noqa: E501
 
         header_params = {}
 
@@ -245,9 +249,11 @@ class ModelMetadataServiceApi(object):
         :param str model_type:
         :param dict tags:
         :param dict metrics:
+        :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
+        :param str project:
         :return: V1ModelMetadataListResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -277,15 +283,17 @@ class ModelMetadataServiceApi(object):
         :param str model_type:
         :param dict tags:
         :param dict metrics:
+        :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
+        :param str project:
         :return: V1ModelMetadataListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'page_size', 'page_token', 'list_mask', "tags", "metrics"]  # noqa: E501
+        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', 'project', "tags", "metrics"]  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -318,12 +326,16 @@ class ModelMetadataServiceApi(object):
             query_params.append(('taskType', params['task_type']))  # noqa: E501
         if 'model_type' in params:
             query_params.append(('modelType', params['model_type']))  # noqa: E501
+        if 'query' in params:
+            query_params.append(('query', params['query']))  # noqa: E501
         if 'page_size' in params:
             query_params.append(('pageSize', params['page_size']))  # noqa: E501
         if 'page_token' in params:
             query_params.append(('pageToken', params['page_token']))  # noqa: E501
         if 'list_mask' in params:
             query_params.append(('listMask', params['list_mask']))  # noqa: E501
+        if 'project' in params:
+            query_params.append(('project', params['project']))  # noqa: E501
         if 'tags' in params:
             for key, val in params["tags"].items():
                 query_params.append((f"tags[{key}]", val))
@@ -383,6 +395,7 @@ class ModelMetadataServiceApi(object):
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response. If left empty all fields will be returned.
+        :param str deployment_type:
         :return: V1RuntimeMetadataListResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -413,12 +426,13 @@ class ModelMetadataServiceApi(object):
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response. If left empty all fields will be returned.
+        :param str deployment_type:
         :return: V1RuntimeMetadataListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['model_uri', 'deployment_uid', 'deployment_name', 'deployment_namespace', 'deployment_status', 'predictor_name', 'node_name', 'page_size', 'page_token', 'list_mask']  # noqa: E501
+        all_params = ['model_uri', 'deployment_uid', 'deployment_name', 'deployment_namespace', 'deployment_status', 'predictor_name', 'node_name', 'page_size', 'page_token', 'list_mask', 'deployment_type']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -459,6 +473,8 @@ class ModelMetadataServiceApi(object):
             query_params.append(('pageToken', params['page_token']))  # noqa: E501
         if 'list_mask' in params:
             query_params.append(('listMask', params['list_mask']))  # noqa: E501
+        if 'deployment_type' in params:
+            query_params.append(('deploymentType', params['deployment_type']))  # noqa: E501
 
         header_params = {}
 

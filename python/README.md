@@ -56,16 +56,15 @@ configuration = seldon_deploy_sdk.Configuration()
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = seldon_deploy_sdk.BatchJobsApi(seldon_deploy_sdk.ApiClient(configuration))
-name = 'name_example' # str | Name identifies a resource
-namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-workflow = seldon_deploy_sdk.BatchDefinition() # BatchDefinition | WorkflowName
+api_instance = seldon_deploy_sdk.ApplicationLogsApi(seldon_deploy_sdk.ApiClient(configuration))
+body = seldon_deploy_sdk.ApplicationLogsParams() # ApplicationLogsParams | ApplicationLogs
 
 try:
-    api_response = api_instance.create_seldon_deployment_batch_job(name, namespace, workflow)
+    # Read application container logs from elastic search.
+    api_response = api_instance.read_application_logs(body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling BatchJobsApi->create_seldon_deployment_batch_job: %s\n" % e)
+    print("Exception when calling ApplicationLogsApi->read_application_logs: %s\n" % e)
 
 ```
 
@@ -75,6 +74,7 @@ All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ApplicationLogsApi* | [**read_application_logs**](docs/ApplicationLogsApi.md#read_application_logs) | **POST** /applicationlogs | Read application container logs from elastic search.
 *BatchJobsApi* | [**create_seldon_deployment_batch_job**](docs/BatchJobsApi.md#create_seldon_deployment_batch_job) | **POST** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
 *BatchJobsApi* | [**get_deployment_batch_job**](docs/BatchJobsApi.md#get_deployment_batch_job) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName} | 
 *BatchJobsApi* | [**list_seldon_deployment_batch_jobs**](docs/BatchJobsApi.md#list_seldon_deployment_batch_jobs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
@@ -123,6 +123,10 @@ Class | Method | HTTP request | Description
 *ModelMetadataServiceApi* | [**model_metadata_service_list_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_list_model_metadata) | **GET** /model/metadata | List Model Metadata entries.
 *ModelMetadataServiceApi* | [**model_metadata_service_list_runtime_metadata_for_model**](docs/ModelMetadataServiceApi.md#model_metadata_service_list_runtime_metadata_for_model) | **GET** /model/metadata/runtime | List Runtime Metadata for all deployments associated with a model.
 *ModelMetadataServiceApi* | [**model_metadata_service_update_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_update_model_metadata) | **PUT** /model/metadata | Update a Model Metadata entry.
+*MonitorApi* | [**inference_service_feature_distributions**](docs/MonitorApi.md#inference_service_feature_distributions) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor/featuredistributions | 
+*MonitorApi* | [**inference_service_feature_statistics**](docs/MonitorApi.md#inference_service_feature_statistics) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor/featurestatistics | 
+*MonitorApi* | [**seldon_deployment_feature_distributions**](docs/MonitorApi.md#seldon_deployment_feature_distributions) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/featuredistributions | 
+*MonitorApi* | [**seldon_deployment_feature_statistics**](docs/MonitorApi.md#seldon_deployment_feature_statistics) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/featurestatistics | 
 *OutlierDetectorApi* | [**create_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/outlierdetector | 
 *OutlierDetectorApi* | [**create_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/outlierdetector | 
 *OutlierDetectorApi* | [**delete_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservice/{name}/outlierdetector | 
@@ -156,6 +160,9 @@ Class | Method | HTTP request | Description
  - [AlibiExplainerSpec](docs/AlibiExplainerSpec.md)
  - [AlibiExplainerType](docs/AlibiExplainerType.md)
  - [AnalyticsProps](docs/AnalyticsProps.md)
+ - [ApplicationLog](docs/ApplicationLog.md)
+ - [ApplicationLogsParams](docs/ApplicationLogsParams.md)
+ - [ApplicationLogsResponse](docs/ApplicationLogsResponse.md)
  - [AuditLog](docs/AuditLog.md)
  - [AzureDataDiskCachingMode](docs/AzureDataDiskCachingMode.md)
  - [AzureDataDiskKind](docs/AzureDataDiskKind.md)
@@ -192,6 +199,7 @@ Class | Method | HTTP request | Description
  - [CustomThemeConfig](docs/CustomThemeConfig.md)
  - [DNSPolicy](docs/DNSPolicy.md)
  - [Deployment](docs/Deployment.md)
+ - [DeploymentFeatureData](docs/DeploymentFeatureData.md)
  - [DeploymentList](docs/DeploymentList.md)
  - [DeploymentSpec](docs/DeploymentSpec.md)
  - [DeploymentStatus](docs/DeploymentStatus.md)
@@ -216,6 +224,15 @@ Class | Method | HTTP request | Description
  - [ExplainerSpec](docs/ExplainerSpec.md)
  - [ExternalMetricSource](docs/ExternalMetricSource.md)
  - [FCVolumeSource](docs/FCVolumeSource.md)
+ - [FeatureDistribution](docs/FeatureDistribution.md)
+ - [FeatureDistributionBucket](docs/FeatureDistributionBucket.md)
+ - [FeatureDistributionParameters](docs/FeatureDistributionParameters.md)
+ - [FeatureDistributionResponse](docs/FeatureDistributionResponse.md)
+ - [FeatureFilter](docs/FeatureFilter.md)
+ - [FeatureInteraction](docs/FeatureInteraction.md)
+ - [FeatureStatisticsResponse](docs/FeatureStatisticsResponse.md)
+ - [FeatureStats](docs/FeatureStats.md)
+ - [FeatureStatsBucket](docs/FeatureStatsBucket.md)
  - [FieldsV1](docs/FieldsV1.md)
  - [FileDiff](docs/FileDiff.md)
  - [FinalizerName](docs/FinalizerName.md)

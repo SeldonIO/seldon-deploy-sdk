@@ -39,7 +39,8 @@ class V1Model(object):
         'tags': 'dict(str, str)',
         'metrics': 'dict(str, float)',
         'creation_time': 'datetime',
-        'prediction_schema': 'V1PredictionSchema'
+        'prediction_schema': 'V1PredictionSchema',
+        'project': 'str'
     }
 
     attribute_map = {
@@ -51,10 +52,11 @@ class V1Model(object):
         'tags': 'tags',
         'metrics': 'metrics',
         'creation_time': 'creationTime',
-        'prediction_schema': 'predictionSchema'
+        'prediction_schema': 'predictionSchema',
+        'project': 'project'
     }
 
-    def __init__(self, uri=None, name=None, version='"v0.0.1"', artifact_type=None, task_type=None, tags=None, metrics=None, creation_time=None, prediction_schema=None):  # noqa: E501
+    def __init__(self, uri=None, name=None, version='"v0.0.1"', artifact_type=None, task_type=None, tags=None, metrics=None, creation_time=None, prediction_schema=None, project=None):  # noqa: E501
         """V1Model - a model defined in Swagger"""  # noqa: E501
 
         self._uri = None
@@ -66,6 +68,7 @@ class V1Model(object):
         self._metrics = None
         self._creation_time = None
         self._prediction_schema = None
+        self._project = None
         self.discriminator = None
 
         self.uri = uri
@@ -85,6 +88,8 @@ class V1Model(object):
             self.creation_time = creation_time
         if prediction_schema is not None:
             self.prediction_schema = prediction_schema
+        if project is not None:
+            self.project = project
 
     @property
     def uri(self):
@@ -294,6 +299,29 @@ class V1Model(object):
         """
 
         self._prediction_schema = prediction_schema
+
+    @property
+    def project(self):
+        """Gets the project of this V1Model.  # noqa: E501
+
+        The project that this model belongs to.  # noqa: E501
+
+        :return: The project of this V1Model.  # noqa: E501
+        :rtype: str
+        """
+        return self._project
+
+    @project.setter
+    def project(self, project):
+        """Sets the project of this V1Model.
+
+        The project that this model belongs to.  # noqa: E501
+
+        :param project: The project of this V1Model.  # noqa: E501
+        :type: str
+        """
+
+        self._project = project
 
     def to_dict(self):
         """Returns the model properties as a dict"""

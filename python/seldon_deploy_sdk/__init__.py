@@ -16,6 +16,7 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
+from seldon_deploy_sdk.api.application_logs_api import ApplicationLogsApi
 from seldon_deploy_sdk.api.batch_jobs_api import BatchJobsApi
 from seldon_deploy_sdk.api.drift_detector_api import DriftDetectorApi
 from seldon_deploy_sdk.api.environment_api import EnvironmentApi
@@ -26,6 +27,7 @@ from seldon_deploy_sdk.api.kubernetes_resources_api import KubernetesResourcesAp
 from seldon_deploy_sdk.api.loadtest_jobs_api import LoadtestJobsApi
 from seldon_deploy_sdk.api.metrics_server_api import MetricsServerApi
 from seldon_deploy_sdk.api.model_metadata_service_api import ModelMetadataServiceApi
+from seldon_deploy_sdk.api.monitor_api import MonitorApi
 from seldon_deploy_sdk.api.outlier_detector_api import OutlierDetectorApi
 from seldon_deploy_sdk.api.predict_api import PredictApi
 from seldon_deploy_sdk.api.seldon_deployments_api import SeldonDeploymentsApi
@@ -45,6 +47,9 @@ from seldon_deploy_sdk.models.alibi_detector_data import AlibiDetectorData
 from seldon_deploy_sdk.models.alibi_explainer_spec import AlibiExplainerSpec
 from seldon_deploy_sdk.models.alibi_explainer_type import AlibiExplainerType
 from seldon_deploy_sdk.models.analytics_props import AnalyticsProps
+from seldon_deploy_sdk.models.application_log import ApplicationLog
+from seldon_deploy_sdk.models.application_logs_params import ApplicationLogsParams
+from seldon_deploy_sdk.models.application_logs_response import ApplicationLogsResponse
 from seldon_deploy_sdk.models.audit_log import AuditLog
 from seldon_deploy_sdk.models.azure_data_disk_caching_mode import AzureDataDiskCachingMode
 from seldon_deploy_sdk.models.azure_data_disk_kind import AzureDataDiskKind
@@ -81,6 +86,7 @@ from seldon_deploy_sdk.models.custom_spec import CustomSpec
 from seldon_deploy_sdk.models.custom_theme_config import CustomThemeConfig
 from seldon_deploy_sdk.models.dns_policy import DNSPolicy
 from seldon_deploy_sdk.models.deployment import Deployment
+from seldon_deploy_sdk.models.deployment_feature_data import DeploymentFeatureData
 from seldon_deploy_sdk.models.deployment_list import DeploymentList
 from seldon_deploy_sdk.models.deployment_spec import DeploymentSpec
 from seldon_deploy_sdk.models.deployment_status import DeploymentStatus
@@ -105,6 +111,15 @@ from seldon_deploy_sdk.models.explainer import Explainer
 from seldon_deploy_sdk.models.explainer_spec import ExplainerSpec
 from seldon_deploy_sdk.models.external_metric_source import ExternalMetricSource
 from seldon_deploy_sdk.models.fc_volume_source import FCVolumeSource
+from seldon_deploy_sdk.models.feature_distribution import FeatureDistribution
+from seldon_deploy_sdk.models.feature_distribution_bucket import FeatureDistributionBucket
+from seldon_deploy_sdk.models.feature_distribution_parameters import FeatureDistributionParameters
+from seldon_deploy_sdk.models.feature_distribution_response import FeatureDistributionResponse
+from seldon_deploy_sdk.models.feature_filter import FeatureFilter
+from seldon_deploy_sdk.models.feature_interaction import FeatureInteraction
+from seldon_deploy_sdk.models.feature_statistics_response import FeatureStatisticsResponse
+from seldon_deploy_sdk.models.feature_stats import FeatureStats
+from seldon_deploy_sdk.models.feature_stats_bucket import FeatureStatsBucket
 from seldon_deploy_sdk.models.fields_v1 import FieldsV1
 from seldon_deploy_sdk.models.file_diff import FileDiff
 from seldon_deploy_sdk.models.finalizer_name import FinalizerName
