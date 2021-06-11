@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **traffic** | **str** | The amount of traffic server by this model in the deployment. | [optional] 
 **shadow** | **bool** | True if this model is a shadow in the deployment. | [optional] 
 **creation_time** | **datetime** | The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/ | [optional] 
+**model** | [**V1Model**](V1Model.md) | Detailed metadata of the model referenced in this runtime metadata entry. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

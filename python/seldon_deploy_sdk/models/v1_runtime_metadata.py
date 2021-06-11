@@ -41,7 +41,8 @@ class V1RuntimeMetadata(object):
         'deployment_type': 'V1DeploymentType',
         'traffic': 'str',
         'shadow': 'bool',
-        'creation_time': 'datetime'
+        'creation_time': 'datetime',
+        'model': 'V1Model'
     }
 
     attribute_map = {
@@ -55,10 +56,11 @@ class V1RuntimeMetadata(object):
         'deployment_type': 'deploymentType',
         'traffic': 'traffic',
         'shadow': 'shadow',
-        'creation_time': 'creationTime'
+        'creation_time': 'creationTime',
+        'model': 'model'
     }
 
-    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None, creation_time=None):  # noqa: E501
+    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None, creation_time=None, model=None):  # noqa: E501
         """V1RuntimeMetadata - a model defined in Swagger"""  # noqa: E501
 
         self._model_uri = None
@@ -72,6 +74,7 @@ class V1RuntimeMetadata(object):
         self._traffic = None
         self._shadow = None
         self._creation_time = None
+        self._model = None
         self.discriminator = None
 
         if model_uri is not None:
@@ -96,6 +99,8 @@ class V1RuntimeMetadata(object):
             self.shadow = shadow
         if creation_time is not None:
             self.creation_time = creation_time
+        if model is not None:
+            self.model = model
 
     @property
     def model_uri(self):
@@ -349,6 +354,29 @@ class V1RuntimeMetadata(object):
         """
 
         self._creation_time = creation_time
+
+    @property
+    def model(self):
+        """Gets the model of this V1RuntimeMetadata.  # noqa: E501
+
+        Detailed metadata of the model referenced in this runtime metadata entry.  # noqa: E501
+
+        :return: The model of this V1RuntimeMetadata.  # noqa: E501
+        :rtype: V1Model
+        """
+        return self._model
+
+    @model.setter
+    def model(self, model):
+        """Sets the model of this V1RuntimeMetadata.
+
+        Detailed metadata of the model referenced in this runtime metadata entry.  # noqa: E501
+
+        :param model: The model of this V1RuntimeMetadata.  # noqa: E501
+        :type: V1Model
+        """
+
+        self._model = model
 
     def to_dict(self):
         """Returns the model properties as a dict"""
