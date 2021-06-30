@@ -9,6 +9,8 @@ from .base import Authenticator, _soft_deprecate
 
 logger = logging.getLogger(__name__)
 
+IdTokenField = "id_token"
+
 
 class OIDCIntegration(FrameworkIntegration):
     oauth2_client_cls = OAuth2Session
@@ -52,11 +54,11 @@ class OIDCAuthenticator(Authenticator):
                 password=password or self._config.password,
                 scope=self._config.scope,
             )
-            return token["access_token"]
+            return token[IdTokenField]
         elif self._config.auth_method == "client_credentials":
             token = self._app.fetch_access_token(
                 scope=self._config.scope, grant_type="client_credentials"
             )
-            return token["access_token"]
+            return token[IdTokenField]
 
         raise NotImplementedError("Auth method not specified or not supported")
