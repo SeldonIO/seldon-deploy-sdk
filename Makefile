@@ -23,5 +23,5 @@ python:
 	# Generate licenses
 	mkdir python/licenses
 	make -C python licenses
-
+	# Apply patch
 	git apply templates/python/metadata_tags_metrics.patch
