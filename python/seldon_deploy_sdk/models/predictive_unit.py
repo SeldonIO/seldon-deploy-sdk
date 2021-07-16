@@ -41,6 +41,7 @@ class PredictiveUnit(object):
         'name': 'str',
         'parameters': 'list[Parameter]',
         'service_account_name': 'str',
+        'storage_initializer_image': 'str',
         'type': 'PredictiveUnitType'
     }
 
@@ -55,10 +56,11 @@ class PredictiveUnit(object):
         'name': 'name',
         'parameters': 'parameters',
         'service_account_name': 'serviceAccountName',
+        'storage_initializer_image': 'storageInitializerImage',
         'type': 'type'
     }
 
-    def __init__(self, children=None, endpoint=None, env_secret_ref_name=None, implementation=None, logger=None, methods=None, model_uri=None, name=None, parameters=None, service_account_name=None, type=None):  # noqa: E501
+    def __init__(self, children=None, endpoint=None, env_secret_ref_name=None, implementation=None, logger=None, methods=None, model_uri=None, name=None, parameters=None, service_account_name=None, storage_initializer_image=None, type=None):  # noqa: E501
         """PredictiveUnit - a model defined in Swagger"""  # noqa: E501
 
         self._children = None
@@ -71,6 +73,7 @@ class PredictiveUnit(object):
         self._name = None
         self._parameters = None
         self._service_account_name = None
+        self._storage_initializer_image = None
         self._type = None
         self.discriminator = None
 
@@ -94,6 +97,8 @@ class PredictiveUnit(object):
             self.parameters = parameters
         if service_account_name is not None:
             self.service_account_name = service_account_name
+        if storage_initializer_image is not None:
+            self.storage_initializer_image = storage_initializer_image
         if type is not None:
             self.type = type
 
@@ -306,6 +311,27 @@ class PredictiveUnit(object):
         """
 
         self._service_account_name = service_account_name
+
+    @property
+    def storage_initializer_image(self):
+        """Gets the storage_initializer_image of this PredictiveUnit.  # noqa: E501
+
+
+        :return: The storage_initializer_image of this PredictiveUnit.  # noqa: E501
+        :rtype: str
+        """
+        return self._storage_initializer_image
+
+    @storage_initializer_image.setter
+    def storage_initializer_image(self, storage_initializer_image):
+        """Sets the storage_initializer_image of this PredictiveUnit.
+
+
+        :param storage_initializer_image: The storage_initializer_image of this PredictiveUnit.  # noqa: E501
+        :type: str
+        """
+
+        self._storage_initializer_image = storage_initializer_image
 
     @property
     def type(self):

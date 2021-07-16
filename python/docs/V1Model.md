@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **artifact_type** | [**V1ArtifactType**](V1ArtifactType.md) | The artifact type of the model. This is the library used to develop the model. | [optional] 
 **task_type** | **str** | The task type of the model. It must not exceed 50 characters. | [optional] 
 **tags** | **dict(str, str)** | Key-value pairs of arbitrary metadata associated with the model. Each key and value must not exceed 100 and 500 characters respectively. | [optional] 
-**metrics** | **dict(str, float)** | Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters. | [optional] 
+**metrics** | **dict(str, float)** | Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/en/latest/contents/getting-started/production-installation/metrics.html. Keys must not exceed 100 characters. | [optional] 
 **creation_time** | **datetime** | The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/ | [optional] 
 **prediction_schema** | [**V1PredictionSchema**](V1PredictionSchema.md) | The schema defining the inputs/outputs for the given model. | [optional] 
 **project** | **str** | The project that this model belongs to. | [optional] 

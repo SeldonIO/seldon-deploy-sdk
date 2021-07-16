@@ -36,7 +36,9 @@ class Explainer(object):
         'endpoint': 'Endpoint',
         'env_secret_ref_name': 'str',
         'model_uri': 'str',
+        'replicas': 'int',
         'service_account_name': 'str',
+        'storage_initializer_image': 'str',
         'type': 'AlibiExplainerType'
     }
 
@@ -46,11 +48,13 @@ class Explainer(object):
         'endpoint': 'endpoint',
         'env_secret_ref_name': 'envSecretRefName',
         'model_uri': 'modelUri',
+        'replicas': 'replicas',
         'service_account_name': 'serviceAccountName',
+        'storage_initializer_image': 'storageInitializerImage',
         'type': 'type'
     }
 
-    def __init__(self, config=None, container_spec=None, endpoint=None, env_secret_ref_name=None, model_uri=None, service_account_name=None, type=None):  # noqa: E501
+    def __init__(self, config=None, container_spec=None, endpoint=None, env_secret_ref_name=None, model_uri=None, replicas=None, service_account_name=None, storage_initializer_image=None, type=None):  # noqa: E501
         """Explainer - a model defined in Swagger"""  # noqa: E501
 
         self._config = None
@@ -58,7 +62,9 @@ class Explainer(object):
         self._endpoint = None
         self._env_secret_ref_name = None
         self._model_uri = None
+        self._replicas = None
         self._service_account_name = None
+        self._storage_initializer_image = None
         self._type = None
         self.discriminator = None
 
@@ -72,8 +78,12 @@ class Explainer(object):
             self.env_secret_ref_name = env_secret_ref_name
         if model_uri is not None:
             self.model_uri = model_uri
+        if replicas is not None:
+            self.replicas = replicas
         if service_account_name is not None:
             self.service_account_name = service_account_name
+        if storage_initializer_image is not None:
+            self.storage_initializer_image = storage_initializer_image
         if type is not None:
             self.type = type
 
@@ -183,6 +193,27 @@ class Explainer(object):
         self._model_uri = model_uri
 
     @property
+    def replicas(self):
+        """Gets the replicas of this Explainer.  # noqa: E501
+
+
+        :return: The replicas of this Explainer.  # noqa: E501
+        :rtype: int
+        """
+        return self._replicas
+
+    @replicas.setter
+    def replicas(self, replicas):
+        """Sets the replicas of this Explainer.
+
+
+        :param replicas: The replicas of this Explainer.  # noqa: E501
+        :type: int
+        """
+
+        self._replicas = replicas
+
+    @property
     def service_account_name(self):
         """Gets the service_account_name of this Explainer.  # noqa: E501
 
@@ -202,6 +233,27 @@ class Explainer(object):
         """
 
         self._service_account_name = service_account_name
+
+    @property
+    def storage_initializer_image(self):
+        """Gets the storage_initializer_image of this Explainer.  # noqa: E501
+
+
+        :return: The storage_initializer_image of this Explainer.  # noqa: E501
+        :rtype: str
+        """
+        return self._storage_initializer_image
+
+    @storage_initializer_image.setter
+    def storage_initializer_image(self, storage_initializer_image):
+        """Sets the storage_initializer_image of this Explainer.
+
+
+        :param storage_initializer_image: The storage_initializer_image of this Explainer.  # noqa: E501
+        :type: str
+        """
+
+        self._storage_initializer_image = storage_initializer_image
 
     @property
     def type(self):

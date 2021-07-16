@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **parameters** | [**list[Parameter]**](Parameter.md) |  | [optional] 
 **service_account_name** | **str** |  | [optional] 
+**storage_initializer_image** | **str** |  | [optional] 
 **type** | [**PredictiveUnitType**](PredictiveUnitType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

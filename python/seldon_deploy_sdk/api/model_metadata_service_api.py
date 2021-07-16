@@ -247,8 +247,6 @@ class ModelMetadataServiceApi(object):
         :param str artifact_type:
         :param str task_type:
         :param str model_type:
-        :param dict tags:
-        :param dict metrics:
         :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
@@ -281,8 +279,6 @@ class ModelMetadataServiceApi(object):
         :param str artifact_type:
         :param str task_type:
         :param str model_type:
-        :param dict tags:
-        :param dict metrics:
         :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
@@ -293,7 +289,7 @@ class ModelMetadataServiceApi(object):
                  returns the request thread.
         """
 
-        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', 'project', "tags", "metrics"]  # noqa: E501
+        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', 'project']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -336,12 +332,6 @@ class ModelMetadataServiceApi(object):
             query_params.append(('listMask', params['list_mask']))  # noqa: E501
         if 'project' in params:
             query_params.append(('project', params['project']))  # noqa: E501
-        if 'tags' in params:
-            for key, val in params["tags"].items():
-                query_params.append((f"tags[{key}]", val))
-        if 'metrics' in params:
-            for key, val in params["metrics"].items():
-                query_params.append((f"metrics[{key}]", val))
 
         header_params = {}
 
