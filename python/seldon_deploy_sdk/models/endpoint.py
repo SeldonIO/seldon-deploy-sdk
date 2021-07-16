@@ -31,31 +31,83 @@ class Endpoint(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'grpc_port': 'int',
+        'http_port': 'int',
         'service_host': 'str',
         'service_port': 'int',
         'type': 'EndpointType'
     }
 
     attribute_map = {
+        'grpc_port': 'grpcPort',
+        'http_port': 'httpPort',
         'service_host': 'service_host',
         'service_port': 'service_port',
         'type': 'type'
     }
 
-    def __init__(self, service_host=None, service_port=None, type=None):  # noqa: E501
+    def __init__(self, grpc_port=None, http_port=None, service_host=None, service_port=None, type=None):  # noqa: E501
         """Endpoint - a model defined in Swagger"""  # noqa: E501
 
+        self._grpc_port = None
+        self._http_port = None
         self._service_host = None
         self._service_port = None
         self._type = None
         self.discriminator = None
 
+        if grpc_port is not None:
+            self.grpc_port = grpc_port
+        if http_port is not None:
+            self.http_port = http_port
         if service_host is not None:
             self.service_host = service_host
         if service_port is not None:
             self.service_port = service_port
         if type is not None:
             self.type = type
+
+    @property
+    def grpc_port(self):
+        """Gets the grpc_port of this Endpoint.  # noqa: E501
+
+
+        :return: The grpc_port of this Endpoint.  # noqa: E501
+        :rtype: int
+        """
+        return self._grpc_port
+
+    @grpc_port.setter
+    def grpc_port(self, grpc_port):
+        """Sets the grpc_port of this Endpoint.
+
+
+        :param grpc_port: The grpc_port of this Endpoint.  # noqa: E501
+        :type: int
+        """
+
+        self._grpc_port = grpc_port
+
+    @property
+    def http_port(self):
+        """Gets the http_port of this Endpoint.  # noqa: E501
+
+
+        :return: The http_port of this Endpoint.  # noqa: E501
+        :rtype: int
+        """
+        return self._http_port
+
+    @http_port.setter
+    def http_port(self, http_port):
+        """Sets the http_port of this Endpoint.
+
+
+        :param http_port: The http_port of this Endpoint.  # noqa: E501
+        :type: int
+        """
+
+        self._http_port = http_port
 
     @property
     def service_host(self):

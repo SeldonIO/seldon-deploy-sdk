@@ -235,7 +235,7 @@ class V1Model(object):
     def metrics(self):
         """Gets the metrics of this V1Model.  # noqa: E501
 
-        Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters.  # noqa: E501
+        Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/en/latest/contents/getting-started/production-installation/metrics.html. Keys must not exceed 100 characters.  # noqa: E501
 
         :return: The metrics of this V1Model.  # noqa: E501
         :rtype: dict(str, float)
@@ -246,7 +246,7 @@ class V1Model(object):
     def metrics(self, metrics):
         """Sets the metrics of this V1Model.
 
-        Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters.  # noqa: E501
+        Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/en/latest/contents/getting-started/production-installation/metrics.html. Keys must not exceed 100 characters.  # noqa: E501
 
         :param metrics: The metrics of this V1Model.  # noqa: E501
         :type: dict(str, float)

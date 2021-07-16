@@ -1649,6 +1649,14 @@ definitions:
     x-go-package: k8s.io/api/core/v1
   Endpoint:
     properties:
+      grpcPort:
+        format: int32
+        type: integer
+        x-go-name: GrpcPort
+      httpPort:
+        format: int32
+        type: integer
+        x-go-name: HttpPort
       service_host:
         type: string
         x-go-name: ServiceHost
@@ -1985,9 +1993,16 @@ definitions:
       modelUri:
         type: string
         x-go-name: ModelUri
+      replicas:
+        format: int32
+        type: integer
+        x-go-name: Replicas
       serviceAccountName:
         type: string
         x-go-name: ServiceAccountName
+      storageInitializerImage:
+        type: string
+        x-go-name: StorageInitializerImage
       type:
         $ref: '#/definitions/AlibiExplainerType'
     type: object
@@ -5404,6 +5419,9 @@ definitions:
       serviceAccountName:
         type: string
         x-go-name: ServiceAccountName
+      storageInitializerImage:
+        type: string
+        x-go-name: StorageInitializerImage
       type:
         $ref: '#/definitions/PredictiveUnitType'
     type: object
@@ -7582,7 +7600,7 @@ definitions:
         additionalProperties:
           type: number
           format: double
-        description: Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/docs/getting-started/production-installation/metrics/ . Keys must not exceed 100 characters.
+        description: Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/en/latest/contents/getting-started/production-installation/metrics.html. Keys must not exceed 100 characters.
       creationTime:
         type: string
         format: date-time
@@ -8534,52 +8552,6 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Predict
-  /namespaces/{namespace}/inferenceservices/{name}/predictor/{predictorName}/resources:
-    get:
-      description: list objects of kind resource for Inference Service predictor
-      operationId: ListInferenceServicePredictorResources
-      parameters:
-        - description: Component differentiates between types of model (e.g. predictor, explainer... etc)
-          in: query
-          name: component
-          type: string
-          x-go-name: Component
-        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
-          in: query
-          name: endpoint
-          type: string
-          x-go-name: Endpoint
-        - description: Name identifies a resource
-          in: path
-          name: name
-          required: true
-          type: string
-          x-go-name: Name
-        - description: Namespace provides a logical grouping of resources
-          in: path
-          name: namespace
-          required: true
-          type: string
-          x-go-name: Namespace
-        - description: Predictor Name identifies a predictor resource
-          in: path
-          name: predictorName
-          required: true
-          type: string
-          x-go-name: PredictorName
-      responses:
-        "200":
-          $ref: '#/responses/ResourceListResponse'
-        "400":
-          $ref: '#/responses/ErrorDefault'
-        "405":
-          $ref: '#/responses/ErrorDefault'
-        "424":
-          $ref: '#/responses/ErrorDefault'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      tags:
-        - KubernetesResources
   /namespaces/{namespace}/inferenceservices/{name}/resources:
     get:
       description: list objects of kind resource for Inference Service
@@ -8590,11 +8562,6 @@ paths:
           name: component
           type: string
           x-go-name: Component
-        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
-          in: query
-          name: endpoint
-          type: string
-          x-go-name: Endpoint
         - description: Name identifies a resource
           in: path
           name: name
@@ -9573,52 +9540,6 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Predict
-  /namespaces/{namespace}/seldondeployments/{name}/predictor/{predictorName}/resources:
-    get:
-      description: list objects of kind resource for Seldon Deployment predictor
-      operationId: ListSeldonDeploymentPredictorResources
-      parameters:
-        - description: Component differentiates between types of model (e.g. predictor, explainer... etc)
-          in: query
-          name: component
-          type: string
-          x-go-name: Component
-        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
-          in: query
-          name: endpoint
-          type: string
-          x-go-name: Endpoint
-        - description: Name identifies a resource
-          in: path
-          name: name
-          required: true
-          type: string
-          x-go-name: Name
-        - description: Namespace provides a logical grouping of resources
-          in: path
-          name: namespace
-          required: true
-          type: string
-          x-go-name: Namespace
-        - description: Predictor Name identifies a predictor resource
-          in: path
-          name: predictorName
-          required: true
-          type: string
-          x-go-name: PredictorName
-      responses:
-        "200":
-          $ref: '#/responses/ResourceListResponse'
-        "400":
-          $ref: '#/responses/ErrorDefault'
-        "405":
-          $ref: '#/responses/ErrorDefault'
-        "424":
-          $ref: '#/responses/ErrorDefault'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      tags:
-        - KubernetesResources
   /namespaces/{namespace}/seldondeployments/{name}/resources:
     get:
       description: list objects of kind resource for Seldon Deployment
@@ -9629,11 +9550,6 @@ paths:
           name: component
           type: string
           x-go-name: Component
-        - description: Endpoint differentiates between versions of model (e.g. default, canary... etc)
-          in: query
-          name: endpoint
-          type: string
-          x-go-name: Endpoint
         - description: Name identifies a resource
           in: path
           name: name
