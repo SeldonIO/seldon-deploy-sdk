@@ -6,7 +6,7 @@ from seldon_deploy_sdk.rest import RESTClientObject
 from .base import (
     Authenticator,
     AuthMethod,
-    _auth_method_not_supported,
+    _raise_auth_method_not_supported,
     _soft_deprecate,
 )
 
@@ -32,7 +32,7 @@ class SessionAuthenticator(Authenticator):
             )
             return session_cookie
 
-        _auth_method_not_supported(self._config.auth_method)
+        _raise_auth_method_not_supported(self._config.auth_method)
 
     def _get_auth_path(self) -> str:
         # Send unauthenticated request
