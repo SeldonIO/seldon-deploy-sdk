@@ -1,4 +1,5 @@
 import logging
+from abc import ABC, abstractmethod
 from enum import Enum
 from functools import wraps
 
@@ -53,7 +54,7 @@ class AuthMethod(str, Enum):
     AUTH_CODE = 'auth_code'
 
 
-class Authenticator:
+class Authenticator(ABC):
     def __init__(self, config: Configuration):
         self._server = config.host
         self._host = self._get_host()
@@ -68,9 +69,10 @@ class Authenticator:
                 _deprecation_warning("password")
                 #  raise ValueError(f"config.username is required for {AuthMethod.PASSWORD_GRANT.value}")
 
-    def authenticate(self, username: str = None, password: str = None) -> str:
-        raise NotImplementedError("Authenticate method not implemented")
-
     def _get_host(self) -> str:
         url = urlparse(self._server)
         return f"{url.scheme}://{url.netloc}"
+
+    @abstractmethod
+    def authenticate(self, username: str = None, password: str = None) -> str:
+        pass
