@@ -1,5 +1,5 @@
 import logging
-from enum import auto, Enum
+from enum import Enum
 from functools import wraps
 
 from urllib.parse import urlparse
