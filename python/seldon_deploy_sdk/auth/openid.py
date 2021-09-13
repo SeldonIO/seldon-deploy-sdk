@@ -5,7 +5,12 @@ from authlib.integrations.requests_client import OAuth2Session
 
 from seldon_deploy_sdk.configuration import Configuration
 
-from .base import Authenticator, AuthMethod, _soft_deprecate
+from .base import (
+    Authenticator,
+    AuthMethod,
+    _raise_auth_method_not_supported,
+    _soft_deprecate,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -63,4 +68,4 @@ class OIDCAuthenticator(Authenticator):
             )
             return token[IdTokenField]
 
-        raise NotImplementedError("Auth method not specified or not supported")
+        _raise_auth_method_not_supported(self._config.auth_method)

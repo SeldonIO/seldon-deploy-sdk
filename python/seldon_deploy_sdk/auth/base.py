@@ -48,6 +48,12 @@ def _soft_deprecate(
     return _f
 
 
+def _raise_auth_method_not_supported(auth_method: str):
+    raise NotImplementedError(
+        f"Auth method '{auth_method}' not specified or not supported"
+    )
+
+
 class AuthMethod(str, Enum):
     PASSWORD_GRANT = 'password_grant'
     CLIENT_CREDENTIALS = 'client_credentials'
