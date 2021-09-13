@@ -31,7 +31,7 @@ def _soft_deprecate(
             elif not self._config.username:
                 raise ValueError(
                     "config.username is required for "
-                    f"{AuthMethod.PASSWORD_GRANT.name}"
+                    f"{AuthMethod.PASSWORD_GRANT.value}"
                 )
 
             if password:
@@ -39,7 +39,7 @@ def _soft_deprecate(
             elif not self._config.password:
                 raise ValueError(
                     "config.password is required for "
-                    f"{AuthMethod.PASSWORD_GRANT.name}"
+                    f"{AuthMethod.PASSWORD_GRANT.value}"
                 )
 
         return authenticate(self, username, password)
@@ -47,10 +47,10 @@ def _soft_deprecate(
     return _f
 
 
-class AuthMethod(Enum):
-    PASSWORD_GRANT = auto()
-    CLIENT_CREDENTIALS = auto()
-    AUTH_CODE = auto()
+class AuthMethod(str, Enum):
+    PASSWORD_GRANT = 'password_grant'
+    CLIENT_CREDENTIALS = 'client_credentials'
+    AUTH_CODE = 'auth_code'
 
 
 class Authenticator:
@@ -62,11 +62,11 @@ class Authenticator:
         if self._config.auth_method == AuthMethod.PASSWORD_GRANT:
             if not self._config.username:
                 _deprecation_warning("username")
-                #  raise ValueError(f"config.username is required for {AuthMethod.PASSWORD_GRANT.name}")
+                #  raise ValueError(f"config.username is required for {AuthMethod.PASSWORD_GRANT.value}")
 
             if not self._config.password:
                 _deprecation_warning("password")
-                #  raise ValueError(f"config.username is required for {AuthMethod.PASSWORD_GRANT.name}")
+                #  raise ValueError(f"config.username is required for {AuthMethod.PASSWORD_GRANT.value}")
 
     def authenticate(self, username: str = None, password: str = None) -> str:
         raise NotImplementedError("Authenticate method not implemented")

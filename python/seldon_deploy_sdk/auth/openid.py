@@ -29,7 +29,7 @@ class OIDCAuthenticator(Authenticator):
             if not config.oidc_client_secret:
                 raise ValueError(
                     "config.oidc_client_secret is required for "
-                    f"{AuthMethod.CLIENT_CREDENTIALS.name}"
+                    f"{AuthMethod.CLIENT_CREDENTIALS.value}"
                 )
 
         access_token_params = None
@@ -59,7 +59,7 @@ class OIDCAuthenticator(Authenticator):
         elif self._config.auth_method == AuthMethod.CLIENT_CREDENTIALS:
             token = self._app.fetch_access_token(
                 scope=self._config.scope,
-                grant_type=AuthMethod.CLIENT_CREDENTIALS,
+                grant_type=AuthMethod.CLIENT_CREDENTIALS.value,
             )
             return token[IdTokenField]
 
