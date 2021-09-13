@@ -1,4 +1,5 @@
 import logging
+from enum import auto, Enum
 from functools import wraps
 
 from urllib.parse import urlparse
@@ -24,20 +25,32 @@ def _soft_deprecate(
 ):
     @wraps(authenticate)
     def _f(self, username: str = None, password: str = None) -> str:
-        if self._config.auth_method == "password_grant":
+        if self._config.auth_method == AuthMethod.PASSWORD_GRANT:
             if username:
                 _deprecation_warning("username")
             elif not self._config.username:
-                raise ValueError("config.username is required for password_grant")
+                raise ValueError(
+                    "config.username is required for "
+                    f"{AuthMethod.PASSWORD_GRANT.name}"
+                )
 
             if password:
                 _deprecation_warning("password")
             elif not self._config.password:
-                raise ValueError("config.password is required for password_grant")
+                raise ValueError(
+                    "config.password is required for "
+                    f"{AuthMethod.PASSWORD_GRANT.name}"
+                )
 
         return authenticate(self, username, password)
 
     return _f
+
+
+class AuthMethod(Enum):
+    PASSWORD_GRANT = auto()
+    CLIENT_CREDENTIALS = auto()
+    AUTH_CODE = auto()
 
 
 class Authenticator:
@@ -46,14 +59,14 @@ class Authenticator:
         self._host = self._get_host()
         self._config = config
 
-        if self._config.auth_method == "password_grant":
+        if self._config.auth_method == AuthMethod.PASSWORD_GRANT:
             if not self._config.username:
                 _deprecation_warning("username")
-                #  raise ValueError("config.username is required for password_grant")
+                #  raise ValueError(f"config.username is required for {AuthMethod.PASSWORD_GRANT.name}")
 
             if not self._config.password:
                 _deprecation_warning("password")
-                #  raise ValueError("config.username is required for password_grant")
+                #  raise ValueError(f"config.username is required for {AuthMethod.PASSWORD_GRANT.name}")
 
     def authenticate(self, username: str = None, password: str = None) -> str:
         raise NotImplementedError("Authenticate method not implemented")
