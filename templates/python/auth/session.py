@@ -3,7 +3,12 @@ from urllib3 import Retry
 from seldon_deploy_sdk.configuration import Configuration
 from seldon_deploy_sdk.rest import RESTClientObject
 
-from .base import Authenticator, _soft_deprecate
+from .base import (
+    Authenticator,
+    AuthMethod,
+    _raise_auth_method_not_supported,
+    _soft_deprecate,
+)
 
 
 class SessionAuthenticator(Authenticator):
@@ -19,7 +24,7 @@ class SessionAuthenticator(Authenticator):
     @_soft_deprecate  # type: ignore
     def authenticate(self, username: str = None, password: str = None) -> str:
         auth_path = self._get_auth_path()
-        if self._config.auth_method == "password_grant":
+        if self._config.auth_method == AuthMethod.PASSWORD_GRANT:
             session_cookie = self._submit_auth(
                 auth_path,
                 username or self._config.username,
@@ -27,7 +32,7 @@ class SessionAuthenticator(Authenticator):
             )
             return session_cookie
 
-        raise NotImplementedError("Auth method not specified or not supported")
+        _raise_auth_method_not_supported(self._config.auth_method)
 
     def _get_auth_path(self) -> str:
         # Send unauthenticated request
