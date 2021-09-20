@@ -54,6 +54,8 @@ available.
 For example, for Python you could do:
 
 ```bash
+make -C python install-dev
+
 make python
 ```
 
