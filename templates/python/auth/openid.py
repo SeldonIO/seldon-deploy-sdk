@@ -15,6 +15,7 @@ from .base import (
 logger = logging.getLogger(__name__)
 
 IdTokenField = "id_token"
+AuthCodeState = "sd-sdk-state"
 
 
 class OIDCIntegration(FrameworkIntegration):
@@ -67,4 +68,22 @@ class OIDCAuthenticator(Authenticator):
                 grant_type=AuthMethod.CLIENT_CREDENTIALS.value,
             )
             return token[IdTokenField]
+        elif self._config.auth_method == AuthMethod.AUTH_CODE:
+            deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
+            self._app.create_authorization_url(
+                redirect_uri=deploy_callback_url,
+                state=AuthCodeState,
+                )
+            auth_url = input(
+                "Please copy the following URL into a browser to log in."
+                " You will be redirected and shown a URL to copy and paste here"
+                " Please enter your URL: "
+                ).strip()
+            token = self._app.fetch_access_token(
+                authorization_response=auth_url,
+                redirect_uri=deploy_callback_url,
+                scope=self._config.scope,
+                )
+            return token[IdTokenField]
+
         _raise_auth_method_not_supported(self._config.auth_method)
