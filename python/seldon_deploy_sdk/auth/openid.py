@@ -5,7 +5,12 @@ from authlib.integrations.requests_client import OAuth2Session
 
 from seldon_deploy_sdk.configuration import Configuration
 
-from .base import Authenticator, _soft_deprecate
+from .base import (
+    Authenticator,
+    AuthMethod,
+    _raise_auth_method_not_supported,
+    _soft_deprecate,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -25,10 +30,11 @@ class OIDCAuthenticator(Authenticator):
         if config.oidc_client_id is None:
             raise ValueError("config.oidc_client_id is required")
 
-        if config.auth_method == "client_credentials":
+        if config.auth_method == AuthMethod.CLIENT_CREDENTIALS:
             if not config.oidc_client_secret:
                 raise ValueError(
-                    "config.oidc_client_secret is required for client_credentials"
+                    "config.oidc_client_secret is required for "
+                    f"{AuthMethod.CLIENT_CREDENTIALS.value}"
                 )
 
         access_token_params = None
@@ -48,17 +54,18 @@ class OIDCAuthenticator(Authenticator):
 
     @_soft_deprecate  # type: ignore
     def authenticate(self, username: str = None, password: str = None) -> str:
-        if self._config.auth_method == "password_grant":
+        if self._config.auth_method == AuthMethod.PASSWORD_GRANT:
             token = self._app.fetch_access_token(
                 username=username or self._config.username,
                 password=password or self._config.password,
                 scope=self._config.scope,
             )
             return token[IdTokenField]
-        elif self._config.auth_method == "client_credentials":
+        elif self._config.auth_method == AuthMethod.CLIENT_CREDENTIALS:
             token = self._app.fetch_access_token(
-                scope=self._config.scope, grant_type="client_credentials"
+                scope=self._config.scope,
+                grant_type=AuthMethod.CLIENT_CREDENTIALS.value,
             )
             return token[IdTokenField]
 
-        raise NotImplementedError("Auth method not specified or not supported")
+        _raise_auth_method_not_supported(self._config.auth_method)
