@@ -81,17 +81,18 @@ class OIDCAuthenticator(Authenticator):
 
     def _use_authorization_code(self):
         deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
-        self._app.create_authorization_url(
+        request_url = self._app.create_authorization_url(
             redirect_uri=deploy_callback_url,
             state=AuthCodeState,
-            )
-        auth_url = input(
-            "Please copy the following URL into a browser to log in."
-            " You will be redirected and shown a URL to copy and paste here."
-            " Please enter your URL: "
-            ).strip()
+        )
+        print(
+            "Please copy the following URL into a browser to log in.",
+            "You will be redirected and shown a different URL to copy and paste here.",
+            f"\n\n\t{request_url}\n\n"
+        )
+        response_url = input("Please enter your new URL: ").strip()
         token = self._app.fetch_access_token(
-            authorization_response=auth_url,
+            authorization_response=response_url,
             redirect_uri=deploy_callback_url,
             scope=self._config.scope,
             )
