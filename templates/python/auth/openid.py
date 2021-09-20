@@ -76,7 +76,7 @@ class OIDCAuthenticator(Authenticator):
                 )
             auth_url = input(
                 "Please copy the following URL into a browser to log in."
-                " You will be redirected and shown a URL to copy and paste here"
+                " You will be redirected and shown a URL to copy and paste here."
                 " Please enter your URL: "
                 ).strip()
             token = self._app.fetch_access_token(
