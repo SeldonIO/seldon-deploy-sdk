@@ -30,7 +30,7 @@ class OIDCAuthenticator(Authenticator):
         if config.oidc_client_id is None:
             raise ValueError("config.oidc_client_id is required")
 
-        if config.auth_method == AuthMethod.CLIENT_CREDENTIALS:
+        if config.auth_method in (AuthMethod.CLIENT_CREDENTIALS, AuthMethod.AUTH_CODE):
             if not config.oidc_client_secret:
                 raise ValueError(
                     "config.oidc_client_secret is required for "
