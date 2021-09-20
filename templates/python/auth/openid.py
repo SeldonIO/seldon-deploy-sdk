@@ -14,15 +14,16 @@ from .base import (
 
 logger = logging.getLogger(__name__)
 
-IdTokenField = "id_token"
-AuthCodeState = "sd-sdk-state"
-
 
 class OIDCIntegration(FrameworkIntegration):
     oauth2_client_cls = OAuth2Session
 
 
 class OIDCAuthenticator(Authenticator):
+
+    _IdTokenField = "id_token"
+    _AuthCodeState = "sd-sdk-state"
+
     def __init__(self, config: Configuration):
         super().__init__(config)
 
@@ -70,20 +71,20 @@ class OIDCAuthenticator(Authenticator):
             password=password or self._config.password,
             scope=self._config.scope,
         )
-        return token[IdTokenField]
+        return token[self._IdTokenField]
 
     def _use_client_credentials(self):
         token = self._app.fetch_access_token(
             scope=self._config.scope,
             grant_type=AuthMethod.CLIENT_CREDENTIALS.value,
         )
-        return token[IdTokenField]
+        return token[self._IdTokenField]
 
     def _use_authorization_code(self):
         deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
         request_url = self._app.create_authorization_url(
             redirect_uri=deploy_callback_url,
-            state=AuthCodeState,
+            state=self._AuthCodeState,
         )
         print(
             "Please copy the following URL into a browser to log in.",
@@ -96,4 +97,4 @@ class OIDCAuthenticator(Authenticator):
             redirect_uri=deploy_callback_url,
             scope=self._config.scope,
             )
-        return token[IdTokenField]
+        return token[self._IdTokenField]
