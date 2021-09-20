@@ -56,34 +56,43 @@ class OIDCAuthenticator(Authenticator):
     @_soft_deprecate  # type: ignore
     def authenticate(self, username: str = None, password: str = None) -> str:
         if self._config.auth_method == AuthMethod.PASSWORD_GRANT:
-            token = self._app.fetch_access_token(
-                username=username or self._config.username,
-                password=password or self._config.password,
-                scope=self._config.scope,
-            )
-            return token[IdTokenField]
+            return self._use_password_grant(username, password)
         elif self._config.auth_method == AuthMethod.CLIENT_CREDENTIALS:
-            token = self._app.fetch_access_token(
-                scope=self._config.scope,
-                grant_type=AuthMethod.CLIENT_CREDENTIALS.value,
-            )
-            return token[IdTokenField]
+            return self._use_client_credentials()
         elif self._config.auth_method == AuthMethod.AUTH_CODE:
-            deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
-            self._app.create_authorization_url(
-                redirect_uri=deploy_callback_url,
-                state=AuthCodeState,
-                )
-            auth_url = input(
-                "Please copy the following URL into a browser to log in."
-                " You will be redirected and shown a URL to copy and paste here."
-                " Please enter your URL: "
-                ).strip()
-            token = self._app.fetch_access_token(
-                authorization_response=auth_url,
-                redirect_uri=deploy_callback_url,
-                scope=self._config.scope,
-                )
-            return token[IdTokenField]
+            return self._use_authorization_code()
 
         _raise_auth_method_not_supported(self._config.auth_method)
+
+    def _use_password_grant(self, username: str = None, password: str = None) -> str:
+        token = self._app.fetch_access_token(
+            username=username or self._config.username,
+            password=password or self._config.password,
+            scope=self._config.scope,
+        )
+        return token[IdTokenField]
+
+    def _use_client_credentials(self):
+        token = self._app.fetch_access_token(
+            scope=self._config.scope,
+            grant_type=AuthMethod.CLIENT_CREDENTIALS.value,
+        )
+        return token[IdTokenField]
+
+    def _use_authorization_code(self):
+        deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
+        self._app.create_authorization_url(
+            redirect_uri=deploy_callback_url,
+            state=AuthCodeState,
+            )
+        auth_url = input(
+            "Please copy the following URL into a browser to log in."
+            " You will be redirected and shown a URL to copy and paste here."
+            " Please enter your URL: "
+            ).strip()
+        token = self._app.fetch_access_token(
+            authorization_response=auth_url,
+            redirect_uri=deploy_callback_url,
+            scope=self._config.scope,
+            )
+        return token[IdTokenField]
