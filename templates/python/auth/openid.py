@@ -85,6 +85,7 @@ class OIDCAuthenticator(Authenticator):
         request_url = self._app.create_authorization_url(
             redirect_uri=deploy_callback_url,
             state=self._AuthCodeState,
+            scope=self._config.scope,
         )
         print(
             "Please copy the following URL into a browser to log in.",
