@@ -86,7 +86,7 @@ class OIDCAuthenticator(Authenticator):
             redirect_uri=deploy_callback_url,
             state=self._AuthCodeState,
             scope=self._config.scope,
-        )
+        )['url']
         print(
             "Please copy the following URL into a browser to log in.",
             "You will be redirected and shown a different URL to copy and paste here.",
