@@ -28,10 +28,9 @@ from seldon_deploy_sdk.auth import OIDCAuthenticator
 config = Configuration()
 config.host = "http://X.X.X.X/seldon-deploy/api/v1alpha1"
 config.oidc_client_id = "sd-api"
+config.oidc_client_secret = "sd-api-secret"
 config.oidc_server = "http://X.X.X.X/auth/realms/deploy-realm"
-config.username = "*******"
-config.password = "*******"
-config.auth_method = 'password_grant'
+config.auth_method = "auth_code"
 
 auth = OIDCAuthenticator(config)
 config.access_token = auth.authenticate()
