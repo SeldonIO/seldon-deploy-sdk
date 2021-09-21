@@ -36,7 +36,7 @@ config.auth_method = 'password_grant'
 auth = OIDCAuthenticator(config)
 config.access_token = auth.authenticate()
 
-api_client = ApiClient(config, auth)
+api_client = ApiClient(configuration=config, authenticator=auth)
 
 env_api = EnvironmentApi(api_client)
 user = env_api.read_user()
