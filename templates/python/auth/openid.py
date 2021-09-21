@@ -90,7 +90,7 @@ class OIDCAuthenticator(Authenticator):
         print(
             "Please copy the following URL into a browser to log in.",
             "You will be redirected and shown a different URL to copy and paste here.",
-            f"\n\n\t{request_url}\n\n"
+            f"\n\n\t'{request_url}'\n\n"
         )
         response_url = input("Please enter your new URL: ").strip()
         token = self._app.fetch_access_token(
