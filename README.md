@@ -33,7 +33,7 @@ config.oidc_server = "http://X.X.X.X/auth/realms/deploy-realm"
 config.auth_method = "auth_code"
 
 auth = OIDCAuthenticator(config)
-config.access_token = auth.authenticate()
+config.id_token = auth.authenticate()
 
 api_client = ApiClient(configuration=config, authenticator=auth)
 
