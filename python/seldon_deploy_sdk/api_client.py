@@ -117,7 +117,7 @@ class ApiClient(object):
             #if unauthenticated and have authenticator try refreshing in case token expired
             if e.status == 401 and self.authenticator is not None:
                 token = self.authenticator.authenticate()
-                self.configuration.access_token = token
+                self.configuration.id_token = token
                 return self.__call_api(resource_path=resource_path,method=method,path_params=path_params,query_params=query_params,
                             header_params=header_params,body=body,post_params=post_params,files=files,
                             response_type=response_type, auth_settings=auth_settings,

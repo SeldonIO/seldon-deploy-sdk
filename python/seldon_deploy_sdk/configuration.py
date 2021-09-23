@@ -57,7 +57,7 @@ class Configuration(object):
         self.password = ""
 
         # access token for OAuth
-        self.access_token = ""
+        self.id_token = ""
 
         # oidc config
         self.oidc_server = ""
@@ -249,7 +249,7 @@ class Configuration(object):
                     'type': 'oauth2',
                     'in': 'header',
                     'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
+                    'value': 'Bearer ' + self.id_token
                 },
 
         }
