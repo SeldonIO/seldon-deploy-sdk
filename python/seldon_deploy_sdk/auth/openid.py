@@ -1,3 +1,4 @@
+from urllib.parse import urlencode
 import logging
 
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
@@ -82,6 +83,7 @@ class OIDCAuthenticator(Authenticator):
 
     def _use_authorization_code(self):
         deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
+
         request_url = self._app.create_authorization_url(
             redirect_uri=deploy_callback_url,
             state=self._AuthCodeState,
@@ -89,13 +91,22 @@ class OIDCAuthenticator(Authenticator):
         )['url']
         print(
             "Please copy the following URL into a browser to log in.",
-            "You will be redirected and shown a different URL to copy and paste here.",
+            "You will be redirected and shown a code to copy and paste here.",
             f"\n\n\t'{request_url}'\n\n"
         )
-        response_url = input("Please enter your new URL: ").strip()
+        response_code = self._get_response_code()
+        response_code_query = urlencode({'code': response_code})
+        response_url = f"{deploy_callback_url}?{response_code_query}"
+
         token = self._app.fetch_access_token(
             authorization_response=response_url,
             redirect_uri=deploy_callback_url,
             scope=self._config.scope,
             )
         return token[self._IdTokenField]
+
+    def _get_response_code(self):
+        response_code = None
+        while not response_code:
+            response_code = input("Please enter your code: ").strip()
+        return  response_code
