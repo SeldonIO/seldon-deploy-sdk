@@ -1,3 +1,4 @@
+from urllib.parse import urlencode, urljoin
 import logging
 
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
@@ -89,10 +90,12 @@ class OIDCAuthenticator(Authenticator):
         )['url']
         print(
             "Please copy the following URL into a browser to log in.",
-            "You will be redirected and shown a different URL to copy and paste here.",
+            "You will be redirected and shown a code to copy and paste here.",
             f"\n\n\t'{request_url}'\n\n"
         )
-        response_url = input("Please enter your new URL: ").strip()
+        response_code = input("Please enter your code: ").strip()
+        response_code_query = urlencode({'code': response_code})
+        response_url = urljoin(deploy_callback_url, response_code_query)
         token = self._app.fetch_access_token(
             authorization_response=response_url,
             redirect_uri=deploy_callback_url,
