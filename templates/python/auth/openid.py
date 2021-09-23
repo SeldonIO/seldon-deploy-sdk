@@ -93,7 +93,7 @@ class OIDCAuthenticator(Authenticator):
             "You will be redirected and shown a code to copy and paste here.",
             f"\n\n\t'{request_url}'\n\n"
         )
-        response_code = input("Please enter your code: ").strip()
+        response_code = self._get_response_code()
         response_code_query = urlencode({'code': response_code})
         response_url = urljoin(deploy_callback_url, response_code_query)
         token = self._app.fetch_access_token(
@@ -102,3 +102,9 @@ class OIDCAuthenticator(Authenticator):
             scope=self._config.scope,
             )
         return token[self._IdTokenField]
+
+    def _get_response_code(self):
+        response_code = None
+        while not response_code:
+            response_code = input("Please enter your code: ").strip()
+        return  response_code
