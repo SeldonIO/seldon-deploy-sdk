@@ -83,6 +83,7 @@ class OIDCAuthenticator(Authenticator):
 
     def _use_authorization_code(self):
         deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
+
         request_url = self._app.create_authorization_url(
             redirect_uri=deploy_callback_url,
             state=self._AuthCodeState,
@@ -96,6 +97,7 @@ class OIDCAuthenticator(Authenticator):
         response_code = self._get_response_code()
         response_code_query = urlencode({'code': response_code})
         response_url = urljoin(deploy_callback_url, response_code_query)
+
         token = self._app.fetch_access_token(
             authorization_response=response_url,
             redirect_uri=deploy_callback_url,
