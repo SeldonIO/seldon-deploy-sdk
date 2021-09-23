@@ -1,4 +1,4 @@
-from urllib.parse import urlencode, urljoin
+from urllib.parse import urlencode
 import logging
 
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
@@ -96,7 +96,7 @@ class OIDCAuthenticator(Authenticator):
         )
         response_code = self._get_response_code()
         response_code_query = urlencode({'code': response_code})
-        response_url = urljoin(deploy_callback_url, response_code_query)
+        response_url = f"{deploy_callback_url}?{response_code_query}"
 
         token = self._app.fetch_access_token(
             authorization_response=response_url,
