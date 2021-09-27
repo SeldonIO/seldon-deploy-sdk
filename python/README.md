@@ -18,7 +18,7 @@ You can install from PyPI:
 
 ```sh
 pip install seldon-deploy-sdk
-``
+```
 
 or directly from Github:
 
