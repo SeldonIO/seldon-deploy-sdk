@@ -32,8 +32,11 @@ class SeldonDeploymentStatus(object):
     """
     swagger_types = {
         'address': 'SeldonAddressable',
+        'annotations': 'dict(str, str)',
+        'conditions': 'Conditions',
         'deployment_status': 'dict(str, DeploymentStatus)',
         'description': 'str',
+        'observed_generation': 'int',
         'replicas': 'int',
         'service_status': 'dict(str, ServiceStatus)',
         'state': 'StatusState'
@@ -41,19 +44,25 @@ class SeldonDeploymentStatus(object):
 
     attribute_map = {
         'address': 'address',
+        'annotations': 'annotations',
+        'conditions': 'conditions',
         'deployment_status': 'deploymentStatus',
         'description': 'description',
+        'observed_generation': 'observedGeneration',
         'replicas': 'replicas',
         'service_status': 'serviceStatus',
         'state': 'state'
     }
 
-    def __init__(self, address=None, deployment_status=None, description=None, replicas=None, service_status=None, state=None):  # noqa: E501
+    def __init__(self, address=None, annotations=None, conditions=None, deployment_status=None, description=None, observed_generation=None, replicas=None, service_status=None, state=None):  # noqa: E501
         """SeldonDeploymentStatus - a model defined in Swagger"""  # noqa: E501
 
         self._address = None
+        self._annotations = None
+        self._conditions = None
         self._deployment_status = None
         self._description = None
+        self._observed_generation = None
         self._replicas = None
         self._service_status = None
         self._state = None
@@ -61,10 +70,16 @@ class SeldonDeploymentStatus(object):
 
         if address is not None:
             self.address = address
+        if annotations is not None:
+            self.annotations = annotations
+        if conditions is not None:
+            self.conditions = conditions
         if deployment_status is not None:
             self.deployment_status = deployment_status
         if description is not None:
             self.description = description
+        if observed_generation is not None:
+            self.observed_generation = observed_generation
         if replicas is not None:
             self.replicas = replicas
         if service_status is not None:
@@ -92,6 +107,50 @@ class SeldonDeploymentStatus(object):
         """
 
         self._address = address
+
+    @property
+    def annotations(self):
+        """Gets the annotations of this SeldonDeploymentStatus.  # noqa: E501
+
+        Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.  # noqa: E501
+
+        :return: The annotations of this SeldonDeploymentStatus.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._annotations
+
+    @annotations.setter
+    def annotations(self, annotations):
+        """Sets the annotations of this SeldonDeploymentStatus.
+
+        Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.  # noqa: E501
+
+        :param annotations: The annotations of this SeldonDeploymentStatus.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._annotations = annotations
+
+    @property
+    def conditions(self):
+        """Gets the conditions of this SeldonDeploymentStatus.  # noqa: E501
+
+
+        :return: The conditions of this SeldonDeploymentStatus.  # noqa: E501
+        :rtype: Conditions
+        """
+        return self._conditions
+
+    @conditions.setter
+    def conditions(self, conditions):
+        """Sets the conditions of this SeldonDeploymentStatus.
+
+
+        :param conditions: The conditions of this SeldonDeploymentStatus.  # noqa: E501
+        :type: Conditions
+        """
+
+        self._conditions = conditions
 
     @property
     def deployment_status(self):
@@ -134,6 +193,29 @@ class SeldonDeploymentStatus(object):
         """
 
         self._description = description
+
+    @property
+    def observed_generation(self):
+        """Gets the observed_generation of this SeldonDeploymentStatus.  # noqa: E501
+
+        ObservedGeneration is the 'Generation' of the Service that was last processed by the controller. +optional  # noqa: E501
+
+        :return: The observed_generation of this SeldonDeploymentStatus.  # noqa: E501
+        :rtype: int
+        """
+        return self._observed_generation
+
+    @observed_generation.setter
+    def observed_generation(self, observed_generation):
+        """Sets the observed_generation of this SeldonDeploymentStatus.
+
+        ObservedGeneration is the 'Generation' of the Service that was last processed by the controller. +optional  # noqa: E501
+
+        :param observed_generation: The observed_generation of this SeldonDeploymentStatus.  # noqa: E501
+        :type: int
+        """
+
+        self._observed_generation = observed_generation
 
     @property
     def replicas(self):

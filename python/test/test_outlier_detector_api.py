@@ -53,6 +53,18 @@ class TestOutlierDetectorApi(unittest.TestCase):
         """
         pass
 
+    def test_list_outlier_detector_inference_service(self):
+        """Test case for list_outlier_detector_inference_service
+
+        """
+        pass
+
+    def test_list_outlier_detector_seldon_deployment(self):
+        """Test case for list_outlier_detector_seldon_deployment
+
+        """
+        pass
+
     def test_read_outlier_detector_inference_service(self):
         """Test case for read_outlier_detector_inference_service
 

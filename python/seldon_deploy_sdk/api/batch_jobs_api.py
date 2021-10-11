@@ -45,8 +45,8 @@ class BatchJobsApi(object):
         :param async_req bool
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
-        :param BatchDefinition workflow: WorkflowName (required)
-        :return: UID
+        :param BatchJobDefinition workflow: WorkflowName (required)
+        :return: BatchJobPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -69,8 +69,8 @@ class BatchJobsApi(object):
         :param async_req bool
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
-        :param BatchDefinition workflow: WorkflowName (required)
-        :return: UID
+        :param BatchJobDefinition workflow: WorkflowName (required)
+        :return: BatchJobPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -140,7 +140,7 @@ class BatchJobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UID',  # noqa: E501
+            response_type='BatchJobPostResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -161,7 +161,7 @@ class BatchJobsApi(object):
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
         :param str job_name: JobName identifies a job name (required)
-        :return: BatchJob
+        :return: BatchJobGetResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -185,7 +185,7 @@ class BatchJobsApi(object):
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
         :param str job_name: JobName identifies a job name (required)
-        :return: BatchJob
+        :return: BatchJobGetResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -255,7 +255,7 @@ class BatchJobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchJob',  # noqa: E501
+            response_type='BatchJobGetResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -277,7 +277,7 @@ class BatchJobsApi(object):
         :param str namespace: Namespace provides a logical grouping of resources (required)
         :param str limit: Limit of items returned in one response
         :param str page: Requested page
-        :return: BatchDescriptionList
+        :return: BatchJobsListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -302,7 +302,7 @@ class BatchJobsApi(object):
         :param str namespace: Namespace provides a logical grouping of resources (required)
         :param str limit: Limit of items returned in one response
         :param str page: Requested page
-        :return: BatchDescriptionList
+        :return: BatchJobsListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -370,7 +370,7 @@ class BatchJobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchDescriptionList',  # noqa: E501
+            response_type='BatchJobsListResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

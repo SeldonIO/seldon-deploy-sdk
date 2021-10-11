@@ -41,6 +41,12 @@ class TestMetricsServerApi(unittest.TestCase):
         """
         pass
 
+    def test_list_metrics_server_seldon_deployment(self):
+        """Test case for list_metrics_server_seldon_deployment
+
+        """
+        pass
+
     def test_read_metrics_server_seldon_deployment(self):
         """Test case for read_metrics_server_seldon_deployment
 

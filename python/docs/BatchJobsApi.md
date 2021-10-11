@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create_seldon_deployment_batch_job**
-> UID create_seldon_deployment_batch_job(name, namespace, workflow)
+> BatchJobPostResponse create_seldon_deployment_batch_job(name, namespace, workflow)
 
 
 
@@ -32,7 +32,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.BatchJobsApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
-workflow = seldon_deploy_sdk.BatchDefinition() # BatchDefinition | WorkflowName
+workflow = seldon_deploy_sdk.BatchJobDefinition() # BatchJobDefinition | WorkflowName
 
 try:
     api_response = api_instance.create_seldon_deployment_batch_job(name, namespace, workflow)
@@ -47,11 +47,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Name identifies a resource | 
  **namespace** | **str**| Namespace provides a logical grouping of resources | 
- **workflow** | [**BatchDefinition**](BatchDefinition.md)| WorkflowName | 
+ **workflow** | [**BatchJobDefinition**](BatchJobDefinition.md)| WorkflowName | 
 
 ### Return type
 
-[**UID**](UID.md)
+[**BatchJobPostResponse**](BatchJobPostResponse.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_deployment_batch_job**
-> BatchJob get_deployment_batch_job(name, namespace, job_name)
+> BatchJobGetResponse get_deployment_batch_job(name, namespace, job_name)
 
 
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BatchJob**](BatchJob.md)
+[**BatchJobGetResponse**](BatchJobGetResponse.md)
 
 ### Authorization
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_seldon_deployment_batch_jobs**
-> BatchDescriptionList list_seldon_deployment_batch_jobs(name, namespace, limit=limit, page=page)
+> BatchJobsListResponse list_seldon_deployment_batch_jobs(name, namespace, limit=limit, page=page)
 
 
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BatchDescriptionList**](BatchDescriptionList.md)
+[**BatchJobsListResponse**](BatchJobsListResponse.md)
 
 ### Authorization
 
