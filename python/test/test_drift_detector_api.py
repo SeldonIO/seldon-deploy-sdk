@@ -53,6 +53,18 @@ class TestDriftDetectorApi(unittest.TestCase):
         """
         pass
 
+    def test_list_drift_detector_inference_service(self):
+        """Test case for list_drift_detector_inference_service
+
+        """
+        pass
+
+    def test_list_drift_detector_seldon_deployment(self):
+        """Test case for list_drift_detector_seldon_deployment
+
+        """
+        pass
+
     def test_read_drift_detector_inference_service(self):
         """Test case for read_drift_detector_inference_service
 

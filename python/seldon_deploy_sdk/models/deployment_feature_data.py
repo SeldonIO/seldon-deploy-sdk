@@ -38,7 +38,8 @@ class DeploymentFeatureData(object):
         'feature': 'str',
         'filters': 'list[FeatureFilter]',
         'interaction': 'FeatureInteraction',
-        'parameters': 'FeatureDistributionParameters'
+        'parameters': 'FeatureDistributionParameters',
+        'reference_data': 'bool'
     }
 
     attribute_map = {
@@ -49,10 +50,11 @@ class DeploymentFeatureData(object):
         'feature': 'feature',
         'filters': 'filters',
         'interaction': 'interaction',
-        'parameters': 'parameters'
+        'parameters': 'parameters',
+        'reference_data': 'reference_data'
     }
 
-    def __init__(self, aggregate_over_time=None, deployment_kind=None, deployment_name=None, deployment_namespace=None, feature=None, filters=None, interaction=None, parameters=None):  # noqa: E501
+    def __init__(self, aggregate_over_time=None, deployment_kind=None, deployment_name=None, deployment_namespace=None, feature=None, filters=None, interaction=None, parameters=None, reference_data=None):  # noqa: E501
         """DeploymentFeatureData - a model defined in Swagger"""  # noqa: E501
 
         self._aggregate_over_time = None
@@ -63,6 +65,7 @@ class DeploymentFeatureData(object):
         self._filters = None
         self._interaction = None
         self._parameters = None
+        self._reference_data = None
         self.discriminator = None
 
         if aggregate_over_time is not None:
@@ -81,6 +84,8 @@ class DeploymentFeatureData(object):
             self.interaction = interaction
         if parameters is not None:
             self.parameters = parameters
+        if reference_data is not None:
+            self.reference_data = reference_data
 
     @property
     def aggregate_over_time(self):
@@ -261,6 +266,29 @@ class DeploymentFeatureData(object):
         """
 
         self._parameters = parameters
+
+    @property
+    def reference_data(self):
+        """Gets the reference_data of this DeploymentFeatureData.  # noqa: E501
+
+        ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)  # noqa: E501
+
+        :return: The reference_data of this DeploymentFeatureData.  # noqa: E501
+        :rtype: bool
+        """
+        return self._reference_data
+
+    @reference_data.setter
+    def reference_data(self, reference_data):
+        """Sets the reference_data of this DeploymentFeatureData.
+
+        ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)  # noqa: E501
+
+        :param reference_data: The reference_data of this DeploymentFeatureData.  # noqa: E501
+        :type: bool
+        """
+
+        self._reference_data = reference_data
 
     def to_dict(self):
         """Returns the model properties as a dict"""

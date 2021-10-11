@@ -3,6 +3,7 @@ from __future__ import absolute_import
 # flake8: noqa
 
 # import apis into api package
+from seldon_deploy_sdk.api.alerting_service_api import AlertingServiceApi
 from seldon_deploy_sdk.api.application_logs_api import ApplicationLogsApi
 from seldon_deploy_sdk.api.batch_jobs_api import BatchJobsApi
 from seldon_deploy_sdk.api.drift_detector_api import DriftDetectorApi
@@ -16,5 +17,6 @@ from seldon_deploy_sdk.api.metrics_server_api import MetricsServerApi
 from seldon_deploy_sdk.api.model_metadata_service_api import ModelMetadataServiceApi
 from seldon_deploy_sdk.api.monitor_api import MonitorApi
 from seldon_deploy_sdk.api.outlier_detector_api import OutlierDetectorApi
+from seldon_deploy_sdk.api.permission_management_service_api import PermissionManagementServiceApi
 from seldon_deploy_sdk.api.predict_api import PredictApi
 from seldon_deploy_sdk.api.seldon_deployments_api import SeldonDeploymentsApi

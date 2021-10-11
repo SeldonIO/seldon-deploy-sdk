@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **filters** | [**list[FeatureFilter]**](FeatureFilter.md) | Filters is a set of time, feature and/or outlier filters for the distribution/stats query | [optional] 
 **interaction** | [**FeatureInteraction**](FeatureInteraction.md) |  | [optional] 
 **parameters** | [**FeatureDistributionParameters**](FeatureDistributionParameters.md) |  | [optional] 
+**reference_data** | **bool** | ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
