@@ -191,7 +191,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 The above BSD License Applies to all code, even that also covered by Apache 2.0.
 
 seldon-deploy-sdk
-1.3.0
+1.4.0
 UNKNOWN
 UNKNOWN
 
