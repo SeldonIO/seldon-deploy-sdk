@@ -4,14 +4,14 @@ All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_metrics_server_seldon_deployment**](MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/metrics-server | 
-[**delete_metrics_server_seldon_deployment**](MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detector-name} | 
+[**create_metrics_server_seldon_deployment**](MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server | 
+[**delete_metrics_server_seldon_deployment**](MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName} | 
 [**list_metrics_server_seldon_deployment**](MetricsServerApi.md#list_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server | 
-[**read_metrics_server_seldon_deployment**](MetricsServerApi.md#read_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detector-name} | 
+[**read_metrics_server_seldon_deployment**](MetricsServerApi.md#read_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName} | 
 
 
 # **create_metrics_server_seldon_deployment**
-> DetectorData create_metrics_server_seldon_deployment(name, namespace)
+> DetectorData create_metrics_server_seldon_deployment(name, namespace, detector_data)
 
 
 
@@ -33,9 +33,10 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.MetricsServerApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
+detector_data = seldon_deploy_sdk.DetectorConfigData() # DetectorConfigData | Deployment Detector Data
 
 try:
-    api_response = api_instance.create_metrics_server_seldon_deployment(name, namespace)
+    api_response = api_instance.create_metrics_server_seldon_deployment(name, namespace, detector_data)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MetricsServerApi->create_metrics_server_seldon_deployment: %s\n" % e)
@@ -47,6 +48,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Name identifies a resource | 
  **namespace** | **str**| Namespace provides a logical grouping of resources | 
+ **detector_data** | [**DetectorConfigData**](DetectorConfigData.md)| Deployment Detector Data | 
 
 ### Return type
 
