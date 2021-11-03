@@ -1373,6 +1373,13 @@ definitions:
     type: object
   DeploymentStrategyType:
     type: string
+  DetectorConfigData:
+    properties:
+      config:
+        $ref: '#/definitions/DetectorConfiguration'
+      name:
+        type: string
+    type: object
   DetectorConfiguration:
     properties:
       basic:
@@ -7205,28 +7212,6 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - InferenceServices
-  /namespaces/{namespace}/inferenceservices/{name}/drift-detector:
-    post:
-      description: Create the specified Inference Service Drift Detector
-      operationId: CreateDriftDetectorInferenceService
-      parameters:
-        - description: Name identifies a resource
-          in: path
-          name: name
-          required: true
-          type: string
-        - description: Namespace provides a logical grouping of resources
-          in: path
-          name: namespace
-          required: true
-          type: string
-      responses:
-        "200":
-          $ref: '#/responses/DetectorResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      tags:
-        - DriftDetector
   /namespaces/{namespace}/inferenceservices/{name}/explain:
     post:
       description: Create Inference Service explanation
@@ -7473,7 +7458,36 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - DriftDetector
-  /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detector-name}:
+    post:
+      description: Create the specified Inference Service Drift Detector
+      operationId: CreateDriftDetectorInferenceService
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
+      responses:
+        "200":
+          $ref: '#/responses/DetectorResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - DriftDetector
+  /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Drift Detector
       operationId: DeleteDriftDetectorInferenceService
@@ -7490,7 +7504,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -7516,7 +7530,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -7543,7 +7557,7 @@ paths:
           type: string
         - description: Deployment Feature Data
           in: body
-          name: feature_data
+          name: featureData
           required: true
           schema:
             $ref: '#/definitions/DeploymentFeatureData'
@@ -7573,7 +7587,7 @@ paths:
           type: string
         - description: Deployment Feature Data
           in: body
-          name: feature_data
+          name: featureData
           required: true
           schema:
             $ref: '#/definitions/DeploymentFeatureData'
@@ -7608,7 +7622,36 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - OutlierDetector
-  /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detector-name}:
+    post:
+      description: Create the specified Inference Service Outlier Detector
+      operationId: CreateOutlierDetectorInferenceService
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
+      responses:
+        "200":
+          $ref: '#/responses/DetectorResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - OutlierDetector
+  /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Outlier Detector
       operationId: DeleteOutlierDetectorInferenceService
@@ -7625,7 +7668,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -7651,29 +7694,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
-          required: true
-          type: string
-      responses:
-        "200":
-          $ref: '#/responses/DetectorResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      tags:
-        - OutlierDetector
-  /namespaces/{namespace}/inferenceservices/{name}/outlier-detector:
-    post:
-      description: Create the specified Inference Service Outlier Detector
-      operationId: CreateOutlierDetectorInferenceService
-      parameters:
-        - description: Name identifies a resource
-          in: path
-          name: name
-          required: true
-          type: string
-        - description: Namespace provides a logical grouping of resources
-          in: path
-          name: namespace
+          name: detectorName
           required: true
           type: string
       responses:
@@ -8080,28 +8101,6 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - BatchJobs
-  /namespaces/{namespace}/seldondeployments/{name}/drift-detector:
-    post:
-      description: Create the specified Seldon Deployment Drift Detector
-      operationId: CreateDriftDetectorSeldonDeployment
-      parameters:
-        - description: Name identifies a resource
-          in: path
-          name: name
-          required: true
-          type: string
-        - description: Namespace provides a logical grouping of resources
-          in: path
-          name: namespace
-          required: true
-          type: string
-      responses:
-        "200":
-          $ref: '#/responses/DetectorResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      tags:
-        - DriftDetector
   /namespaces/{namespace}/seldondeployments/{name}/explain:
     post:
       description: Create Seldon Deployment explanation
@@ -8326,28 +8325,6 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - LoadtestJobs
-  /namespaces/{namespace}/seldondeployments/{name}/metrics-server:
-    post:
-      description: Create the specified Seldon Deployment Metrics Server
-      operationId: CreateMetricsServerSeldonDeployment
-      parameters:
-        - description: Name identifies a resource
-          in: path
-          name: name
-          required: true
-          type: string
-        - description: Namespace provides a logical grouping of resources
-          in: path
-          name: namespace
-          required: true
-          type: string
-      responses:
-        "200":
-          $ref: '#/responses/DetectorResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      tags:
-        - MetricsServer
   /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector:
     get:
       description: Read the specified Seldon Deployment Drift Detector
@@ -8370,7 +8347,36 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - DriftDetector
-  /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detector-name}:
+    post:
+      description: Create the specified Seldon Deployment Drift Detector
+      operationId: CreateDriftDetectorSeldonDeployment
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
+      responses:
+        "200":
+          $ref: '#/responses/DetectorResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - DriftDetector
+  /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Drift Detector
       operationId: DeleteDriftDetectorSeldonDeployment
@@ -8387,7 +8393,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -8413,7 +8419,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -8440,7 +8446,7 @@ paths:
           type: string
         - description: Deployment Feature Data
           in: body
-          name: feature_data
+          name: featureData
           required: true
           schema:
             $ref: '#/definitions/DeploymentFeatureData'
@@ -8470,7 +8476,7 @@ paths:
           type: string
         - description: Deployment Feature Data
           in: body
-          name: feature_data
+          name: featureData
           required: true
           schema:
             $ref: '#/definitions/DeploymentFeatureData'
@@ -8505,7 +8511,36 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - MetricsServer
-  /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detector-name}:
+    post:
+      description: Create the specified Seldon Deployment Metrics Server
+      operationId: CreateMetricsServerSeldonDeployment
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
+      responses:
+        "200":
+          $ref: '#/responses/DetectorResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - MetricsServer
+  /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Metrics Server
       operationId: DeleteMetricsServerSeldonDeployment
@@ -8522,7 +8557,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -8548,7 +8583,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -8580,7 +8615,36 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - OutlierDetector
-  /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detector-name}:
+    post:
+      description: Create the specified Seldon Deployment Outlier Detector
+      operationId: CreateOutlierDetectorSeldonDeployment
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
+      responses:
+        "200":
+          $ref: '#/responses/DetectorResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - OutlierDetector
+  /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Outlier Detector
       operationId: DeleteOutlierDetectorSeldonDeployment
@@ -8597,7 +8661,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
+          name: detectorName
           required: true
           type: string
       responses:
@@ -8623,29 +8687,7 @@ paths:
           type: string
         - description: Detector Name
           in: path
-          name: detector-name
-          required: true
-          type: string
-      responses:
-        "200":
-          $ref: '#/responses/DetectorResponse'
-        "500":
-          $ref: '#/responses/ErrorDefault'
-      tags:
-        - OutlierDetector
-  /namespaces/{namespace}/seldondeployments/{name}/outlier-detector:
-    post:
-      description: Create the specified Seldon Deployment Outlier Detector
-      operationId: CreateOutlierDetectorSeldonDeployment
-      parameters:
-        - description: Name identifies a resource
-          in: path
-          name: name
-          required: true
-          type: string
-        - description: Namespace provides a logical grouping of resources
-          in: path
-          name: namespace
+          name: detectorName
           required: true
           type: string
       responses:

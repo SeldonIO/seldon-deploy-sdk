@@ -84,14 +84,14 @@ Class | Method | HTTP request | Description
 *BatchJobsApi* | [**create_seldon_deployment_batch_job**](docs/BatchJobsApi.md#create_seldon_deployment_batch_job) | **POST** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
 *BatchJobsApi* | [**get_deployment_batch_job**](docs/BatchJobsApi.md#get_deployment_batch_job) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName} | 
 *BatchJobsApi* | [**list_seldon_deployment_batch_jobs**](docs/BatchJobsApi.md#list_seldon_deployment_batch_jobs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
-*DriftDetectorApi* | [**create_drift_detector_inference_service**](docs/DriftDetectorApi.md#create_drift_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/drift-detector | 
-*DriftDetectorApi* | [**create_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#create_drift_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/drift-detector | 
-*DriftDetectorApi* | [**delete_drift_detector_inference_service**](docs/DriftDetectorApi.md#delete_drift_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detector-name} | 
-*DriftDetectorApi* | [**delete_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#delete_drift_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detector-name} | 
+*DriftDetectorApi* | [**create_drift_detector_inference_service**](docs/DriftDetectorApi.md#create_drift_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector | 
+*DriftDetectorApi* | [**create_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#create_drift_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector | 
+*DriftDetectorApi* | [**delete_drift_detector_inference_service**](docs/DriftDetectorApi.md#delete_drift_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detectorName} | 
+*DriftDetectorApi* | [**delete_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#delete_drift_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName} | 
 *DriftDetectorApi* | [**list_drift_detector_inference_service**](docs/DriftDetectorApi.md#list_drift_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector | 
 *DriftDetectorApi* | [**list_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#list_drift_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector | 
-*DriftDetectorApi* | [**read_drift_detector_inference_service**](docs/DriftDetectorApi.md#read_drift_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detector-name} | 
-*DriftDetectorApi* | [**read_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#read_drift_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detector-name} | 
+*DriftDetectorApi* | [**read_drift_detector_inference_service**](docs/DriftDetectorApi.md#read_drift_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detectorName} | 
+*DriftDetectorApi* | [**read_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#read_drift_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName} | 
 *EnvironmentApi* | [**read_cluster**](docs/EnvironmentApi.md#read_cluster) | **GET** /cluster | 
 *EnvironmentApi* | [**read_health_check**](docs/EnvironmentApi.md#read_health_check) | **GET** /healthcheck | 
 *EnvironmentApi* | [**read_user**](docs/EnvironmentApi.md#read_user) | **GET** /user | 
@@ -121,10 +121,10 @@ Class | Method | HTTP request | Description
 *LoadtestJobsApi* | [**delete_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#delete_loadtest_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName} | 
 *LoadtestJobsApi* | [**list_loadtest_inference_service**](docs/LoadtestJobsApi.md#list_loadtest_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/loadtestjobs | 
 *LoadtestJobsApi* | [**list_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#list_loadtest_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs | 
-*MetricsServerApi* | [**create_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/metrics-server | 
-*MetricsServerApi* | [**delete_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detector-name} | 
+*MetricsServerApi* | [**create_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server | 
+*MetricsServerApi* | [**delete_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName} | 
 *MetricsServerApi* | [**list_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#list_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server | 
-*MetricsServerApi* | [**read_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#read_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detector-name} | 
+*MetricsServerApi* | [**read_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#read_metrics_server_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName} | 
 *ModelMetadataServiceApi* | [**model_metadata_service_create_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_create_model_metadata) | **POST** /model/metadata | Create a Model Metadata entry.
 *ModelMetadataServiceApi* | [**model_metadata_service_delete_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_delete_model_metadata) | **DELETE** /model/metadata | Delete a Model Metadata entry.
 *ModelMetadataServiceApi* | [**model_metadata_service_list_model_metadata**](docs/ModelMetadataServiceApi.md#model_metadata_service_list_model_metadata) | **GET** /model/metadata | List Model Metadata entries.
@@ -134,14 +134,14 @@ Class | Method | HTTP request | Description
 *MonitorApi* | [**inference_service_feature_statistics**](docs/MonitorApi.md#inference_service_feature_statistics) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor/featurestatistics | 
 *MonitorApi* | [**seldon_deployment_feature_distributions**](docs/MonitorApi.md#seldon_deployment_feature_distributions) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/featuredistributions | 
 *MonitorApi* | [**seldon_deployment_feature_statistics**](docs/MonitorApi.md#seldon_deployment_feature_statistics) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/featurestatistics | 
-*OutlierDetectorApi* | [**create_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/outlier-detector | 
-*OutlierDetectorApi* | [**create_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/outlier-detector | 
-*OutlierDetectorApi* | [**delete_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detector-name} | 
-*OutlierDetectorApi* | [**delete_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#delete_outlier_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detector-name} | 
+*OutlierDetectorApi* | [**create_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector | 
+*OutlierDetectorApi* | [**create_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector | 
+*OutlierDetectorApi* | [**delete_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detectorName} | 
+*OutlierDetectorApi* | [**delete_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#delete_outlier_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName} | 
 *OutlierDetectorApi* | [**list_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#list_outlier_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector | 
 *OutlierDetectorApi* | [**list_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#list_outlier_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector | 
-*OutlierDetectorApi* | [**read_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#read_outlier_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detector-name} | 
-*OutlierDetectorApi* | [**read_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#read_outlier_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detector-name} | 
+*OutlierDetectorApi* | [**read_outlier_detector_inference_service**](docs/OutlierDetectorApi.md#read_outlier_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detectorName} | 
+*OutlierDetectorApi* | [**read_outlier_detector_seldon_deployment**](docs/OutlierDetectorApi.md#read_outlier_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName} | 
 *PermissionManagementServiceApi* | [**permission_management_service_create_policy**](docs/PermissionManagementServiceApi.md#permission_management_service_create_policy) | **POST** /iam/policy | Create an authorization policy. The user must have &#x60;grant&#x60; permissions on the resource in the policy.
 *PermissionManagementServiceApi* | [**permission_management_service_delete_policy**](docs/PermissionManagementServiceApi.md#permission_management_service_delete_policy) | **DELETE** /iam/policy | Delete an authorization policy. The user must have &#x60;grant&#x60; permissions on the resource in the policy.
 *PermissionManagementServiceApi* | [**permission_management_service_get_permissions**](docs/PermissionManagementServiceApi.md#permission_management_service_get_permissions) | **GET** /iam/policy/permissions | List all permissions associated with the given users and groups. A regular user will be able to see only their permissions and the permissions of their groups. A user with &#x60;read&#x60; permission on &#x60;system/iam&#x60; can see all permissions.
@@ -219,6 +219,7 @@ Class | Method | HTTP request | Description
  - [DeploymentStatus](docs/DeploymentStatus.md)
  - [DeploymentStrategy](docs/DeploymentStrategy.md)
  - [DeploymentStrategyType](docs/DeploymentStrategyType.md)
+ - [DetectorConfigData](docs/DetectorConfigData.md)
  - [DetectorConfiguration](docs/DetectorConfiguration.md)
  - [DetectorData](docs/DetectorData.md)
  - [DetectorDeploymentConfiguration](docs/DetectorDeploymentConfiguration.md)

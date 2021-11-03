@@ -95,6 +95,7 @@ from seldon_deploy_sdk.models.deployment_spec import DeploymentSpec
 from seldon_deploy_sdk.models.deployment_status import DeploymentStatus
 from seldon_deploy_sdk.models.deployment_strategy import DeploymentStrategy
 from seldon_deploy_sdk.models.deployment_strategy_type import DeploymentStrategyType
+from seldon_deploy_sdk.models.detector_config_data import DetectorConfigData
 from seldon_deploy_sdk.models.detector_configuration import DetectorConfiguration
 from seldon_deploy_sdk.models.detector_data import DetectorData
 from seldon_deploy_sdk.models.detector_deployment_configuration import DetectorDeploymentConfiguration

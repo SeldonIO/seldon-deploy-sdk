@@ -4,18 +4,18 @@ All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_outlier_detector_inference_service**](OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/outlier-detector | 
-[**create_outlier_detector_seldon_deployment**](OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/outlier-detector | 
-[**delete_outlier_detector_inference_service**](OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detector-name} | 
-[**delete_outlier_detector_seldon_deployment**](OutlierDetectorApi.md#delete_outlier_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detector-name} | 
+[**create_outlier_detector_inference_service**](OutlierDetectorApi.md#create_outlier_detector_inference_service) | **POST** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector | 
+[**create_outlier_detector_seldon_deployment**](OutlierDetectorApi.md#create_outlier_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector | 
+[**delete_outlier_detector_inference_service**](OutlierDetectorApi.md#delete_outlier_detector_inference_service) | **DELETE** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detectorName} | 
+[**delete_outlier_detector_seldon_deployment**](OutlierDetectorApi.md#delete_outlier_detector_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName} | 
 [**list_outlier_detector_inference_service**](OutlierDetectorApi.md#list_outlier_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector | 
 [**list_outlier_detector_seldon_deployment**](OutlierDetectorApi.md#list_outlier_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector | 
-[**read_outlier_detector_inference_service**](OutlierDetectorApi.md#read_outlier_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detector-name} | 
-[**read_outlier_detector_seldon_deployment**](OutlierDetectorApi.md#read_outlier_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detector-name} | 
+[**read_outlier_detector_inference_service**](OutlierDetectorApi.md#read_outlier_detector_inference_service) | **GET** /namespaces/{namespace}/inferenceservices/{name}/monitor/outlier-detector/{detectorName} | 
+[**read_outlier_detector_seldon_deployment**](OutlierDetectorApi.md#read_outlier_detector_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName} | 
 
 
 # **create_outlier_detector_inference_service**
-> DetectorData create_outlier_detector_inference_service(name, namespace)
+> DetectorData create_outlier_detector_inference_service(name, namespace, detector_data)
 
 
 
@@ -37,9 +37,10 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.OutlierDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
+detector_data = seldon_deploy_sdk.DetectorConfigData() # DetectorConfigData | Deployment Detector Data
 
 try:
-    api_response = api_instance.create_outlier_detector_inference_service(name, namespace)
+    api_response = api_instance.create_outlier_detector_inference_service(name, namespace, detector_data)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OutlierDetectorApi->create_outlier_detector_inference_service: %s\n" % e)
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Name identifies a resource | 
  **namespace** | **str**| Namespace provides a logical grouping of resources | 
+ **detector_data** | [**DetectorConfigData**](DetectorConfigData.md)| Deployment Detector Data | 
 
 ### Return type
 
@@ -68,7 +70,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_outlier_detector_seldon_deployment**
-> DetectorData create_outlier_detector_seldon_deployment(name, namespace)
+> DetectorData create_outlier_detector_seldon_deployment(name, namespace, detector_data)
 
 
 
@@ -90,9 +92,10 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.OutlierDetectorApi(seldon_deploy_sdk.ApiClient(configuration))
 name = 'name_example' # str | Name identifies a resource
 namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
+detector_data = seldon_deploy_sdk.DetectorConfigData() # DetectorConfigData | Deployment Detector Data
 
 try:
-    api_response = api_instance.create_outlier_detector_seldon_deployment(name, namespace)
+    api_response = api_instance.create_outlier_detector_seldon_deployment(name, namespace, detector_data)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OutlierDetectorApi->create_outlier_detector_seldon_deployment: %s\n" % e)
@@ -104,6 +107,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Name identifies a resource | 
  **namespace** | **str**| Namespace provides a logical grouping of resources | 
+ **detector_data** | [**DetectorConfigData**](DetectorConfigData.md)| Deployment Detector Data | 
 
 ### Return type
 

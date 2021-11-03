@@ -33,47 +33,49 @@ class DriftDetectorApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_drift_detector_inference_service(self, name, namespace, **kwargs):  # noqa: E501
+    def create_drift_detector_inference_service(self, name, namespace, detector_data, **kwargs):  # noqa: E501
         """create_drift_detector_inference_service  # noqa: E501
 
         Create the specified Inference Service Drift Detector  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_drift_detector_inference_service(name, namespace, async_req=True)
+        >>> thread = api.create_drift_detector_inference_service(name, namespace, detector_data, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
+        :param DetectorConfigData detector_data: Deployment Detector Data (required)
         :return: DetectorData
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.create_drift_detector_inference_service_with_http_info(name, namespace, **kwargs)  # noqa: E501
+            return self.create_drift_detector_inference_service_with_http_info(name, namespace, detector_data, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_drift_detector_inference_service_with_http_info(name, namespace, **kwargs)  # noqa: E501
+            (data) = self.create_drift_detector_inference_service_with_http_info(name, namespace, detector_data, **kwargs)  # noqa: E501
             return data
 
-    def create_drift_detector_inference_service_with_http_info(self, name, namespace, **kwargs):  # noqa: E501
+    def create_drift_detector_inference_service_with_http_info(self, name, namespace, detector_data, **kwargs):  # noqa: E501
         """create_drift_detector_inference_service  # noqa: E501
 
         Create the specified Inference Service Drift Detector  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_drift_detector_inference_service_with_http_info(name, namespace, async_req=True)
+        >>> thread = api.create_drift_detector_inference_service_with_http_info(name, namespace, detector_data, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
+        :param DetectorConfigData detector_data: Deployment Detector Data (required)
         :return: DetectorData
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'namespace']  # noqa: E501
+        all_params = ['name', 'namespace', 'detector_data']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -96,6 +98,10 @@ class DriftDetectorApi(object):
         if ('namespace' not in params or
                 params['namespace'] is None):
             raise ValueError("Missing the required parameter `namespace` when calling `create_drift_detector_inference_service`")  # noqa: E501
+        # verify the required parameter 'detector_data' is set
+        if ('detector_data' not in params or
+                params['detector_data'] is None):
+            raise ValueError("Missing the required parameter `detector_data` when calling `create_drift_detector_inference_service`")  # noqa: E501
 
         collection_formats = {}
 
@@ -113,6 +119,8 @@ class DriftDetectorApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'detector_data' in params:
+            body_params = params['detector_data']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -125,7 +133,7 @@ class DriftDetectorApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/namespaces/{namespace}/inferenceservices/{name}/drift-detector', 'POST',
+            '/namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector', 'POST',
             path_params,
             query_params,
             header_params,
@@ -140,47 +148,49 @@ class DriftDetectorApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_drift_detector_seldon_deployment(self, name, namespace, **kwargs):  # noqa: E501
+    def create_drift_detector_seldon_deployment(self, name, namespace, detector_data, **kwargs):  # noqa: E501
         """create_drift_detector_seldon_deployment  # noqa: E501
 
         Create the specified Seldon Deployment Drift Detector  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_drift_detector_seldon_deployment(name, namespace, async_req=True)
+        >>> thread = api.create_drift_detector_seldon_deployment(name, namespace, detector_data, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
+        :param DetectorConfigData detector_data: Deployment Detector Data (required)
         :return: DetectorData
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.create_drift_detector_seldon_deployment_with_http_info(name, namespace, **kwargs)  # noqa: E501
+            return self.create_drift_detector_seldon_deployment_with_http_info(name, namespace, detector_data, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_drift_detector_seldon_deployment_with_http_info(name, namespace, **kwargs)  # noqa: E501
+            (data) = self.create_drift_detector_seldon_deployment_with_http_info(name, namespace, detector_data, **kwargs)  # noqa: E501
             return data
 
-    def create_drift_detector_seldon_deployment_with_http_info(self, name, namespace, **kwargs):  # noqa: E501
+    def create_drift_detector_seldon_deployment_with_http_info(self, name, namespace, detector_data, **kwargs):  # noqa: E501
         """create_drift_detector_seldon_deployment  # noqa: E501
 
         Create the specified Seldon Deployment Drift Detector  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_drift_detector_seldon_deployment_with_http_info(name, namespace, async_req=True)
+        >>> thread = api.create_drift_detector_seldon_deployment_with_http_info(name, namespace, detector_data, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str name: Name identifies a resource (required)
         :param str namespace: Namespace provides a logical grouping of resources (required)
+        :param DetectorConfigData detector_data: Deployment Detector Data (required)
         :return: DetectorData
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'namespace']  # noqa: E501
+        all_params = ['name', 'namespace', 'detector_data']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -203,6 +213,10 @@ class DriftDetectorApi(object):
         if ('namespace' not in params or
                 params['namespace'] is None):
             raise ValueError("Missing the required parameter `namespace` when calling `create_drift_detector_seldon_deployment`")  # noqa: E501
+        # verify the required parameter 'detector_data' is set
+        if ('detector_data' not in params or
+                params['detector_data'] is None):
+            raise ValueError("Missing the required parameter `detector_data` when calling `create_drift_detector_seldon_deployment`")  # noqa: E501
 
         collection_formats = {}
 
@@ -220,6 +234,8 @@ class DriftDetectorApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'detector_data' in params:
+            body_params = params['detector_data']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -232,7 +248,7 @@ class DriftDetectorApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/namespaces/{namespace}/seldondeployments/{name}/drift-detector', 'POST',
+            '/namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector', 'POST',
             path_params,
             query_params,
             header_params,
@@ -325,7 +341,7 @@ class DriftDetectorApi(object):
         if 'namespace' in params:
             path_params['namespace'] = params['namespace']  # noqa: E501
         if 'detector_name' in params:
-            path_params['detector-name'] = params['detector_name']  # noqa: E501
+            path_params['detectorName'] = params['detector_name']  # noqa: E501
 
         query_params = []
 
@@ -347,7 +363,7 @@ class DriftDetectorApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detector-name}', 'DELETE',
+            '/namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detectorName}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -440,7 +456,7 @@ class DriftDetectorApi(object):
         if 'namespace' in params:
             path_params['namespace'] = params['namespace']  # noqa: E501
         if 'detector_name' in params:
-            path_params['detector-name'] = params['detector_name']  # noqa: E501
+            path_params['detectorName'] = params['detector_name']  # noqa: E501
 
         query_params = []
 
@@ -462,7 +478,7 @@ class DriftDetectorApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detector-name}', 'DELETE',
+            '/namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -769,7 +785,7 @@ class DriftDetectorApi(object):
         if 'namespace' in params:
             path_params['namespace'] = params['namespace']  # noqa: E501
         if 'detector_name' in params:
-            path_params['detector-name'] = params['detector_name']  # noqa: E501
+            path_params['detectorName'] = params['detector_name']  # noqa: E501
 
         query_params = []
 
@@ -791,7 +807,7 @@ class DriftDetectorApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detector-name}', 'GET',
+            '/namespaces/{namespace}/inferenceservices/{name}/monitor/drift-detector/{detectorName}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -884,7 +900,7 @@ class DriftDetectorApi(object):
         if 'namespace' in params:
             path_params['namespace'] = params['namespace']  # noqa: E501
         if 'detector_name' in params:
-            path_params['detector-name'] = params['detector_name']  # noqa: E501
+            path_params['detectorName'] = params['detector_name']  # noqa: E501
 
         query_params = []
 
@@ -906,7 +922,7 @@ class DriftDetectorApi(object):
         auth_settings = ['OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detector-name}', 'GET',
+            '/namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName}', 'GET',
             path_params,
             query_params,
             header_params,
