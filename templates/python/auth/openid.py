@@ -52,6 +52,7 @@ class OIDCAuthenticator(Authenticator):
             client_secret=config.oidc_client_secret,
             server_metadata_url=server_metadata_url,
             access_token_params=access_token_params,
+            verify=config.verify_ssl
         )
         self._app.load_server_metadata()
 
