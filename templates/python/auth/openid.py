@@ -1,9 +1,9 @@
 from urllib.parse import urlencode
 import logging
-
+import os
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
 from authlib.integrations.requests_client import OAuth2Session
-
+import urllib3
 from seldon_deploy_sdk.configuration import Configuration
 
 from .base import (
@@ -27,6 +27,10 @@ class OIDCAuthenticator(Authenticator):
 
     def __init__(self, config: Configuration):
         super().__init__(config)
+
+        if not config.verify_ssl:
+            os.environ["CURL_CA_BUNDLE"] = ""
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
         if config.oidc_server is None:
             raise ValueError("config.oidc_server is required")
