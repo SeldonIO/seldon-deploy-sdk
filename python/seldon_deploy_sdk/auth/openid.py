@@ -1,6 +1,6 @@
 from urllib.parse import urlencode
 import logging
-
+import os
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
 from authlib.integrations.requests_client import OAuth2Session
 
@@ -28,6 +28,9 @@ class OIDCAuthenticator(Authenticator):
     def __init__(self, config: Configuration):
         super().__init__(config)
 
+        if not config.verify_ssl:
+            os.environ["CURL_CA_BUNDLE"] = ""
+
         if config.oidc_server is None:
             raise ValueError("config.oidc_server is required")
         if config.oidc_client_id is None:
@@ -52,7 +55,6 @@ class OIDCAuthenticator(Authenticator):
             client_secret=config.oidc_client_secret,
             server_metadata_url=server_metadata_url,
             access_token_params=access_token_params,
-            verify=config.verify_ssl
         )
         self._app.load_server_metadata()
 
