@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "seldon-deploy-sdk"
-VERSION = "1.4.0"
+VERSION = "1.4.1"
 # To install the library, run the following
 #
 # python setup.py install
