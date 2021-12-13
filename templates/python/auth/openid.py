@@ -15,14 +15,26 @@ from .base import (
 
 logger = logging.getLogger(__name__)
 
+ID_TOKEN_FIELD = "id_token"
+ACCESS_TOKEN_FIELD = "access_token"
+
 
 class OIDCIntegration(FrameworkIntegration):
     oauth2_client_cls = OAuth2Session
 
 
+def _get_token(token: dict[str, str]) -> str:
+    if ID_TOKEN_FIELD not in token:
+        logger.info(
+            f"{ID_TOKEN_FIELD} field couldn't be found in auth token. Falling back to {ACCESS_TOKEN_FIELD}."
+        )
+        return token[ACCESS_TOKEN_FIELD]
+
+    return token[ID_TOKEN_FIELD]
+
+
 class OIDCAuthenticator(Authenticator):
 
-    _IdTokenField = "id_token"
     _AuthCodeState = "sd-sdk-state"
 
     def __init__(self, config: Configuration):
@@ -76,14 +88,16 @@ class OIDCAuthenticator(Authenticator):
             password=password or self._config.password,
             scope=self._config.scope,
         )
-        return token[self._IdTokenField]
+
+        return _get_token(token)
 
     def _use_client_credentials(self):
         token = self._app.fetch_access_token(
             scope=self._config.scope,
             grant_type=AuthMethod.CLIENT_CREDENTIALS.value,
         )
-        return token[self._IdTokenField]
+
+        return _get_token(token)
 
     def _use_authorization_code(self):
         deploy_callback_url = f"{self._host}/seldon-deploy/auth/callback"
@@ -92,25 +106,26 @@ class OIDCAuthenticator(Authenticator):
             redirect_uri=deploy_callback_url,
             state=self._AuthCodeState,
             scope=self._config.scope,
-        )['url']
+        )["url"]
         print(
             "Please copy the following URL into a browser to log in.",
             "You will be redirected and shown a code to copy and paste here.",
-            f"\n\n\t'{request_url}'\n\n"
+            f"\n\n\t'{request_url}'\n\n",
         )
         response_code = self._get_response_code()
-        response_code_query = urlencode({'code': response_code})
+        response_code_query = urlencode({"code": response_code})
         response_url = f"{deploy_callback_url}?{response_code_query}"
 
         token = self._app.fetch_access_token(
             authorization_response=response_url,
             redirect_uri=deploy_callback_url,
             scope=self._config.scope,
-            )
-        return token[self._IdTokenField]
+        )
+
+        return _get_token(token)
 
     def _get_response_code(self):
         response_code = None
         while not response_code:
             response_code = input("Please enter your code: ").strip()
-        return  response_code
+        return response_code
