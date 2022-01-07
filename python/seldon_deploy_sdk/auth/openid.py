@@ -1,11 +1,13 @@
-from urllib.parse import urlencode
 import logging
 import os
+import urllib3
+
+from typing import Dict
+from urllib.parse import urlencode
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
 from authlib.integrations.requests_client import OAuth2Session
-import urllib3
-from seldon_deploy_sdk.configuration import Configuration
 
+from ..configuration import Configuration
 from .base import (
     Authenticator,
     AuthMethod,
