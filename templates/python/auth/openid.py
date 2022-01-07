@@ -23,7 +23,7 @@ class OIDCIntegration(FrameworkIntegration):
     oauth2_client_cls = OAuth2Session
 
 
-def _get_token(token: dict[str, str]) -> str:
+def _get_token(token: Dict[str, str]) -> str:
     if ID_TOKEN_FIELD not in token:
         logger.info(
             f"{ID_TOKEN_FIELD} field couldn't be found in auth token. Falling back to {ACCESS_TOKEN_FIELD}."
