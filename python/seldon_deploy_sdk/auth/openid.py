@@ -1,11 +1,13 @@
-from urllib.parse import urlencode
 import logging
 import os
+import urllib3
+
+from typing import Dict
+from urllib.parse import urlencode
 from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
 from authlib.integrations.requests_client import OAuth2Session
-import urllib3
-from seldon_deploy_sdk.configuration import Configuration
 
+from ..configuration import Configuration
 from .base import (
     Authenticator,
     AuthMethod,
@@ -23,7 +25,7 @@ class OIDCIntegration(FrameworkIntegration):
     oauth2_client_cls = OAuth2Session
 
 
-def _get_token(token: dict[str, str]) -> str:
+def _get_token(token: Dict[str, str]) -> str:
     if ID_TOKEN_FIELD not in token:
         logger.info(
             f"{ID_TOKEN_FIELD} field couldn't be found in auth token. Falling back to {ACCESS_TOKEN_FIELD}."
