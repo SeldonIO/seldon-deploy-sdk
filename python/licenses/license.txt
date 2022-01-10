@@ -191,7 +191,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 The above BSD License Applies to all code, even that also covered by Apache 2.0.
 
 seldon-deploy-sdk
-1.4.1.1
+1.4.1.2
 UNKNOWN
 UNKNOWN
 
@@ -219,7 +219,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 urllib3
-1.26.7
+1.26.8
 MIT License
 MIT License
 
