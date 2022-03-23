@@ -36,7 +36,8 @@ class DetectorData(object):
         'deployment_name': 'str',
         'detector_type': 'str',
         'name': 'str',
-        'namespace': 'str'
+        'namespace': 'str',
+        'status': 'DetectorStatus'
     }
 
     attribute_map = {
@@ -45,10 +46,11 @@ class DetectorData(object):
         'deployment_name': 'deployment_name',
         'detector_type': 'detector_type',
         'name': 'name',
-        'namespace': 'namespace'
+        'namespace': 'namespace',
+        'status': 'status'
     }
 
-    def __init__(self, config=None, deployment_kind=None, deployment_name=None, detector_type=None, name=None, namespace=None):  # noqa: E501
+    def __init__(self, config=None, deployment_kind=None, deployment_name=None, detector_type=None, name=None, namespace=None, status=None):  # noqa: E501
         """DetectorData - a model defined in Swagger"""  # noqa: E501
 
         self._config = None
@@ -57,6 +59,7 @@ class DetectorData(object):
         self._detector_type = None
         self._name = None
         self._namespace = None
+        self._status = None
         self.discriminator = None
 
         if config is not None:
@@ -71,6 +74,8 @@ class DetectorData(object):
             self.name = name
         if namespace is not None:
             self.namespace = namespace
+        if status is not None:
+            self.status = status
 
     @property
     def config(self):
@@ -197,6 +202,27 @@ class DetectorData(object):
         """
 
         self._namespace = namespace
+
+    @property
+    def status(self):
+        """Gets the status of this DetectorData.  # noqa: E501
+
+
+        :return: The status of this DetectorData.  # noqa: E501
+        :rtype: DetectorStatus
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this DetectorData.
+
+
+        :param status: The status of this DetectorData.  # noqa: E501
+        :type: DetectorStatus
+        """
+
+        self._status = status
 
     def to_dict(self):
         """Returns the model properties as a dict"""

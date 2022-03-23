@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.env_props import EnvProps  # noqa: E501
+from seldon_deploy_sdk.models.v1_delete_user_response import V1DeleteUserResponse  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestEnvProps(unittest.TestCase):
-    """EnvProps unit test stubs"""
+class TestV1DeleteUserResponse(unittest.TestCase):
+    """V1DeleteUserResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestEnvProps(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testEnvProps(self):
-        """Test EnvProps"""
+    def testV1DeleteUserResponse(self):
+        """Test V1DeleteUserResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.env_props.EnvProps()  # noqa: E501
+        # model = seldon_deploy_sdk.models.v1_delete_user_response.V1DeleteUserResponse()  # noqa: E501
         pass
 
 

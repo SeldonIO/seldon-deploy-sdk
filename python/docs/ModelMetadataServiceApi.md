@@ -1,6 +1,6 @@
 # seldon_deploy_sdk.ModelMetadataServiceApi
 
-All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
+All URIs are relative to *http://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **model_metadata_service_list_model_metadata**
-> V1ModelMetadataListResponse model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project)
+> V1ModelMetadataListResponse model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project, order_by=order_by)
 
 List Model Metadata entries.
 
@@ -140,17 +140,16 @@ version = 'version_example' # str |  (optional)
 artifact_type = 'UNKNOWN' # str |  (optional) (default to UNKNOWN)
 task_type = 'task_type_example' # str |  (optional)
 model_type = 'model_type_example' # str |  (optional)
-tags = {"tag_key_example": "tag_value_example"} # dict |  (optional)
-metrics = {"metric_key_example": 123} # dict |  (optional)
 query = 'query_example' # str | For more complex queries where other logical operators like OR, NOT, etc. (optional)
 page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
 list_mask = 'list_mask_example' # str | Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. (optional)
 project = 'project_example' # str |  (optional)
+order_by = 'order_by_example' # str | The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type. (optional)
 
 try:
     # List Model Metadata entries.
-    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project)
+    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project, order_by=order_by)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_model_metadata: %s\n" % e)
@@ -166,13 +165,12 @@ Name | Type | Description  | Notes
  **artifact_type** | **str**|  | [optional] [default to UNKNOWN]
  **task_type** | **str**|  | [optional] 
  **model_type** | **str**|  | [optional] 
- **tags** | **dict**|  | [optional]
- **metrics** | **dict**|  | [optional]
- **query** | **str**| For more complex queries where other logical operators like OR, NOT, etc. | [optional]
+ **query** | **str**| For more complex queries where other logical operators like OR, NOT, etc. | [optional] 
  **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
  **list_mask** | **str**| Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. | [optional] 
  **project** | **str**|  | [optional] 
+ **order_by** | **str**| The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \&quot; desc\&quot; should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type. | [optional] 
 
 ### Return type
 

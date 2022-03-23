@@ -90,7 +90,7 @@ documentation is licensed as follows:
 
 
 cryptography
-36.0.1
+36.0.2
 Apache Software License; BSD License
 This software is made available under the terms of *either* of the licenses
 found in LICENSE.APACHE or LICENSE.BSD. Contributions to cryptography are made
@@ -191,7 +191,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 The above BSD License Applies to all code, even that also covered by Apache 2.0.
 
 seldon-deploy-sdk
-1.4.1.2
+1.5.0
 UNKNOWN
 UNKNOWN
 
@@ -219,7 +219,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 urllib3
-1.26.8
+1.26.9
 MIT License
 MIT License
 

@@ -33,6 +33,208 @@ class PermissionManagementServiceApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def permission_management_service_add_user_to_group(self, username, group, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_add_user_to_group(username, group, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The name of the user to be added to a group. (required)
+        :param str group: The name of the group to which to add a user. (required)
+        :return: V1AddUserToGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_add_user_to_group_with_http_info(username, group, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_add_user_to_group_with_http_info(username, group, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_add_user_to_group_with_http_info(self, username, group, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_add_user_to_group_with_http_info(username, group, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The name of the user to be added to a group. (required)
+        :param str group: The name of the group to which to add a user. (required)
+        :return: V1AddUserToGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['username', 'group']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_add_user_to_group" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'username' is set
+        if ('username' not in params or
+                params['username'] is None):
+            raise ValueError("Missing the required parameter `username` when calling `permission_management_service_add_user_to_group`")  # noqa: E501
+        # verify the required parameter 'group' is set
+        if ('group' not in params or
+                params['group'] is None):
+            raise ValueError("Missing the required parameter `group` when calling `permission_management_service_add_user_to_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'username' in params:
+            path_params['username'] = params['username']  # noqa: E501
+        if 'group' in params:
+            path_params['group'] = params['group']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/users/{username}/groups/{group}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1AddUserToGroupResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_create_group(self, body, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_create_group(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateGroupRequest body: (required)
+        :return: V1CreateGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_create_group_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_create_group_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_create_group_with_http_info(self, body, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_create_group_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateGroupRequest body: (required)
+        :return: V1CreateGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_create_group" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `permission_management_service_create_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/groups', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1CreateGroupResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def permission_management_service_create_policy(self, body, **kwargs):  # noqa: E501
         """Create an authorization policy. The user must have `grant` permissions on the resource in the policy.  # noqa: E501
 
@@ -123,6 +325,200 @@ class PermissionManagementServiceApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='V1CreatePolicyResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_create_user(self, body, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_create_user(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateUserRequest body: (required)
+        :return: V1CreateUserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_create_user_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_create_user_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_create_user_with_http_info(self, body, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_create_user_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateUserRequest body: (required)
+        :return: V1CreateUserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_create_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `permission_management_service_create_user`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/users', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1CreateUserResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_delete_group(self, name, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_delete_group(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: The name of the group to be deleted. (required)
+        :return: V1DeleteGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_delete_group_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_delete_group_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_delete_group_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_delete_group_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: The name of the group to be deleted. (required)
+        :return: V1DeleteGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_delete_group" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `permission_management_service_delete_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/groups/{name}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1DeleteGroupResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -238,6 +634,394 @@ class PermissionManagementServiceApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='V1DeletePolicyResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_delete_user(self, username, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_delete_user(username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The username of the user to be deleted. (required)
+        :return: V1DeleteUserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_delete_user_with_http_info(username, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_delete_user_with_http_info(username, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_delete_user_with_http_info(self, username, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_delete_user_with_http_info(username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The username of the user to be deleted. (required)
+        :return: V1DeleteUserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['username']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_delete_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'username' is set
+        if ('username' not in params or
+                params['username'] is None):
+            raise ValueError("Missing the required parameter `username` when calling `permission_management_service_delete_user`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'username' in params:
+            path_params['username'] = params['username']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/users/{username}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1DeleteUserResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_delete_user_from_group(self, username, group, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_delete_user_from_group(username, group, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The name of the user to be removed from a group. (required)
+        :param str group: The name of the group from which to remove a user. (required)
+        :return: V1DeleteUserFromGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_delete_user_from_group_with_http_info(username, group, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_delete_user_from_group_with_http_info(username, group, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_delete_user_from_group_with_http_info(self, username, group, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_delete_user_from_group_with_http_info(username, group, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The name of the user to be removed from a group. (required)
+        :param str group: The name of the group from which to remove a user. (required)
+        :return: V1DeleteUserFromGroupResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['username', 'group']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_delete_user_from_group" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'username' is set
+        if ('username' not in params or
+                params['username'] is None):
+            raise ValueError("Missing the required parameter `username` when calling `permission_management_service_delete_user_from_group`")  # noqa: E501
+        # verify the required parameter 'group' is set
+        if ('group' not in params or
+                params['group'] is None):
+            raise ValueError("Missing the required parameter `group` when calling `permission_management_service_delete_user_from_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'username' in params:
+            path_params['username'] = params['username']  # noqa: E501
+        if 'group' in params:
+            path_params['group'] = params['group']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/users/{username}/groups/{group}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1DeleteUserFromGroupResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_get_group_members(self, group_name, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_group_members(group_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str group_name: The name of the group for which to get members. (required)
+        :return: V1GetGroupMembersResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_get_group_members_with_http_info(group_name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_get_group_members_with_http_info(group_name, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_get_group_members_with_http_info(self, group_name, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_group_members_with_http_info(group_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str group_name: The name of the group for which to get members. (required)
+        :return: V1GetGroupMembersResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['group_name']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_get_group_members" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'group_name' is set
+        if ('group_name' not in params or
+                params['group_name'] is None):
+            raise ValueError("Missing the required parameter `group_name` when calling `permission_management_service_get_group_members`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'group_name' in params:
+            path_params['groupName'] = params['group_name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/groups/{groupName}/members', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1GetGroupMembersResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_get_groups(self, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_groups(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: V1GetGroupsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_get_groups_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_get_groups_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_get_groups_with_http_info(self, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_groups_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: V1GetGroupsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_get_groups" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/groups', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1GetGroupsResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -446,6 +1230,208 @@ class PermissionManagementServiceApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='V1GetPolicyTargetsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_get_user_groups(self, username, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_user_groups(username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The name of the user for who to get groups. (required)
+        :return: V1GetUserGroupsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_get_user_groups_with_http_info(username, **kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_get_user_groups_with_http_info(username, **kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_get_user_groups_with_http_info(self, username, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_user_groups_with_http_info(username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The name of the user for who to get groups. (required)
+        :return: V1GetUserGroupsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['username']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_get_user_groups" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'username' is set
+        if ('username' not in params or
+                params['username'] is None):
+            raise ValueError("Missing the required parameter `username` when calling `permission_management_service_get_user_groups`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'username' in params:
+            path_params['username'] = params['username']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/users/{username}/groups', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1GetUserGroupsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def permission_management_service_get_users(self, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_users(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The username of the user to fetch. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters.
+        :param str email: The email of the user to fetch. It must be a valid email.
+        :param str first_name:
+        :param str last_name:
+        :return: V1GetUsersResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.permission_management_service_get_users_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.permission_management_service_get_users_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def permission_management_service_get_users_with_http_info(self, **kwargs):  # noqa: E501
+        """Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.permission_management_service_get_users_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str username: The username of the user to fetch. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters.
+        :param str email: The email of the user to fetch. It must be a valid email.
+        :param str first_name:
+        :param str last_name:
+        :return: V1GetUsersResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['username', 'email', 'first_name', 'last_name']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method permission_management_service_get_users" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'username' in params:
+            query_params.append(('username', params['username']))  # noqa: E501
+        if 'email' in params:
+            query_params.append(('email', params['email']))  # noqa: E501
+        if 'first_name' in params:
+            query_params.append(('firstName', params['first_name']))  # noqa: E501
+        if 'last_name' in params:
+            query_params.append(('lastName', params['last_name']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['OAuth2']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/iam/users', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1GetUsersResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

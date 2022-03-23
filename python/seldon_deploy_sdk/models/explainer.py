@@ -35,6 +35,7 @@ class Explainer(object):
         'container_spec': 'Container',
         'endpoint': 'Endpoint',
         'env_secret_ref_name': 'str',
+        'init_parameters': 'str',
         'model_uri': 'str',
         'replicas': 'int',
         'service_account_name': 'str',
@@ -47,6 +48,7 @@ class Explainer(object):
         'container_spec': 'containerSpec',
         'endpoint': 'endpoint',
         'env_secret_ref_name': 'envSecretRefName',
+        'init_parameters': 'initParameters',
         'model_uri': 'modelUri',
         'replicas': 'replicas',
         'service_account_name': 'serviceAccountName',
@@ -54,13 +56,14 @@ class Explainer(object):
         'type': 'type'
     }
 
-    def __init__(self, config=None, container_spec=None, endpoint=None, env_secret_ref_name=None, model_uri=None, replicas=None, service_account_name=None, storage_initializer_image=None, type=None):  # noqa: E501
+    def __init__(self, config=None, container_spec=None, endpoint=None, env_secret_ref_name=None, init_parameters=None, model_uri=None, replicas=None, service_account_name=None, storage_initializer_image=None, type=None):  # noqa: E501
         """Explainer - a model defined in Swagger"""  # noqa: E501
 
         self._config = None
         self._container_spec = None
         self._endpoint = None
         self._env_secret_ref_name = None
+        self._init_parameters = None
         self._model_uri = None
         self._replicas = None
         self._service_account_name = None
@@ -76,6 +79,8 @@ class Explainer(object):
             self.endpoint = endpoint
         if env_secret_ref_name is not None:
             self.env_secret_ref_name = env_secret_ref_name
+        if init_parameters is not None:
+            self.init_parameters = init_parameters
         if model_uri is not None:
             self.model_uri = model_uri
         if replicas is not None:
@@ -170,6 +175,27 @@ class Explainer(object):
         """
 
         self._env_secret_ref_name = env_secret_ref_name
+
+    @property
+    def init_parameters(self):
+        """Gets the init_parameters of this Explainer.  # noqa: E501
+
+
+        :return: The init_parameters of this Explainer.  # noqa: E501
+        :rtype: str
+        """
+        return self._init_parameters
+
+    @init_parameters.setter
+    def init_parameters(self, init_parameters):
+        """Sets the init_parameters of this Explainer.
+
+
+        :param init_parameters: The init_parameters of this Explainer.  # noqa: E501
+        :type: str
+        """
+
+        self._init_parameters = init_parameters
 
     @property
     def model_uri(self):

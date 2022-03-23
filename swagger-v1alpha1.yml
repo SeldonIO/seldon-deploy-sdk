@@ -1001,13 +1001,6 @@ definitions:
         $ref: '#/definitions/Container'
     title: CustomSpec provides a hook for arbitrary container configuration.
     type: object
-  CustomThemeConfig:
-    properties:
-      logo:
-        type: string
-      theme:
-        type: object
-    type: object
   DNSPolicy:
     title: DNSPolicy defines how a pod's DNS will be configured.
     type: string
@@ -1203,6 +1196,9 @@ definitions:
       aggregate_over_time:
         description: AggregateOverTime is a boolean to decide if the distribution response is to be aggregated over the time period selected
         type: boolean
+      deployment_endpoint:
+        description: DeploymentEndpoint refers to endpoint/predictor name relevant to the feature distribution query
+        type: string
       deployment_kind:
         description: DeploymentType refers to kubernetes kind of the deployment relevant to the feature distribution query
         type: string
@@ -1211,6 +1207,9 @@ definitions:
         type: string
       deployment_namespace:
         description: DeploymentNamespace refers to namespace of the deployment relevant to the feature distribution query
+        type: string
+      deployment_node:
+        description: DeploymentNode refers to node name relevant to the feature distribution query
         type: string
       feature:
         description: FeatureName refers to the name of feature as per the model predictions schema
@@ -1401,6 +1400,8 @@ definitions:
         type: string
       namespace:
         type: string
+      status:
+        $ref: '#/definitions/DetectorStatus'
     type: object
   DetectorDeploymentConfiguration:
     properties:
@@ -1422,6 +1423,8 @@ definitions:
         format: int64
         type: integer
     type: object
+  DetectorStatus:
+    type: string
   DownwardAPIProjection:
     description: |-
       Note that this is identical to a downwardAPI volume source without the default
@@ -1531,19 +1534,6 @@ definitions:
         type: string
       secretRef:
         $ref: '#/definitions/SecretEnvSource'
-    type: object
-  EnvProps:
-    properties:
-      analyticsProps:
-        $ref: '#/definitions/AnalyticsProps'
-      clusterInfo:
-        $ref: '#/definitions/ClusterInfo'
-      customTheme:
-        $ref: '#/definitions/CustomThemeConfig'
-      userInfo:
-        $ref: '#/definitions/UserInfo'
-      versionInfo:
-        $ref: '#/definitions/VersionInfo'
     type: object
   EnvVar:
     properties:
@@ -1794,6 +1784,8 @@ definitions:
       endpoint:
         $ref: '#/definitions/Endpoint'
       envSecretRefName:
+        type: string
+      initParameters:
         type: string
       modelUri:
         type: string
@@ -6903,10 +6895,66 @@ definitions:
         description: |-
           A pagination token returned from a previous call to `List`
           that indicates from where listing should continue.
+  v1AddUserToGroupResponse:
+    type: object
+  v1CreateGroupRequest:
+    type: object
+    properties:
+      name:
+        type: string
+        description: The name of the group to be created.
+        required:
+          - name
+    required:
+      - name
+  v1CreateGroupResponse:
+    type: object
   v1CreatePolicyResponse:
+    type: object
+  v1CreateUserRequest:
+    type: object
+    properties:
+      username:
+        type: string
+        description: The username of the user. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters. It can be used for login and be part of policies.
+        required:
+          - username
+      email:
+        type: string
+        description: The email of the user. It must be a valid email. The user will receive instructions for setting credentials on this email.
+        required:
+          - email
+      firstName:
+        type: string
+      lastName:
+        type: string
+    required:
+      - username
+      - email
+  v1CreateUserResponse:
+    type: object
+  v1DeleteGroupResponse:
     type: object
   v1DeletePolicyResponse:
     type: object
+  v1DeleteUserFromGroupResponse:
+    type: object
+  v1DeleteUserResponse:
+    type: object
+  v1GetGroupMembersResponse:
+    type: object
+    properties:
+      members:
+        type: array
+        items:
+          $ref: '#/definitions/v1User'
+  v1GetGroupsResponse:
+    type: object
+    properties:
+      groups:
+        type: array
+        items:
+          $ref: '#/definitions/v1Group'
   v1GetPermissionsResponse:
     type: object
     properties:
@@ -6925,6 +6973,25 @@ definitions:
         type: array
         items:
           type: string
+  v1GetUserGroupsResponse:
+    type: object
+    properties:
+      groups:
+        type: array
+        items:
+          $ref: '#/definitions/v1Group'
+  v1GetUsersResponse:
+    type: object
+    properties:
+      users:
+        type: array
+        items:
+          $ref: '#/definitions/v1User'
+  v1Group:
+    type: object
+    properties:
+      name:
+        type: string
   v1GroupPolicy:
     type: object
     properties:
@@ -6950,6 +7017,24 @@ definitions:
         type: string
       resource:
         type: string
+  v1User:
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      enabled:
+        type: boolean
+      emailVerified:
+        type: boolean
+      creationTime:
+        type: string
+        format: date-time
   v1UserPolicy:
     type: object
     properties:
@@ -6980,6 +7065,65 @@ definitions:
           $ref: '#/definitions/v1FiringAlert'
   v1TriggerTestAlertResponse:
     type: object
+  protobufNullValue:
+    type: string
+    enum:
+      - NULL_VALUE
+    default: NULL_VALUE
+    description: |-
+      `NullValue` is a singleton enumeration to represent the null value for the
+      `Value` type union.
+
+       The JSON representation for `NullValue` is JSON `null`.
+
+       - NULL_VALUE: Null value.
+  v1CreateGCSBucketSecretResponse:
+    type: object
+  v1CreateRcloneBucketSecretResponse:
+    type: object
+  v1CreateRegistrySecretResponse:
+    type: object
+  v1CreateS3BucketSecretResponse:
+    type: object
+  v1DeleteSecretResponse:
+    type: object
+  v1ListSecretsResponse:
+    type: object
+    properties:
+      secrets:
+        type: array
+        items:
+          $ref: '#/definitions/v1Secret'
+  v1RcloneConfig:
+    type: object
+    properties:
+      variables:
+        type: object
+        additionalProperties:
+          type: string
+        description: The rclone key value pairs for your secret, see the documentation for more detail.
+  v1S3Credentials:
+    type: object
+    properties:
+      s3AccessKeyId:
+        type: string
+      s3SecretAccessKey:
+        type: string
+  v1Secret:
+    type: object
+    properties:
+      secretName:
+        type: string
+      secretType:
+        $ref: '#/definitions/v1SecretType'
+  v1SecretType:
+    type: string
+    enum:
+      - all
+      - bucket
+      - registry
+    default: all
+    description: 'Note: intentionally lower case so that the URL format accepts lowercase.'
 host: X.X.X.X
 info:
   description: |-
@@ -8943,6 +9087,11 @@ paths:
           in: query
           required: false
           type: string
+        - name: orderBy
+          description: 'The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.'
+          in: query
+          required: false
+          type: string
       tags:
         - ModelMetadataService
     delete:
@@ -9115,6 +9264,107 @@ paths:
           default: UndefinedDeploymentType
       tags:
         - ModelMetadataService
+  /iam/groups:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetGroups
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetGroupsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      tags:
+        - PermissionManagementService
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_CreateGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1CreateGroupRequest'
+      tags:
+        - PermissionManagementService
+  /iam/groups/{groupName}/members:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetGroupMembers
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetGroupMembersResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: groupName
+          description: The name of the group for which to get members.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/groups/{name}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: name
+          description: The name of the group to be deleted.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
   /iam/policy:
     delete:
       summary: Delete an authorization policy. The user must have `grant` permissions on the resource in the policy.
@@ -9264,6 +9514,189 @@ paths:
           type: string
       tags:
         - PermissionManagementService
+  /iam/users:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetUsers
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetUsersResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The username of the user to fetch. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters.
+          in: query
+          required: false
+          type: string
+        - name: email
+          description: The email of the user to fetch. It must be a valid email.
+          in: query
+          required: false
+          type: string
+        - name: firstName
+          in: query
+          required: false
+          type: string
+        - name: lastName
+          in: query
+          required: false
+          type: string
+      tags:
+        - PermissionManagementService
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_CreateUser
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateUserResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1CreateUserRequest'
+      tags:
+        - PermissionManagementService
+  /iam/users/{username}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteUser
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteUserResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The username of the user to be deleted.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/users/{username}/groups:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetUserGroups
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetUserGroupsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The name of the user for who to get groups.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/users/{username}/groups/{group}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteUserFromGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteUserFromGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The name of the user to be removed from a group.
+          in: path
+          required: true
+          type: string
+        - name: group
+          description: The name of the group from which to remove a user.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+    put:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_AddUserToGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1AddUserToGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The name of the user to be added to a group.
+          in: path
+          required: true
+          type: string
+        - name: group
+          description: The name of the group to which to add a user.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
   /alerting/alerts:
     get:
       summary: List currently firing alerts.
@@ -9309,6 +9742,221 @@ paths:
             type: boolean
       tags:
         - AlertingService
+  /secrets/{namespace}/bucket/gcs/{remote}:
+    post:
+      summary: Creates a GCS bucket secret according to specified parameters.
+      operationId: SecretsService_CreateGCSBucketSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateGCSBucketSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: remote
+          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The GCS account credentials to populate the secret. See documentation for how to generate this.
+          in: body
+          required: true
+          schema:
+            type: object
+            description: The GCS account credentials to populate the secret. See documentation for how to generate this.
+      tags:
+        - SecretsService
+  /secrets/{namespace}/bucket/rclone/{remote}:
+    post:
+      summary: Creates a generic rclone bucket secret according to specified parameters.
+      operationId: SecretsService_CreateRcloneBucketSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateRcloneBucketSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: remote
+          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The rclone key value pairs.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1RcloneConfig'
+            description: The rclone key value pairs.
+      tags:
+        - SecretsService
+  /secrets/{namespace}/bucket/s3/{remote}:
+    post:
+      summary: Creates a S3 bucket secret according to specified parameters.
+      operationId: SecretsService_CreateS3BucketSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateS3BucketSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: remote
+          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The S3 account credentials to populate the secret. See documentation for how to generate these.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1S3Credentials'
+            description: The S3 account credentials to populate the secret. See documentation for how to generate these.
+      tags:
+        - SecretsService
+  /secrets/{namespace}/registry/{name}:
+    post:
+      summary: Creates a registry secret according to specified parameters.
+      operationId: SecretsService_CreateRegistrySecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateRegistrySecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: name
+          description: The name of the secret to create.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The raw json docker credentials config.
+          in: body
+          required: true
+          schema:
+            type: object
+            description: The raw json docker credentials config.
+      tags:
+        - SecretsService
+  /secrets/{namespace}/{secretType}:
+    get:
+      summary: Lists the names and metadata of secrets used by Seldon Deploy.
+      operationId: SecretsService_ListSecrets
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ListSecretsResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to list secrets in.
+          in: path
+          required: true
+          type: string
+        - name: secretType
+          description: The secret type, can be one of (`bucket`, `registry`) or `all` to list all secrets used by Seldon Deploy.
+          in: path
+          required: true
+          type: string
+          enum:
+            - all
+            - bucket
+            - registry
+      tags:
+        - SecretsService
+  /secrets/{namespace}/{secretType}/{name}:
+    delete:
+      summary: Deletes the specified secret.
+      operationId: SecretsService_DeleteSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to delete secret from.
+          in: path
+          required: true
+          type: string
+        - name: secretType
+          description: The secret type of the secret to be deleted, can be one of (`bucket`, `registry`).
+          in: path
+          required: true
+          type: string
+          enum:
+            - all
+            - bucket
+            - registry
+        - name: name
+          description: The name of the secret to delete.
+          in: path
+          required: true
+          type: string
+      tags:
+        - SecretsService
 produces:
   - application/json
 responses:
@@ -9346,10 +9994,6 @@ responses:
     description: Detector configuration data
     schema:
       $ref: '#/definitions/DetectorData'
-  EnvResponse:
-    description: Env
-    schema:
-      $ref: '#/definitions/EnvProps'
   ErrorDefault:
     description: ErrorDefault Error
     schema:
@@ -9425,6 +10069,7 @@ responses:
     schema:
       $ref: '#/definitions/VersionInfo'
 schemes:
+  - http
   - https
 security:
   - OAuth2:

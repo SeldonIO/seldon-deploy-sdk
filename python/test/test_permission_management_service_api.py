@@ -29,6 +29,20 @@ class TestPermissionManagementServiceApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_permission_management_service_add_user_to_group(self):
+        """Test case for permission_management_service_add_user_to_group
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_create_group(self):
+        """Test case for permission_management_service_create_group
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
     def test_permission_management_service_create_policy(self):
         """Test case for permission_management_service_create_policy
 
@@ -36,10 +50,52 @@ class TestPermissionManagementServiceApi(unittest.TestCase):
         """
         pass
 
+    def test_permission_management_service_create_user(self):
+        """Test case for permission_management_service_create_user
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_delete_group(self):
+        """Test case for permission_management_service_delete_group
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
     def test_permission_management_service_delete_policy(self):
         """Test case for permission_management_service_delete_policy
 
         Delete an authorization policy. The user must have `grant` permissions on the resource in the policy.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_delete_user(self):
+        """Test case for permission_management_service_delete_user
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_delete_user_from_group(self):
+        """Test case for permission_management_service_delete_user_from_group
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_get_group_members(self):
+        """Test case for permission_management_service_get_group_members
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_get_groups(self):
+        """Test case for permission_management_service_get_groups
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`.  # noqa: E501
         """
         pass
 
@@ -54,6 +110,20 @@ class TestPermissionManagementServiceApi(unittest.TestCase):
         """Test case for permission_management_service_get_policy_targets
 
         List all users and groups who have access to the given resource/action pair. The user calling this endpoint must have `grant` access to the given resource.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_get_user_groups(self):
+        """Test case for permission_management_service_get_user_groups
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
+    def test_permission_management_service_get_users(self):
+        """Test case for permission_management_service_get_users
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`.  # noqa: E501
         """
         pass
 

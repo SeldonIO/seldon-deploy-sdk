@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.custom_theme_config import CustomThemeConfig  # noqa: E501
+from seldon_deploy_sdk.models.v1_create_gcs_bucket_secret_response import V1CreateGCSBucketSecretResponse  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestCustomThemeConfig(unittest.TestCase):
-    """CustomThemeConfig unit test stubs"""
+class TestV1CreateGCSBucketSecretResponse(unittest.TestCase):
+    """V1CreateGCSBucketSecretResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestCustomThemeConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testCustomThemeConfig(self):
-        """Test CustomThemeConfig"""
+    def testV1CreateGCSBucketSecretResponse(self):
+        """Test V1CreateGCSBucketSecretResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.custom_theme_config.CustomThemeConfig()  # noqa: E501
+        # model = seldon_deploy_sdk.models.v1_create_gcs_bucket_secret_response.V1CreateGCSBucketSecretResponse()  # noqa: E501
         pass
 
 

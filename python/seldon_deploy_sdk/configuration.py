@@ -51,7 +51,7 @@ class Configuration(object):
             return
 
         # Default Base url
-        self.host = "https://X.X.X.X/seldon-deploy/api/v1alpha1"
+        self.host = "http://X.X.X.X/seldon-deploy/api/v1alpha1"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -283,5 +283,5 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v1alpha1\n"\
-               "SDK Package Version: 1.4.1.2".\
+               "SDK Package Version: 1.5.0".\
                format(env=sys.platform, pyversion=sys.version)

@@ -19,4 +19,5 @@ from seldon_deploy_sdk.api.monitor_api import MonitorApi
 from seldon_deploy_sdk.api.outlier_detector_api import OutlierDetectorApi
 from seldon_deploy_sdk.api.permission_management_service_api import PermissionManagementServiceApi
 from seldon_deploy_sdk.api.predict_api import PredictApi
+from seldon_deploy_sdk.api.secrets_service_api import SecretsServiceApi
 from seldon_deploy_sdk.api.seldon_deployments_api import SeldonDeploymentsApi
