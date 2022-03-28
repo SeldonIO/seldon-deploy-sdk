@@ -4,9 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aggregate_over_time** | **bool** | AggregateOverTime is a boolean to decide if the distribution response is to be aggregated over the time period selected | [optional] 
+**deployment_endpoint** | **str** | DeploymentEndpoint refers to endpoint/predictor name relevant to the feature distribution query | [optional] 
 **deployment_kind** | **str** | DeploymentType refers to kubernetes kind of the deployment relevant to the feature distribution query | [optional] 
 **deployment_name** | **str** | DeploymentName refers to name of the deployment relevant to the feature distribution query | [optional] 
 **deployment_namespace** | **str** | DeploymentNamespace refers to namespace of the deployment relevant to the feature distribution query | [optional] 
+**deployment_node** | **str** | DeploymentNode refers to node name relevant to the feature distribution query | [optional] 
 **feature** | **str** | FeatureName refers to the name of feature as per the model predictions schema | [optional] 
 **filters** | [**list[FeatureFilter]**](FeatureFilter.md) | Filters is a set of time, feature and/or outlier filters for the distribution/stats query | [optional] 
 **interaction** | [**FeatureInteraction**](FeatureInteraction.md) |  | [optional] 

@@ -63,3 +63,11 @@ make python
 There is some custom logic added on top of each client.
 These extra files and customisation can be found in the
 [`./templates`](./templates) folder.
+
+### How to create a new release?
+
+1. Update the [swagger file](./swagger-v1alpha1.yml) with latest specification.
+2. Update [config file](./config/python.json) to bump the package version.
+3. Run `make python` to re-generate the sdk api files from new specifications.
+4. Run `make -C build push` to build & push latest release to [PyPi](https://pypi.org/project/seldon-deploy-sdk/)
+5. Create a new Github Tag and Release with latest version and notes.

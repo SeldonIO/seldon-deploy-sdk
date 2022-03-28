@@ -1,6 +1,6 @@
 # seldon_deploy_sdk.MetricsServerApi
 
-All URIs are relative to *https://X.X.X.X/seldon-deploy/api/v1alpha1*
+All URIs are relative to *http://X.X.X.X/seldon-deploy/api/v1alpha1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

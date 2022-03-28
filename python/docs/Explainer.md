@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **container_spec** | [**Container**](Container.md) |  | [optional] 
 **endpoint** | [**Endpoint**](Endpoint.md) |  | [optional] 
 **env_secret_ref_name** | **str** |  | [optional] 
+**init_parameters** | **str** |  | [optional] 
 **model_uri** | **str** |  | [optional] 
 **replicas** | **int** |  | [optional] 
 **service_account_name** | **str** |  | [optional] 

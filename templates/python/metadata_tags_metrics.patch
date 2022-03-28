@@ -1,5 +1,5 @@
 diff --git a/python/docs/ModelMetadataServiceApi.md b/python/docs/ModelMetadataServiceApi.md
-index 8375e1a..0eede35 100644
+index 4ca2775..481780a 100644
 --- a/python/docs/ModelMetadataServiceApi.md
 +++ b/python/docs/ModelMetadataServiceApi.md
 @@ -140,6 +140,8 @@ version = 'version_example' # str |  (optional)
@@ -11,67 +11,65 @@ index 8375e1a..0eede35 100644
  query = 'query_example' # str | For more complex queries where other logical operators like OR, NOT, etc. (optional)
  page_size = 56 # int | Optional. The maximum number of Folders to return in the response. (optional)
  page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
-@@ -148,7 +150,7 @@ project = 'project_example' # str |  (optional)
+@@ -149,7 +151,7 @@ order_by = 'order_by_example' # str | The order in which to return the model met
  
  try:
      # List Model Metadata entries.
--    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project)
-+    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project)
+-    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project, order_by=order_by)
++    api_response = api_instance.model_metadata_service_list_model_metadata(uri=uri, name=name, version=version, artifact_type=artifact_type, task_type=task_type, model_type=model_type, tags=tags, metrics=metrics, query=query, page_size=page_size, page_token=page_token, list_mask=list_mask, project=project, order_by=order_by)
      pprint(api_response)
  except ApiException as e:
      print("Exception when calling ModelMetadataServiceApi->model_metadata_service_list_model_metadata: %s\n" % e)
-@@ -164,7 +166,9 @@ Name | Type | Description  | Notes
+@@ -165,6 +167,8 @@ Name | Type | Description  | Notes
   **artifact_type** | **str**|  | [optional] [default to UNKNOWN]
   **task_type** | **str**|  | [optional] 
   **model_type** | **str**|  | [optional] 
-- **query** | **str**| For more complex queries where other logical operators like OR, NOT, etc. | [optional] 
 + **tags** | **dict**|  | [optional]
 + **metrics** | **dict**|  | [optional]
-+ **query** | **str**| For more complex queries where other logical operators like OR, NOT, etc. | [optional]
+  **query** | **str**| For more complex queries where other logical operators like OR, NOT, etc. | [optional] 
   **page_size** | **int**| Optional. The maximum number of Folders to return in the response. | [optional] 
   **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
-  **list_mask** | **str**| Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. | [optional] 
 diff --git a/python/seldon_deploy_sdk/api/model_metadata_service_api.py b/python/seldon_deploy_sdk/api/model_metadata_service_api.py
-index b09d6d6..3c93634 100644
+index 8b5d077..b667f5c 100644
 --- a/python/seldon_deploy_sdk/api/model_metadata_service_api.py
 +++ b/python/seldon_deploy_sdk/api/model_metadata_service_api.py
-@@ -248,6 +248,8 @@ class ModelMetadataServiceApi(object):
+@@ -247,6 +247,8 @@ class ModelMetadataServiceApi(object):
+         :param str artifact_type:
          :param str task_type:
          :param str model_type:
-         :param str query: For more complex queries where other logical operators like OR, NOT, etc.
 +        :param dict tags:
 +        :param dict metrics:
+         :param str query: For more complex queries where other logical operators like OR, NOT, etc.
          :param int page_size: Optional. The maximum number of Folders to return in the response.
          :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
-         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
 @@ -280,6 +282,8 @@ class ModelMetadataServiceApi(object):
+         :param str artifact_type:
          :param str task_type:
          :param str model_type:
-         :param str query: For more complex queries where other logical operators like OR, NOT, etc.
 +        :param dict tags:
 +        :param dict metrics:
+         :param str query: For more complex queries where other logical operators like OR, NOT, etc.
          :param int page_size: Optional. The maximum number of Folders to return in the response.
          :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
-         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
-@@ -289,7 +293,7 @@ class ModelMetadataServiceApi(object):
+@@ -291,7 +295,7 @@ class ModelMetadataServiceApi(object):
                   returns the request thread.
          """
  
--        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', 'project']  # noqa: E501
-+        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', 'project', 'tags', 'metrics']  # noqa: E501
+-        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', 'project', 'order_by']  # noqa: E501
++        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'tags', 'metrics', 'query', 'page_size', 'page_token', 'list_mask', 'project', 'order_by']  # noqa: E501
          all_params.append('async_req')
          all_params.append('_return_http_data_only')
          all_params.append('_preload_content')
-@@ -332,6 +336,12 @@ class ModelMetadataServiceApi(object):
-             query_params.append(('listMask', params['list_mask']))  # noqa: E501
-         if 'project' in params:
-             query_params.append(('project', params['project']))  # noqa: E501
+@@ -324,6 +328,12 @@ class ModelMetadataServiceApi(object):
+             query_params.append(('taskType', params['task_type']))  # noqa: E501
+         if 'model_type' in params:
+             query_params.append(('modelType', params['model_type']))  # noqa: E501
 +        if 'tags' in params:
 +            for key, val in params['tags'].items():
 +                query_params.append((f'tags[{key}]', val))
 +        if 'metrics' in params:
 +            for key, val in params['metrics'].items():
 +                query_params.append((f'metrics[{key}]', val))
- 
-         header_params = {}
- 
+         if 'query' in params:
+             query_params.append(('query', params['query']))  # noqa: E501
+         if 'page_size' in params:

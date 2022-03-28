@@ -247,13 +247,14 @@ class ModelMetadataServiceApi(object):
         :param str artifact_type:
         :param str task_type:
         :param str model_type:
-        :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param dict tags:
         :param dict metrics:
+        :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
         :param str project:
+        :param str order_by: The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.
         :return: V1ModelMetadataListResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -281,19 +282,20 @@ class ModelMetadataServiceApi(object):
         :param str artifact_type:
         :param str task_type:
         :param str model_type:
-        :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param dict tags:
         :param dict metrics:
+        :param str query: For more complex queries where other logical operators like OR, NOT, etc.
         :param int page_size: Optional. The maximum number of Folders to return in the response.
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
         :param str project:
+        :param str order_by: The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.
         :return: V1ModelMetadataListResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'query', 'page_size', 'page_token', 'list_mask', 'project', 'tags', 'metrics']  # noqa: E501
+        all_params = ['uri', 'name', 'version', 'artifact_type', 'task_type', 'model_type', 'tags', 'metrics', 'query', 'page_size', 'page_token', 'list_mask', 'project', 'order_by']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -326,6 +328,12 @@ class ModelMetadataServiceApi(object):
             query_params.append(('taskType', params['task_type']))  # noqa: E501
         if 'model_type' in params:
             query_params.append(('modelType', params['model_type']))  # noqa: E501
+        if 'tags' in params:
+            for key, val in params['tags'].items():
+                query_params.append((f'tags[{key}]', val))
+        if 'metrics' in params:
+            for key, val in params['metrics'].items():
+                query_params.append((f'metrics[{key}]', val))
         if 'query' in params:
             query_params.append(('query', params['query']))  # noqa: E501
         if 'page_size' in params:
@@ -336,12 +344,8 @@ class ModelMetadataServiceApi(object):
             query_params.append(('listMask', params['list_mask']))  # noqa: E501
         if 'project' in params:
             query_params.append(('project', params['project']))  # noqa: E501
-        if 'tags' in params:
-            for key, val in params['tags'].items():
-                query_params.append((f'tags[{key}]', val))
-        if 'metrics' in params:
-            for key, val in params['metrics'].items():
-                query_params.append((f'metrics[{key}]', val))
+        if 'order_by' in params:
+            query_params.append(('orderBy', params['order_by']))  # noqa: E501
 
         header_params = {}
 

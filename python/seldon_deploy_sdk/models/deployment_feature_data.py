@@ -32,9 +32,11 @@ class DeploymentFeatureData(object):
     """
     swagger_types = {
         'aggregate_over_time': 'bool',
+        'deployment_endpoint': 'str',
         'deployment_kind': 'str',
         'deployment_name': 'str',
         'deployment_namespace': 'str',
+        'deployment_node': 'str',
         'feature': 'str',
         'filters': 'list[FeatureFilter]',
         'interaction': 'FeatureInteraction',
@@ -44,9 +46,11 @@ class DeploymentFeatureData(object):
 
     attribute_map = {
         'aggregate_over_time': 'aggregate_over_time',
+        'deployment_endpoint': 'deployment_endpoint',
         'deployment_kind': 'deployment_kind',
         'deployment_name': 'deployment_name',
         'deployment_namespace': 'deployment_namespace',
+        'deployment_node': 'deployment_node',
         'feature': 'feature',
         'filters': 'filters',
         'interaction': 'interaction',
@@ -54,13 +58,15 @@ class DeploymentFeatureData(object):
         'reference_data': 'reference_data'
     }
 
-    def __init__(self, aggregate_over_time=None, deployment_kind=None, deployment_name=None, deployment_namespace=None, feature=None, filters=None, interaction=None, parameters=None, reference_data=None):  # noqa: E501
+    def __init__(self, aggregate_over_time=None, deployment_endpoint=None, deployment_kind=None, deployment_name=None, deployment_namespace=None, deployment_node=None, feature=None, filters=None, interaction=None, parameters=None, reference_data=None):  # noqa: E501
         """DeploymentFeatureData - a model defined in Swagger"""  # noqa: E501
 
         self._aggregate_over_time = None
+        self._deployment_endpoint = None
         self._deployment_kind = None
         self._deployment_name = None
         self._deployment_namespace = None
+        self._deployment_node = None
         self._feature = None
         self._filters = None
         self._interaction = None
@@ -70,12 +76,16 @@ class DeploymentFeatureData(object):
 
         if aggregate_over_time is not None:
             self.aggregate_over_time = aggregate_over_time
+        if deployment_endpoint is not None:
+            self.deployment_endpoint = deployment_endpoint
         if deployment_kind is not None:
             self.deployment_kind = deployment_kind
         if deployment_name is not None:
             self.deployment_name = deployment_name
         if deployment_namespace is not None:
             self.deployment_namespace = deployment_namespace
+        if deployment_node is not None:
+            self.deployment_node = deployment_node
         if feature is not None:
             self.feature = feature
         if filters is not None:
@@ -109,6 +119,29 @@ class DeploymentFeatureData(object):
         """
 
         self._aggregate_over_time = aggregate_over_time
+
+    @property
+    def deployment_endpoint(self):
+        """Gets the deployment_endpoint of this DeploymentFeatureData.  # noqa: E501
+
+        DeploymentEndpoint refers to endpoint/predictor name relevant to the feature distribution query  # noqa: E501
+
+        :return: The deployment_endpoint of this DeploymentFeatureData.  # noqa: E501
+        :rtype: str
+        """
+        return self._deployment_endpoint
+
+    @deployment_endpoint.setter
+    def deployment_endpoint(self, deployment_endpoint):
+        """Sets the deployment_endpoint of this DeploymentFeatureData.
+
+        DeploymentEndpoint refers to endpoint/predictor name relevant to the feature distribution query  # noqa: E501
+
+        :param deployment_endpoint: The deployment_endpoint of this DeploymentFeatureData.  # noqa: E501
+        :type: str
+        """
+
+        self._deployment_endpoint = deployment_endpoint
 
     @property
     def deployment_kind(self):
@@ -178,6 +211,29 @@ class DeploymentFeatureData(object):
         """
 
         self._deployment_namespace = deployment_namespace
+
+    @property
+    def deployment_node(self):
+        """Gets the deployment_node of this DeploymentFeatureData.  # noqa: E501
+
+        DeploymentNode refers to node name relevant to the feature distribution query  # noqa: E501
+
+        :return: The deployment_node of this DeploymentFeatureData.  # noqa: E501
+        :rtype: str
+        """
+        return self._deployment_node
+
+    @deployment_node.setter
+    def deployment_node(self, deployment_node):
+        """Sets the deployment_node of this DeploymentFeatureData.
+
+        DeploymentNode refers to node name relevant to the feature distribution query  # noqa: E501
+
+        :param deployment_node: The deployment_node of this DeploymentFeatureData.  # noqa: E501
+        :type: str
+        """
+
+        self._deployment_node = deployment_node
 
     @property
     def feature(self):

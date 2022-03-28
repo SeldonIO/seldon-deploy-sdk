@@ -32,6 +32,7 @@ from seldon_deploy_sdk.api.monitor_api import MonitorApi
 from seldon_deploy_sdk.api.outlier_detector_api import OutlierDetectorApi
 from seldon_deploy_sdk.api.permission_management_service_api import PermissionManagementServiceApi
 from seldon_deploy_sdk.api.predict_api import PredictApi
+from seldon_deploy_sdk.api.secrets_service_api import SecretsServiceApi
 from seldon_deploy_sdk.api.seldon_deployments_api import SeldonDeploymentsApi
 
 # import ApiClient
@@ -86,7 +87,6 @@ from seldon_deploy_sdk.models.container_state_waiting import ContainerStateWaiti
 from seldon_deploy_sdk.models.container_status import ContainerStatus
 from seldon_deploy_sdk.models.cross_version_object_reference import CrossVersionObjectReference
 from seldon_deploy_sdk.models.custom_spec import CustomSpec
-from seldon_deploy_sdk.models.custom_theme_config import CustomThemeConfig
 from seldon_deploy_sdk.models.dns_policy import DNSPolicy
 from seldon_deploy_sdk.models.deployment import Deployment
 from seldon_deploy_sdk.models.deployment_feature_data import DeploymentFeatureData
@@ -99,6 +99,7 @@ from seldon_deploy_sdk.models.detector_config_data import DetectorConfigData
 from seldon_deploy_sdk.models.detector_configuration import DetectorConfiguration
 from seldon_deploy_sdk.models.detector_data import DetectorData
 from seldon_deploy_sdk.models.detector_deployment_configuration import DetectorDeploymentConfiguration
+from seldon_deploy_sdk.models.detector_status import DetectorStatus
 from seldon_deploy_sdk.models.downward_api_projection import DownwardAPIProjection
 from seldon_deploy_sdk.models.downward_api_volume_file import DownwardAPIVolumeFile
 from seldon_deploy_sdk.models.downward_api_volume_source import DownwardAPIVolumeSource
@@ -107,7 +108,6 @@ from seldon_deploy_sdk.models.endpoint import Endpoint
 from seldon_deploy_sdk.models.endpoint_spec import EndpointSpec
 from seldon_deploy_sdk.models.endpoint_type import EndpointType
 from seldon_deploy_sdk.models.env_from_source import EnvFromSource
-from seldon_deploy_sdk.models.env_props import EnvProps
 from seldon_deploy_sdk.models.env_var import EnvVar
 from seldon_deploy_sdk.models.env_var_source import EnvVarSource
 from seldon_deploy_sdk.models.ephemeral_container import EphemeralContainer
@@ -227,6 +227,7 @@ from seldon_deploy_sdk.models.probe import Probe
 from seldon_deploy_sdk.models.proc_mount_type import ProcMountType
 from seldon_deploy_sdk.models.projected_volume_source import ProjectedVolumeSource
 from seldon_deploy_sdk.models.protobuf_any import ProtobufAny
+from seldon_deploy_sdk.models.protobuf_null_value import ProtobufNullValue
 from seldon_deploy_sdk.models.protocol import Protocol
 from seldon_deploy_sdk.models.pull_policy import PullPolicy
 from seldon_deploy_sdk.models.quantity import Quantity
@@ -294,20 +295,39 @@ from seldon_deploy_sdk.models.uri_scheme import URIScheme
 from seldon_deploy_sdk.models.url import URL
 from seldon_deploy_sdk.models.unsatisfiable_constraint_action import UnsatisfiableConstraintAction
 from seldon_deploy_sdk.models.user_info import UserInfo
+from seldon_deploy_sdk.models.v1_add_user_to_group_response import V1AddUserToGroupResponse
 from seldon_deploy_sdk.models.v1_artifact_type import V1ArtifactType
+from seldon_deploy_sdk.models.v1_create_gcs_bucket_secret_response import V1CreateGCSBucketSecretResponse
+from seldon_deploy_sdk.models.v1_create_group_request import V1CreateGroupRequest
+from seldon_deploy_sdk.models.v1_create_group_response import V1CreateGroupResponse
 from seldon_deploy_sdk.models.v1_create_policy_response import V1CreatePolicyResponse
+from seldon_deploy_sdk.models.v1_create_rclone_bucket_secret_response import V1CreateRcloneBucketSecretResponse
+from seldon_deploy_sdk.models.v1_create_registry_secret_response import V1CreateRegistrySecretResponse
+from seldon_deploy_sdk.models.v1_create_s3_bucket_secret_response import V1CreateS3BucketSecretResponse
+from seldon_deploy_sdk.models.v1_create_user_request import V1CreateUserRequest
+from seldon_deploy_sdk.models.v1_create_user_response import V1CreateUserResponse
 from seldon_deploy_sdk.models.v1_data_type import V1DataType
+from seldon_deploy_sdk.models.v1_delete_group_response import V1DeleteGroupResponse
 from seldon_deploy_sdk.models.v1_delete_policy_response import V1DeletePolicyResponse
+from seldon_deploy_sdk.models.v1_delete_secret_response import V1DeleteSecretResponse
+from seldon_deploy_sdk.models.v1_delete_user_from_group_response import V1DeleteUserFromGroupResponse
+from seldon_deploy_sdk.models.v1_delete_user_response import V1DeleteUserResponse
 from seldon_deploy_sdk.models.v1_deployment_status import V1DeploymentStatus
 from seldon_deploy_sdk.models.v1_deployment_type import V1DeploymentType
 from seldon_deploy_sdk.models.v1_feature_category_schema import V1FeatureCategorySchema
 from seldon_deploy_sdk.models.v1_feature_schema import V1FeatureSchema
 from seldon_deploy_sdk.models.v1_feature_type import V1FeatureType
 from seldon_deploy_sdk.models.v1_firing_alert import V1FiringAlert
+from seldon_deploy_sdk.models.v1_get_group_members_response import V1GetGroupMembersResponse
+from seldon_deploy_sdk.models.v1_get_groups_response import V1GetGroupsResponse
 from seldon_deploy_sdk.models.v1_get_permissions_response import V1GetPermissionsResponse
 from seldon_deploy_sdk.models.v1_get_policy_targets_response import V1GetPolicyTargetsResponse
+from seldon_deploy_sdk.models.v1_get_user_groups_response import V1GetUserGroupsResponse
+from seldon_deploy_sdk.models.v1_get_users_response import V1GetUsersResponse
+from seldon_deploy_sdk.models.v1_group import V1Group
 from seldon_deploy_sdk.models.v1_group_policy import V1GroupPolicy
 from seldon_deploy_sdk.models.v1_list_alerts_response import V1ListAlertsResponse
+from seldon_deploy_sdk.models.v1_list_secrets_response import V1ListSecretsResponse
 from seldon_deploy_sdk.models.v1_model import V1Model
 from seldon_deploy_sdk.models.v1_model_metadata_create_response import V1ModelMetadataCreateResponse
 from seldon_deploy_sdk.models.v1_model_metadata_delete_response import V1ModelMetadataDeleteResponse
@@ -315,10 +335,15 @@ from seldon_deploy_sdk.models.v1_model_metadata_list_response import V1ModelMeta
 from seldon_deploy_sdk.models.v1_model_metadata_update_response import V1ModelMetadataUpdateResponse
 from seldon_deploy_sdk.models.v1_policy import V1Policy
 from seldon_deploy_sdk.models.v1_prediction_schema import V1PredictionSchema
+from seldon_deploy_sdk.models.v1_rclone_config import V1RcloneConfig
 from seldon_deploy_sdk.models.v1_resource_action_pair import V1ResourceActionPair
 from seldon_deploy_sdk.models.v1_runtime_metadata import V1RuntimeMetadata
 from seldon_deploy_sdk.models.v1_runtime_metadata_list_response import V1RuntimeMetadataListResponse
+from seldon_deploy_sdk.models.v1_s3_credentials import V1S3Credentials
+from seldon_deploy_sdk.models.v1_secret import V1Secret
+from seldon_deploy_sdk.models.v1_secret_type import V1SecretType
 from seldon_deploy_sdk.models.v1_trigger_test_alert_response import V1TriggerTestAlertResponse
+from seldon_deploy_sdk.models.v1_user import V1User
 from seldon_deploy_sdk.models.v1_user_policy import V1UserPolicy
 from seldon_deploy_sdk.models.version_info import VersionInfo
 from seldon_deploy_sdk.models.volume import Volume
