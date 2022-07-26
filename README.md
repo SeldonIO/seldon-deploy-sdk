@@ -23,14 +23,14 @@ You can see an example usage below:
 
 ```python
 from seldon_deploy_sdk import EnvironmentApi, Configuration, ApiClient
-from seldon_deploy_sdk.auth import OIDCAuthenticator
+from seldon_deploy_sdk.auth import AuthMethod, OIDCAuthenticator
 
 config = Configuration()
 config.host = "http://X.X.X.X/seldon-deploy/api/v1alpha1"
 config.oidc_client_id = "sd-api"
 config.oidc_client_secret = "sd-api-secret"
 config.oidc_server = "http://X.X.X.X/auth/realms/deploy-realm"
-config.auth_method = "auth_code"
+config.auth_method = AuthMethod.AUTH_CODE
 
 auth = OIDCAuthenticator(config)
 config.id_token = auth.authenticate()
