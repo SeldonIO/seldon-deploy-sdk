@@ -1,6 +1,7 @@
 import logging
 import os
 import urllib3
+import webbrowser
 
 from typing import Dict
 from urllib.parse import urlencode
@@ -106,6 +107,8 @@ class OIDCAuthenticator(Authenticator):
             state=self._AuthCodeState,
             scope=self._config.scope,
         )["url"]
+
+        webbrowser.open_new_tab(request_url)
         print(
             "Please copy the following URL into a browser to log in.",
             "You will be redirected and shown a code to copy and paste here.",
