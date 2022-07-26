@@ -29,7 +29,7 @@ REQUIRES = [
     "urllib3>=1.23",
     "Authlib<=0.16.0",
 ]
-    
+
 
 setup(
     name=NAME,
