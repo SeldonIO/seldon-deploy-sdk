@@ -110,9 +110,12 @@ class OIDCAuthenticator(Authenticator):
 
         webbrowser.open_new_tab(request_url)
         print(
-            "Please copy the following URL into a browser to log in.",
-            "You will be redirected and shown a code to copy and paste here.",
-            f"\n\n\t'{request_url}'\n\n",
+            "The following URL should have opened now on a new tab, where you "
+            "will be able to log in.\n"
+            "If it hasn't, please copy the following URL into a browser.\n"
+            "Once you have logged in, you will be redirected and will be shown a code "
+            "to copy and paste below."
+            f"\n\n\t{request_url}\n\n"
         )
         response_code = self._get_response_code()
         response_code_query = urlencode({"code": response_code})
