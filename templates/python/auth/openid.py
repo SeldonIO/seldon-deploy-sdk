@@ -43,7 +43,6 @@ class OIDCAuthenticator(Authenticator):
         super().__init__(config)
 
         if not config.verify_ssl:
-            os.environ["CURL_CA_BUNDLE"] = ""
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
         if config.oidc_server is None:
@@ -66,6 +65,7 @@ class OIDCAuthenticator(Authenticator):
 
         self._app = RemoteApp(
             framework=OIDCIntegration,
+            client_kwargs={"verify": config.verify_ssl},
             client_id=config.oidc_client_id,
             client_secret=config.oidc_client_secret,
             server_metadata_url=server_metadata_url,
