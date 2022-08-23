@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**permission_management_service_get_policy_targets**](PermissionManagementServiceApi.md#permission_management_service_get_policy_targets) | **GET** /iam/policy/targets | List all users and groups who have access to the given resource/action pair. The user calling this endpoint must have &#x60;grant&#x60; access to the given resource.
 [**permission_management_service_get_user_groups**](PermissionManagementServiceApi.md#permission_management_service_get_user_groups) | **GET** /iam/users/{username}/groups | Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have &#x60;read&#x60; permission on &#x60;system/iam&#x60;.
 [**permission_management_service_get_users**](PermissionManagementServiceApi.md#permission_management_service_get_users) | **GET** /iam/users | Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have &#x60;read&#x60; permission on &#x60;system/iam&#x60;.
+[**permission_management_service_reset_user_password**](PermissionManagementServiceApi.md#permission_management_service_reset_user_password) | **POST** /iam/users/{username}/resetPassword | Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have &#x60;write&#x60; permission on &#x60;system/iam&#x60;.
 
 
 # **permission_management_service_add_user_to_group**
@@ -726,6 +727,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1GetUsersResponse**](V1GetUsersResponse.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **permission_management_service_reset_user_password**
+> V1ResetUserPasswordResponse permission_management_service_reset_user_password(username)
+
+Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = seldon_deploy_sdk.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = seldon_deploy_sdk.PermissionManagementServiceApi(seldon_deploy_sdk.ApiClient(configuration))
+username = 'username_example' # str | The username of the user to be deleted.
+
+try:
+    # Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`.
+    api_response = api_instance.permission_management_service_reset_user_password(username)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PermissionManagementServiceApi->permission_management_service_reset_user_password: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **username** | **str**| The username of the user to be deleted. | 
+
+### Return type
+
+[**V1ResetUserPasswordResponse**](V1ResetUserPasswordResponse.md)
 
 ### Authorization
 

@@ -40,7 +40,8 @@ class V1Model(object):
         'metrics': 'dict(str, float)',
         'creation_time': 'datetime',
         'prediction_schema': 'V1PredictionSchema',
-        'project': 'str'
+        'project': 'str',
+        'runtime_defaults': 'V1RuntimeDefaults'
     }
 
     attribute_map = {
@@ -53,10 +54,11 @@ class V1Model(object):
         'metrics': 'metrics',
         'creation_time': 'creationTime',
         'prediction_schema': 'predictionSchema',
-        'project': 'project'
+        'project': 'project',
+        'runtime_defaults': 'runtimeDefaults'
     }
 
-    def __init__(self, uri=None, name=None, version='"v0.0.1"', artifact_type=None, task_type=None, tags=None, metrics=None, creation_time=None, prediction_schema=None, project=None):  # noqa: E501
+    def __init__(self, uri=None, name=None, version='"v0.0.1"', artifact_type=None, task_type=None, tags=None, metrics=None, creation_time=None, prediction_schema=None, project=None, runtime_defaults=None):  # noqa: E501
         """V1Model - a model defined in Swagger"""  # noqa: E501
 
         self._uri = None
@@ -69,6 +71,7 @@ class V1Model(object):
         self._creation_time = None
         self._prediction_schema = None
         self._project = None
+        self._runtime_defaults = None
         self.discriminator = None
 
         self.uri = uri
@@ -90,6 +93,8 @@ class V1Model(object):
             self.prediction_schema = prediction_schema
         if project is not None:
             self.project = project
+        if runtime_defaults is not None:
+            self.runtime_defaults = runtime_defaults
 
     @property
     def uri(self):
@@ -322,6 +327,29 @@ class V1Model(object):
         """
 
         self._project = project
+
+    @property
+    def runtime_defaults(self):
+        """Gets the runtime_defaults of this V1Model.  # noqa: E501
+
+        Default values used when deploying this model.  # noqa: E501
+
+        :return: The runtime_defaults of this V1Model.  # noqa: E501
+        :rtype: V1RuntimeDefaults
+        """
+        return self._runtime_defaults
+
+    @runtime_defaults.setter
+    def runtime_defaults(self, runtime_defaults):
+        """Sets the runtime_defaults of this V1Model.
+
+        Default values used when deploying this model.  # noqa: E501
+
+        :param runtime_defaults: The runtime_defaults of this V1Model.  # noqa: E501
+        :type: V1RuntimeDefaults
+        """
+
+        self._runtime_defaults = runtime_defaults
 
     def to_dict(self):
         """Returns the model properties as a dict"""

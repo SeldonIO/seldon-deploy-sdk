@@ -32,26 +32,31 @@ class BasicDetectorConfiguration(object):
     """
     swagger_types = {
         'drift_batch_size': 'str',
+        'drift_type_feature': 'bool',
         'env_secret_ref': 'str',
         'storage_uri': 'str'
     }
 
     attribute_map = {
         'drift_batch_size': 'drift_batch_size',
+        'drift_type_feature': 'drift_type_feature',
         'env_secret_ref': 'env_secret_ref',
         'storage_uri': 'storage_uri'
     }
 
-    def __init__(self, drift_batch_size=None, env_secret_ref=None, storage_uri=None):  # noqa: E501
+    def __init__(self, drift_batch_size=None, drift_type_feature=None, env_secret_ref=None, storage_uri=None):  # noqa: E501
         """BasicDetectorConfiguration - a model defined in Swagger"""  # noqa: E501
 
         self._drift_batch_size = None
+        self._drift_type_feature = None
         self._env_secret_ref = None
         self._storage_uri = None
         self.discriminator = None
 
         if drift_batch_size is not None:
             self.drift_batch_size = drift_batch_size
+        if drift_type_feature is not None:
+            self.drift_type_feature = drift_type_feature
         if env_secret_ref is not None:
             self.env_secret_ref = env_secret_ref
         if storage_uri is not None:
@@ -77,6 +82,27 @@ class BasicDetectorConfiguration(object):
         """
 
         self._drift_batch_size = drift_batch_size
+
+    @property
+    def drift_type_feature(self):
+        """Gets the drift_type_feature of this BasicDetectorConfiguration.  # noqa: E501
+
+
+        :return: The drift_type_feature of this BasicDetectorConfiguration.  # noqa: E501
+        :rtype: bool
+        """
+        return self._drift_type_feature
+
+    @drift_type_feature.setter
+    def drift_type_feature(self, drift_type_feature):
+        """Sets the drift_type_feature of this BasicDetectorConfiguration.
+
+
+        :param drift_type_feature: The drift_type_feature of this BasicDetectorConfiguration.  # noqa: E501
+        :type: bool
+        """
+
+        self._drift_type_feature = drift_type_feature
 
     @property
     def env_secret_ref(self):

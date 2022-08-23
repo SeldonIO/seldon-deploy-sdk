@@ -42,7 +42,8 @@ class V1RuntimeMetadata(object):
         'traffic': 'str',
         'shadow': 'bool',
         'creation_time': 'datetime',
-        'model': 'V1Model'
+        'model': 'V1Model',
+        'explainer': 'bool'
     }
 
     attribute_map = {
@@ -57,10 +58,11 @@ class V1RuntimeMetadata(object):
         'traffic': 'traffic',
         'shadow': 'shadow',
         'creation_time': 'creationTime',
-        'model': 'model'
+        'model': 'model',
+        'explainer': 'explainer'
     }
 
-    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None, creation_time=None, model=None):  # noqa: E501
+    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None, creation_time=None, model=None, explainer=None):  # noqa: E501
         """V1RuntimeMetadata - a model defined in Swagger"""  # noqa: E501
 
         self._model_uri = None
@@ -75,6 +77,7 @@ class V1RuntimeMetadata(object):
         self._shadow = None
         self._creation_time = None
         self._model = None
+        self._explainer = None
         self.discriminator = None
 
         if model_uri is not None:
@@ -101,6 +104,8 @@ class V1RuntimeMetadata(object):
             self.creation_time = creation_time
         if model is not None:
             self.model = model
+        if explainer is not None:
+            self.explainer = explainer
 
     @property
     def model_uri(self):
@@ -377,6 +382,29 @@ class V1RuntimeMetadata(object):
         """
 
         self._model = model
+
+    @property
+    def explainer(self):
+        """Gets the explainer of this V1RuntimeMetadata.  # noqa: E501
+
+        True if this model is a explainer in the deployment.  # noqa: E501
+
+        :return: The explainer of this V1RuntimeMetadata.  # noqa: E501
+        :rtype: bool
+        """
+        return self._explainer
+
+    @explainer.setter
+    def explainer(self, explainer):
+        """Sets the explainer of this V1RuntimeMetadata.
+
+        True if this model is a explainer in the deployment.  # noqa: E501
+
+        :param explainer: The explainer of this V1RuntimeMetadata.  # noqa: E501
+        :type: bool
+        """
+
+        self._explainer = explainer
 
     def to_dict(self):
         """Returns the model properties as a dict"""
