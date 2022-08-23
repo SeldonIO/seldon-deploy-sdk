@@ -64,10 +64,13 @@ There is some custom logic added on top of each client.
 These extra files and customisation can be found in the
 [`./templates`](./templates) folder.
 
+For Seldon Deploy model metadata service, we are having to patch two additional dict type parameters namely `tags` and `metrics` to the generated docs and sdk code. We do this manually, using the same make command, by applying the [patch file](./templates/python/metadata_tags_metrics.patch) file to the code, post sdk generation task. In some cases the patch apply cmd may fail, and there might be a requirement to re-generate the patch manually by changing the generated docs/sdk files as required.
+
 ### How to create a new release?
 
 1. Update the [swagger file](./swagger-v1alpha1.yml) with latest specification.
 2. Update [config file](./config/python.json) to bump the package version.
-3. Run `make python` to re-generate the sdk api files from new specifications.
+3. Run `make python` to re-generate the sdk api files from new specifications. If you get error `error: patch failed` then update the template customisation [patch file](./templates/python/metadata_tags_metrics.patch). See templates section above for more details.
+
 4. Run `make -C build push` to build & push latest release to [PyPi](https://pypi.org/project/seldon-deploy-sdk/)
 5. Create a new Github Tag and Release with latest version and notes.
