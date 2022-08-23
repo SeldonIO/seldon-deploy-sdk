@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.analytics_props import AnalyticsProps  # noqa: E501
+from seldon_deploy_sdk.models.v1_default_protocol import V1DefaultProtocol  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestAnalyticsProps(unittest.TestCase):
-    """AnalyticsProps unit test stubs"""
+class TestV1DefaultProtocol(unittest.TestCase):
+    """V1DefaultProtocol unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestAnalyticsProps(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testAnalyticsProps(self):
-        """Test AnalyticsProps"""
+    def testV1DefaultProtocol(self):
+        """Test V1DefaultProtocol"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.analytics_props.AnalyticsProps()  # noqa: E501
+        # model = seldon_deploy_sdk.models.v1_default_protocol.V1DefaultProtocol()  # noqa: E501
         pass
 
 

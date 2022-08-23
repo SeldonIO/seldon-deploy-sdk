@@ -23,7 +23,6 @@ from seldon_deploy_sdk.models.advanced_config import AdvancedConfig
 from seldon_deploy_sdk.models.affinity import Affinity
 from seldon_deploy_sdk.models.alibi_explainer_spec import AlibiExplainerSpec
 from seldon_deploy_sdk.models.alibi_explainer_type import AlibiExplainerType
-from seldon_deploy_sdk.models.analytics_props import AnalyticsProps
 from seldon_deploy_sdk.models.application_log import ApplicationLog
 from seldon_deploy_sdk.models.application_logs_params import ApplicationLogsParams
 from seldon_deploy_sdk.models.application_logs_response import ApplicationLogsResponse
@@ -283,6 +282,7 @@ from seldon_deploy_sdk.models.v1_create_s3_bucket_secret_response import V1Creat
 from seldon_deploy_sdk.models.v1_create_user_request import V1CreateUserRequest
 from seldon_deploy_sdk.models.v1_create_user_response import V1CreateUserResponse
 from seldon_deploy_sdk.models.v1_data_type import V1DataType
+from seldon_deploy_sdk.models.v1_default_protocol import V1DefaultProtocol
 from seldon_deploy_sdk.models.v1_delete_group_response import V1DeleteGroupResponse
 from seldon_deploy_sdk.models.v1_delete_policy_response import V1DeletePolicyResponse
 from seldon_deploy_sdk.models.v1_delete_secret_response import V1DeleteSecretResponse
@@ -312,7 +312,9 @@ from seldon_deploy_sdk.models.v1_model_metadata_update_response import V1ModelMe
 from seldon_deploy_sdk.models.v1_policy import V1Policy
 from seldon_deploy_sdk.models.v1_prediction_schema import V1PredictionSchema
 from seldon_deploy_sdk.models.v1_rclone_config import V1RcloneConfig
+from seldon_deploy_sdk.models.v1_reset_user_password_response import V1ResetUserPasswordResponse
 from seldon_deploy_sdk.models.v1_resource_action_pair import V1ResourceActionPair
+from seldon_deploy_sdk.models.v1_runtime_defaults import V1RuntimeDefaults
 from seldon_deploy_sdk.models.v1_runtime_metadata import V1RuntimeMetadata
 from seldon_deploy_sdk.models.v1_runtime_metadata_list_response import V1RuntimeMetadataListResponse
 from seldon_deploy_sdk.models.v1_s3_credentials import V1S3Credentials

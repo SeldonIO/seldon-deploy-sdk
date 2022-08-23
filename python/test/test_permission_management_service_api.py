@@ -127,6 +127,13 @@ class TestPermissionManagementServiceApi(unittest.TestCase):
         """
         pass
 
+    def test_permission_management_service_reset_user_password(self):
+        """Test case for permission_management_service_reset_user_password
+
+        Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`.  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

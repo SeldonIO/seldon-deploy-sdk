@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **creation_time** | **datetime** | The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/ | [optional] 
 **prediction_schema** | [**V1PredictionSchema**](V1PredictionSchema.md) | The schema defining the inputs/outputs for the given model. | [optional] 
 **project** | **str** | The project that this model belongs to. | [optional] 
+**runtime_defaults** | [**V1RuntimeDefaults**](V1RuntimeDefaults.md) | Default values used when deploying this model. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -114,25 +114,6 @@ definitions:
     type: object
   AlibiExplainerType:
     type: string
-  AnalyticsProps:
-    properties:
-      BuildTime:
-        type: string
-      BuildVersion:
-        type: string
-      GitBranch:
-        type: string
-      GitCommit:
-        type: string
-      GitStatus:
-        type: string
-      ReleaseType:
-        type: string
-      distinct_id:
-        type: string
-      token:
-        type: string
-    type: object
   ApplicationLog:
     description: |-
       ApplicationLog represents the message and timestamp of a single
@@ -246,6 +227,8 @@ definitions:
     properties:
       drift_batch_size:
         type: string
+      drift_type_feature:
+        type: boolean
       env_secret_ref:
         type: string
       storage_uri:
@@ -313,7 +296,6 @@ definitions:
         $ref: '#/definitions/NodePhase'
       workflowUID:
         $ref: '#/definitions/UID'
-    title: 'TODO: This is argo specific. Consider making this more generic?'
     type: object
   BatchJobDescriptionList:
     description: BatchJobDescriptionList is a list of BatchJobDescription
@@ -6644,6 +6626,7 @@ definitions:
       - PYTORCH
       - ONNX
       - TENSORRT
+      - ALIBI_EXPLAIN
     default: UNKNOWN
   v1DataType:
     type: string
@@ -6654,6 +6637,14 @@ definitions:
       - STRING
       - BYTES
     default: FLOAT
+  v1DefaultProtocol:
+    type: string
+    enum:
+      - PROTOCOL_UNKNOWN
+      - PROTOCOL_SELDON
+      - PROTOCOL_TENSERFLOW
+      - PROTOCOL_V2
+    default: PROTOCOL_UNKNOWN
   v1DeploymentStatus:
     type: string
     enum:
@@ -6797,6 +6788,9 @@ definitions:
         type: string
         example: project_1
         description: The project that this model belongs to.
+      runtimeDefaults:
+        $ref: '#/definitions/v1RuntimeDefaults'
+        description: Default values used when deploying this model.
     required:
       - URI
   v1ModelMetadataCreateResponse:
@@ -6835,6 +6829,13 @@ definitions:
     required:
       - requests
       - responses
+  v1RuntimeDefaults:
+    type: object
+    properties:
+      defaultProtocol:
+        $ref: '#/definitions/v1DefaultProtocol'
+        example: V2
+        description: The default protocol used for REST/gRPC requests to the model. It is possible that a model can be used with multiple protocols.
   v1RuntimeMetadata:
     type: object
     properties:
@@ -6883,6 +6884,9 @@ definitions:
       model:
         $ref: '#/definitions/v1Model'
         description: Detailed metadata of the model referenced in this runtime metadata entry.
+      explainer:
+        type: boolean
+        description: True if this model is a explainer in the deployment.
   v1RuntimeMetadataListResponse:
     type: object
     properties:
@@ -7010,6 +7014,8 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/v1GroupPolicy'
+  v1ResetUserPasswordResponse:
+    type: object
   v1ResourceActionPair:
     type: object
     properties:
@@ -8002,6 +8008,8 @@ paths:
         "200":
           $ref: '#/responses/SeldonDeploymentListResponse'
         "400":
+          $ref: '#/responses/ErrorDefault'
+        "404":
           $ref: '#/responses/ErrorDefault'
         "405":
           $ref: '#/responses/ErrorDefault'
@@ -9049,6 +9057,7 @@ paths:
             - PYTORCH
             - ONNX
             - TENSORRT
+            - ALIBI_EXPLAIN
           default: UNKNOWN
         - name: taskType
           in: query
@@ -9092,6 +9101,16 @@ paths:
           in: query
           required: false
           type: string
+        - name: defaultProtocol
+          in: query
+          required: false
+          type: string
+          enum:
+            - PROTOCOL_UNKNOWN
+            - PROTOCOL_SELDON
+            - PROTOCOL_TENSERFLOW
+            - PROTOCOL_V2
+          default: PROTOCOL_UNKNOWN
       tags:
         - ModelMetadataService
     delete:
@@ -9697,6 +9716,33 @@ paths:
           type: string
       tags:
         - PermissionManagementService
+  /iam/users/{username}/resetPassword:
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_ResetUserPassword
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ResetUserPasswordResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The username of the user to be deleted.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
   /alerting/alerts:
     get:
       summary: List currently firing alerts.
@@ -9960,10 +10006,6 @@ paths:
 produces:
   - application/json
 responses:
-  AnalyticsResponse:
-    description: Analytics
-    schema:
-      $ref: '#/definitions/AnalyticsProps'
   ApplicationLogsResponse:
     description: Application Logs
     schema:
@@ -10032,10 +10074,6 @@ responses:
     description: Inference Service
     schema:
       $ref: '#/definitions/InferenceService'
-  LoggerDataResponse:
-    description: Logger Data
-    schema:
-      $ref: '#/definitions/LoggerDataType'
   MessageResponse:
     description: GenericMessage Message
     schema:
@@ -10054,12 +10092,6 @@ responses:
     description: Seldon Deployment
     schema:
       $ref: '#/definitions/SeldonDeployment'
-  URLsResponse:
-    description: URLs
-    schema:
-      additionalProperties:
-        type: string
-      type: object
   UserResponse:
     description: User
     schema:
