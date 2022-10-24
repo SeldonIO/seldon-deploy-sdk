@@ -29,32 +29,14 @@ class TestLoadtestJobsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_create_loadtest_inference_service(self):
-        """Test case for create_loadtest_inference_service
-
-        """
-        pass
-
     def test_create_loadtest_seldon_deployment(self):
         """Test case for create_loadtest_seldon_deployment
 
         """
         pass
 
-    def test_delete_loadtest_inference_service(self):
-        """Test case for delete_loadtest_inference_service
-
-        """
-        pass
-
     def test_delete_loadtest_seldon_deployment(self):
         """Test case for delete_loadtest_seldon_deployment
-
-        """
-        pass
-
-    def test_list_loadtest_inference_service(self):
-        """Test case for list_loadtest_inference_service
 
         """
         pass

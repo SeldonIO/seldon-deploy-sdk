@@ -31,21 +31,49 @@ class ScaledObjectAuthRef(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'kind': 'str',
         'name': 'str'
     }
 
     attribute_map = {
+        'kind': 'kind',
         'name': 'name'
     }
 
-    def __init__(self, name=None):  # noqa: E501
+    def __init__(self, kind=None, name=None):  # noqa: E501
         """ScaledObjectAuthRef - a model defined in Swagger"""  # noqa: E501
 
+        self._kind = None
         self._name = None
         self.discriminator = None
 
+        if kind is not None:
+            self.kind = kind
         if name is not None:
             self.name = name
+
+    @property
+    def kind(self):
+        """Gets the kind of this ScaledObjectAuthRef.  # noqa: E501
+
+        Kind of the resource being referred to. Defaults to TriggerAuthentication. +optional  # noqa: E501
+
+        :return: The kind of this ScaledObjectAuthRef.  # noqa: E501
+        :rtype: str
+        """
+        return self._kind
+
+    @kind.setter
+    def kind(self, kind):
+        """Sets the kind of this ScaledObjectAuthRef.
+
+        Kind of the resource being referred to. Defaults to TriggerAuthentication. +optional  # noqa: E501
+
+        :param kind: The kind of this ScaledObjectAuthRef.  # noqa: E501
+        :type: str
+        """
+
+        self._kind = kind
 
     @property
     def name(self):

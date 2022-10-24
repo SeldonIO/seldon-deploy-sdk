@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**configuration** | **str** |  | [optional] 
 **deployment_name** | **str** |  | [optional] 
 **deployment_type** | **str** |  | [optional] 
 **end** | **str** |  | [optional] 
@@ -17,7 +16,6 @@ Name | Type | Description | Notes
 **predictor_name** | **str** |  | [optional] 
 **query_template** | **str** |  | [optional] 
 **range** | **str** |  | [optional] 
-**revision** | **str** |  | [optional] 
 **start** | **str** |  | [optional] 
 **step** | **str** |  | [optional] 
 

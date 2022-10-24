@@ -29,18 +29,6 @@ class TestMonitorApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_inference_service_feature_distributions(self):
-        """Test case for inference_service_feature_distributions
-
-        """
-        pass
-
-    def test_inference_service_feature_statistics(self):
-        """Test case for inference_service_feature_statistics
-
-        """
-        pass
-
     def test_seldon_deployment_feature_distributions(self):
         """Test case for seldon_deployment_feature_distributions
 
@@ -49,6 +37,18 @@ class TestMonitorApi(unittest.TestCase):
 
     def test_seldon_deployment_feature_statistics(self):
         """Test case for seldon_deployment_feature_statistics
+
+        """
+        pass
+
+    def test_seldon_pipeline_feature_distributions(self):
+        """Test case for seldon_pipeline_feature_distributions
+
+        """
+        pass
+
+    def test_seldon_pipeline_feature_statistics(self):
+        """Test case for seldon_pipeline_feature_statistics
 
         """
         pass

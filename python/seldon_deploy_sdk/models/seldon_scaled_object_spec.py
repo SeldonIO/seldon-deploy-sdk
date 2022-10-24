@@ -33,6 +33,8 @@ class SeldonScaledObjectSpec(object):
     swagger_types = {
         'advanced': 'AdvancedConfig',
         'cooldown_period': 'int',
+        'fallback': 'Fallback',
+        'idle_replica_count': 'int',
         'max_replica_count': 'int',
         'min_replica_count': 'int',
         'polling_interval': 'int',
@@ -42,17 +44,21 @@ class SeldonScaledObjectSpec(object):
     attribute_map = {
         'advanced': 'advanced',
         'cooldown_period': 'cooldownPeriod',
+        'fallback': 'fallback',
+        'idle_replica_count': 'idleReplicaCount',
         'max_replica_count': 'maxReplicaCount',
         'min_replica_count': 'minReplicaCount',
         'polling_interval': 'pollingInterval',
         'triggers': 'triggers'
     }
 
-    def __init__(self, advanced=None, cooldown_period=None, max_replica_count=None, min_replica_count=None, polling_interval=None, triggers=None):  # noqa: E501
+    def __init__(self, advanced=None, cooldown_period=None, fallback=None, idle_replica_count=None, max_replica_count=None, min_replica_count=None, polling_interval=None, triggers=None):  # noqa: E501
         """SeldonScaledObjectSpec - a model defined in Swagger"""  # noqa: E501
 
         self._advanced = None
         self._cooldown_period = None
+        self._fallback = None
+        self._idle_replica_count = None
         self._max_replica_count = None
         self._min_replica_count = None
         self._polling_interval = None
@@ -63,6 +69,10 @@ class SeldonScaledObjectSpec(object):
             self.advanced = advanced
         if cooldown_period is not None:
             self.cooldown_period = cooldown_period
+        if fallback is not None:
+            self.fallback = fallback
+        if idle_replica_count is not None:
+            self.idle_replica_count = idle_replica_count
         if max_replica_count is not None:
             self.max_replica_count = max_replica_count
         if min_replica_count is not None:
@@ -115,6 +125,50 @@ class SeldonScaledObjectSpec(object):
         """
 
         self._cooldown_period = cooldown_period
+
+    @property
+    def fallback(self):
+        """Gets the fallback of this SeldonScaledObjectSpec.  # noqa: E501
+
+
+        :return: The fallback of this SeldonScaledObjectSpec.  # noqa: E501
+        :rtype: Fallback
+        """
+        return self._fallback
+
+    @fallback.setter
+    def fallback(self, fallback):
+        """Sets the fallback of this SeldonScaledObjectSpec.
+
+
+        :param fallback: The fallback of this SeldonScaledObjectSpec.  # noqa: E501
+        :type: Fallback
+        """
+
+        self._fallback = fallback
+
+    @property
+    def idle_replica_count(self):
+        """Gets the idle_replica_count of this SeldonScaledObjectSpec.  # noqa: E501
+
+        +optional  # noqa: E501
+
+        :return: The idle_replica_count of this SeldonScaledObjectSpec.  # noqa: E501
+        :rtype: int
+        """
+        return self._idle_replica_count
+
+    @idle_replica_count.setter
+    def idle_replica_count(self, idle_replica_count):
+        """Sets the idle_replica_count of this SeldonScaledObjectSpec.
+
+        +optional  # noqa: E501
+
+        :param idle_replica_count: The idle_replica_count of this SeldonScaledObjectSpec.  # noqa: E501
+        :type: int
+        """
+
+        self._idle_replica_count = idle_replica_count
 
     @property
     def max_replica_count(self):

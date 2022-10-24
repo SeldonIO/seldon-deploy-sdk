@@ -33,6 +33,7 @@ class ScaleTriggers(object):
     swagger_types = {
         'authentication_ref': 'ScaledObjectAuthRef',
         'metadata': 'dict(str, str)',
+        'metric_type': 'MetricTargetType',
         'name': 'str',
         'type': 'str'
     }
@@ -40,15 +41,17 @@ class ScaleTriggers(object):
     attribute_map = {
         'authentication_ref': 'authenticationRef',
         'metadata': 'metadata',
+        'metric_type': 'metricType',
         'name': 'name',
         'type': 'type'
     }
 
-    def __init__(self, authentication_ref=None, metadata=None, name=None, type=None):  # noqa: E501
+    def __init__(self, authentication_ref=None, metadata=None, metric_type=None, name=None, type=None):  # noqa: E501
         """ScaleTriggers - a model defined in Swagger"""  # noqa: E501
 
         self._authentication_ref = None
         self._metadata = None
+        self._metric_type = None
         self._name = None
         self._type = None
         self.discriminator = None
@@ -57,6 +60,8 @@ class ScaleTriggers(object):
             self.authentication_ref = authentication_ref
         if metadata is not None:
             self.metadata = metadata
+        if metric_type is not None:
+            self.metric_type = metric_type
         if name is not None:
             self.name = name
         if type is not None:
@@ -103,6 +108,27 @@ class ScaleTriggers(object):
         """
 
         self._metadata = metadata
+
+    @property
+    def metric_type(self):
+        """Gets the metric_type of this ScaleTriggers.  # noqa: E501
+
+
+        :return: The metric_type of this ScaleTriggers.  # noqa: E501
+        :rtype: MetricTargetType
+        """
+        return self._metric_type
+
+    @metric_type.setter
+    def metric_type(self, metric_type):
+        """Sets the metric_type of this ScaleTriggers.
+
+
+        :param metric_type: The metric_type of this ScaleTriggers.  # noqa: E501
+        :type: MetricTargetType
+        """
+
+        self._metric_type = metric_type
 
     @property
     def name(self):

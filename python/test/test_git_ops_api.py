@@ -29,32 +29,8 @@ class TestGitOpsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_inference_service_git_restore(self):
-        """Test case for inference_service_git_restore
-
-        """
-        pass
-
-    def test_inference_service_git_revert(self):
-        """Test case for inference_service_git_revert
-
-        """
-        pass
-
     def test_read_git_ops_status(self):
         """Test case for read_git_ops_status
-
-        """
-        pass
-
-    def test_read_inference_service_git_diff(self):
-        """Test case for read_inference_service_git_diff
-
-        """
-        pass
-
-    def test_read_inference_service_git_logs(self):
-        """Test case for read_inference_service_git_logs
 
         """
         pass

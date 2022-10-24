@@ -29,14 +29,14 @@ class TestExplainApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_explain_inference_service(self):
-        """Test case for explain_inference_service
+    def test_explain_seldon_deployment(self):
+        """Test case for explain_seldon_deployment
 
         """
         pass
 
-    def test_explain_seldon_deployment(self):
-        """Test case for explain_seldon_deployment
+    def test_explain_seldon_pipeline(self):
+        """Test case for explain_seldon_pipeline
 
         """
         pass
