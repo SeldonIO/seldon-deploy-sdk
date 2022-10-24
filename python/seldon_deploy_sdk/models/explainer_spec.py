@@ -31,258 +31,100 @@ class ExplainerSpec(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'aix': 'AIXExplainerSpec',
-        'alibi': 'AlibiExplainerSpec',
-        'batcher': 'Batcher',
-        'custom': 'CustomSpec',
-        'logger': 'Logger',
-        'max_replicas': 'int',
-        'min_replicas': 'int',
-        'parallelism': 'int',
-        'service_account_name': 'str'
+        'model_ref': 'str',
+        'pipeline_ref': 'str',
+        'type': 'str'
     }
 
     attribute_map = {
-        'aix': 'aix',
-        'alibi': 'alibi',
-        'batcher': 'batcher',
-        'custom': 'custom',
-        'logger': 'logger',
-        'max_replicas': 'maxReplicas',
-        'min_replicas': 'minReplicas',
-        'parallelism': 'parallelism',
-        'service_account_name': 'serviceAccountName'
+        'model_ref': 'modelRef',
+        'pipeline_ref': 'pipelineRef',
+        'type': 'type'
     }
 
-    def __init__(self, aix=None, alibi=None, batcher=None, custom=None, logger=None, max_replicas=None, min_replicas=None, parallelism=None, service_account_name=None):  # noqa: E501
+    def __init__(self, model_ref=None, pipeline_ref=None, type=None):  # noqa: E501
         """ExplainerSpec - a model defined in Swagger"""  # noqa: E501
 
-        self._aix = None
-        self._alibi = None
-        self._batcher = None
-        self._custom = None
-        self._logger = None
-        self._max_replicas = None
-        self._min_replicas = None
-        self._parallelism = None
-        self._service_account_name = None
+        self._model_ref = None
+        self._pipeline_ref = None
+        self._type = None
         self.discriminator = None
 
-        if aix is not None:
-            self.aix = aix
-        if alibi is not None:
-            self.alibi = alibi
-        if batcher is not None:
-            self.batcher = batcher
-        if custom is not None:
-            self.custom = custom
-        if logger is not None:
-            self.logger = logger
-        if max_replicas is not None:
-            self.max_replicas = max_replicas
-        if min_replicas is not None:
-            self.min_replicas = min_replicas
-        if parallelism is not None:
-            self.parallelism = parallelism
-        if service_account_name is not None:
-            self.service_account_name = service_account_name
+        if model_ref is not None:
+            self.model_ref = model_ref
+        if pipeline_ref is not None:
+            self.pipeline_ref = pipeline_ref
+        if type is not None:
+            self.type = type
 
     @property
-    def aix(self):
-        """Gets the aix of this ExplainerSpec.  # noqa: E501
+    def model_ref(self):
+        """Gets the model_ref of this ExplainerSpec.  # noqa: E501
 
+        one of the following need to be set for blackbox explainers Reference to Model +optional  # noqa: E501
 
-        :return: The aix of this ExplainerSpec.  # noqa: E501
-        :rtype: AIXExplainerSpec
-        """
-        return self._aix
-
-    @aix.setter
-    def aix(self, aix):
-        """Sets the aix of this ExplainerSpec.
-
-
-        :param aix: The aix of this ExplainerSpec.  # noqa: E501
-        :type: AIXExplainerSpec
-        """
-
-        self._aix = aix
-
-    @property
-    def alibi(self):
-        """Gets the alibi of this ExplainerSpec.  # noqa: E501
-
-
-        :return: The alibi of this ExplainerSpec.  # noqa: E501
-        :rtype: AlibiExplainerSpec
-        """
-        return self._alibi
-
-    @alibi.setter
-    def alibi(self, alibi):
-        """Sets the alibi of this ExplainerSpec.
-
-
-        :param alibi: The alibi of this ExplainerSpec.  # noqa: E501
-        :type: AlibiExplainerSpec
-        """
-
-        self._alibi = alibi
-
-    @property
-    def batcher(self):
-        """Gets the batcher of this ExplainerSpec.  # noqa: E501
-
-
-        :return: The batcher of this ExplainerSpec.  # noqa: E501
-        :rtype: Batcher
-        """
-        return self._batcher
-
-    @batcher.setter
-    def batcher(self, batcher):
-        """Sets the batcher of this ExplainerSpec.
-
-
-        :param batcher: The batcher of this ExplainerSpec.  # noqa: E501
-        :type: Batcher
-        """
-
-        self._batcher = batcher
-
-    @property
-    def custom(self):
-        """Gets the custom of this ExplainerSpec.  # noqa: E501
-
-
-        :return: The custom of this ExplainerSpec.  # noqa: E501
-        :rtype: CustomSpec
-        """
-        return self._custom
-
-    @custom.setter
-    def custom(self, custom):
-        """Sets the custom of this ExplainerSpec.
-
-
-        :param custom: The custom of this ExplainerSpec.  # noqa: E501
-        :type: CustomSpec
-        """
-
-        self._custom = custom
-
-    @property
-    def logger(self):
-        """Gets the logger of this ExplainerSpec.  # noqa: E501
-
-
-        :return: The logger of this ExplainerSpec.  # noqa: E501
-        :rtype: Logger
-        """
-        return self._logger
-
-    @logger.setter
-    def logger(self, logger):
-        """Sets the logger of this ExplainerSpec.
-
-
-        :param logger: The logger of this ExplainerSpec.  # noqa: E501
-        :type: Logger
-        """
-
-        self._logger = logger
-
-    @property
-    def max_replicas(self):
-        """Gets the max_replicas of this ExplainerSpec.  # noqa: E501
-
-        This is the up bound for autoscaler to scale to +optional  # noqa: E501
-
-        :return: The max_replicas of this ExplainerSpec.  # noqa: E501
-        :rtype: int
-        """
-        return self._max_replicas
-
-    @max_replicas.setter
-    def max_replicas(self, max_replicas):
-        """Sets the max_replicas of this ExplainerSpec.
-
-        This is the up bound for autoscaler to scale to +optional  # noqa: E501
-
-        :param max_replicas: The max_replicas of this ExplainerSpec.  # noqa: E501
-        :type: int
-        """
-
-        self._max_replicas = max_replicas
-
-    @property
-    def min_replicas(self):
-        """Gets the min_replicas of this ExplainerSpec.  # noqa: E501
-
-        Minimum number of replicas which defaults to 1, when minReplicas = 0 pods scale down to 0 in case of no traffic +optional  # noqa: E501
-
-        :return: The min_replicas of this ExplainerSpec.  # noqa: E501
-        :rtype: int
-        """
-        return self._min_replicas
-
-    @min_replicas.setter
-    def min_replicas(self, min_replicas):
-        """Sets the min_replicas of this ExplainerSpec.
-
-        Minimum number of replicas which defaults to 1, when minReplicas = 0 pods scale down to 0 in case of no traffic +optional  # noqa: E501
-
-        :param min_replicas: The min_replicas of this ExplainerSpec.  # noqa: E501
-        :type: int
-        """
-
-        self._min_replicas = min_replicas
-
-    @property
-    def parallelism(self):
-        """Gets the parallelism of this ExplainerSpec.  # noqa: E501
-
-        Parallelism specifies how many requests can be processed concurrently, this sets the hard limit of the container concurrency(https://knative.dev/docs/serving/autoscaling/concurrency).  # noqa: E501
-
-        :return: The parallelism of this ExplainerSpec.  # noqa: E501
-        :rtype: int
-        """
-        return self._parallelism
-
-    @parallelism.setter
-    def parallelism(self, parallelism):
-        """Sets the parallelism of this ExplainerSpec.
-
-        Parallelism specifies how many requests can be processed concurrently, this sets the hard limit of the container concurrency(https://knative.dev/docs/serving/autoscaling/concurrency).  # noqa: E501
-
-        :param parallelism: The parallelism of this ExplainerSpec.  # noqa: E501
-        :type: int
-        """
-
-        self._parallelism = parallelism
-
-    @property
-    def service_account_name(self):
-        """Gets the service_account_name of this ExplainerSpec.  # noqa: E501
-
-        ServiceAccountName is the name of the ServiceAccount to use to run the service +optional  # noqa: E501
-
-        :return: The service_account_name of this ExplainerSpec.  # noqa: E501
+        :return: The model_ref of this ExplainerSpec.  # noqa: E501
         :rtype: str
         """
-        return self._service_account_name
+        return self._model_ref
 
-    @service_account_name.setter
-    def service_account_name(self, service_account_name):
-        """Sets the service_account_name of this ExplainerSpec.
+    @model_ref.setter
+    def model_ref(self, model_ref):
+        """Sets the model_ref of this ExplainerSpec.
 
-        ServiceAccountName is the name of the ServiceAccount to use to run the service +optional  # noqa: E501
+        one of the following need to be set for blackbox explainers Reference to Model +optional  # noqa: E501
 
-        :param service_account_name: The service_account_name of this ExplainerSpec.  # noqa: E501
+        :param model_ref: The model_ref of this ExplainerSpec.  # noqa: E501
         :type: str
         """
 
-        self._service_account_name = service_account_name
+        self._model_ref = model_ref
+
+    @property
+    def pipeline_ref(self):
+        """Gets the pipeline_ref of this ExplainerSpec.  # noqa: E501
+
+        Reference to Pipeline +optional  # noqa: E501
+
+        :return: The pipeline_ref of this ExplainerSpec.  # noqa: E501
+        :rtype: str
+        """
+        return self._pipeline_ref
+
+    @pipeline_ref.setter
+    def pipeline_ref(self, pipeline_ref):
+        """Sets the pipeline_ref of this ExplainerSpec.
+
+        Reference to Pipeline +optional  # noqa: E501
+
+        :param pipeline_ref: The pipeline_ref of this ExplainerSpec.  # noqa: E501
+        :type: str
+        """
+
+        self._pipeline_ref = pipeline_ref
+
+    @property
+    def type(self):
+        """Gets the type of this ExplainerSpec.  # noqa: E501
+
+        type of explainer  # noqa: E501
+
+        :return: The type of this ExplainerSpec.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ExplainerSpec.
+
+        type of explainer  # noqa: E501
+
+        :param type: The type of this ExplainerSpec.  # noqa: E501
+        :type: str
+        """
+
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

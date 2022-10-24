@@ -29,20 +29,14 @@ class TestDriftDetectorApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_create_drift_detector_inference_service(self):
-        """Test case for create_drift_detector_inference_service
-
-        """
-        pass
-
     def test_create_drift_detector_seldon_deployment(self):
         """Test case for create_drift_detector_seldon_deployment
 
         """
         pass
 
-    def test_delete_drift_detector_inference_service(self):
-        """Test case for delete_drift_detector_inference_service
+    def test_create_drift_detector_seldon_pipeline(self):
+        """Test case for create_drift_detector_seldon_pipeline
 
         """
         pass
@@ -53,8 +47,8 @@ class TestDriftDetectorApi(unittest.TestCase):
         """
         pass
 
-    def test_list_drift_detector_inference_service(self):
-        """Test case for list_drift_detector_inference_service
+    def test_delete_drift_detector_seldon_pipeline(self):
+        """Test case for delete_drift_detector_seldon_pipeline
 
         """
         pass
@@ -65,14 +59,20 @@ class TestDriftDetectorApi(unittest.TestCase):
         """
         pass
 
-    def test_read_drift_detector_inference_service(self):
-        """Test case for read_drift_detector_inference_service
+    def test_list_drift_detector_seldon_pipeline(self):
+        """Test case for list_drift_detector_seldon_pipeline
 
         """
         pass
 
     def test_read_drift_detector_seldon_deployment(self):
         """Test case for read_drift_detector_seldon_deployment
+
+        """
+        pass
+
+    def test_read_drift_detector_seldon_pipeline(self):
+        """Test case for read_drift_detector_seldon_pipeline
 
         """
         pass

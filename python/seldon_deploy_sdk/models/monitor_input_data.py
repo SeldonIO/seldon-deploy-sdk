@@ -31,7 +31,6 @@ class MonitorInputData(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'configuration': 'str',
         'deployment_name': 'str',
         'deployment_type': 'str',
         'end': 'str',
@@ -45,13 +44,11 @@ class MonitorInputData(object):
         'predictor_name': 'str',
         'query_template': 'str',
         'range': 'str',
-        'revision': 'str',
         'start': 'str',
         'step': 'str'
     }
 
     attribute_map = {
-        'configuration': 'Configuration',
         'deployment_name': 'DeploymentName',
         'deployment_type': 'DeploymentType',
         'end': 'End',
@@ -65,15 +62,13 @@ class MonitorInputData(object):
         'predictor_name': 'PredictorName',
         'query_template': 'QueryTemplate',
         'range': 'Range',
-        'revision': 'Revision',
         'start': 'Start',
         'step': 'Step'
     }
 
-    def __init__(self, configuration=None, deployment_name=None, deployment_type=None, end=None, group_by=None, model_image=None, model_name=None, model_version=None, namespace=None, offset=None, percentile=None, predictor_name=None, query_template=None, range=None, revision=None, start=None, step=None):  # noqa: E501
+    def __init__(self, deployment_name=None, deployment_type=None, end=None, group_by=None, model_image=None, model_name=None, model_version=None, namespace=None, offset=None, percentile=None, predictor_name=None, query_template=None, range=None, start=None, step=None):  # noqa: E501
         """MonitorInputData - a model defined in Swagger"""  # noqa: E501
 
-        self._configuration = None
         self._deployment_name = None
         self._deployment_type = None
         self._end = None
@@ -87,13 +82,10 @@ class MonitorInputData(object):
         self._predictor_name = None
         self._query_template = None
         self._range = None
-        self._revision = None
         self._start = None
         self._step = None
         self.discriminator = None
 
-        if configuration is not None:
-            self.configuration = configuration
         if deployment_name is not None:
             self.deployment_name = deployment_name
         if deployment_type is not None:
@@ -120,33 +112,10 @@ class MonitorInputData(object):
             self.query_template = query_template
         if range is not None:
             self.range = range
-        if revision is not None:
-            self.revision = revision
         if start is not None:
             self.start = start
         if step is not None:
             self.step = step
-
-    @property
-    def configuration(self):
-        """Gets the configuration of this MonitorInputData.  # noqa: E501
-
-
-        :return: The configuration of this MonitorInputData.  # noqa: E501
-        :rtype: str
-        """
-        return self._configuration
-
-    @configuration.setter
-    def configuration(self, configuration):
-        """Sets the configuration of this MonitorInputData.
-
-
-        :param configuration: The configuration of this MonitorInputData.  # noqa: E501
-        :type: str
-        """
-
-        self._configuration = configuration
 
     @property
     def deployment_name(self):
@@ -420,27 +389,6 @@ class MonitorInputData(object):
         """
 
         self._range = range
-
-    @property
-    def revision(self):
-        """Gets the revision of this MonitorInputData.  # noqa: E501
-
-
-        :return: The revision of this MonitorInputData.  # noqa: E501
-        :rtype: str
-        """
-        return self._revision
-
-    @revision.setter
-    def revision(self, revision):
-        """Sets the revision of this MonitorInputData.
-
-
-        :param revision: The revision of this MonitorInputData.  # noqa: E501
-        :type: str
-        """
-
-        self._revision = revision
 
     @property
     def start(self):

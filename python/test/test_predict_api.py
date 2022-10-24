@@ -29,20 +29,14 @@ class TestPredictApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_predict_file_inference_service(self):
-        """Test case for predict_file_inference_service
-
-        """
-        pass
-
     def test_predict_file_seldon_deployment(self):
         """Test case for predict_file_seldon_deployment
 
         """
         pass
 
-    def test_predict_inference_service(self):
-        """Test case for predict_inference_service
+    def test_predict_file_seldon_pipeline(self):
+        """Test case for predict_file_seldon_pipeline
 
         """
         pass
@@ -53,14 +47,14 @@ class TestPredictApi(unittest.TestCase):
         """
         pass
 
-    def test_read_predict_curl_inference_service(self):
-        """Test case for read_predict_curl_inference_service
+    def test_read_predict_curl_seldon_deployment(self):
+        """Test case for read_predict_curl_seldon_deployment
 
         """
         pass
 
-    def test_read_predict_curl_seldon_deployment(self):
-        """Test case for read_predict_curl_seldon_deployment
+    def test_read_predict_curl_seldon_pipeline(self):
+        """Test case for read_predict_curl_seldon_pipeline
 
         """
         pass

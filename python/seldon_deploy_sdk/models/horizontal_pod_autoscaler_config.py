@@ -31,26 +31,21 @@ class HorizontalPodAutoscalerConfig(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'behavior': 'HorizontalPodAutoscalerBehavior',
-        'resource_metrics': 'list[ResourceMetricSource]'
+        'behavior': 'HorizontalPodAutoscalerBehavior'
     }
 
     attribute_map = {
-        'behavior': 'behavior',
-        'resource_metrics': 'resourceMetrics'
+        'behavior': 'behavior'
     }
 
-    def __init__(self, behavior=None, resource_metrics=None):  # noqa: E501
+    def __init__(self, behavior=None):  # noqa: E501
         """HorizontalPodAutoscalerConfig - a model defined in Swagger"""  # noqa: E501
 
         self._behavior = None
-        self._resource_metrics = None
         self.discriminator = None
 
         if behavior is not None:
             self.behavior = behavior
-        if resource_metrics is not None:
-            self.resource_metrics = resource_metrics
 
     @property
     def behavior(self):
@@ -72,27 +67,6 @@ class HorizontalPodAutoscalerConfig(object):
         """
 
         self._behavior = behavior
-
-    @property
-    def resource_metrics(self):
-        """Gets the resource_metrics of this HorizontalPodAutoscalerConfig.  # noqa: E501
-
-
-        :return: The resource_metrics of this HorizontalPodAutoscalerConfig.  # noqa: E501
-        :rtype: list[ResourceMetricSource]
-        """
-        return self._resource_metrics
-
-    @resource_metrics.setter
-    def resource_metrics(self, resource_metrics):
-        """Sets the resource_metrics of this HorizontalPodAutoscalerConfig.
-
-
-        :param resource_metrics: The resource_metrics of this HorizontalPodAutoscalerConfig.  # noqa: E501
-        :type: list[ResourceMetricSource]
-        """
-
-        self._resource_metrics = resource_metrics
 
     def to_dict(self):
         """Returns the model properties as a dict"""

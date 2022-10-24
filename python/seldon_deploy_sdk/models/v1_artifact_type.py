@@ -36,6 +36,7 @@ class V1ArtifactType(object):
     ONNX = "ONNX"
     TENSORRT = "TENSORRT"
     ALIBI_EXPLAIN = "ALIBI_EXPLAIN"
+    ALIBI_DETECT = "ALIBI_DETECT"
 
     """
     Attributes:

@@ -43,7 +43,8 @@ class V1RuntimeMetadata(object):
         'shadow': 'bool',
         'creation_time': 'datetime',
         'model': 'V1Model',
-        'explainer': 'bool'
+        'explainer': 'bool',
+        'replicas': 'str'
     }
 
     attribute_map = {
@@ -59,10 +60,11 @@ class V1RuntimeMetadata(object):
         'shadow': 'shadow',
         'creation_time': 'creationTime',
         'model': 'model',
-        'explainer': 'explainer'
+        'explainer': 'explainer',
+        'replicas': 'replicas'
     }
 
-    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None, creation_time=None, model=None, explainer=None):  # noqa: E501
+    def __init__(self, model_uri=None, deployment_name=None, deployment_namespace=None, deployment_kubernetes_uid=None, predictor_name=None, node_name=None, deployment_status=None, deployment_type=None, traffic=None, shadow=None, creation_time=None, model=None, explainer=None, replicas=None):  # noqa: E501
         """V1RuntimeMetadata - a model defined in Swagger"""  # noqa: E501
 
         self._model_uri = None
@@ -78,6 +80,7 @@ class V1RuntimeMetadata(object):
         self._creation_time = None
         self._model = None
         self._explainer = None
+        self._replicas = None
         self.discriminator = None
 
         if model_uri is not None:
@@ -106,6 +109,8 @@ class V1RuntimeMetadata(object):
             self.model = model
         if explainer is not None:
             self.explainer = explainer
+        if replicas is not None:
+            self.replicas = replicas
 
     @property
     def model_uri(self):
@@ -272,7 +277,7 @@ class V1RuntimeMetadata(object):
     def deployment_type(self):
         """Gets the deployment_type of this V1RuntimeMetadata.  # noqa: E501
 
-        The type of deployment - either SeldonDeployment or InferenceService.  # noqa: E501
+        The type of deployment - either SeldonDeployment or Model.  # noqa: E501
 
         :return: The deployment_type of this V1RuntimeMetadata.  # noqa: E501
         :rtype: V1DeploymentType
@@ -283,7 +288,7 @@ class V1RuntimeMetadata(object):
     def deployment_type(self, deployment_type):
         """Sets the deployment_type of this V1RuntimeMetadata.
 
-        The type of deployment - either SeldonDeployment or InferenceService.  # noqa: E501
+        The type of deployment - either SeldonDeployment or Model.  # noqa: E501
 
         :param deployment_type: The deployment_type of this V1RuntimeMetadata.  # noqa: E501
         :type: V1DeploymentType
@@ -405,6 +410,29 @@ class V1RuntimeMetadata(object):
         """
 
         self._explainer = explainer
+
+    @property
+    def replicas(self):
+        """Gets the replicas of this V1RuntimeMetadata.  # noqa: E501
+
+        The number of replicas for this model.  # noqa: E501
+
+        :return: The replicas of this V1RuntimeMetadata.  # noqa: E501
+        :rtype: str
+        """
+        return self._replicas
+
+    @replicas.setter
+    def replicas(self, replicas):
+        """Sets the replicas of this V1RuntimeMetadata.
+
+        The number of replicas for this model.  # noqa: E501
+
+        :param replicas: The replicas of this V1RuntimeMetadata.  # noqa: E501
+        :type: str
+        """
+
+        self._replicas = replicas
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -28,7 +28,8 @@ class V1DeploymentType(object):
     """
     UNDEFINEDDEPLOYMENTTYPE = "UndefinedDeploymentType"
     SELDONDEPLOYMENT = "SeldonDeployment"
-    INFERENCESERVICE = "InferenceService"
+    SELDONMODEL = "SeldonModel"
+    KNATIVEDETECTOR = "KnativeDetector"
 
     """
     Attributes:
