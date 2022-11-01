@@ -1,5 +1,5 @@
 "Name","Version","License"
-"Authlib","0.15.5","BSD License"
+"Authlib","1.0.1","BSD License"
 "certifi","2022.9.24","Mozilla Public License 2.0 (MPL 2.0)"
 "cffi","1.15.1","MIT License"
 "cryptography","38.0.1","Apache Software License; BSD License"
