@@ -1,10 +1,11 @@
 import logging
 import os
 import urllib3
+import webbrowser
 
 from typing import Dict
 from urllib.parse import urlencode
-from authlib.integrations.base_client import FrameworkIntegration, RemoteApp
+from authlib.integrations.base_client import FrameworkIntegration, OAuth2Mixin
 from authlib.integrations.requests_client import OAuth2Session
 
 from ..configuration import Configuration
@@ -19,10 +20,6 @@ logger = logging.getLogger(__name__)
 
 ID_TOKEN_FIELD = "id_token"
 ACCESS_TOKEN_FIELD = "access_token"
-
-
-class OIDCIntegration(FrameworkIntegration):
-    oauth2_client_cls = OAuth2Session
 
 
 def _get_token(token: Dict[str, str]) -> str:
@@ -43,7 +40,6 @@ class OIDCAuthenticator(Authenticator):
         super().__init__(config)
 
         if not config.verify_ssl:
-            os.environ["CURL_CA_BUNDLE"] = ""
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
         if config.oidc_server is None:
@@ -64,13 +60,15 @@ class OIDCAuthenticator(Authenticator):
 
         server_metadata_url = f"{config.oidc_server}/.well-known/openid-configuration"
 
-        self._app = RemoteApp(
-            framework=OIDCIntegration,
+        self._app = OAuth2Mixin(
+            framework=FrameworkIntegration,
+            client_kwargs={"verify": config.verify_ssl},
             client_id=config.oidc_client_id,
             client_secret=config.oidc_client_secret,
             server_metadata_url=server_metadata_url,
             access_token_params=access_token_params,
         )
+        self._app.client_cls = OAuth2Session
         self._app.load_server_metadata()
 
     @_soft_deprecate  # type: ignore
@@ -109,10 +107,15 @@ class OIDCAuthenticator(Authenticator):
             state=self._AuthCodeState,
             scope=self._config.scope,
         )["url"]
+
+        webbrowser.open_new_tab(request_url)
         print(
-            "Please copy the following URL into a browser to log in.",
-            "You will be redirected and shown a code to copy and paste here.",
-            f"\n\n\t'{request_url}'\n\n",
+            "The following URL should have opened now on a new tab, where you "
+            "will be able to log in.\n"
+            "If it hasn't, please copy the following URL into a browser.\n"
+            "Once you have logged in, you will be redirected and will be shown a code "
+            "to copy and paste below."
+            f"\n\n\t{request_url}\n\n"
         )
         response_code = self._get_response_code()
         response_code_query = urlencode({"code": response_code})

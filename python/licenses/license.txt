@@ -1,5 +1,5 @@
 Authlib
-0.15.5
+1.0.1
 BSD License
 BSD 3-Clause License
 
