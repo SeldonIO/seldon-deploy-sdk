@@ -54,8 +54,10 @@ class OIDCAuthenticator(Authenticator):
                     f"{AuthMethod.CLIENT_CREDENTIALS.value}"
                 )
 
+        authorize_params = None
         access_token_params = None
         if config.oidc_resource is not None:
+            authorize_params = {"resource": config.oidc_resource}
             access_token_params = {"resource": config.oidc_resource}
 
         server_metadata_url = f"{config.oidc_server}/.well-known/openid-configuration"
@@ -66,6 +68,7 @@ class OIDCAuthenticator(Authenticator):
             client_id=config.oidc_client_id,
             client_secret=config.oidc_client_secret,
             server_metadata_url=server_metadata_url,
+            authorize_params=authorize_params,
             access_token_params=access_token_params,
         )
         self._app.client_cls = OAuth2Session
