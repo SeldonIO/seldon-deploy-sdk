@@ -183,30 +183,25 @@ definitions:
         type: string
     type: object
   BatchJobDefinition:
-    description: BatchJobDefinition defines the details of the batch job
+    description: BatchJobDefinition is a common interface for BatchJob v1 and v2 which specifies necessary arguments
     properties:
       batchDataType:
         description: Batch Data Type (data, json or str)
         type: string
-      batchGatewayEndpoint:
-        description: Batch Gateway Endpoint
-        type: string
-      batchGatewayType:
-        description: Batch Gateway Type (istio or seldon)
-        type: string
       batchInterval:
-        description: Size of the batch (number of predictions per request)
+        description: Interval between batches
         format: double
         type: number
       batchMethod:
         description: Batch Method (predict)
         type: string
       batchPayloadType:
-        description: Batch Payload Type (ndarray, tensor, tftensor - only if DataType=data)
+        description: Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary - only if DataType=data)
         type: string
       batchRetries:
         description: Number of retries for each instance
-        type: string
+        format: int64
+        type: integer
       batchSize:
         description: Size of the batch (number of predictions per request)
         format: int64
@@ -216,7 +211,8 @@ definitions:
         type: string
       batchWorkers:
         description: Number of batch workers
-        type: string
+        format: int64
+        type: integer
       inputData:
         description: S3 URI of input data file
         type: string
@@ -2754,29 +2750,6 @@ definitions:
         description: |-
           URL to send request logging CloudEvents
           +optional
-        type: string
-    type: object
-  LoggerDataType:
-    properties:
-      deployment:
-        type: string
-      env:
-        items:
-          $ref: '#/definitions/EnvVar'
-        type: array
-      envstring:
-        type: string
-      image:
-        type: string
-      kind:
-        type: string
-      label:
-        type: string
-      name:
-        type: string
-      namespace:
-        type: string
-      url:
         type: string
     type: object
   LoggerMode:
@@ -8169,6 +8142,94 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Pipelines
+  /namespaces/{namespace}/pipelines/{name}/batchjobs:
+    get:
+      description: Read the pipeline batch jobs
+      operationId: ListPipelineBatchJobs
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Limit of items returned in one response
+          in: query
+          name: limit
+          type: string
+        - description: Requested page
+          in: query
+          name: Page
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/BatchJobsListResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - BatchJobs
+    post:
+      description: Create the pipeline batch jobs
+      operationId: CreatePipelineBatchJob
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: WorkflowName
+          in: body
+          name: workflow
+          required: true
+          schema:
+            $ref: '#/definitions/BatchJobDefinition'
+      responses:
+        "200":
+          $ref: '#/responses/BatchJobPostResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - BatchJobs
+  /namespaces/{namespace}/pipelines/{name}/batchjobs/{jobName}:
+    get:
+      description: Get details on the pipeline batch job
+      operationId: GetPipelineBatchJob
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/BatchJobGetResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - BatchJobs
   /namespaces/{namespace}/pipelines/{name}/experiment:
     delete:
       description: Delete Seldon Pipeline Experiment Pipelines
@@ -8502,6 +8563,95 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Pipelines
+  /namespaces/{namespace}/pipelines/{name}/loadtestjobs:
+    get:
+      description: List Pipeline load test jobs
+      operationId: ListLoadtestPipeline
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/MessageResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - LoadtestJobs
+    post:
+      description: |-
+        Create Pipeline load test
+        multipart/form-data
+      operationId: CreateLoadtestPipeline
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Prediction contains predict payload
+          in: formData
+          name: loadFile
+          required: true
+          type: file
+        - description: Connections Number provides number of allowed connections
+          in: formData
+          name: connectionsNumber
+          type: string
+        - description: Requests Number provides number of allowed requests
+          in: formData
+          name: requestsNumber
+          type: string
+        - description: Duration of load test in seconds
+          in: formData
+          name: duration
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/MessageResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - LoadtestJobs
+  /namespaces/{namespace}/pipelines/{name}/loadtestjobs/{jobName}:
+    delete:
+      description: Delete Pipeline load test jobs
+      operationId: DeleteLoadtestPipeline
+      parameters:
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/MessageResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - LoadtestJobs
   /namespaces/{namespace}/pipelines/{name}/models:
     get:
       description: List objects of kind Seldon Models within a Pipeline

@@ -29,6 +29,12 @@ class TestBatchJobsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_create_pipeline_batch_job(self):
+        """Test case for create_pipeline_batch_job
+
+        """
+        pass
+
     def test_create_seldon_deployment_batch_job(self):
         """Test case for create_seldon_deployment_batch_job
 
@@ -37,6 +43,18 @@ class TestBatchJobsApi(unittest.TestCase):
 
     def test_get_deployment_batch_job(self):
         """Test case for get_deployment_batch_job
+
+        """
+        pass
+
+    def test_get_pipeline_batch_job(self):
+        """Test case for get_pipeline_batch_job
+
+        """
+        pass
+
+    def test_list_pipeline_batch_jobs(self):
+        """Test case for list_pipeline_batch_jobs
 
         """
         pass

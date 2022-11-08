@@ -9,10 +9,16 @@ Deploy API.
 
 ### Installation
 
-To install the Python version of the SDK run:
+To install the stable version of the SDK run:
 
 ```bash
 pip install seldon-deploy-sdk
+```
+
+To install the latest version from source run:
+
+```bash
+pip install -e git+https://github.com/SeldonIO/seldon-deploy-sdk.git#egg=seldon-deploy-sdk\&subdirectory=python
 ```
 
 ### Usage
