@@ -32,15 +32,13 @@ class BatchJobDefinition(object):
     """
     swagger_types = {
         'batch_data_type': 'str',
-        'batch_gateway_endpoint': 'str',
-        'batch_gateway_type': 'str',
         'batch_interval': 'float',
         'batch_method': 'str',
         'batch_payload_type': 'str',
-        'batch_retries': 'str',
+        'batch_retries': 'int',
         'batch_size': 'int',
         'batch_transport_protocol': 'str',
-        'batch_workers': 'str',
+        'batch_workers': 'int',
         'input_data': 'str',
         'object_store_secret_name': 'str',
         'output_data': 'str',
@@ -49,8 +47,6 @@ class BatchJobDefinition(object):
 
     attribute_map = {
         'batch_data_type': 'batchDataType',
-        'batch_gateway_endpoint': 'batchGatewayEndpoint',
-        'batch_gateway_type': 'batchGatewayType',
         'batch_interval': 'batchInterval',
         'batch_method': 'batchMethod',
         'batch_payload_type': 'batchPayloadType',
@@ -64,12 +60,10 @@ class BatchJobDefinition(object):
         'pvc_size': 'pvcSize'
     }
 
-    def __init__(self, batch_data_type=None, batch_gateway_endpoint=None, batch_gateway_type=None, batch_interval=None, batch_method=None, batch_payload_type=None, batch_retries=None, batch_size=None, batch_transport_protocol=None, batch_workers=None, input_data=None, object_store_secret_name=None, output_data=None, pvc_size=None):  # noqa: E501
+    def __init__(self, batch_data_type=None, batch_interval=None, batch_method=None, batch_payload_type=None, batch_retries=None, batch_size=None, batch_transport_protocol=None, batch_workers=None, input_data=None, object_store_secret_name=None, output_data=None, pvc_size=None):  # noqa: E501
         """BatchJobDefinition - a model defined in Swagger"""  # noqa: E501
 
         self._batch_data_type = None
-        self._batch_gateway_endpoint = None
-        self._batch_gateway_type = None
         self._batch_interval = None
         self._batch_method = None
         self._batch_payload_type = None
@@ -85,10 +79,6 @@ class BatchJobDefinition(object):
 
         if batch_data_type is not None:
             self.batch_data_type = batch_data_type
-        if batch_gateway_endpoint is not None:
-            self.batch_gateway_endpoint = batch_gateway_endpoint
-        if batch_gateway_type is not None:
-            self.batch_gateway_type = batch_gateway_type
         if batch_interval is not None:
             self.batch_interval = batch_interval
         if batch_method is not None:
@@ -136,56 +126,10 @@ class BatchJobDefinition(object):
         self._batch_data_type = batch_data_type
 
     @property
-    def batch_gateway_endpoint(self):
-        """Gets the batch_gateway_endpoint of this BatchJobDefinition.  # noqa: E501
-
-        Batch Gateway Endpoint  # noqa: E501
-
-        :return: The batch_gateway_endpoint of this BatchJobDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._batch_gateway_endpoint
-
-    @batch_gateway_endpoint.setter
-    def batch_gateway_endpoint(self, batch_gateway_endpoint):
-        """Sets the batch_gateway_endpoint of this BatchJobDefinition.
-
-        Batch Gateway Endpoint  # noqa: E501
-
-        :param batch_gateway_endpoint: The batch_gateway_endpoint of this BatchJobDefinition.  # noqa: E501
-        :type: str
-        """
-
-        self._batch_gateway_endpoint = batch_gateway_endpoint
-
-    @property
-    def batch_gateway_type(self):
-        """Gets the batch_gateway_type of this BatchJobDefinition.  # noqa: E501
-
-        Batch Gateway Type (istio or seldon)  # noqa: E501
-
-        :return: The batch_gateway_type of this BatchJobDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._batch_gateway_type
-
-    @batch_gateway_type.setter
-    def batch_gateway_type(self, batch_gateway_type):
-        """Sets the batch_gateway_type of this BatchJobDefinition.
-
-        Batch Gateway Type (istio or seldon)  # noqa: E501
-
-        :param batch_gateway_type: The batch_gateway_type of this BatchJobDefinition.  # noqa: E501
-        :type: str
-        """
-
-        self._batch_gateway_type = batch_gateway_type
-
-    @property
     def batch_interval(self):
         """Gets the batch_interval of this BatchJobDefinition.  # noqa: E501
 
-        Size of the batch (number of predictions per request)  # noqa: E501
+        Interval between batches  # noqa: E501
 
         :return: The batch_interval of this BatchJobDefinition.  # noqa: E501
         :rtype: float
@@ -196,7 +140,7 @@ class BatchJobDefinition(object):
     def batch_interval(self, batch_interval):
         """Sets the batch_interval of this BatchJobDefinition.
 
-        Size of the batch (number of predictions per request)  # noqa: E501
+        Interval between batches  # noqa: E501
 
         :param batch_interval: The batch_interval of this BatchJobDefinition.  # noqa: E501
         :type: float
@@ -231,7 +175,7 @@ class BatchJobDefinition(object):
     def batch_payload_type(self):
         """Gets the batch_payload_type of this BatchJobDefinition.  # noqa: E501
 
-        Batch Payload Type (ndarray, tensor, tftensor - only if DataType=data)  # noqa: E501
+        Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary - only if DataType=data)  # noqa: E501
 
         :return: The batch_payload_type of this BatchJobDefinition.  # noqa: E501
         :rtype: str
@@ -242,7 +186,7 @@ class BatchJobDefinition(object):
     def batch_payload_type(self, batch_payload_type):
         """Sets the batch_payload_type of this BatchJobDefinition.
 
-        Batch Payload Type (ndarray, tensor, tftensor - only if DataType=data)  # noqa: E501
+        Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary - only if DataType=data)  # noqa: E501
 
         :param batch_payload_type: The batch_payload_type of this BatchJobDefinition.  # noqa: E501
         :type: str
@@ -257,7 +201,7 @@ class BatchJobDefinition(object):
         Number of retries for each instance  # noqa: E501
 
         :return: The batch_retries of this BatchJobDefinition.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._batch_retries
 
@@ -268,7 +212,7 @@ class BatchJobDefinition(object):
         Number of retries for each instance  # noqa: E501
 
         :param batch_retries: The batch_retries of this BatchJobDefinition.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._batch_retries = batch_retries
@@ -326,7 +270,7 @@ class BatchJobDefinition(object):
         Number of batch workers  # noqa: E501
 
         :return: The batch_workers of this BatchJobDefinition.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._batch_workers
 
@@ -337,7 +281,7 @@ class BatchJobDefinition(object):
         Number of batch workers  # noqa: E501
 
         :param batch_workers: The batch_workers of this BatchJobDefinition.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._batch_workers = batch_workers

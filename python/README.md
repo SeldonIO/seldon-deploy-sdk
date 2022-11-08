@@ -81,8 +81,11 @@ Class | Method | HTTP request | Description
 *AlertingServiceApi* | [**alerting_service_list_alerts**](docs/AlertingServiceApi.md#alerting_service_list_alerts) | **GET** /alerting/alerts | List currently firing alerts.
 *AlertingServiceApi* | [**alerting_service_trigger_test_alert**](docs/AlertingServiceApi.md#alerting_service_trigger_test_alert) | **POST** /alerting/test | Triggers a test alert to check alerting workflow.
 *ApplicationLogsApi* | [**read_application_logs**](docs/ApplicationLogsApi.md#read_application_logs) | **POST** /applicationlogs | Read application container logs from elastic search.
+*BatchJobsApi* | [**create_pipeline_batch_job**](docs/BatchJobsApi.md#create_pipeline_batch_job) | **POST** /namespaces/{namespace}/pipelines/{name}/batchjobs | 
 *BatchJobsApi* | [**create_seldon_deployment_batch_job**](docs/BatchJobsApi.md#create_seldon_deployment_batch_job) | **POST** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
 *BatchJobsApi* | [**get_deployment_batch_job**](docs/BatchJobsApi.md#get_deployment_batch_job) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName} | 
+*BatchJobsApi* | [**get_pipeline_batch_job**](docs/BatchJobsApi.md#get_pipeline_batch_job) | **GET** /namespaces/{namespace}/pipelines/{name}/batchjobs/{jobName} | 
+*BatchJobsApi* | [**list_pipeline_batch_jobs**](docs/BatchJobsApi.md#list_pipeline_batch_jobs) | **GET** /namespaces/{namespace}/pipelines/{name}/batchjobs | 
 *BatchJobsApi* | [**list_seldon_deployment_batch_jobs**](docs/BatchJobsApi.md#list_seldon_deployment_batch_jobs) | **GET** /namespaces/{namespace}/seldondeployments/{name}/batchjobs | 
 *DriftDetectorApi* | [**create_drift_detector_seldon_deployment**](docs/DriftDetectorApi.md#create_drift_detector_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector | 
 *DriftDetectorApi* | [**create_drift_detector_seldon_pipeline**](docs/DriftDetectorApi.md#create_drift_detector_seldon_pipeline) | **POST** /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector | 
@@ -110,8 +113,11 @@ Class | Method | HTTP request | Description
 *GitOpsApi* | [**seldon_deployment_git_restore**](docs/GitOpsApi.md#seldon_deployment_git_restore) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
 *GitOpsApi* | [**seldon_deployment_git_revert**](docs/GitOpsApi.md#seldon_deployment_git_revert) | **GET** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
 *KubernetesResourcesApi* | [**list_seldon_deployment_resources**](docs/KubernetesResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
+*LoadtestJobsApi* | [**create_loadtest_pipeline**](docs/LoadtestJobsApi.md#create_loadtest_pipeline) | **POST** /namespaces/{namespace}/pipelines/{name}/loadtestjobs | 
 *LoadtestJobsApi* | [**create_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#create_loadtest_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs | 
+*LoadtestJobsApi* | [**delete_loadtest_pipeline**](docs/LoadtestJobsApi.md#delete_loadtest_pipeline) | **DELETE** /namespaces/{namespace}/pipelines/{name}/loadtestjobs/{jobName} | 
 *LoadtestJobsApi* | [**delete_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#delete_loadtest_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName} | 
+*LoadtestJobsApi* | [**list_loadtest_pipeline**](docs/LoadtestJobsApi.md#list_loadtest_pipeline) | **GET** /namespaces/{namespace}/pipelines/{name}/loadtestjobs | 
 *LoadtestJobsApi* | [**list_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#list_loadtest_seldon_deployment) | **GET** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs | 
 *MetricsServerApi* | [**create_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#create_metrics_server_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server | 
 *MetricsServerApi* | [**delete_metrics_server_seldon_deployment**](docs/MetricsServerApi.md#delete_metrics_server_seldon_deployment) | **DELETE** /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName} | 
@@ -301,7 +307,6 @@ Class | Method | HTTP request | Description
  - [ListMeta](docs/ListMeta.md)
  - [LocalObjectReference](docs/LocalObjectReference.md)
  - [Logger](docs/Logger.md)
- - [LoggerDataType](docs/LoggerDataType.md)
  - [LoggerMode](docs/LoggerMode.md)
  - [LoggingSpec](docs/LoggingSpec.md)
  - [ManagedFieldsEntry](docs/ManagedFieldsEntry.md)

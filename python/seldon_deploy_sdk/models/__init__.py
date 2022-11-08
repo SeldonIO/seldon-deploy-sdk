@@ -133,7 +133,6 @@ from seldon_deploy_sdk.models.lifecycle import Lifecycle
 from seldon_deploy_sdk.models.list_meta import ListMeta
 from seldon_deploy_sdk.models.local_object_reference import LocalObjectReference
 from seldon_deploy_sdk.models.logger import Logger
-from seldon_deploy_sdk.models.logger_data_type import LoggerDataType
 from seldon_deploy_sdk.models.logger_mode import LoggerMode
 from seldon_deploy_sdk.models.logging_spec import LoggingSpec
 from seldon_deploy_sdk.models.managed_fields_entry import ManagedFieldsEntry
