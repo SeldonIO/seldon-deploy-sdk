@@ -5416,6 +5416,9 @@ definitions:
         type: object
       name:
         type: string
+      progressDeadlineSeconds:
+        format: int32
+        type: integer
       replicas:
         format: int32
         type: integer
@@ -7826,7 +7829,7 @@ paths:
         - GitOps
   /namespaces/{namespace}/models:
     post:
-      description: Create a Seldon Pipeline
+      description: Create a Seldon Model
       operationId: CreateModel
       parameters:
         - description: Action
@@ -7856,6 +7859,8 @@ paths:
         "403":
           $ref: '#/responses/ErrorDefault'
         "405":
+          $ref: '#/responses/ErrorDefault'
+        "409":
           $ref: '#/responses/ErrorDefault'
         "424":
           $ref: '#/responses/ErrorDefault'
@@ -8027,6 +8032,8 @@ paths:
         "403":
           $ref: '#/responses/ErrorDefault'
         "405":
+          $ref: '#/responses/ErrorDefault'
+        "409":
           $ref: '#/responses/ErrorDefault'
         "424":
           $ref: '#/responses/ErrorDefault'
@@ -8369,6 +8376,8 @@ paths:
           $ref: '#/responses/ErrorDefault'
         "405":
           $ref: '#/responses/ErrorDefault'
+        "409":
+          $ref: '#/responses/ErrorDefault'
         "424":
           $ref: '#/responses/ErrorDefault'
         "500":
@@ -8413,9 +8422,164 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Experiments
+    post:
+      description: Create the specified Seldon Pipeline Canary experiment
+      operationId: CreateCanaryExperiment
+      parameters:
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Weight of the traffic directed to the canary pipeline, between 0 and 100
+          format: int64
+          in: query
+          name: weight
+          required: true
+          type: integer
+      responses:
+        "200":
+          $ref: '#/responses/GenericResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "403":
+          $ref: '#/responses/ErrorDefault'
+        "405":
+          $ref: '#/responses/ErrorDefault'
+        "424":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Experiments
     put:
       description: Promote the specified Seldon Pipeline Canary
       operationId: PromoteCanary
+      parameters:
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GenericResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "403":
+          $ref: '#/responses/ErrorDefault'
+        "405":
+          $ref: '#/responses/ErrorDefault'
+        "424":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Experiments
+  /namespaces/{namespace}/pipelines/{name}/experiment/shadow:
+    delete:
+      description: Delete the specified Seldon Pipeline Shadow
+      operationId: RemoveShadow
+      parameters:
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GenericResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "403":
+          $ref: '#/responses/ErrorDefault'
+        "405":
+          $ref: '#/responses/ErrorDefault'
+        "424":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Experiments
+    post:
+      description: Create the specified Seldon Pipeline Shadow experiment
+      operationId: CreateShadowExperiment
+      parameters:
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GenericResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "403":
+          $ref: '#/responses/ErrorDefault'
+        "405":
+          $ref: '#/responses/ErrorDefault'
+        "424":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Experiments
+    put:
+      description: Promote the specified Seldon Pipeline Shadow
+      operationId: PromoteShadow
       parameters:
         - description: Action
           in: query
@@ -8563,6 +8727,54 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Pipelines
+  /namespaces/{namespace}/pipelines/{name}/gitdiff:
+    get:
+      description: Read the git diff for a pipeline
+      operationId: ReadPipelineGitDiff
+      parameters:
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GitDiffResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - GitOps
+  /namespaces/{namespace}/pipelines/{name}/gitlogs:
+    get:
+      description: Read the git commits for a pipeline
+      operationId: ReadPipelineGitLogs
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GitLogsResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - GitOps
   /namespaces/{namespace}/pipelines/{name}/loadtestjobs:
     get:
       description: List Pipeline load test jobs
@@ -9291,7 +9503,7 @@ paths:
         - Explain
   /namespaces/{namespace}/seldondeployments/{name}/gitdiff:
     get:
-      description: Read the git diff
+      description: Read the git diff for a Seldon deployment
       operationId: ReadSeldonDeploymentGitDiff
       parameters:
         - description: Hash
@@ -9317,7 +9529,7 @@ paths:
         - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitlogs:
     get:
-      description: Read the git commits
+      description: Read the git commits for a Seldon deployment
       operationId: ReadSeldonDeploymentGitLogs
       parameters:
         - description: Name identifies a resource

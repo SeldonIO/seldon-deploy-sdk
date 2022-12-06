@@ -38,6 +38,7 @@ class PredictorSpec(object):
         'graph': 'PredictiveUnit',
         'labels': 'dict(str, str)',
         'name': 'str',
+        'progress_deadline_seconds': 'int',
         'replicas': 'int',
         'shadow': 'bool',
         'ssl': 'SSL',
@@ -53,6 +54,7 @@ class PredictorSpec(object):
         'graph': 'graph',
         'labels': 'labels',
         'name': 'name',
+        'progress_deadline_seconds': 'progressDeadlineSeconds',
         'replicas': 'replicas',
         'shadow': 'shadow',
         'ssl': 'ssl',
@@ -60,7 +62,7 @@ class PredictorSpec(object):
         'traffic': 'traffic'
     }
 
-    def __init__(self, annotations=None, component_specs=None, engine_resources=None, explainer=None, graph=None, labels=None, name=None, replicas=None, shadow=None, ssl=None, svc_orch_spec=None, traffic=None):  # noqa: E501
+    def __init__(self, annotations=None, component_specs=None, engine_resources=None, explainer=None, graph=None, labels=None, name=None, progress_deadline_seconds=None, replicas=None, shadow=None, ssl=None, svc_orch_spec=None, traffic=None):  # noqa: E501
         """PredictorSpec - a model defined in Swagger"""  # noqa: E501
 
         self._annotations = None
@@ -70,6 +72,7 @@ class PredictorSpec(object):
         self._graph = None
         self._labels = None
         self._name = None
+        self._progress_deadline_seconds = None
         self._replicas = None
         self._shadow = None
         self._ssl = None
@@ -91,6 +94,8 @@ class PredictorSpec(object):
             self.labels = labels
         if name is not None:
             self.name = name
+        if progress_deadline_seconds is not None:
+            self.progress_deadline_seconds = progress_deadline_seconds
         if replicas is not None:
             self.replicas = replicas
         if shadow is not None:
@@ -248,6 +253,27 @@ class PredictorSpec(object):
         """
 
         self._name = name
+
+    @property
+    def progress_deadline_seconds(self):
+        """Gets the progress_deadline_seconds of this PredictorSpec.  # noqa: E501
+
+
+        :return: The progress_deadline_seconds of this PredictorSpec.  # noqa: E501
+        :rtype: int
+        """
+        return self._progress_deadline_seconds
+
+    @progress_deadline_seconds.setter
+    def progress_deadline_seconds(self, progress_deadline_seconds):
+        """Sets the progress_deadline_seconds of this PredictorSpec.
+
+
+        :param progress_deadline_seconds: The progress_deadline_seconds of this PredictorSpec.  # noqa: E501
+        :type: int
+        """
+
+        self._progress_deadline_seconds = progress_deadline_seconds
 
     @property
     def replicas(self):
