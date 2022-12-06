@@ -36,7 +36,7 @@ class ModelsApi(object):
     def create_model(self, namespace, model, **kwargs):  # noqa: E501
         """create_model  # noqa: E501
 
-        Create a Seldon Pipeline  # noqa: E501
+        Create a Seldon Model  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_model(namespace, model, async_req=True)
@@ -61,7 +61,7 @@ class ModelsApi(object):
     def create_model_with_http_info(self, namespace, model, **kwargs):  # noqa: E501
         """create_model  # noqa: E501
 
-        Create a Seldon Pipeline  # noqa: E501
+        Create a Seldon Model  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_model_with_http_info(namespace, model, async_req=True)

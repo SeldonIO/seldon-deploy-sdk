@@ -29,8 +29,20 @@ class TestExperimentsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_create_canary_experiment(self):
+        """Test case for create_canary_experiment
+
+        """
+        pass
+
     def test_create_pipeline_experiment(self):
         """Test case for create_pipeline_experiment
+
+        """
+        pass
+
+    def test_create_shadow_experiment(self):
+        """Test case for create_shadow_experiment
 
         """
         pass
@@ -53,8 +65,20 @@ class TestExperimentsApi(unittest.TestCase):
         """
         pass
 
+    def test_promote_shadow(self):
+        """Test case for promote_shadow
+
+        """
+        pass
+
     def test_remove_canary(self):
         """Test case for remove_canary
+
+        """
+        pass
+
+    def test_remove_shadow(self):
+        """Test case for remove_shadow
 
         """
         pass

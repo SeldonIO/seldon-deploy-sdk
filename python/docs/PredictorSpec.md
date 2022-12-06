@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **graph** | [**PredictiveUnit**](PredictiveUnit.md) |  | [optional] 
 **labels** | **dict(str, str)** |  | [optional] 
 **name** | **str** |  | [optional] 
+**progress_deadline_seconds** | **int** |  | [optional] 
 **replicas** | **int** |  | [optional] 
 **shadow** | **bool** |  | [optional] 
 **ssl** | [**SSL**](SSL.md) |  | [optional] 

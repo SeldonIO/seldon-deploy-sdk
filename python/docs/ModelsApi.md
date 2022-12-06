@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 
-Create a Seldon Pipeline
+Create a Seldon Model
 
 ### Example
 ```python

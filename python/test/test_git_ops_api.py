@@ -35,6 +35,18 @@ class TestGitOpsApi(unittest.TestCase):
         """
         pass
 
+    def test_read_pipeline_git_diff(self):
+        """Test case for read_pipeline_git_diff
+
+        """
+        pass
+
+    def test_read_pipeline_git_logs(self):
+        """Test case for read_pipeline_git_logs
+
+        """
+        pass
+
     def test_read_seldon_deployment_git_diff(self):
         """Test case for read_seldon_deployment_git_diff
 
