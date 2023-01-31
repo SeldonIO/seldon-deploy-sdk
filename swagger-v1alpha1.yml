@@ -179,6 +179,8 @@ definitions:
         type: boolean
       env_secret_ref:
         type: string
+      project:
+        type: string
       storage_uri:
         type: string
     type: object
@@ -1306,6 +1308,8 @@ definitions:
       event_type:
         type: string
       http_port:
+        type: string
+      memory_requirement:
         type: string
       model_name:
         type: string
@@ -3032,13 +3036,13 @@ definitions:
       logger:
         $ref: '#/definitions/LoggingSpec'
       maxReplicas:
-        description: Max number of replicas - default equal to replicas
+        description: Max number of replicas - default equal to 0
         format: int32
         type: integer
       memory:
         $ref: '#/definitions/Quantity'
       minReplicas:
-        description: Min number of replicas - default equal to replicas
+        description: Min number of replicas - default equal to 0
         format: int32
         type: integer
       modelType:
@@ -7256,6 +7260,7 @@ definitions:
       - TENSORRT
       - ALIBI_EXPLAIN
       - ALIBI_DETECT
+      - HUGGINGFACE
     default: UNKNOWN
   v1DataType:
     type: string
@@ -7764,6 +7769,56 @@ definitions:
       - registry
     default: all
     description: 'Note: intentionally lower case so that the URL format accepts lowercase.'
+  v1DependencyHealthResponse:
+    type: object
+    properties:
+      dependenciesHealth:
+        type: array
+        items:
+          $ref: '#/definitions/v1DeployDependencyHealth'
+  v1DeployDependency:
+    type: string
+    enum:
+      - ALL
+      - PROMETHEUS
+      - ELASTICSEARCH
+      - ALERTMANAGER
+      - POSTGRES
+      - KEYCLOACK
+      - KAFKA
+      - SELDONCORE_V1
+      - SELDONCORE_V2
+      - GITEA
+      - ARGOCD
+      - ARGOWF
+      - KNATIVE
+      - METRONOME
+      - MINIO
+      - FLUENTD
+    default: ALL
+  v1DeployDependencyHealth:
+    type: object
+    properties:
+      dependency:
+        $ref: '#/definitions/v1DeployDependency'
+      status:
+        $ref: '#/definitions/v1DeployDependencyStatus'
+      description:
+        type: string
+      fetchedAt:
+        type: string
+        format: date-time
+      lastActiveFetchedAt:
+        type: string
+        format: date-time
+  v1DeployDependencyStatus:
+    type: string
+    enum:
+      - UNSPECIFIED
+      - DISABLED
+      - ENABLED_AND_UNREACHABLE
+      - ENABLED_AND_REACHABLE
+    default: UNSPECIFIED
 host: X.X.X.X
 info:
   description: |-
@@ -7812,6 +7867,54 @@ paths:
           $ref: '#/responses/HealthCheckResponse'
       tags:
         - Environment
+  /namespaces/{namespace}/experiments/{name}/gitdiff:
+    get:
+      description: Read the git diff for an experiment
+      operationId: ReadExperimentGitDiff
+      parameters:
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GitDiffResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - GitOps
+  /namespaces/{namespace}/experiments/{name}/gitlogs:
+    get:
+      description: Read the git commits for an experiment
+      operationId: ReadExperimentGitLogs
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GitLogsResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - GitOps
   /namespaces/{namespace}/gitops-status:
     get:
       description: Read the GitOps status
@@ -7976,6 +8079,54 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Models
+  /namespaces/{namespace}/models/{name}/gitdiff:
+    get:
+      description: Read the git diff for a model
+      operationId: ReadModelGitDiff
+      parameters:
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GitDiffResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - GitOps
+  /namespaces/{namespace}/models/{name}/gitlogs:
+    get:
+      description: Read the git commits for a model
+      operationId: ReadModelGitLogs
+      parameters:
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GitLogsResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - GitOps
   /namespaces/{namespace}/pipelines:
     get:
       description: list objects of kind Seldon Pipelines
@@ -10280,6 +10431,7 @@ paths:
             - TENSORRT
             - ALIBI_EXPLAIN
             - ALIBI_DETECT
+            - HUGGINGFACE
           default: UNKNOWN
         - name: taskType
           in: query
@@ -11226,6 +11378,46 @@ paths:
           type: string
       tags:
         - SecretsService
+  /healthcheck/{dependency}:
+    get:
+      summary: List the current health of a specific Seldon Deploy dependency or all of them
+      operationId: HealthcheckService_GetDependencyHealth
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DependencyHealthResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: dependency
+          in: path
+          required: true
+          type: string
+          enum:
+            - ALL
+            - PROMETHEUS
+            - ELASTICSEARCH
+            - ALERTMANAGER
+            - POSTGRES
+            - KEYCLOACK
+            - KAFKA
+            - SELDONCORE_V1
+            - SELDONCORE_V2
+            - GITEA
+            - ARGOCD
+            - ARGOWF
+            - KNATIVE
+            - METRONOME
+            - MINIO
+            - FLUENTD
+      tags:
+        - HealthcheckService
 produces:
   - application/json
 responses:
