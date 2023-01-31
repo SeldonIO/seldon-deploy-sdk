@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **event_source** | **str** |  | [optional] 
 **event_type** | **str** |  | [optional] 
 **http_port** | **str** |  | [optional] 
+**memory_requirement** | **str** |  | [optional] 
 **model_name** | **str** |  | [optional] 
 **prom_scraping** | **bool** |  | [optional] 
 **protocol** | **str** |  | [optional] 

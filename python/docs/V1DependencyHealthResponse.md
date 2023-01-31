@@ -1,13 +1,9 @@
-# BasicDetectorConfiguration
+# V1DependencyHealthResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**drift_batch_size** | **str** |  | [optional] 
-**drift_type_feature** | **bool** |  | [optional] 
-**env_secret_ref** | **str** |  | [optional] 
-**project** | **str** |  | [optional] 
-**storage_uri** | **str** |  | [optional] 
+**dependencies_health** | [**list[V1DeployDependencyHealth]**](V1DeployDependencyHealth.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
