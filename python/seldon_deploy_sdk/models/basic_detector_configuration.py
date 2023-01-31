@@ -34,6 +34,7 @@ class BasicDetectorConfiguration(object):
         'drift_batch_size': 'str',
         'drift_type_feature': 'bool',
         'env_secret_ref': 'str',
+        'project': 'str',
         'storage_uri': 'str'
     }
 
@@ -41,15 +42,17 @@ class BasicDetectorConfiguration(object):
         'drift_batch_size': 'drift_batch_size',
         'drift_type_feature': 'drift_type_feature',
         'env_secret_ref': 'env_secret_ref',
+        'project': 'project',
         'storage_uri': 'storage_uri'
     }
 
-    def __init__(self, drift_batch_size=None, drift_type_feature=None, env_secret_ref=None, storage_uri=None):  # noqa: E501
+    def __init__(self, drift_batch_size=None, drift_type_feature=None, env_secret_ref=None, project=None, storage_uri=None):  # noqa: E501
         """BasicDetectorConfiguration - a model defined in Swagger"""  # noqa: E501
 
         self._drift_batch_size = None
         self._drift_type_feature = None
         self._env_secret_ref = None
+        self._project = None
         self._storage_uri = None
         self.discriminator = None
 
@@ -59,6 +62,8 @@ class BasicDetectorConfiguration(object):
             self.drift_type_feature = drift_type_feature
         if env_secret_ref is not None:
             self.env_secret_ref = env_secret_ref
+        if project is not None:
+            self.project = project
         if storage_uri is not None:
             self.storage_uri = storage_uri
 
@@ -124,6 +129,27 @@ class BasicDetectorConfiguration(object):
         """
 
         self._env_secret_ref = env_secret_ref
+
+    @property
+    def project(self):
+        """Gets the project of this BasicDetectorConfiguration.  # noqa: E501
+
+
+        :return: The project of this BasicDetectorConfiguration.  # noqa: E501
+        :rtype: str
+        """
+        return self._project
+
+    @project.setter
+    def project(self, project):
+        """Sets the project of this BasicDetectorConfiguration.
+
+
+        :param project: The project of this BasicDetectorConfiguration.  # noqa: E501
+        :type: str
+        """
+
+        self._project = project
 
     @property
     def storage_uri(self):

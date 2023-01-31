@@ -34,6 +34,7 @@ class DetectorDeploymentConfiguration(object):
         'event_source': 'str',
         'event_type': 'str',
         'http_port': 'str',
+        'memory_requirement': 'str',
         'model_name': 'str',
         'prom_scraping': 'bool',
         'protocol': 'str',
@@ -45,6 +46,7 @@ class DetectorDeploymentConfiguration(object):
         'event_source': 'event_source',
         'event_type': 'event_type',
         'http_port': 'http_port',
+        'memory_requirement': 'memory_requirement',
         'model_name': 'model_name',
         'prom_scraping': 'prom_scraping',
         'protocol': 'protocol',
@@ -52,12 +54,13 @@ class DetectorDeploymentConfiguration(object):
         'user_permission': 'user_permission'
     }
 
-    def __init__(self, event_source=None, event_type=None, http_port=None, model_name=None, prom_scraping=None, protocol=None, reply_url=None, user_permission=None):  # noqa: E501
+    def __init__(self, event_source=None, event_type=None, http_port=None, memory_requirement=None, model_name=None, prom_scraping=None, protocol=None, reply_url=None, user_permission=None):  # noqa: E501
         """DetectorDeploymentConfiguration - a model defined in Swagger"""  # noqa: E501
 
         self._event_source = None
         self._event_type = None
         self._http_port = None
+        self._memory_requirement = None
         self._model_name = None
         self._prom_scraping = None
         self._protocol = None
@@ -71,6 +74,8 @@ class DetectorDeploymentConfiguration(object):
             self.event_type = event_type
         if http_port is not None:
             self.http_port = http_port
+        if memory_requirement is not None:
+            self.memory_requirement = memory_requirement
         if model_name is not None:
             self.model_name = model_name
         if prom_scraping is not None:
@@ -144,6 +149,27 @@ class DetectorDeploymentConfiguration(object):
         """
 
         self._http_port = http_port
+
+    @property
+    def memory_requirement(self):
+        """Gets the memory_requirement of this DetectorDeploymentConfiguration.  # noqa: E501
+
+
+        :return: The memory_requirement of this DetectorDeploymentConfiguration.  # noqa: E501
+        :rtype: str
+        """
+        return self._memory_requirement
+
+    @memory_requirement.setter
+    def memory_requirement(self, memory_requirement):
+        """Sets the memory_requirement of this DetectorDeploymentConfiguration.
+
+
+        :param memory_requirement: The memory_requirement of this DetectorDeploymentConfiguration.  # noqa: E501
+        :type: str
+        """
+
+        self._memory_requirement = memory_requirement
 
     @property
     def model_name(self):

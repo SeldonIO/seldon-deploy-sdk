@@ -24,6 +24,7 @@ from seldon_deploy_sdk.api.environment_api import EnvironmentApi
 from seldon_deploy_sdk.api.experiments_api import ExperimentsApi
 from seldon_deploy_sdk.api.explain_api import ExplainApi
 from seldon_deploy_sdk.api.git_ops_api import GitOpsApi
+from seldon_deploy_sdk.api.healthcheck_service_api import HealthcheckServiceApi
 from seldon_deploy_sdk.api.kubernetes_resources_api import KubernetesResourcesApi
 from seldon_deploy_sdk.api.loadtest_jobs_api import LoadtestJobsApi
 from seldon_deploy_sdk.api.metrics_server_api import MetricsServerApi
@@ -325,6 +326,10 @@ from seldon_deploy_sdk.models.v1_delete_policy_response import V1DeletePolicyRes
 from seldon_deploy_sdk.models.v1_delete_secret_response import V1DeleteSecretResponse
 from seldon_deploy_sdk.models.v1_delete_user_from_group_response import V1DeleteUserFromGroupResponse
 from seldon_deploy_sdk.models.v1_delete_user_response import V1DeleteUserResponse
+from seldon_deploy_sdk.models.v1_dependency_health_response import V1DependencyHealthResponse
+from seldon_deploy_sdk.models.v1_deploy_dependency import V1DeployDependency
+from seldon_deploy_sdk.models.v1_deploy_dependency_health import V1DeployDependencyHealth
+from seldon_deploy_sdk.models.v1_deploy_dependency_status import V1DeployDependencyStatus
 from seldon_deploy_sdk.models.v1_deployment_status import V1DeploymentStatus
 from seldon_deploy_sdk.models.v1_deployment_type import V1DeploymentType
 from seldon_deploy_sdk.models.v1_feature_category_schema import V1FeatureCategorySchema

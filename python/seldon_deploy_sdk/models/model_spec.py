@@ -214,7 +214,7 @@ class ModelSpec(object):
     def max_replicas(self):
         """Gets the max_replicas of this ModelSpec.  # noqa: E501
 
-        Max number of replicas - default equal to replicas  # noqa: E501
+        Max number of replicas - default equal to 0  # noqa: E501
 
         :return: The max_replicas of this ModelSpec.  # noqa: E501
         :rtype: int
@@ -225,7 +225,7 @@ class ModelSpec(object):
     def max_replicas(self, max_replicas):
         """Sets the max_replicas of this ModelSpec.
 
-        Max number of replicas - default equal to replicas  # noqa: E501
+        Max number of replicas - default equal to 0  # noqa: E501
 
         :param max_replicas: The max_replicas of this ModelSpec.  # noqa: E501
         :type: int
@@ -258,7 +258,7 @@ class ModelSpec(object):
     def min_replicas(self):
         """Gets the min_replicas of this ModelSpec.  # noqa: E501
 
-        Min number of replicas - default equal to replicas  # noqa: E501
+        Min number of replicas - default equal to 0  # noqa: E501
 
         :return: The min_replicas of this ModelSpec.  # noqa: E501
         :rtype: int
@@ -269,7 +269,7 @@ class ModelSpec(object):
     def min_replicas(self, min_replicas):
         """Sets the min_replicas of this ModelSpec.
 
-        Min number of replicas - default equal to replicas  # noqa: E501
+        Min number of replicas - default equal to 0  # noqa: E501
 
         :param min_replicas: The min_replicas of this ModelSpec.  # noqa: E501
         :type: int

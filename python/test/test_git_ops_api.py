@@ -29,8 +29,32 @@ class TestGitOpsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_read_experiment_git_diff(self):
+        """Test case for read_experiment_git_diff
+
+        """
+        pass
+
+    def test_read_experiment_git_logs(self):
+        """Test case for read_experiment_git_logs
+
+        """
+        pass
+
     def test_read_git_ops_status(self):
         """Test case for read_git_ops_status
+
+        """
+        pass
+
+    def test_read_model_git_diff(self):
+        """Test case for read_model_git_diff
+
+        """
+        pass
+
+    def test_read_model_git_logs(self):
+        """Test case for read_model_git_logs
 
         """
         pass

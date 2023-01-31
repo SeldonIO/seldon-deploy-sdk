@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "seldon-deploy-sdk"
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -28,6 +28,7 @@ REQUIRES = [
     "six>=1.10",
     "urllib3>=1.23",
     "Authlib>=1.0.0,<1.1.0",
+    "requests<=2.29.0"
 ]
 
 
