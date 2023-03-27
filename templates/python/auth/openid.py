@@ -64,7 +64,10 @@ class OIDCAuthenticator(Authenticator):
 
         self._app = OAuth2Mixin(
             framework=FrameworkIntegration,
-            client_kwargs={"verify": config.verify_ssl},
+            client_kwargs={
+                "verify": config.verify_ssl,
+                "code_challenge_method": "S256",
+            },
             client_id=config.oidc_client_id,
             client_secret=config.oidc_client_secret,
             server_metadata_url=server_metadata_url,
