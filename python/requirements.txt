@@ -1,4 +1,4 @@
-authlib <= 0.16.0
+authlib >= 1.0.0,<1.1.0
 certifi >= 14.05.14
 python_dateutil >= 2.5.3
 requests >= 2.0.0, <= 3.0.0
