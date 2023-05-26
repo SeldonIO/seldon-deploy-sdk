@@ -41,6 +41,12 @@ class TestGitOpsApi(unittest.TestCase):
         """
         pass
 
+    def test_read_git_diffs(self):
+        """Test case for read_git_diffs
+
+        """
+        pass
+
     def test_read_git_ops_status(self):
         """Test case for read_git_ops_status
 
