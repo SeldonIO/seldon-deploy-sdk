@@ -1,6 +1,6 @@
 basePath: /seldon-deploy/api/v1alpha1
 consumes:
-- application/json
+  - application/json
 definitions:
   AWSElasticBlockStoreVolumeSource:
     description: |-
@@ -153,8 +153,7 @@ definitions:
           the ReadOnly setting in VolumeMounts.
           +optional
         type: boolean
-    title: AzureDisk represents an Azure Data Disk mount on the host and bind mount
-      to the pod.
+    title: AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
     type: object
   AzureFileVolumeSource:
     properties:
@@ -165,14 +164,12 @@ definitions:
           +optional
         type: boolean
       secretName:
-        description: the name of secret that contains Azure Storage Account Name and
-          Key
+        description: the name of secret that contains Azure Storage Account Name and Key
         type: string
       shareName:
         description: Share Name
         type: string
-    title: AzureFile represents an Azure File Service mount on the host and bind mount
-      to the pod.
+    title: AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
     type: object
   BasicDetectorConfiguration:
     properties:
@@ -188,8 +185,7 @@ definitions:
         type: string
     type: object
   BatchJobDefinition:
-    description: BatchJobDefinition is a common interface for BatchJob v1 and v2 which
-      specifies necessary arguments
+    description: BatchJobDefinition is a common interface for BatchJob v1 and v2 which specifies necessary arguments
     properties:
       batchDataType:
         description: Batch Data Type (data, json or str)
@@ -202,8 +198,7 @@ definitions:
         description: Batch Method (predict, feedback (for SCv1))
         type: string
       batchPayloadType:
-        description: Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary
-          - only if DataType=data)
+        description: Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary - only if DataType=data)
         type: string
       batchRetries:
         description: Number of retries for each instance
@@ -303,8 +298,7 @@ definitions:
         type: integer
     type: object
   CSIVolumeSource:
-    description: Represents a source location of a volume to mount, managed by an
-      external CSI driver
+    description: Represents a source location of a volume to mount, managed by an external CSI driver
     properties:
       driver:
         description: |-
@@ -435,8 +429,7 @@ definitions:
           +optional
         format: int32
         type: integer
-    title: ClientIPConfig represents the configurations of Client IP based session
-      affinity.
+    title: ClientIPConfig represents the configurations of Client IP based session affinity.
     type: object
   ClusterInfo:
     properties:
@@ -904,8 +897,7 @@ definitions:
       name:
         description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
         type: string
-    title: CrossVersionObjectReference contains enough information to let you identify
-      the referred resource.
+    title: CrossVersionObjectReference contains enough information to let you identify the referred resource.
     type: object
   DNSPolicy:
     title: DNSPolicy defines how a pod's DNS will be configured.
@@ -1100,36 +1092,28 @@ definitions:
     description: DeploymentFeatureData represents a deployment level feature data
     properties:
       aggregate_over_time:
-        description: AggregateOverTime is a boolean to decide if the distribution
-          response is to be aggregated over the time period selected
+        description: AggregateOverTime is a boolean to decide if the distribution response is to be aggregated over the time period selected
         type: boolean
       deployment_endpoint:
-        description: DeploymentEndpoint refers to endpoint/predictor name relevant
-          to the feature distribution query
+        description: DeploymentEndpoint refers to endpoint/predictor name relevant to the feature distribution query
         type: string
       deployment_kind:
-        description: DeploymentType refers to kubernetes kind of the deployment relevant
-          to the feature distribution query
+        description: DeploymentType refers to kubernetes kind of the deployment relevant to the feature distribution query
         type: string
       deployment_name:
-        description: DeploymentName refers to name of the deployment relevant to the
-          feature distribution query
+        description: DeploymentName refers to name of the deployment relevant to the feature distribution query
         type: string
       deployment_namespace:
-        description: DeploymentNamespace refers to namespace of the deployment relevant
-          to the feature distribution query
+        description: DeploymentNamespace refers to namespace of the deployment relevant to the feature distribution query
         type: string
       deployment_node:
-        description: DeploymentNode refers to node name relevant to the feature distribution
-          query
+        description: DeploymentNode refers to node name relevant to the feature distribution query
         type: string
       feature:
-        description: FeatureName refers to the name of feature as per the model predictions
-          schema
+        description: FeatureName refers to the name of feature as per the model predictions schema
         type: string
       filters:
-        description: Filters is a set of time, feature and/or outlier filters for
-          the distribution/stats query
+        description: Filters is a set of time, feature and/or outlier filters for the distribution/stats query
         items:
           $ref: '#/definitions/FeatureFilter'
         type: array
@@ -1138,8 +1122,7 @@ definitions:
       parameters:
         $ref: '#/definitions/FeatureDistributionParameters'
       reference_data:
-        description: ReferenceData is a boolean to compute stats and distributions
-          over reference data or inference data (false by default)
+        description: ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)
         type: boolean
     type: object
   DeploymentList:
@@ -1357,8 +1340,7 @@ definitions:
     title: Represents downward API info for projecting into a projected volume.
     type: object
   DownwardAPIVolumeFile:
-    description: DownwardAPIVolumeFile represents information to create the file containing
-      the pod field
+    description: DownwardAPIVolumeFile represents information to create the file containing the pod field
     properties:
       fieldRef:
         $ref: '#/definitions/ObjectFieldSelector'
@@ -1374,9 +1356,7 @@ definitions:
         format: int32
         type: integer
       path:
-        description: 'Required: Path is  the relative path name of the file to be
-          created. Must not be absolute or contain the ''..'' path. Must be utf-8
-          encoded. The first item of the relative path must not start with ''..'''
+        description: 'Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the ''..'' path. Must be utf-8 encoded. The first item of the relative path must not start with ''..'''
         type: string
       resourceFieldRef:
         $ref: '#/definitions/ResourceFieldSelector'
@@ -1407,8 +1387,7 @@ definitions:
     title: DownwardAPIVolumeSource represents a volume containing downward API info.
     type: object
   EmptyDirVolumeSource:
-    description: Empty directory volumes support ownership management and SELinux
-      relabeling.
+    description: Empty directory volumes support ownership management and SELinux relabeling.
     properties:
       medium:
         $ref: '#/definitions/StorageMedium'
@@ -2059,22 +2038,18 @@ definitions:
         type: string
     type: object
   FeatureDistributionParameters:
-    description: FeatureDistributionParameters represents user defined feature distribution
-      parameters
+    description: FeatureDistributionParameters represents user defined feature distribution parameters
     properties:
       histogram_interval:
-        description: HistogramInterval refers to the size of bins in a aggregated
-          feature distribution or statistics queries for real features
+        description: HistogramInterval refers to the size of bins in a aggregated feature distribution or statistics queries for real features
         format: double
         type: number
       minimum_bucket_count:
-        description: MinimumBucketCount refers to the minimum bucket size to filter
-          in case of categorical, proba or one_hot feature queries
+        description: MinimumBucketCount refers to the minimum bucket size to filter in case of categorical, proba or one_hot feature queries
         format: int64
         type: integer
       number_of_time_buckets:
-        description: NumberOfTimeBuckets refers to the number of time bins in a non
-          time-aggregated feature distribution or statistics queries
+        description: NumberOfTimeBuckets refers to the number of time bins in a non time-aggregated feature distribution or statistics queries
         format: int64
         type: integer
     type: object
@@ -2084,39 +2059,32 @@ definitions:
       distribution:
         $ref: '#/definitions/FeatureDistribution'
       feature:
-        description: FeatureName refers to the name of feature as per the model predictions
-          schema
+        description: FeatureName refers to the name of feature as per the model predictions schema
         type: string
       interaction:
         $ref: '#/definitions/FeatureInteraction'
       total_instances:
-        description: TotalInstances represents the total prediction over which the
-          distribution is computed
+        description: TotalInstances represents the total prediction over which the distribution is computed
         format: int64
         type: integer
       type:
-        description: FeatureType refers to the type of feature as per the model predictions
-          schema
+        description: FeatureType refers to the type of feature as per the model predictions schema
         type: string
     type: object
   FeatureFilter:
     description: FeatureFilter represents a feature distribution filter
     properties:
       category_name:
-        description: CategoryName refers to name of the feature category relevant
-          to PROBA and ONE_HOT features
+        description: CategoryName refers to name of the feature category relevant to PROBA and ONE_HOT features
         type: string
       feature:
-        description: FeatureName refers to the name of feature as per the model predictions
-          schema
+        description: FeatureName refers to the name of feature as per the model predictions schema
         type: string
       gt:
-        description: GreaterThan refers to numerical value of the feature filter relevant
-          for timestamps or REAL features
+        description: GreaterThan refers to numerical value of the feature filter relevant for timestamps or REAL features
         type: string
       gte:
-        description: GreaterThanOrEqual refers to numerical value of the feature filter
-          relevant for timestamps or REAL features
+        description: GreaterThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
         type: string
       interaction:
         $ref: '#/definitions/FeatureInteraction'
@@ -2127,16 +2095,13 @@ definitions:
         description: IsTimestamp refers to boolean for timestamp filters
         type: boolean
       lt:
-        description: LessThan refers to numerical value of the feature filter relevant
-          for timestamps or REAL features
+        description: LessThan refers to numerical value of the feature filter relevant for timestamps or REAL features
         type: string
       lte:
-        description: LessThanOrEqual refers to numerical value of the feature filter
-          relevant for timestamps or REAL features
+        description: LessThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
         type: string
       terms:
-        description: Terms refers to set of feature categories to filter relevant
-          to CATEGORICAL features
+        description: Terms refers to set of feature categories to filter relevant to CATEGORICAL features
         items:
           type: string
         type: array
@@ -2148,21 +2113,18 @@ definitions:
     description: FeatureStatisticsResponse represents a feature statistics response
     properties:
       feature:
-        description: FeatureName refers to the name of feature as per the model predictions
-          schema
+        description: FeatureName refers to the name of feature as per the model predictions schema
         type: string
       interaction:
         $ref: '#/definitions/FeatureInteraction'
       stats:
         $ref: '#/definitions/FeatureStats'
       total_instances:
-        description: TotalInstances represents the total prediction over which the
-          distribution is computed
+        description: TotalInstances represents the total prediction over which the distribution is computed
         format: int64
         type: integer
       type:
-        description: FeatureType refers to the type of feature as per the model predictions
-          schema
+        description: FeatureType refers to the type of feature as per the model predictions schema
         type: string
     type: object
   FeatureStats:
@@ -2190,12 +2152,10 @@ definitions:
         format: double
         type: number
       most_frequent_category:
-        description: Statistical Most Frequent Category Name of a feature value (relevant
-          to CATEGORICAL, PROBA and ONE_HOT features)
+        description: Statistical Most Frequent Category Name of a feature value (relevant to CATEGORICAL, PROBA and ONE_HOT features)
         type: string
       most_frequent_category_count:
-        description: Statistical Most Frequent Category Count of a feature value (relevant
-          to CATEGORICAL, PROBA and ONE_HOT features)
+        description: Statistical Most Frequent Category Count of a feature value (relevant to CATEGORICAL, PROBA and ONE_HOT features)
         format: double
         type: number
     type: object
@@ -2220,8 +2180,7 @@ definitions:
 
       The exact format is defined in sigs.k8s.io/structured-merge-diff
       +protobuf.options.(gogoproto.goproto_stringer)=false
-    title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON
-      format.
+    title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
     type: object
   FileDiff:
     description: |-
@@ -2366,8 +2325,7 @@ definitions:
       Git repo volumes support SELinux relabeling.
     type: object
   GlusterfsVolumeSource:
-    description: Glusterfs volumes do not support ownership management or SELinux
-      relabeling.
+    description: Glusterfs volumes do not support ownership management or SELinux relabeling.
     properties:
       endpoints:
         description: |-
@@ -2404,12 +2362,10 @@ definitions:
           It must be greater than zero
         format: int32
         type: integer
-    title: HPAScalingPolicy is a single policy which must hold true for a specified
-      past interval.
+    title: HPAScalingPolicy is a single policy which must hold true for a specified past interval.
     type: object
   HPAScalingPolicyType:
-    title: HPAScalingPolicyType is the type of the policy which could be used while
-      making scaling decisions.
+    title: HPAScalingPolicyType is the type of the policy which could be used while making scaling decisions.
     type: string
   HPAScalingRules:
     description: |-
@@ -2531,8 +2487,7 @@ definitions:
   HostPathType:
     type: string
   HostPathVolumeSource:
-    description: Host path volumes do not support ownership management or SELinux
-      relabeling.
+    description: Host path volumes do not support ownership management or SELinux relabeling.
     properties:
       path:
         description: |-
@@ -2687,8 +2642,7 @@ definitions:
         type: object
     type: object
   LabelSelectorOperator:
-    title: A label selector operator is the set of operators that can be used in a
-      selector requirement.
+    title: A label selector operator is the set of operators that can be used in a selector requirement.
     type: string
   LabelSelectorRequirement:
     description: |-
@@ -2839,8 +2793,7 @@ definitions:
         $ref: '#/definitions/Time'
     type: object
   ManagedFieldsOperationType:
-    title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry
-      being created.
+    title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry being created.
     type: string
   Message:
     description: Message Message
@@ -3112,8 +3065,7 @@ definitions:
         format: int32
         type: integer
       requirements:
-        description: List of extra requirements for this model to be loaded on a compatible
-          server
+        description: List of extra requirements for this model to be loaded on a compatible server
         items:
           type: string
         type: array
@@ -4014,12 +3966,10 @@ definitions:
           Default false.
           +optional
         type: boolean
-    title: PersistentVolumeClaimVolumeSource references the user's PVC in the same
-      namespace.
+    title: PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace.
     type: object
   PersistentVolumeMode:
-    title: PersistentVolumeMode describes how a volume is intended to be consumed,
-      either Block or Filesystem.
+    title: PersistentVolumeMode describes how a volume is intended to be consumed, either Block or Filesystem.
     type: string
   PhotonPersistentDiskVolumeSource:
     properties:
@@ -4234,8 +4184,7 @@ definitions:
   PipelineOutput:
     properties:
       joinWindowMs:
-        description: msecs to wait for messages from multiple inputs to arrive before
-          joining the inputs
+        description: msecs to wait for messages from multiple inputs to arrive before joining the inputs
         format: uint32
         type: integer
       steps:
@@ -4296,8 +4245,7 @@ definitions:
       inputsJoinType:
         $ref: '#/definitions/JoinType'
       joinWindowMs:
-        description: msecs to wait for messages from multiple inputs to arrive before
-          joining the inputs
+        description: msecs to wait for messages from multiple inputs to arrive before joining the inputs
         format: uint32
         type: integer
       name:
@@ -4840,8 +4788,7 @@ definitions:
         type: array
       windowsOptions:
         $ref: '#/definitions/WindowsSecurityContextOptions'
-    title: PodSecurityContext holds pod-level security attributes and common container
-      settings.
+    title: PodSecurityContext holds pod-level security attributes and common container settings.
     type: object
   PodSpec:
     properties:
@@ -5212,8 +5159,7 @@ definitions:
         $ref: '#/definitions/Time'
     type: object
   PodTemplateSpec:
-    description: PodTemplateSpec describes the data a pod should have when created
-      from a template
+    description: PodTemplateSpec describes the data a pod should have when created from a template
     properties:
       annotations:
         additionalProperties:
@@ -5501,8 +5447,7 @@ definitions:
       preference:
         $ref: '#/definitions/NodeSelectorTerm'
       weight:
-        description: Weight associated with matching the corresponding nodeSelectorTerm,
-          in the range 1-100.
+        description: Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
         format: int32
         type: integer
     type: object
@@ -5676,8 +5621,7 @@ definitions:
           +optional
         type: string
       volume:
-        description: Volume is a string that references an already created Quobyte
-          volume by name.
+        description: Volume is a string that references an already created Quobyte volume by name.
         type: string
     title: Represents a Quobyte mount that lasts the lifetime of a pod.
     type: object
@@ -5738,8 +5682,7 @@ definitions:
     title: Represents a Rados Block Device mount that lasts the lifetime of a pod.
     type: object
   ResourceFieldSelector:
-    description: ResourceFieldSelector represents container resources (cpu, memory)
-      and their output format
+    description: ResourceFieldSelector represents container resources (cpu, memory) and their output format
     properties:
       containerName:
         description: |-
@@ -5920,8 +5863,7 @@ definitions:
         type: string
     type: object
   ScalingPolicySelect:
-    description: ScalingPolicySelect is used to specify which policy should be used
-      while scaling in a certain direction
+    description: ScalingPolicySelect is used to specify which policy should be used while scaling in a certain direction
     type: string
   SeccompProfile:
     description: |-
@@ -5967,8 +5909,7 @@ definitions:
   SecretKeySelector:
     properties:
       key:
-        description: The key of the secret to select from.  Must be a valid secret
-          key.
+        description: The key of the secret to select from.  Must be a valid secret key.
         type: string
       name:
         description: |-
@@ -6128,8 +6069,7 @@ definitions:
         $ref: '#/definitions/SeccompProfile'
       windowsOptions:
         $ref: '#/definitions/WindowsSecurityContextOptions'
-    title: SecurityContext holds security configuration that will be applied to a
-      container.
+    title: SecurityContext holds security configuration that will be applied to a container.
     type: object
   SeldonAddressable:
     description: https://github.com/kubernetes-sigs/controller-tools/issues/391
@@ -6955,8 +6895,7 @@ definitions:
   TaintEffect:
     type: string
   TerminationMessagePolicy:
-    title: TerminationMessagePolicy describes how termination messages are retrieved
-      from a container.
+    title: TerminationMessagePolicy describes how termination messages are retrieved from a container.
     type: string
   Time:
     description: |-
@@ -7037,8 +6976,7 @@ definitions:
         type: string
       whenUnsatisfiable:
         $ref: '#/definitions/UnsatisfiableConstraintAction'
-    title: TopologySpreadConstraint specifies how to spread matching pods among the
-      given topology.
+    title: TopologySpreadConstraint specifies how to spread matching pods among the given topology.
     type: object
   Transport:
     type: string
@@ -7072,8 +7010,7 @@ definitions:
       intent and helps make sure that UIDs and names do not get conflated.
     type: string
   URIScheme:
-    description: URIScheme identifies the scheme used for connection to a host for
-      Get actions
+    description: URIScheme identifies the scheme used for connection to a host for Get actions
     type: string
   UnsatisfiableConstraintAction:
     type: string
@@ -7171,14 +7108,12 @@ definitions:
         $ref: '#/definitions/StorageOSVolumeSource'
       vsphereVolume:
         $ref: '#/definitions/VsphereVirtualDiskVolumeSource'
-    title: Volume represents a named volume in a pod that may be accessed by any container
-      in the pod.
+    title: Volume represents a named volume in a pod that may be accessed by any container in the pod.
     type: object
   VolumeDevice:
     properties:
       devicePath:
-        description: devicePath is the path inside of the container that the device
-          will be mapped to.
+        description: devicePath is the path inside of the container that the device will be mapped to.
         type: string
       name:
         description: name must match the name of a persistentVolumeClaim in the pod
@@ -7220,8 +7155,7 @@ definitions:
     title: VolumeMount describes a mounting of a Volume within a container.
     type: object
   VolumeProjection:
-    description: Projection that may be projected along with other supported volume
-      types
+    description: Projection that may be projected along with other supported volume types
     properties:
       configMap:
         $ref: '#/definitions/ConfigMapProjection'
@@ -7257,8 +7191,7 @@ definitions:
     title: Represents a vSphere volume resource.
     type: object
   WeightedPodAffinityTerm:
-    description: The weights of all of the matched WeightedPodAffinityTerm fields
-      are added per-node to find the most preferred node(s)
+    description: The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
     properties:
       podAffinityTerm:
         $ref: '#/definitions/PodAffinityTerm'
@@ -7293,6 +7226,615 @@ definitions:
         type: string
     title: WindowsSecurityContextOptions contain Windows-specific options and credentials.
     type: object
+  protobufAny:
+    type: object
+    properties:
+      typeUrl:
+        type: string
+      value:
+        type: string
+        format: byte
+  rpcStatus:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/protobufAny'
+  v1ArtifactType:
+    type: string
+    enum:
+      - UNKNOWN
+      - CUSTOM
+      - TENSORFLOW
+      - SKLEARN
+      - XGBOOST
+      - MLFLOW
+      - PYTORCH
+      - ONNX
+      - TENSORRT
+      - ALIBI_EXPLAIN
+      - ALIBI_DETECT
+      - HUGGINGFACE
+      - MLSERVER_PYTHON
+      - TRITON_PYTHON
+    default: UNKNOWN
+  v1DataType:
+    type: string
+    enum:
+      - FLOAT
+      - INT
+      - BOOL
+      - STRING
+      - BYTES
+    default: FLOAT
+  v1DefaultProtocol:
+    type: string
+    enum:
+      - PROTOCOL_UNKNOWN
+      - PROTOCOL_SELDON
+      - PROTOCOL_TENSERFLOW
+      - PROTOCOL_V2
+    default: PROTOCOL_UNKNOWN
+  v1DeploymentStatus:
+    type: string
+    enum:
+      - Running
+      - Stopped
+      - Unknown
+    default: Running
+  v1DeploymentType:
+    type: string
+    enum:
+      - UndefinedDeploymentType
+      - SeldonDeployment
+      - SeldonModel
+      - KnativeDetector
+    default: UndefinedDeploymentType
+  v1FeatureCategorySchema:
+    type: object
+    properties:
+      name:
+        type: string
+        required:
+          - name
+      dataType:
+        $ref: '#/definitions/v1DataType'
+    required:
+      - name
+  v1FeatureSchema:
+    type: object
+    properties:
+      name:
+        type: string
+        required:
+          - name
+      type:
+        $ref: '#/definitions/v1FeatureType'
+      dataType:
+        $ref: '#/definitions/v1DataType'
+      nCategories:
+        type: string
+        format: int64
+      categoryMap:
+        type: object
+        additionalProperties:
+          type: string
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/v1FeatureCategorySchema'
+      shape:
+        type: array
+        items:
+          type: string
+          format: int64
+    required:
+      - name
+  v1FeatureType:
+    type: string
+    enum:
+      - REAL
+      - CATEGORICAL
+      - PROBA
+      - ONE_HOT
+      - TEXT
+      - TENSOR
+    default: REAL
+  v1Model:
+    type: object
+    properties:
+      URI:
+        type: string
+        example: gs://seldon-models/sklearn/iris
+        description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
+        required:
+          - URI
+      name:
+        type: string
+        example: Iris Classifier
+        description: The name of the model. It must not exceed 200 characters.
+      version:
+        type: string
+        example: v1.2.3
+        default: '"v0.0.1"'
+        description: The version of the model. It must not exceed 50 characters.
+      artifactType:
+        $ref: '#/definitions/v1ArtifactType'
+        example: SKLEARN
+        description: The artifact type of the model. This is the library used to develop the model.
+      taskType:
+        type: string
+        example: classification
+        description: The task type of the model. It must not exceed 50 characters.
+      tags:
+        type: object
+        example:
+          author: Jon
+        additionalProperties:
+          type: string
+        description: Key-value pairs of arbitrary metadata associated with the model. Each key and value must not exceed 100 and 500 characters respectively.
+      metrics:
+        type: object
+        example:
+          trainingPrecision: 0.78
+          trainingRecall: 0.87
+        additionalProperties:
+          type: number
+          format: double
+        description: Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/en/latest/contents/getting-started/production-installation/metrics.html. Keys must not exceed 100 characters.
+      creationTime:
+        type: string
+        format: date-time
+        example: "2017-01-15T01:30:15.01Z"
+        description: The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
+      predictionSchema:
+        $ref: '#/definitions/v1PredictionSchema'
+        example:
+          requests:
+            - name: Input Image
+              type: MATRIX
+              data_type: FLOAT
+              shape:
+                - 32
+                - 32
+                - 3
+          responses:
+            - name: Image Class
+              type: CATEGORICAL
+              data_type: INT32
+              n_categories: 10
+              category_map:
+                "0": Airplane
+                "1": Automobile
+                "2": Bird
+                "3": Cat
+                "4": Deer
+                "5": Dog
+                "6": Frog
+                "7": Horse
+                "8": Ship
+                "9": Truck
+        description: The schema defining the inputs/outputs for the given model.
+      project:
+        type: string
+        example: project_1
+        description: The project that this model belongs to.
+      runtimeDefaults:
+        $ref: '#/definitions/v1RuntimeDefaults'
+        description: Default values used when deploying this model.
+    required:
+      - URI
+  v1ModelMetadataCreateResponse:
+    type: object
+  v1ModelMetadataDeleteResponse:
+    type: object
+  v1ModelMetadataListResponse:
+    type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: '#/definitions/v1Model'
+      nextPageToken:
+        type: string
+        description: |-
+          A pagination token returned from a previous call to `List`
+          that indicates from where listing should continue.
+  v1ModelMetadataUpdateResponse:
+    type: object
+  v1PredictionSchema:
+    type: object
+    properties:
+      requests:
+        type: array
+        items:
+          $ref: '#/definitions/v1FeatureSchema'
+        required:
+          - requests
+      responses:
+        type: array
+        items:
+          $ref: '#/definitions/v1FeatureSchema'
+        required:
+          - responses
+    required:
+      - requests
+      - responses
+  v1RuntimeDefaults:
+    type: object
+    properties:
+      defaultProtocol:
+        $ref: '#/definitions/v1DefaultProtocol'
+        example: V2
+        description: The default protocol used for REST/gRPC requests to the model. It is possible that a model can be used with multiple protocols.
+  v1RuntimeMetadata:
+    type: object
+    properties:
+      modelUri:
+        type: string
+        example: gs://seldon-models/sklearn/iris
+        description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+      deploymentName:
+        type: string
+        example: iris
+        description: The name of the Kubernetes deployment that is associated with a model.
+      deploymentNamespace:
+        type: string
+        example: seldon
+        description: The Kubernetes namespace in which this deployment is running in.
+      deploymentKubernetesUid:
+        type: string
+        example: 2c60bdb0-8a8e-46bf-a3c5-627ad507f76b
+        description: The Kubernetes UID of the deployment associated with a model. See https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids for details
+      predictorName:
+        type: string
+        example: default
+        description: The name of the predictor inside the deployment that contains the referenced model.
+      nodeName:
+        type: string
+        example: default-node
+        description: The name of the node inside the predictor that contains the referenced model. This is relevant and populated only for SeldonDeployment deployment types.
+      deploymentStatus:
+        $ref: '#/definitions/v1DeploymentStatus'
+        description: The status of the Kubernetes deployment associated with a model.
+      deploymentType:
+        $ref: '#/definitions/v1DeploymentType'
+        description: The type of deployment - either SeldonDeployment or Model.
+      traffic:
+        type: string
+        format: int64
+        description: The amount of traffic server by this model in the deployment.
+      shadow:
+        type: boolean
+        description: True if this model is a shadow in the deployment.
+      creationTime:
+        type: string
+        format: date-time
+        example: "2017-01-15T01:30:15.01Z"
+        description: The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
+      model:
+        $ref: '#/definitions/v1Model'
+        description: Detailed metadata of the model referenced in this runtime metadata entry.
+      explainer:
+        type: boolean
+        description: True if this model is a explainer in the deployment.
+      replicas:
+        type: string
+        format: int64
+        description: The number of replicas for this model.
+  v1RuntimeMetadataListResponse:
+    type: object
+    properties:
+      runtimeMetadata:
+        type: array
+        items:
+          $ref: '#/definitions/v1RuntimeMetadata'
+      nextPageToken:
+        type: string
+        description: |-
+          A pagination token returned from a previous call to `List`
+          that indicates from where listing should continue.
+  v1AddUserToGroupResponse:
+    type: object
+  v1CreateGroupRequest:
+    type: object
+    properties:
+      name:
+        type: string
+        description: The name of the group to be created.
+        required:
+          - name
+    required:
+      - name
+  v1CreateGroupResponse:
+    type: object
+  v1CreatePolicyResponse:
+    type: object
+  v1CreateUserRequest:
+    type: object
+    properties:
+      username:
+        type: string
+        description: The username of the user. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters. It can be used for login and be part of policies.
+        required:
+          - username
+      email:
+        type: string
+        description: The email of the user. It must be a valid email. The user will receive instructions for setting credentials on this email.
+        required:
+          - email
+      firstName:
+        type: string
+      lastName:
+        type: string
+    required:
+      - username
+      - email
+  v1CreateUserResponse:
+    type: object
+  v1DeleteGroupResponse:
+    type: object
+  v1DeletePolicyResponse:
+    type: object
+  v1DeleteUserFromGroupResponse:
+    type: object
+  v1DeleteUserResponse:
+    type: object
+  v1GetGroupMembersResponse:
+    type: object
+    properties:
+      members:
+        type: array
+        items:
+          $ref: '#/definitions/v1User'
+  v1GetGroupsResponse:
+    type: object
+    properties:
+      groups:
+        type: array
+        items:
+          $ref: '#/definitions/v1Group'
+  v1GetPermissionsResponse:
+    type: object
+    properties:
+      permissions:
+        type: array
+        items:
+          $ref: '#/definitions/v1ResourceActionPair'
+  v1GetPolicyTargetsResponse:
+    type: object
+    properties:
+      users:
+        type: array
+        items:
+          type: string
+      groups:
+        type: array
+        items:
+          type: string
+  v1GetUserGroupsResponse:
+    type: object
+    properties:
+      groups:
+        type: array
+        items:
+          $ref: '#/definitions/v1Group'
+  v1GetUsersResponse:
+    type: object
+    properties:
+      users:
+        type: array
+        items:
+          $ref: '#/definitions/v1User'
+  v1Group:
+    type: object
+    properties:
+      name:
+        type: string
+  v1GroupPolicy:
+    type: object
+    properties:
+      group:
+        type: string
+      permission:
+        $ref: '#/definitions/v1ResourceActionPair'
+  v1Policy:
+    type: object
+    properties:
+      userGrants:
+        type: array
+        items:
+          $ref: '#/definitions/v1UserPolicy'
+      groupGrants:
+        type: array
+        items:
+          $ref: '#/definitions/v1GroupPolicy'
+  v1ResetUserPasswordResponse:
+    type: object
+  v1ResourceActionPair:
+    type: object
+    properties:
+      action:
+        type: string
+      resource:
+        type: string
+  v1User:
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      enabled:
+        type: boolean
+      emailVerified:
+        type: boolean
+      creationTime:
+        type: string
+        format: date-time
+  v1UserPolicy:
+    type: object
+    properties:
+      user:
+        type: string
+      permission:
+        $ref: '#/definitions/v1ResourceActionPair'
+  v1FiringAlert:
+    type: object
+    properties:
+      name:
+        type: string
+      severity:
+        type: string
+      description:
+        type: string
+      title:
+        type: string
+      activeAt:
+        type: string
+        format: date-time
+  v1ListAlertsResponse:
+    type: object
+    properties:
+      firingAlerts:
+        type: array
+        items:
+          $ref: '#/definitions/v1FiringAlert'
+  v1TriggerTestAlertResponse:
+    type: object
+  protobufNullValue:
+    type: string
+    enum:
+      - NULL_VALUE
+    default: NULL_VALUE
+    description: |-
+      `NullValue` is a singleton enumeration to represent the null value for the
+      `Value` type union.
+
+       The JSON representation for `NullValue` is JSON `null`.
+
+       - NULL_VALUE: Null value.
+  v1BucketSecretFormat:
+    type: string
+    enum:
+      - env_var
+      - config_param
+    default: env_var
+    description: Default to env_var for backwards compatibility.
+  v1CreateGCSBucketSecretResponse:
+    type: object
+  v1CreateRcloneBucketSecretResponse:
+    type: object
+  v1CreateRegistrySecretResponse:
+    type: object
+  v1CreateS3BucketSecretResponse:
+    type: object
+  v1DeleteSecretResponse:
+    type: object
+  v1ListSecretsResponse:
+    type: object
+    properties:
+      secrets:
+        type: array
+        items:
+          $ref: '#/definitions/v1Secret'
+  v1RcloneConfig:
+    type: object
+    properties:
+      variables:
+        type: object
+        additionalProperties:
+          type: string
+        description: The Rclone key value pairs for your secret; see the Rclone documentation for more detail.
+      remoteType:
+        type: string
+        example: s3
+        description: The Rclone type of the remote; see the Rclone documentation for available types.
+  v1S3Credentials:
+    type: object
+    properties:
+      s3AccessKeyId:
+        type: string
+      s3SecretAccessKey:
+        type: string
+  v1Secret:
+    type: object
+    properties:
+      secretName:
+        type: string
+      secretType:
+        $ref: '#/definitions/v1SecretType'
+      bucketSecretFormat:
+        $ref: '#/definitions/v1BucketSecretFormat'
+        description: Only available for bucket secrets.
+  v1SecretType:
+    type: string
+    enum:
+      - all
+      - bucket
+      - registry
+    default: all
+    description: 'Note: intentionally lower case so that the URL format accepts lowercase.'
+  v1DependencyHealthResponse:
+    type: object
+    properties:
+      dependenciesHealth:
+        type: array
+        items:
+          $ref: '#/definitions/v1DeployDependencyHealth'
+  v1DeployDependency:
+    type: string
+    enum:
+      - ALL
+      - PROMETHEUS
+      - ELASTICSEARCH
+      - ALERTMANAGER
+      - POSTGRES
+      - KEYCLOAK
+      - KAFKA
+      - SELDONCORE_V1
+      - SELDONCORE_V2
+      - GITEA
+      - ARGOCD
+      - ARGOWF
+      - KNATIVE
+      - METRONOME
+      - MINIO
+      - FLUENTD
+    default: ALL
+  v1DeployDependencyHealth:
+    type: object
+    properties:
+      dependency:
+        $ref: '#/definitions/v1DeployDependency'
+      status:
+        $ref: '#/definitions/v1DeployDependencyStatus'
+      description:
+        type: string
+      fetchedAt:
+        type: string
+        format: date-time
+      lastActiveFetchedAt:
+        type: string
+        format: date-time
+  v1DeployDependencyStatus:
+    type: string
+    enum:
+      - UNSPECIFIED
+      - DISABLED
+      - ENABLED_AND_UNREACHABLE
+      - ENABLED_AND_REACHABLE
+    default: UNSPECIFIED
 host: X.X.X.X
 info:
   description: |-
@@ -7305,12 +7847,12 @@ paths:
     post:
       operationId: ReadApplicationLogs
       parameters:
-      - description: ApplicationLogs
-        in: body
-        name: Body
-        required: true
-        schema:
-          $ref: '#/definitions/ApplicationLogsParams'
+        - description: ApplicationLogs
+          in: body
+          name: Body
+          required: true
+          schema:
+            $ref: '#/definitions/ApplicationLogsParams'
       responses:
         "200":
           $ref: '#/responses/ApplicationLogsResponse'
@@ -7320,7 +7862,7 @@ paths:
           $ref: '#/responses/ErrorDefault'
       summary: Read application container logs from elastic search.
       tags:
-      - ApplicationLogs
+        - ApplicationLogs
   /cluster:
     get:
       description: Read the cluster info
@@ -7331,7 +7873,7 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Environment
+        - Environment
   /healthcheck:
     get:
       description: Read the healthcheck
@@ -7340,118 +7882,118 @@ paths:
         "200":
           $ref: '#/responses/HealthCheckResponse'
       tags:
-      - Environment
+        - Environment
   /namespaces/{namespace}/experiments/{name}/gitdiff:
     get:
       description: Read the git diff for an experiment
       operationId: ReadExperimentGitDiff
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitDiffResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/experiments/{name}/gitlogs:
     get:
       description: Read the git commits for an experiment
       operationId: ReadExperimentGitLogs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitLogsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/gitdiffs:
     get:
       description: Read the git diffs from hashes
       operationId: ReadGitDiffs
       parameters:
-      - description: Hashes is an array of git commit hashes to get diffs for
-        in: query
-        items:
+        - description: Hashes is an array of git commit hashes to get diffs for
+          in: query
+          items:
+            type: string
+          name: hashes
+          required: true
+          type: array
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
           type: string
-        name: hashes
-        required: true
-        type: array
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
       responses:
         "200":
           $ref: '#/responses/GitDiffsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/gitops-status:
     get:
       description: Read the GitOps status
       operationId: ReadGitOpsStatus
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/models:
     post:
       description: Create a Seldon Model
       operationId: CreateModel
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Model
-        in: body
-        name: model
-        required: true
-        schema:
-          $ref: '#/definitions/Model'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Model
+          in: body
+          name: model
+          required: true
+          schema:
+            $ref: '#/definitions/Model'
       responses:
         "200":
           $ref: '#/responses/SeldonModelResponse'
@@ -7468,30 +8010,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Models
+        - Models
   /namespaces/{namespace}/models/{name}:
     delete:
       description: Delete the specified Seldon Model
       operationId: DeleteModel
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -7506,21 +8048,21 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Models
+        - Models
     get:
       description: Read the specified Seldon Model
       operationId: ReadModel
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonModelResponse'
@@ -7533,35 +8075,35 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Models
+        - Models
     put:
       description: Update the specified Seldon Model
       operationId: UpdateModel
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Model
-        in: body
-        name: model
-        required: true
-        schema:
-          $ref: '#/definitions/Model'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Model
+          in: body
+          name: model
+          required: true
+          schema:
+            $ref: '#/definitions/Model'
       responses:
         "200":
           $ref: '#/responses/SeldonModelResponse'
@@ -7576,65 +8118,65 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Models
+        - Models
   /namespaces/{namespace}/models/{name}/gitdiff:
     get:
       description: Read the git diff for a model
       operationId: ReadModelGitDiff
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitDiffResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/models/{name}/gitlogs:
     get:
       description: Read the git commits for a model
       operationId: ReadModelGitLogs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitLogsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/pipelines:
     get:
       description: list objects of kind Seldon Pipelines
       operationId: ListPipelines
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonPipelineListResponse'
@@ -7649,30 +8191,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
     post:
       description: Create a Seldon Pipeline
       operationId: CreatePipeline
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Pipeline
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/Pipeline'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Pipeline
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/Pipeline'
       responses:
         "200":
           $ref: '#/responses/SeldonPipelineResponse'
@@ -7689,30 +8231,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
   /namespaces/{namespace}/pipelines/{name}:
     delete:
       description: Delete the specified Seldon Pipeline
       operationId: DeletePipeline
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -7727,21 +8269,21 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
     get:
       description: Read the specified Seldon Pipeline
       operationId: ReadPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonPipelineResponse'
@@ -7754,35 +8296,35 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
     put:
       description: Update the specified Seldon Pipeline
       operationId: UpdatePipeline
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Pipeline
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/Pipeline'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Pipeline
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/Pipeline'
       responses:
         "200":
           $ref: '#/responses/SeldonPipelineResponse'
@@ -7797,30 +8339,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
   /namespaces/{namespace}/pipelines/{name}/batchjobs:
     get:
       description: Read the pipeline batch jobs
       operationId: ListPipelineBatchJobs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Limit of items returned in one response
-        in: query
-        name: limit
-        type: string
-      - description: Requested page
-        in: query
-        name: Page
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Limit of items returned in one response
+          in: query
+          name: limit
+          type: string
+        - description: Requested page
+          in: query
+          name: Page
+          type: string
       responses:
         "200":
           $ref: '#/responses/BatchJobsListResponse'
@@ -7829,27 +8371,27 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - BatchJobs
+        - BatchJobs
     post:
       description: Create the pipeline batch jobs
       operationId: CreatePipelineBatchJob
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: WorkflowName
-        in: body
-        name: workflow
-        required: true
-        schema:
-          $ref: '#/definitions/BatchJobDefinition'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: WorkflowName
+          in: body
+          name: workflow
+          required: true
+          schema:
+            $ref: '#/definitions/BatchJobDefinition'
       responses:
         "200":
           $ref: '#/responses/BatchJobPostResponse'
@@ -7858,49 +8400,49 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - BatchJobs
+        - BatchJobs
   /namespaces/{namespace}/pipelines/{name}/batchjobs/{jobName}:
     get:
       description: Get details on the pipeline batch job
       operationId: GetPipelineBatchJob
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: JobName identifies a job name
-        in: path
-        name: jobName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/BatchJobGetResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - BatchJobs
+        - BatchJobs
   /namespaces/{namespace}/pipelines/{name}/experiment:
     delete:
       description: Delete Seldon Pipeline Experiment Pipelines
       operationId: DeletePipelineExperiment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -7915,21 +8457,21 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
     get:
       description: Read Seldon Pipeline Experiment
       operationId: GetPipelineExperiment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonExperimentResponse'
@@ -7944,35 +8486,35 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
     post:
       description: Create a Seldon Pipeline Experiment
       operationId: CreatePipelineExperiment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Experiment
-        in: body
-        name: experiment
-        required: true
-        schema:
-          $ref: '#/definitions/Experiment'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Experiment
+          in: body
+          name: experiment
+          required: true
+          schema:
+            $ref: '#/definitions/Experiment'
       responses:
         "200":
           $ref: '#/responses/SeldonExperimentResponse'
@@ -7987,35 +8529,35 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
     put:
       description: Update the specified Seldon Pipeline Experiment
       operationId: UpdatePipelineExperiment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Experiment
-        in: body
-        name: experiment
-        required: true
-        schema:
-          $ref: '#/definitions/Experiment'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Experiment
+          in: body
+          name: experiment
+          required: true
+          schema:
+            $ref: '#/definitions/Experiment'
       responses:
         "200":
           $ref: '#/responses/SeldonExperimentResponse'
@@ -8032,30 +8574,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
   /namespaces/{namespace}/pipelines/{name}/experiment/canary:
     delete:
       description: Delete the specified Seldon Pipeline Canary
       operationId: RemoveCanary
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -8070,36 +8612,35 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
     post:
       description: Create the specified Seldon Pipeline Canary experiment
       operationId: CreateCanaryExperiment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Weight of the traffic directed to the canary pipeline, between
-          0 and 100
-        format: int64
-        in: query
-        name: weight
-        required: true
-        type: integer
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Weight of the traffic directed to the canary pipeline, between 0 and 100
+          format: int64
+          in: query
+          name: weight
+          required: true
+          type: integer
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -8114,29 +8655,29 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
     put:
       description: Promote the specified Seldon Pipeline Canary
       operationId: PromoteCanary
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -8151,30 +8692,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
   /namespaces/{namespace}/pipelines/{name}/experiment/shadow:
     delete:
       description: Delete the specified Seldon Pipeline Shadow
       operationId: RemoveShadow
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -8189,29 +8730,29 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
     post:
       description: Create the specified Seldon Pipeline Shadow experiment
       operationId: CreateShadowExperiment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -8226,29 +8767,29 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
     put:
       description: Promote the specified Seldon Pipeline Shadow
       operationId: PromoteShadow
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -8263,307 +8804,307 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Experiments
+        - Experiments
   /namespaces/{namespace}/pipelines/{name}/explain:
     post:
       description: Create Seldon Pipeline explanation
       operationId: ExplainSeldonPipeline
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Prediction contains predict payload
-        in: body
-        name: explaindata
-        schema:
-          type: object
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Prediction contains predict payload
+          in: body
+          name: explaindata
+          schema:
+            type: object
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Explain
+        - Explain
   /namespaces/{namespace}/pipelines/{name}/explainer:
     delete:
       description: Read the specified Seldon Pipeline Explainer
       operationId: DeletePipelineExplainer
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
     get:
       description: Read the specified Seldon Pipeline Explainer
       operationId: ReadPipelineExplainer
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonModelResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
     post:
       description: Read the specified Seldon Pipeline Explainer
       operationId: CreatePipelineExplainer
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Model
-        in: body
-        name: model
-        required: true
-        schema:
-          $ref: '#/definitions/Model'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Model
+          in: body
+          name: model
+          required: true
+          schema:
+            $ref: '#/definitions/Model'
       responses:
         "200":
           $ref: '#/responses/SeldonModelResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
     put:
       description: Update the specified Seldon Pipeline Explainer
       operationId: UpdatePipelineExplainer
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Model
-        in: body
-        name: model
-        required: true
-        schema:
-          $ref: '#/definitions/Model'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Model
+          in: body
+          name: model
+          required: true
+          schema:
+            $ref: '#/definitions/Model'
       responses:
         "200":
           $ref: '#/responses/SeldonModelResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
   /namespaces/{namespace}/pipelines/{name}/gitdiff:
     get:
       description: Read the git diff for a pipeline
       operationId: ReadPipelineGitDiff
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitDiffResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/pipelines/{name}/gitlogs:
     get:
       description: Read the git commits for a pipeline
       operationId: ReadPipelineGitLogs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitLogsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/pipelines/{name}/loadtestjobs:
     get:
       description: List Pipeline load test jobs
       operationId: ListLoadtestPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
     post:
       description: |-
         Create Pipeline load test
         multipart/form-data
       operationId: CreateLoadtestPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Prediction contains predict payload
-        in: formData
-        name: loadFile
-        required: true
-        type: file
-      - description: Connections Number provides number of allowed connections
-        in: formData
-        name: connectionsNumber
-        type: string
-      - description: Requests Number provides number of allowed requests
-        in: formData
-        name: requestsNumber
-        type: string
-      - description: Duration of load test in seconds
-        in: formData
-        name: duration
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Prediction contains predict payload
+          in: formData
+          name: loadFile
+          required: true
+          type: file
+        - description: Connections Number provides number of allowed connections
+          in: formData
+          name: connectionsNumber
+          type: string
+        - description: Requests Number provides number of allowed requests
+          in: formData
+          name: requestsNumber
+          type: string
+        - description: Duration of load test in seconds
+          in: formData
+          name: duration
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/pipelines/{name}/loadtestjobs/{jobName}:
     delete:
       description: Delete Pipeline load test jobs
       operationId: DeleteLoadtestPipeline
       parameters:
-      - description: JobName identifies a job name
-        in: path
-        name: jobName
-        required: true
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/pipelines/{name}/models:
     get:
       description: List objects of kind Seldon Models within a Pipeline
       operationId: ListPipelineModels
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonModelListResponse'
@@ -8578,130 +9119,130 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Pipelines
+        - Pipelines
   /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector:
     get:
       description: List the specified Seldon Pipeline Drift Detector
       operationId: ListDriftDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorListResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
     post:
       description: Create the specified Seldon Pipeline Drift Detector
       operationId: CreateDriftDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Detector Data
-        in: body
-        name: detectorData
-        required: true
-        schema:
-          $ref: '#/definitions/DetectorConfigData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
   /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Pipeline Drift Detector
       operationId: DeleteDriftDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
     get:
       description: Read the specified Seldon Pipeline Drift Detector
       operationId: ReadDriftDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
   /namespaces/{namespace}/pipelines/{name}/monitor/featuredistributions:
     post:
       description: Get the specified Seldon Deployment predictions feature distribution
       operationId: SeldonPipelineFeatureDistributions
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Feature Data
-        in: body
-        name: featureData
-        required: true
-        schema:
-          $ref: '#/definitions/DeploymentFeatureData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Feature Data
+          in: body
+          name: featureData
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
       responses:
         "200":
           $ref: '#/responses/FeatureDistResponse'
@@ -8710,28 +9251,28 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Monitor
+        - Monitor
   /namespaces/{namespace}/pipelines/{name}/monitor/featurestatistics:
     post:
       description: Get the specified Seldon Deployment predictions feature statistics
       operationId: SeldonPipelineFeatureStatistics
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Feature Data
-        in: body
-        name: featureData
-        required: true
-        schema:
-          $ref: '#/definitions/DeploymentFeatureData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Feature Data
+          in: body
+          name: featureData
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
       responses:
         "200":
           $ref: '#/responses/FeatureStatResponse'
@@ -8740,176 +9281,176 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Monitor
+        - Monitor
   /namespaces/{namespace}/pipelines/{name}/monitor/outlier-detector:
     get:
       description: List the specified Seldon Pipeline Outlier Detector
       operationId: ListOutlierDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorListResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
     post:
       description: Create the specified Seldon Pipeline Outlier Detector
       operationId: CreateOutlierDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Detector Data
-        in: body
-        name: detectorData
-        required: true
-        schema:
-          $ref: '#/definitions/DetectorConfigData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
   /namespaces/{namespace}/pipelines/{name}/monitor/outlier-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Pipeline Outlier Detector
       operationId: DeleteOutlierDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
     get:
       description: Read the specified Seldon Pipeline Outlier Detector
       operationId: ReadOutlierDetectorSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
   /namespaces/{namespace}/pipelines/{name}/predictcurl:
     put:
       description: Read the specified Seldon Pipeline predict curl
       operationId: ReadPredictCurlSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Prediction
-        in: body
-        name: prediction
-        required: true
-        schema:
-          type: object
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Prediction
+          in: body
+          name: prediction
+          required: true
+          schema:
+            type: object
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/pipelines/{name}/predictfile:
     post:
       consumes:
-      - multipart/form-data
+        - multipart/form-data
       description: Create Seldon Pipeline prediction
       operationId: PredictFileSeldonPipeline
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: PredictionFile
-        in: formData
-        name: predictFile
-        required: true
-        type: file
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: PredictionFile
+          in: formData
+          name: predictFile
+          required: true
+          type: file
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/seldondeployments:
     get:
       description: list objects of kind Seldon Deployment
       operationId: ListSeldonDeployments
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentListResponse'
@@ -8924,30 +9465,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
     post:
       description: Create a Seldon Deployment
       operationId: CreateSeldonDeployment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Deployment
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/SeldonDeployment'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Deployment
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/SeldonDeployment'
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentResponse'
@@ -8962,30 +9503,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
   /namespaces/{namespace}/seldondeployments/{name}:
     delete:
       description: Delete the specified Seldon Deployment
       operationId: DeleteSeldonDeployment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -9000,21 +9541,21 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
     get:
       description: Read the specified Seldon Deployment
       operationId: ReadSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentResponse'
@@ -9027,35 +9568,35 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
     put:
       description: Update the specified Seldon Deployment
       operationId: UpdateSeldonDeployment
       parameters:
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Deployment
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/SeldonDeployment'
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Deployment
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/SeldonDeployment'
       responses:
         "200":
           $ref: '#/responses/SeldonDeploymentResponse'
@@ -9070,30 +9611,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
   /namespaces/{namespace}/seldondeployments/{name}/batchjobs:
     get:
       description: Read the seldondeployment's batch jobs
       operationId: ListSeldonDeploymentBatchJobs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Limit of items returned in one response
-        in: query
-        name: limit
-        type: string
-      - description: Requested page
-        in: query
-        name: Page
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Limit of items returned in one response
+          in: query
+          name: limit
+          type: string
+        - description: Requested page
+          in: query
+          name: Page
+          type: string
       responses:
         "200":
           $ref: '#/responses/BatchJobsListResponse'
@@ -9102,27 +9643,27 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - BatchJobs
+        - BatchJobs
     post:
       description: Create the seldondeployment's batch jobs
       operationId: CreateSeldonDeploymentBatchJob
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: WorkflowName
-        in: body
-        name: workflow
-        required: true
-        schema:
-          $ref: '#/definitions/BatchJobDefinition'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: WorkflowName
+          in: body
+          name: workflow
+          required: true
+          schema:
+            $ref: '#/definitions/BatchJobDefinition'
       responses:
         "200":
           $ref: '#/responses/BatchJobPostResponse'
@@ -9131,308 +9672,308 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - BatchJobs
+        - BatchJobs
   /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName}:
     get:
       description: Get details on the seldondeployment's batch job
       operationId: GetDeploymentBatchJob
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: JobName identifies a job name
-        in: path
-        name: jobName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/BatchJobGetResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - BatchJobs
+        - BatchJobs
   /namespaces/{namespace}/seldondeployments/{name}/explain:
     post:
       description: Create Seldon Deployment explanation
       operationId: ExplainSeldonDeployment
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Prediction contains predict payload
-        in: body
-        name: explaindata
-        schema:
-          type: object
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Prediction contains predict payload
+          in: body
+          name: explaindata
+          schema:
+            type: object
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Explain
+        - Explain
   /namespaces/{namespace}/seldondeployments/{name}/gitdiff:
     get:
       description: Read the git diff for a Seldon deployment
       operationId: ReadSeldonDeploymentGitDiff
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitDiffResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitlogs:
     get:
       description: Read the git commits for a Seldon deployment
       operationId: ReadSeldonDeploymentGitLogs
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/GitLogsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrestore:
     post:
       description: Restore the git commit
       operationId: SeldonDeploymentGitRestore
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrevert:
     post:
       description: Revert the git commit
       operationId: SeldonDeploymentGitRevert
       parameters:
-      - description: Hash
-        in: query
-        name: hash
-        type: string
-      - description: Action
-        in: query
-        name: action
-        type: string
-      - description: Message
-        in: query
-        name: message
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Hash
+          in: query
+          name: hash
+          type: string
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - GitOps
+        - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs:
     get:
       description: List Seldon Deployment load test jobs
       operationId: ListLoadtestSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
     post:
       description: |-
         Create Seldon Deployment load test
         multipart/form-data
       operationId: CreateLoadtestSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Prediction contains predict payload
-        in: formData
-        name: loadFile
-        required: true
-        type: file
-      - description: Connections Number provides number of allowed connections
-        in: formData
-        name: connectionsNumber
-        type: string
-      - description: Requests Number provides number of allowed requests
-        in: formData
-        name: requestsNumber
-        type: string
-      - description: Duration of load test in seconds
-        in: formData
-        name: duration
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Prediction contains predict payload
+          in: formData
+          name: loadFile
+          required: true
+          type: file
+        - description: Connections Number provides number of allowed connections
+          in: formData
+          name: connectionsNumber
+          type: string
+        - description: Requests Number provides number of allowed requests
+          in: formData
+          name: requestsNumber
+          type: string
+        - description: Duration of load test in seconds
+          in: formData
+          name: duration
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName}:
     delete:
       description: Delete Seldon Deployment load test jobs
       operationId: DeleteLoadtestSeldonDeployment
       parameters:
-      - description: JobName identifies a job name
-        in: path
-        name: jobName
-        required: true
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: JobName identifies a job name
+          in: path
+          name: jobName
+          required: true
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - LoadtestJobs
+        - LoadtestJobs
   /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector:
     get:
       description: Read the specified Seldon Deployment Drift Detector
       operationId: ListDriftDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorListResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
     post:
       description: Create the specified Seldon Deployment Drift Detector
       operationId: CreateDriftDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Detector Data
-        in: body
-        name: detectorData
-        required: true
-        schema:
-          $ref: '#/definitions/DetectorConfigData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
@@ -9441,81 +9982,81 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
   /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Drift Detector
       operationId: DeleteDriftDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
     get:
       description: Read the specified Seldon Deployment Drift Detector
       operationId: ReadDriftDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - DriftDetector
+        - DriftDetector
   /namespaces/{namespace}/seldondeployments/{name}/monitor/featuredistributions:
     post:
       description: Get the specified Seldon Deployment predictions feature distribution
       operationId: SeldonDeploymentFeatureDistributions
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Feature Data
-        in: body
-        name: featureData
-        required: true
-        schema:
-          $ref: '#/definitions/DeploymentFeatureData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Feature Data
+          in: body
+          name: featureData
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
       responses:
         "200":
           $ref: '#/responses/FeatureDistResponse'
@@ -9524,28 +10065,28 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Monitor
+        - Monitor
   /namespaces/{namespace}/seldondeployments/{name}/monitor/featurestatistics:
     post:
       description: Get the specified Seldon Deployment predictions feature statistics
       operationId: SeldonDeploymentFeatureStatistics
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Feature Data
-        in: body
-        name: featureData
-        required: true
-        schema:
-          $ref: '#/definitions/DeploymentFeatureData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Feature Data
+          in: body
+          name: featureData
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentFeatureData'
       responses:
         "200":
           $ref: '#/responses/FeatureStatResponse'
@@ -9554,49 +10095,49 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Monitor
+        - Monitor
   /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server:
     get:
       description: Read the specified Seldon Deployment Metrics Server
       operationId: ListMetricsServerSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorListResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - MetricsServer
+        - MetricsServer
     post:
       description: Create the specified Seldon Deployment Metrics Server
       operationId: CreateMetricsServerSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Detector Data
-        in: body
-        name: detectorData
-        required: true
-        schema:
-          $ref: '#/definitions/DetectorConfigData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
@@ -9605,102 +10146,102 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - MetricsServer
+        - MetricsServer
   /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Metrics Server
       operationId: DeleteMetricsServerSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - MetricsServer
+        - MetricsServer
     get:
       description: Read the specified Seldon Deployment Metrics Server
       operationId: ReadMetricsServerSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - MetricsServer
+        - MetricsServer
   /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector:
     get:
       description: Read the specified Seldon Deployment Outlier Detector
       operationId: ListOutlierDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorListResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
     post:
       description: Create the specified Seldon Deployment Outlier Detector
       operationId: CreateOutlierDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Deployment Detector Data
-        in: body
-        name: detectorData
-        required: true
-        schema:
-          $ref: '#/definitions/DetectorConfigData'
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Deployment Detector Data
+          in: body
+          name: detectorData
+          required: true
+          schema:
+            $ref: '#/definitions/DetectorConfigData'
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
@@ -9709,165 +10250,164 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
   /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Outlier Detector
       operationId: DeleteOutlierDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
     get:
       description: Read the specified Seldon Deployment Outlier Detector
       operationId: ReadOutlierDetectorSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Detector Name
-        in: path
-        name: detectorName
-        required: true
-        type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Detector Name
+          in: path
+          name: detectorName
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/DetectorResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - OutlierDetector
+        - OutlierDetector
   /namespaces/{namespace}/seldondeployments/{name}/predict:
     post:
       description: Create Seldon Deployment prediction
       operationId: PredictSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Prediction
-        in: body
-        name: prediction
-        required: true
-        schema:
-          type: object
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Prediction
+          in: body
+          name: prediction
+          required: true
+          schema:
+            type: object
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/seldondeployments/{name}/predictcurl:
     put:
       description: Read the specified Seldon Deployment predict curl
       operationId: ReadPredictCurlSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Prediction
-        in: body
-        name: prediction
-        required: true
-        schema:
-          type: object
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Prediction
+          in: body
+          name: prediction
+          required: true
+          schema:
+            type: object
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/seldondeployments/{name}/predictfile:
     post:
       consumes:
-      - multipart/form-data
+        - multipart/form-data
       description: Create Seldon Deployment prediction
       operationId: PredictFileSeldonDeployment
       parameters:
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: PredictionFile
-        in: formData
-        name: predictFile
-        required: true
-        type: file
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: PredictionFile
+          in: formData
+          name: predictFile
+          required: true
+          type: file
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - Predict
+        - Predict
   /namespaces/{namespace}/seldondeployments/{name}/resources:
     get:
       description: list objects of kind resource for Seldon Deployment
       operationId: ListSeldonDeploymentResources
       parameters:
-      - description: Component differentiates between types of model (e.g. predictor,
-          explainer... etc)
-        in: query
-        name: component
-        type: string
-      - description: Name identifies a resource
-        in: path
-        name: name
-        required: true
-        type: string
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
+        - description: Component differentiates between types of model (e.g. predictor, explainer... etc)
+          in: query
+          name: component
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
       responses:
         "200":
           $ref: '#/responses/ResourceListResponse'
@@ -9880,30 +10420,30 @@ paths:
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - KubernetesResources
+        - KubernetesResources
   /namespaces/{namespace}/seldondeployments/validate:
     get:
       description: Validate the given Seldon Deployment
       operationId: ValidateSeldonDeployment
       parameters:
-      - description: Namespace provides a logical grouping of resources
-        in: path
-        name: namespace
-        required: true
-        type: string
-      - description: Seldon Deployment
-        in: body
-        name: mldeployment
-        required: true
-        schema:
-          $ref: '#/definitions/SeldonDeployment'
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Deployment
+          in: body
+          name: mldeployment
+          required: true
+          schema:
+            $ref: '#/definitions/SeldonDeployment'
       responses:
         "200":
           $ref: '#/responses/MessageResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
-      - SeldonDeployments
+        - SeldonDeployments
   /user:
     get:
       description: Read the request user
@@ -9912,7 +10452,7 @@ paths:
         "200":
           $ref: '#/responses/UserResponse'
       tags:
-      - Environment
+        - Environment
   /version:
     get:
       description: Read the version
@@ -9921,11 +10461,1071 @@ paths:
         "200":
           $ref: '#/responses/VersionResponse'
       tags:
-      - Environment
+        - Environment
+  /model/metadata:
+    get:
+      summary: List Model Metadata entries.
+      description: 'List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.'
+      operationId: ModelMetadataService_ListModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataListResponse'
+        "204":
+          description: No Content
+          schema: {}
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: URI
+          in: query
+          required: false
+          type: string
+        - name: name
+          in: query
+          required: false
+          type: string
+        - name: version
+          in: query
+          required: false
+          type: string
+        - name: artifactType
+          in: query
+          required: false
+          type: string
+          enum:
+            - UNKNOWN
+            - CUSTOM
+            - TENSORFLOW
+            - SKLEARN
+            - XGBOOST
+            - MLFLOW
+            - PYTORCH
+            - ONNX
+            - TENSORRT
+            - ALIBI_EXPLAIN
+            - ALIBI_DETECT
+            - HUGGINGFACE
+            - MLSERVER_PYTHON
+            - TRITON_PYTHON
+          default: UNKNOWN
+        - name: taskType
+          in: query
+          required: false
+          type: string
+        - name: modelType
+          in: query
+          required: false
+          type: string
+        - name: query
+          description: For more complex queries where other logical operators like OR, NOT, etc.
+          in: query
+          required: false
+          type: string
+        - name: pageSize
+          description: Optional. The maximum number of Folders to return in the response.
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: pageToken
+          description: |-
+            Optional. A pagination token returned from a previous call to `List`
+            that indicates where this listing should continue from.
+          in: query
+          required: false
+          type: string
+        - name: listMask
+          description: |-
+            Optional. Can be used to specify which fields of Model you wish to return in the response.
+            If left empty all fields will be returned.
+          in: query
+          required: false
+          type: string
+        - name: project
+          in: query
+          required: false
+          type: string
+        - name: orderBy
+          description: 'The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.'
+          in: query
+          required: false
+          type: string
+        - name: defaultProtocol
+          in: query
+          required: false
+          type: string
+          enum:
+            - PROTOCOL_UNKNOWN
+            - PROTOCOL_SELDON
+            - PROTOCOL_TENSERFLOW
+            - PROTOCOL_V2
+          default: PROTOCOL_UNKNOWN
+      tags:
+        - ModelMetadataService
+    delete:
+      summary: Delete a Model Metadata entry.
+      operationId: ModelMetadataService_DeleteModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataDeleteResponse'
+        "204":
+          description: No Content
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: URI
+          description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
+          in: query
+          required: true
+          type: string
+        - name: project
+          description: The project that this model belongs to.
+          in: query
+          required: false
+          type: string
+      tags:
+        - ModelMetadataService
+    post:
+      summary: Create a Model Metadata entry.
+      operationId: ModelMetadataService_CreateModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataCreateResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1Model'
+      tags:
+        - ModelMetadataService
+    put:
+      summary: Update a Model Metadata entry.
+      operationId: ModelMetadataService_UpdateModelMetadata
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ModelMetadataUpdateResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1Model'
+      tags:
+        - ModelMetadataService
+  /model/metadata/runtime:
+    get:
+      summary: List Runtime Metadata for all deployments associated with a model.
+      operationId: ModelMetadataService_ListRuntimeMetadataForModel
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1RuntimeMetadataListResponse'
+        "204":
+          description: No Content
+          schema: {}
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: ModelURI
+          in: query
+          required: false
+          type: string
+        - name: DeploymentUID
+          in: query
+          required: false
+          type: string
+        - name: DeploymentName
+          in: query
+          required: false
+          type: string
+        - name: DeploymentNamespace
+          in: query
+          required: false
+          type: string
+        - name: DeploymentStatus
+          in: query
+          required: false
+          type: string
+          enum:
+            - Running
+            - Stopped
+            - Unknown
+          default: Running
+        - name: PredictorName
+          in: query
+          required: false
+          type: string
+        - name: NodeName
+          in: query
+          required: false
+          type: string
+        - name: pageSize
+          description: Optional. The maximum number of Folders to return in the response.
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: pageToken
+          description: |-
+            Optional. A pagination token returned from a previous call to `List`
+            that indicates where this listing should continue from.
+          in: query
+          required: false
+          type: string
+        - name: listMask
+          description: |-
+            Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response.
+            If left empty all fields will be returned.
+          in: query
+          required: false
+          type: string
+        - name: deploymentType
+          in: query
+          required: false
+          type: string
+          enum:
+            - UndefinedDeploymentType
+            - SeldonDeployment
+            - SeldonModel
+            - KnativeDetector
+          default: UndefinedDeploymentType
+      tags:
+        - ModelMetadataService
+  /iam/groups:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetGroups
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetGroupsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      tags:
+        - PermissionManagementService
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_CreateGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1CreateGroupRequest'
+      tags:
+        - PermissionManagementService
+  /iam/groups/{groupName}/members:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetGroupMembers
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetGroupMembersResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: groupName
+          description: The name of the group for which to get members.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/groups/{name}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: name
+          description: The name of the group to be deleted.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/policy:
+    delete:
+      summary: Delete an authorization policy. The user must have `grant` permissions on the resource in the policy.
+      operationId: PermissionManagementService_DeletePolicy
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeletePolicyResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: users
+          description: The user IDs from which to revoke the given resource/action permission.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: groups
+          description: The groups from which to revoke the given resource/action permission.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: action
+          description: The action part of the resource/action permission to revoke.
+          in: query
+          required: true
+          type: string
+        - name: resource
+          description: The resource part of the resource/action permission to revoke.
+          in: query
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+    post:
+      summary: Create an authorization policy. The user must have `grant` permissions on the resource in the policy.
+      operationId: PermissionManagementService_CreatePolicy
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreatePolicyResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1Policy'
+      tags:
+        - PermissionManagementService
+  /iam/policy/permissions:
+    get:
+      summary: List all permissions associated with the given users and groups. A regular user will be able to see only their permissions and the permissions of their groups. A user with `read` permission on `system/iam` can see all permissions.
+      operationId: PermissionManagementService_GetPermissions
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetPermissionsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: users
+          description: The user IDs for which to list permission.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: groups
+          description: The groups for which to list permission.
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: callerPermissions
+          description: If true will list the permissions of the user making the request. All users have permissions to check their permissions.
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - PermissionManagementService
+  /iam/policy/targets:
+    get:
+      summary: List all users and groups who have access to the given resource/action pair. The user calling this endpoint must have `grant` access to the given resource.
+      operationId: PermissionManagementService_GetPolicyTargets
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetPolicyTargetsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: action
+          description: The action a target should be able to perform on the given resource.
+          in: query
+          required: true
+          type: string
+        - name: resource
+          description: The resource a target should have access to.
+          in: query
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/users:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetUsers
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetUsersResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The username of the user to fetch. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters.
+          in: query
+          required: false
+          type: string
+        - name: email
+          description: The email of the user to fetch. It must be a valid email.
+          in: query
+          required: false
+          type: string
+        - name: firstName
+          in: query
+          required: false
+          type: string
+        - name: lastName
+          in: query
+          required: false
+          type: string
+      tags:
+        - PermissionManagementService
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_CreateUser
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateUserResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1CreateUserRequest'
+      tags:
+        - PermissionManagementService
+  /iam/users/{username}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteUser
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteUserResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The username of the user to be deleted.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/users/{username}/groups:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetUserGroups
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1GetUserGroupsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The name of the user for who to get groups.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/users/{username}/groups/{group}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteUserFromGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteUserFromGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The name of the user to be removed from a group.
+          in: path
+          required: true
+          type: string
+        - name: group
+          description: The name of the group from which to remove a user.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+    put:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_AddUserToGroup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1AddUserToGroupResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The name of the user to be added to a group.
+          in: path
+          required: true
+          type: string
+        - name: group
+          description: The name of the group to which to add a user.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /iam/users/{username}/resetPassword:
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_ResetUserPassword
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ResetUserPasswordResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: username
+          description: The username of the user to be deleted.
+          in: path
+          required: true
+          type: string
+      tags:
+        - PermissionManagementService
+  /alerting/alerts:
+    get:
+      summary: List currently firing alerts.
+      operationId: AlertingService_ListAlerts
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ListAlertsResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      tags:
+        - AlertingService
+  /alerting/test:
+    post:
+      summary: Triggers a test alert to check alerting workflow.
+      operationId: AlertingService_TriggerTestAlert
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1TriggerTestAlertResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: body
+          description: |-
+            Set to true if you wish to test Prometheus -> Alertmanager connection
+            False sends an alert payload directly to Alertmanager, skipping Prometheus metrics/alert flow
+          in: body
+          required: true
+          schema:
+            type: boolean
+      tags:
+        - AlertingService
+  /secrets/{namespace}/bucket/gcs/{remote}:
+    post:
+      summary: Creates a GCS bucket secret according to specified parameters.
+      operationId: SecretsService_CreateGCSBucketSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateGCSBucketSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: remote
+          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The GCS account credentials to populate the secret. See documentation for how to generate this.
+          in: body
+          required: true
+          schema:
+            type: object
+            description: The GCS account credentials to populate the secret. See documentation for how to generate this.
+      tags:
+        - SecretsService
+  /secrets/{namespace}/bucket/rclone/{remote}:
+    post:
+      summary: Creates a generic rclone bucket secret according to specified parameters.
+      operationId: SecretsService_CreateRcloneBucketSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateRcloneBucketSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: remote
+          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The rclone key value pairs.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1RcloneConfig'
+            description: The rclone key value pairs.
+        - name: format
+          description: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
+          in: query
+          required: false
+          type: string
+          enum:
+            - env_var
+            - config_param
+          default: env_var
+      tags:
+        - SecretsService
+  /secrets/{namespace}/bucket/s3/{remote}:
+    post:
+      summary: Creates a S3 bucket secret according to specified parameters.
+      operationId: SecretsService_CreateS3BucketSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateS3BucketSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: remote
+          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The S3 account credentials to populate the secret. See documentation for how to generate these.
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1S3Credentials'
+            description: The S3 account credentials to populate the secret. See documentation for how to generate these.
+      tags:
+        - SecretsService
+  /secrets/{namespace}/registry/{name}:
+    post:
+      summary: Creates a registry secret according to specified parameters.
+      operationId: SecretsService_CreateRegistrySecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1CreateRegistrySecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to create secret in.
+          in: path
+          required: true
+          type: string
+        - name: name
+          description: The name of the secret to create.
+          in: path
+          required: true
+          type: string
+        - name: body
+          description: The raw json docker credentials config.
+          in: body
+          required: true
+          schema:
+            type: object
+            description: The raw json docker credentials config.
+      tags:
+        - SecretsService
+  /secrets/{namespace}/{secretType}:
+    get:
+      summary: Lists the names and metadata of secrets used by Seldon Deploy.
+      operationId: SecretsService_ListSecrets
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1ListSecretsResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to list secrets in.
+          in: path
+          required: true
+          type: string
+        - name: secretType
+          description: The secret type, can be one of (`bucket`, `registry`) or `all` to list all secrets used by Seldon Deploy.
+          in: path
+          required: true
+          type: string
+          enum:
+            - all
+            - bucket
+            - registry
+        - name: bucketSecretFormat
+          description: Optional filter for the format of bucket secrets. Only applicable when `secret_type` is `bucket.`
+          in: query
+          required: false
+          type: string
+          enum:
+            - env_var
+            - config_param
+          default: env_var
+      tags:
+        - SecretsService
+  /secrets/{namespace}/{secretType}/{name}:
+    delete:
+      summary: Deletes the specified secret.
+      operationId: SecretsService_DeleteSecret
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DeleteSecretResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace to delete secret from.
+          in: path
+          required: true
+          type: string
+        - name: secretType
+          description: The secret type of the secret to be deleted, can be one of (`bucket`, `registry`).
+          in: path
+          required: true
+          type: string
+          enum:
+            - all
+            - bucket
+            - registry
+        - name: name
+          description: The name of the secret to delete.
+          in: path
+          required: true
+          type: string
+      tags:
+        - SecretsService
+  /healthcheck/{dependency}:
+    get:
+      summary: List the current health of a specific Seldon Deploy dependency or all of them
+      operationId: HealthcheckService_GetDependencyHealth
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1DependencyHealthResponse'
+        "500":
+          description: Internal Server Error
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: dependency
+          in: path
+          required: true
+          type: string
+          enum:
+            - ALL
+            - PROMETHEUS
+            - ELASTICSEARCH
+            - ALERTMANAGER
+            - POSTGRES
+            - KEYCLOAK
+            - KAFKA
+            - SELDONCORE_V1
+            - SELDONCORE_V2
+            - GITEA
+            - ARGOCD
+            - ARGOWF
+            - KNATIVE
+            - METRONOME
+            - MINIO
+            - FLUENTD
+      tags:
+        - HealthcheckService
 produces:
-- application/json
+  - application/json
 responses:
   AnalyticsProps:
+    description: ""
     headers:
       distinct_id:
         type: string
@@ -10050,11 +11650,11 @@ responses:
     schema:
       $ref: '#/definitions/VersionInfo'
 schemes:
-- http
-- https
+  - http
+  - https
 security:
-- OAuth2:
-  - '[]'
+  - OAuth2:
+      - '[]'
 securityDefinitions:
   OAuth2:
     flow: password
@@ -10067,33 +11667,33 @@ securityDefinitions:
     type: oauth2
 swagger: "2.0"
 tags:
-- description: Environment APIs for Seldon Deploy
-  name: Environment
-- description: SeldonDeployments APIs for Seldon Deploy
-  name: SeldonDeployments
-- description: Seldon Core Pipeline APIs for Seldon Deploy
-  name: Pipelines
-- description: Seldon Core Model APIs for Seldon Deploy
-  name: Models
-- description: Seldon Core Experiment APIs for Seldon Deploy
-  name: Experiments
-- description: Prediction APIs for Seldon Deploy
-  name: Predict
-- description: Explanation APIs for Seldon Deploy
-  name: Explain
-- description: GitOps APIs for Seldon Deploy
-  name: GitOps
-- description: Loadtest Jobs APIs for Seldon Deploy
-  name: LoadtestJobs
-- description: Batch Jobs APIs for Seldon Deploy
-  name: BatchJobs
-- description: Drift Detector APIs for Seldon Deploy
-  name: DriftDetector
-- description: Outlier Detector APIs for Seldon Deploy
-  name: OutlierDetector
-- description: Metrics Server APIs for Seldon Deploy
-  name: MetricsServer
-- description: KubernetesResources APIs for Seldon Deploy
-  name: KubernetesResources
-- description: ApplicationLogs APIs for Seldon Deploy
-  name: ApplicationLogs
+  - description: Environment APIs for Seldon Deploy
+    name: Environment
+  - description: SeldonDeployments APIs for Seldon Deploy
+    name: SeldonDeployments
+  - description: Seldon Core Pipeline APIs for Seldon Deploy
+    name: Pipelines
+  - description: Seldon Core Model APIs for Seldon Deploy
+    name: Models
+  - description: Seldon Core Experiment APIs for Seldon Deploy
+    name: Experiments
+  - description: Prediction APIs for Seldon Deploy
+    name: Predict
+  - description: Explanation APIs for Seldon Deploy
+    name: Explain
+  - description: GitOps APIs for Seldon Deploy
+    name: GitOps
+  - description: Loadtest Jobs APIs for Seldon Deploy
+    name: LoadtestJobs
+  - description: Batch Jobs APIs for Seldon Deploy
+    name: BatchJobs
+  - description: Drift Detector APIs for Seldon Deploy
+    name: DriftDetector
+  - description: Outlier Detector APIs for Seldon Deploy
+    name: OutlierDetector
+  - description: Metrics Server APIs for Seldon Deploy
+    name: MetricsServer
+  - description: KubernetesResources APIs for Seldon Deploy
+    name: KubernetesResources
+  - description: ApplicationLogs APIs for Seldon Deploy
+    name: ApplicationLogs
