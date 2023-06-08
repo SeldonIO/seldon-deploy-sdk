@@ -158,6 +158,7 @@ class SecretsServiceApi(object):
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
         :param V1RcloneConfig body: The rclone key value pairs. (required)
+        :param str format: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
         :return: V1CreateRcloneBucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -181,12 +182,13 @@ class SecretsServiceApi(object):
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
         :param V1RcloneConfig body: The rclone key value pairs. (required)
+        :param str format: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
         :return: V1CreateRcloneBucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'remote', 'body']  # noqa: E501
+        all_params = ['namespace', 'remote', 'body', 'format']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -223,6 +225,8 @@ class SecretsServiceApi(object):
             path_params['remote'] = params['remote']  # noqa: E501
 
         query_params = []
+        if 'format' in params:
+            query_params.append(('format', params['format']))  # noqa: E501
 
         header_params = {}
 
@@ -609,6 +613,7 @@ class SecretsServiceApi(object):
         :param async_req bool
         :param str namespace: The namespace to list secrets in. (required)
         :param str secret_type: The secret type, can be one of (`bucket`, `registry`) or `all` to list all secrets used by Seldon Deploy. (required)
+        :param str bucket_secret_format: Optional filter for the format of bucket secrets. Only applicable when `secret_type` is `bucket.`
         :return: V1ListSecretsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -631,12 +636,13 @@ class SecretsServiceApi(object):
         :param async_req bool
         :param str namespace: The namespace to list secrets in. (required)
         :param str secret_type: The secret type, can be one of (`bucket`, `registry`) or `all` to list all secrets used by Seldon Deploy. (required)
+        :param str bucket_secret_format: Optional filter for the format of bucket secrets. Only applicable when `secret_type` is `bucket.`
         :return: V1ListSecretsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'secret_type']  # noqa: E501
+        all_params = ['namespace', 'secret_type', 'bucket_secret_format']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -669,6 +675,8 @@ class SecretsServiceApi(object):
             path_params['secretType'] = params['secret_type']  # noqa: E501
 
         query_params = []
+        if 'bucket_secret_format' in params:
+            query_params.append(('bucketSecretFormat', params['bucket_secret_format']))  # noqa: E501
 
         header_params = {}
 

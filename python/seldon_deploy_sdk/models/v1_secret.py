@@ -32,25 +32,30 @@ class V1Secret(object):
     """
     swagger_types = {
         'secret_name': 'str',
-        'secret_type': 'V1SecretType'
+        'secret_type': 'V1SecretType',
+        'bucket_secret_format': 'V1BucketSecretFormat'
     }
 
     attribute_map = {
         'secret_name': 'secretName',
-        'secret_type': 'secretType'
+        'secret_type': 'secretType',
+        'bucket_secret_format': 'bucketSecretFormat'
     }
 
-    def __init__(self, secret_name=None, secret_type=None):  # noqa: E501
+    def __init__(self, secret_name=None, secret_type=None, bucket_secret_format=None):  # noqa: E501
         """V1Secret - a model defined in Swagger"""  # noqa: E501
 
         self._secret_name = None
         self._secret_type = None
+        self._bucket_secret_format = None
         self.discriminator = None
 
         if secret_name is not None:
             self.secret_name = secret_name
         if secret_type is not None:
             self.secret_type = secret_type
+        if bucket_secret_format is not None:
+            self.bucket_secret_format = bucket_secret_format
 
     @property
     def secret_name(self):
@@ -93,6 +98,29 @@ class V1Secret(object):
         """
 
         self._secret_type = secret_type
+
+    @property
+    def bucket_secret_format(self):
+        """Gets the bucket_secret_format of this V1Secret.  # noqa: E501
+
+        Only available for bucket secrets.  # noqa: E501
+
+        :return: The bucket_secret_format of this V1Secret.  # noqa: E501
+        :rtype: V1BucketSecretFormat
+        """
+        return self._bucket_secret_format
+
+    @bucket_secret_format.setter
+    def bucket_secret_format(self, bucket_secret_format):
+        """Sets the bucket_secret_format of this V1Secret.
+
+        Only available for bucket secrets.  # noqa: E501
+
+        :param bucket_secret_format: The bucket_secret_format of this V1Secret.  # noqa: E501
+        :type: V1BucketSecretFormat
+        """
+
+        self._bucket_secret_format = bucket_secret_format
 
     def to_dict(self):
         """Returns the model properties as a dict"""

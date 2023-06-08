@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **batch_data_type** | **str** | Batch Data Type (data, json or str) | [optional] 
 **batch_interval** | **float** | Interval between batches | [optional] 
-**batch_method** | **str** | Batch Method (predict) | [optional] 
+**batch_method** | **str** | Batch Method (predict, feedback (for SCv1)) | [optional] 
 **batch_payload_type** | **str** | Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary - only if DataType&#x3D;data) | [optional] 
 **batch_retries** | **int** | Number of retries for each instance | [optional] 
 **batch_size** | **int** | Size of the batch (number of predictions per request) | [optional] 

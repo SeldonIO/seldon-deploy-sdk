@@ -83,6 +83,12 @@ class TestPipelinesApi(unittest.TestCase):
         """
         pass
 
+    def test_update_pipeline_explainer(self):
+        """Test case for update_pipeline_explainer
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

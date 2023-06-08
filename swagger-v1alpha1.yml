@@ -195,7 +195,7 @@ definitions:
         format: double
         type: number
       batchMethod:
-        description: Batch Method (predict)
+        description: Batch Method (predict, feedback (for SCv1))
         type: string
       batchPayloadType:
         description: Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary - only if DataType=data)
@@ -7261,6 +7261,8 @@ definitions:
       - ALIBI_EXPLAIN
       - ALIBI_DETECT
       - HUGGINGFACE
+      - MLSERVER_PYTHON
+      - TRITON_PYTHON
     default: UNKNOWN
   v1DataType:
     type: string
@@ -7722,6 +7724,13 @@ definitions:
        The JSON representation for `NullValue` is JSON `null`.
 
        - NULL_VALUE: Null value.
+  v1BucketSecretFormat:
+    type: string
+    enum:
+      - env_var
+      - config_param
+    default: env_var
+    description: Default to env_var for backwards compatibility.
   v1CreateGCSBucketSecretResponse:
     type: object
   v1CreateRcloneBucketSecretResponse:
@@ -7746,7 +7755,11 @@ definitions:
         type: object
         additionalProperties:
           type: string
-        description: The rclone key value pairs for your secret, see the documentation for more detail.
+        description: The Rclone key value pairs for your secret; see the Rclone documentation for more detail.
+      remoteType:
+        type: string
+        example: s3
+        description: The Rclone type of the remote; see the Rclone documentation for available types.
   v1S3Credentials:
     type: object
     properties:
@@ -7761,6 +7774,9 @@ definitions:
         type: string
       secretType:
         $ref: '#/definitions/v1SecretType'
+      bucketSecretFormat:
+        $ref: '#/definitions/v1BucketSecretFormat'
+        description: Only available for bucket secrets.
   v1SecretType:
     type: string
     enum:
@@ -7784,7 +7800,7 @@ definitions:
       - ELASTICSEARCH
       - ALERTMANAGER
       - POSTGRES
-      - KEYCLOACK
+      - KEYCLOAK
       - KAFKA
       - SELDONCORE_V1
       - SELDONCORE_V2
@@ -7911,6 +7927,30 @@ paths:
       responses:
         "200":
           $ref: '#/responses/GitLogsResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - GitOps
+  /namespaces/{namespace}/gitdiffs:
+    get:
+      description: Read the git diffs from hashes
+      operationId: ReadGitDiffs
+      parameters:
+        - description: Hashes is an array of git commit hashes to get diffs for
+          in: query
+          items:
+            type: string
+          name: hashes
+          required: true
+          type: array
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+      responses:
+        "200":
+          $ref: '#/responses/GitDiffsResponse'
         "500":
           $ref: '#/responses/ErrorDefault'
       tags:
@@ -8878,6 +8918,41 @@ paths:
           $ref: '#/responses/ErrorDefault'
       tags:
         - Pipelines
+    put:
+      description: Update the specified Seldon Pipeline Explainer
+      operationId: UpdatePipelineExplainer
+      parameters:
+        - description: Action
+          in: query
+          name: action
+          type: string
+        - description: Message
+          in: query
+          name: message
+          type: string
+        - description: Name identifies a resource
+          in: path
+          name: name
+          required: true
+          type: string
+        - description: Namespace provides a logical grouping of resources
+          in: path
+          name: namespace
+          required: true
+          type: string
+        - description: Seldon Model
+          in: body
+          name: model
+          required: true
+          schema:
+            $ref: '#/definitions/Model'
+      responses:
+        "200":
+          $ref: '#/responses/SeldonModelResponse'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - Pipelines
   /namespaces/{namespace}/pipelines/{name}/gitdiff:
     get:
       description: Read the git diff for a pipeline
@@ -9701,13 +9776,17 @@ paths:
       tags:
         - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrestore:
-    get:
+    post:
       description: Restore the git commit
       operationId: SeldonDeploymentGitRestore
       parameters:
         - description: Hash
           in: query
           name: hash
+          type: string
+        - description: Action
+          in: query
+          name: action
           type: string
         - description: Message
           in: query
@@ -9731,13 +9810,17 @@ paths:
       tags:
         - GitOps
   /namespaces/{namespace}/seldondeployments/{name}/gitrevert:
-    get:
+    post:
       description: Revert the git commit
       operationId: SeldonDeploymentGitRevert
       parameters:
         - description: Hash
           in: query
           name: hash
+          type: string
+        - description: Action
+          in: query
+          name: action
           type: string
         - description: Message
           in: query
@@ -10432,6 +10515,8 @@ paths:
             - ALIBI_EXPLAIN
             - ALIBI_DETECT
             - HUGGINGFACE
+            - MLSERVER_PYTHON
+            - TRITON_PYTHON
           default: UNKNOWN
         - name: taskType
           in: query
@@ -11233,6 +11318,15 @@ paths:
           schema:
             $ref: '#/definitions/v1RcloneConfig'
             description: The rclone key value pairs.
+        - name: format
+          description: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
+          in: query
+          required: false
+          type: string
+          enum:
+            - env_var
+            - config_param
+          default: env_var
       tags:
         - SecretsService
   /secrets/{namespace}/bucket/s3/{remote}:
@@ -11338,6 +11432,15 @@ paths:
             - all
             - bucket
             - registry
+        - name: bucketSecretFormat
+          description: Optional filter for the format of bucket secrets. Only applicable when `secret_type` is `bucket.`
+          in: query
+          required: false
+          type: string
+          enum:
+            - env_var
+            - config_param
+          default: env_var
       tags:
         - SecretsService
   /secrets/{namespace}/{secretType}/{name}:
@@ -11405,7 +11508,7 @@ paths:
             - ELASTICSEARCH
             - ALERTMANAGER
             - POSTGRES
-            - KEYCLOACK
+            - KEYCLOAK
             - KAFKA
             - SELDONCORE_V1
             - SELDONCORE_V2
@@ -11484,6 +11587,12 @@ responses:
     description: Git Diff
     schema:
       $ref: '#/definitions/FileDiff'
+  GitDiffsResponse:
+    description: Git Diffs
+    schema:
+      items:
+        $ref: '#/definitions/FileDiff'
+      type: array
   GitLogsResponse:
     description: Git Logs
     schema:

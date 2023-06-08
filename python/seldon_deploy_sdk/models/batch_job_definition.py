@@ -152,7 +152,7 @@ class BatchJobDefinition(object):
     def batch_method(self):
         """Gets the batch_method of this BatchJobDefinition.  # noqa: E501
 
-        Batch Method (predict)  # noqa: E501
+        Batch Method (predict, feedback (for SCv1))  # noqa: E501
 
         :return: The batch_method of this BatchJobDefinition.  # noqa: E501
         :rtype: str
@@ -163,7 +163,7 @@ class BatchJobDefinition(object):
     def batch_method(self, batch_method):
         """Sets the batch_method of this BatchJobDefinition.
 
-        Batch Method (predict)  # noqa: E501
+        Batch Method (predict, feedback (for SCv1))  # noqa: E501
 
         :param batch_method: The batch_method of this BatchJobDefinition.  # noqa: E501
         :type: str

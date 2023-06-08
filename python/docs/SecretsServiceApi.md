@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **secrets_service_create_rclone_bucket_secret**
-> V1CreateRcloneBucketSecretResponse secrets_service_create_rclone_bucket_secret(namespace, remote, body)
+> V1CreateRcloneBucketSecretResponse secrets_service_create_rclone_bucket_secret(namespace, remote, body, format=format)
 
 Creates a generic rclone bucket secret according to specified parameters.
 
@@ -88,10 +88,11 @@ api_instance = seldon_deploy_sdk.SecretsServiceApi(seldon_deploy_sdk.ApiClient(c
 namespace = 'namespace_example' # str | The namespace to create secret in.
 remote = 'remote_example' # str | The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
 body = seldon_deploy_sdk.V1RcloneConfig() # V1RcloneConfig | The rclone key value pairs.
+format = 'env_var' # str | The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2. (optional) (default to env_var)
 
 try:
     # Creates a generic rclone bucket secret according to specified parameters.
-    api_response = api_instance.secrets_service_create_rclone_bucket_secret(namespace, remote, body)
+    api_response = api_instance.secrets_service_create_rclone_bucket_secret(namespace, remote, body, format=format)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SecretsServiceApi->secrets_service_create_rclone_bucket_secret: %s\n" % e)
@@ -104,6 +105,7 @@ Name | Type | Description  | Notes
  **namespace** | **str**| The namespace to create secret in. | 
  **remote** | **str**| The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. | 
  **body** | [**V1RcloneConfig**](V1RcloneConfig.md)| The rclone key value pairs. | 
+ **format** | **str**| The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone&#39;s HTTP API. config_param is suitable for Seldon Core v2. | [optional] [default to env_var]
 
 ### Return type
 
@@ -283,7 +285,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **secrets_service_list_secrets**
-> V1ListSecretsResponse secrets_service_list_secrets(namespace, secret_type)
+> V1ListSecretsResponse secrets_service_list_secrets(namespace, secret_type, bucket_secret_format=bucket_secret_format)
 
 Lists the names and metadata of secrets used by Seldon Deploy.
 
@@ -303,10 +305,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.SecretsServiceApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | The namespace to list secrets in.
 secret_type = 'secret_type_example' # str | The secret type, can be one of (`bucket`, `registry`) or `all` to list all secrets used by Seldon Deploy.
+bucket_secret_format = 'env_var' # str | Optional filter for the format of bucket secrets. Only applicable when `secret_type` is `bucket.` (optional) (default to env_var)
 
 try:
     # Lists the names and metadata of secrets used by Seldon Deploy.
-    api_response = api_instance.secrets_service_list_secrets(namespace, secret_type)
+    api_response = api_instance.secrets_service_list_secrets(namespace, secret_type, bucket_secret_format=bucket_secret_format)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SecretsServiceApi->secrets_service_list_secrets: %s\n" % e)
@@ -318,6 +321,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The namespace to list secrets in. | 
  **secret_type** | **str**| The secret type, can be one of (&#x60;bucket&#x60;, &#x60;registry&#x60;) or &#x60;all&#x60; to list all secrets used by Seldon Deploy. | 
+ **bucket_secret_format** | **str**| Optional filter for the format of bucket secrets. Only applicable when &#x60;secret_type&#x60; is &#x60;bucket.&#x60; | [optional] [default to env_var]
 
 ### Return type
 

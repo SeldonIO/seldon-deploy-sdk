@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**read_pipeline**](PipelinesApi.md#read_pipeline) | **GET** /namespaces/{namespace}/pipelines/{name} | 
 [**read_pipeline_explainer**](PipelinesApi.md#read_pipeline_explainer) | **GET** /namespaces/{namespace}/pipelines/{name}/explainer | 
 [**update_pipeline**](PipelinesApi.md#update_pipeline) | **PUT** /namespaces/{namespace}/pipelines/{name} | 
+[**update_pipeline_explainer**](PipelinesApi.md#update_pipeline_explainer) | **PUT** /namespaces/{namespace}/pipelines/{name}/explainer | 
 
 
 # **create_pipeline**
@@ -502,6 +503,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SeldonPipeline**](SeldonPipeline.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_pipeline_explainer**
+> SeldonModel update_pipeline_explainer(name, namespace, model, action=action, message=message)
+
+
+
+Update the specified Seldon Pipeline Explainer
+
+### Example
+```python
+from __future__ import print_function
+import time
+import seldon_deploy_sdk
+from seldon_deploy_sdk.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = seldon_deploy_sdk.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = seldon_deploy_sdk.PipelinesApi(seldon_deploy_sdk.ApiClient(configuration))
+name = 'name_example' # str | Name identifies a resource
+namespace = 'namespace_example' # str | Namespace provides a logical grouping of resources
+model = seldon_deploy_sdk.Model() # Model | Seldon Model
+action = 'action_example' # str | Action (optional)
+message = 'message_example' # str | Message (optional)
+
+try:
+    api_response = api_instance.update_pipeline_explainer(name, namespace, model, action=action, message=message)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PipelinesApi->update_pipeline_explainer: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name identifies a resource | 
+ **namespace** | **str**| Namespace provides a logical grouping of resources | 
+ **model** | [**Model**](Model.md)| Seldon Model | 
+ **action** | **str**| Action | [optional] 
+ **message** | **str**| Message | [optional] 
+
+### Return type
+
+[**SeldonModel**](SeldonModel.md)
 
 ### Authorization
 
