@@ -1,15 +1,17 @@
-.PHONY: licenses install-dev test build push-test push
-
-licenses:
-	tox --recreate -e licenses
-	cut -d, -f1,3 ./licenses/license_info.csv \
-		> ./licenses/license_info.no_versions.csv
+.PHONY: install-dev check-dev licenses test build push-test push
 
 install-dev:
 	pip install -e . -r test-requirements.txt
 
-#install test requirements first
-test:
+check-dev:
+	@which tox > /dev/null || (echo "Error: tox is not installed. Run `make install-dev` first."; exit 1)
+
+licenses: check-dev
+	tox --recreate -e licenses
+	cut -d, -f1,3 ./licenses/license_info.csv \
+		> ./licenses/license_info.no_versions.csv
+
+test: check-dev
 	tox
 
 #requires pip install wheel
