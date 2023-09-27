@@ -1,4 +1,7 @@
-.PHONY: install-dev check-dev licenses test build push-test push
+.PHONY: install install-dev check-dev licenses test build push-test push
+
+install:
+	pip install -e . -r requirements.txt
 
 install-dev:
 	pip install -e . -r test-requirements.txt

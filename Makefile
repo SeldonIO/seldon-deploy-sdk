@@ -15,7 +15,7 @@ python:
 		-t /local/templates/python \
 		-l python \
 		-c /local/config/python.json \
-		--additional-properties 'infoEmail=hello@seldon.io,pyMinVersion=3.6,pyMaxVersion=3.9' \
+		--additional-properties 'infoEmail=hello@seldon.io,pyMinVersion=3.6.*,pyMaxVersion=3.9.*' \
 		--git-user-id 'SeldonIO' \
 		--git-repo-id 'seldon-deploy-sdk' \
 		-o /local/python
