@@ -17,7 +17,6 @@ licenses: check-dev
 test: check-dev
 	tox
 
-#requires pip install wheel
 build:
 	python setup.py sdist bdist_wheel
 
