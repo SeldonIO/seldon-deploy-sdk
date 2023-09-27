@@ -1,6 +1,1 @@
-python/Makefile linguist-generated=true
-python/README.md linguist-generated=true
-python/requirements.txt linguist-generated=true
-python/test-requirements.txt linguist-generated=true
-python/licenses/license.txt linguist-generated=true
-python/licenses/license_info.csv linguist-generated=true
+python/** linguist-generated=true
