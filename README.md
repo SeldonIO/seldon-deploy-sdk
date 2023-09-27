@@ -56,6 +56,7 @@ documentation](./python/README.md).
 
 To generate a new version of the SDK, you can use the `Makefile` targets
 available.
+
 For example, for Python you could do:
 
 ```bash
