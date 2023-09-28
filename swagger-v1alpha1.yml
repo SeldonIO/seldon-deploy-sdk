@@ -7643,11 +7643,9 @@ definitions:
   protobufAny:
     type: object
     properties:
-      typeUrl:
+      '@type':
         type: string
-      value:
-        type: string
-        format: byte
+    additionalProperties: {}
   rpcStatus:
     type: object
     properties:
@@ -7715,8 +7713,6 @@ definitions:
     properties:
       name:
         type: string
-        required:
-          - name
       dataType:
         $ref: '#/definitions/v1DataType'
     required:
@@ -7726,8 +7722,6 @@ definitions:
     properties:
       name:
         type: string
-        required:
-          - name
       type:
         $ref: '#/definitions/v1FeatureType'
       dataType:
@@ -7750,6 +7744,7 @@ definitions:
           format: int64
     required:
       - name
+      - type
   v1FeatureType:
     type: string
     enum:
@@ -7760,6 +7755,13 @@ definitions:
       - TEXT
       - TENSOR
     default: REAL
+    title: |-
+      - REAL: A numerical variable
+       - CATEGORICAL: A categorical variable
+       - PROBA: A list of probabilities
+       - ONE_HOT: A list of one-hot encodings
+       - TEXT: A text string
+       - TENSOR: N-dimensional Tensor
   v1Model:
     type: object
     properties:
@@ -7767,8 +7769,6 @@ definitions:
         type: string
         example: gs://seldon-models/sklearn/iris
         description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
-        required:
-          - URI
       name:
         type: string
         example: Iris Classifier
@@ -7869,14 +7869,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/v1FeatureSchema'
-        required:
-          - requests
       responses:
         type: array
         items:
           $ref: '#/definitions/v1FeatureSchema'
-        required:
-          - responses
     required:
       - requests
       - responses
@@ -7962,8 +7958,6 @@ definitions:
       name:
         type: string
         description: The name of the group to be created.
-        required:
-          - name
     required:
       - name
   v1CreateGroupResponse:
@@ -7976,13 +7970,9 @@ definitions:
       username:
         type: string
         description: The username of the user. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters. It can be used for login and be part of policies.
-        required:
-          - username
       email:
         type: string
         description: The email of the user. It must be a valid email. The user will receive instructions for setting credentials on this email.
-        required:
-          - email
       firstName:
         type: string
       lastName:
@@ -11073,7 +11063,10 @@ paths:
           required: false
           type: string
         - name: orderBy
-          description: 'The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.'
+          description: |-
+            Based on https://cloud.google.com/apis/design/design_patterns#sorting_order
+
+            The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.
           in: query
           required: false
           type: string
@@ -11139,7 +11132,7 @@ paths:
           schema:
             $ref: '#/definitions/rpcStatus'
       parameters:
-        - name: body
+        - name: model
           in: body
           required: true
           schema:
@@ -11165,11 +11158,13 @@ paths:
           schema:
             $ref: '#/definitions/rpcStatus'
       parameters:
-        - name: body
+        - name: model
           in: body
           required: true
           schema:
             $ref: '#/definitions/v1Model'
+            required:
+              - model
       tags:
         - ModelMetadataService
   /model/metadata/runtime:
@@ -11428,7 +11423,7 @@ paths:
           schema:
             $ref: '#/definitions/rpcStatus'
       parameters:
-        - name: body
+        - name: policy
           in: body
           required: true
           schema:
@@ -11755,7 +11750,7 @@ paths:
           schema:
             $ref: '#/definitions/rpcStatus'
       parameters:
-        - name: body
+        - name: useMetricsFlow
           description: |-
             Set to true if you wish to test Prometheus -> Alertmanager connection
             False sends an alert payload directly to Alertmanager, skipping Prometheus metrics/alert flow
@@ -11792,8 +11787,7 @@ paths:
           in: path
           required: true
           type: string
-        - name: body
-          description: The GCS account credentials to populate the secret. See documentation for how to generate this.
+        - name: accountCredentials
           in: body
           required: true
           schema:
@@ -11828,8 +11822,7 @@ paths:
           in: path
           required: true
           type: string
-        - name: body
-          description: The rclone key value pairs.
+        - name: rcloneConfig
           in: body
           required: true
           schema:
@@ -11873,8 +11866,7 @@ paths:
           in: path
           required: true
           type: string
-        - name: body
-          description: The S3 account credentials to populate the secret. See documentation for how to generate these.
+        - name: s3Credentials
           in: body
           required: true
           schema:
@@ -11909,8 +11901,7 @@ paths:
           in: path
           required: true
           type: string
-        - name: body
-          description: The raw json docker credentials config.
+        - name: credentialsConfig
           in: body
           required: true
           schema:

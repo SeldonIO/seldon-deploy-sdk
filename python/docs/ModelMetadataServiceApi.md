@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **model_metadata_service_create_model_metadata**
-> V1ModelMetadataCreateResponse model_metadata_service_create_model_metadata(body)
+> V1ModelMetadataCreateResponse model_metadata_service_create_model_metadata(model)
 
 Create a Model Metadata entry.
 
@@ -30,11 +30,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_sdk.ModelMetadataServiceApi(seldon_deploy_sdk.ApiClient(configuration))
-body = seldon_deploy_sdk.V1Model() # V1Model | 
+model = seldon_deploy_sdk.V1Model() # V1Model | 
 
 try:
     # Create a Model Metadata entry.
-    api_response = api_instance.model_metadata_service_create_model_metadata(body)
+    api_response = api_instance.model_metadata_service_create_model_metadata(model)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_create_model_metadata: %s\n" % e)
@@ -44,7 +44,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**V1Model**](V1Model.md)|  | 
+ **model** | [**V1Model**](V1Model.md)|  | 
 
 ### Return type
 
@@ -147,7 +147,7 @@ page_size = 56 # int | Optional. The maximum number of Folders to return in the 
 page_token = 'page_token_example' # str | Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from. (optional)
 list_mask = 'list_mask_example' # str | Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. (optional)
 project = 'project_example' # str |  (optional)
-order_by = 'order_by_example' # str | The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type. (optional)
+order_by = 'order_by_example' # str | Based on https://cloud.google.com/apis/design/design_patterns#sorting_order  The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type. (optional)
 default_protocol = 'PROTOCOL_UNKNOWN' # str |  (optional) (default to PROTOCOL_UNKNOWN)
 
 try:
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
  **page_token** | **str**| Optional. A pagination token returned from a previous call to &#x60;List&#x60; that indicates where this listing should continue from. | [optional] 
  **list_mask** | **str**| Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned. | [optional] 
  **project** | **str**|  | [optional] 
- **order_by** | **str**| The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \&quot; desc\&quot; should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type. | [optional] 
+ **order_by** | **str**| Based on https://cloud.google.com/apis/design/design_patterns#sorting_order  The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \&quot; desc\&quot; should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type. | [optional] 
  **default_protocol** | **str**|  | [optional] [default to PROTOCOL_UNKNOWN]
 
 ### Return type
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **model_metadata_service_update_model_metadata**
-> V1ModelMetadataUpdateResponse model_metadata_service_update_model_metadata(body)
+> V1ModelMetadataUpdateResponse model_metadata_service_update_model_metadata(model)
 
 Update a Model Metadata entry.
 
@@ -282,11 +282,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_sdk.ModelMetadataServiceApi(seldon_deploy_sdk.ApiClient(configuration))
-body = seldon_deploy_sdk.V1Model() # V1Model | 
+model = seldon_deploy_sdk.V1Model() # V1Model | 
 
 try:
     # Update a Model Metadata entry.
-    api_response = api_instance.model_metadata_service_update_model_metadata(body)
+    api_response = api_instance.model_metadata_service_update_model_metadata(model)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ModelMetadataServiceApi->model_metadata_service_update_model_metadata: %s\n" % e)
@@ -296,7 +296,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**V1Model**](V1Model.md)|  | 
+ **model** | [**V1Model**](V1Model.md)|  | 
 
 ### Return type
 

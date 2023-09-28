@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **alerting_service_trigger_test_alert**
-> V1TriggerTestAlertResponse alerting_service_trigger_test_alert(body)
+> V1TriggerTestAlertResponse alerting_service_trigger_test_alert(use_metrics_flow)
 
 Triggers a test alert to check alerting workflow.
 
@@ -73,11 +73,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_sdk.AlertingServiceApi(seldon_deploy_sdk.ApiClient(configuration))
-body = true # bool | Set to true if you wish to test Prometheus -> Alertmanager connection False sends an alert payload directly to Alertmanager, skipping Prometheus metrics/alert flow
+use_metrics_flow = true # bool | Set to true if you wish to test Prometheus -> Alertmanager connection False sends an alert payload directly to Alertmanager, skipping Prometheus metrics/alert flow
 
 try:
     # Triggers a test alert to check alerting workflow.
-    api_response = api_instance.alerting_service_trigger_test_alert(body)
+    api_response = api_instance.alerting_service_trigger_test_alert(use_metrics_flow)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AlertingServiceApi->alerting_service_trigger_test_alert: %s\n" % e)
@@ -87,7 +87,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **bool**| Set to true if you wish to test Prometheus -&gt; Alertmanager connection False sends an alert payload directly to Alertmanager, skipping Prometheus metrics/alert flow | 
+ **use_metrics_flow** | **bool**| Set to true if you wish to test Prometheus -&gt; Alertmanager connection False sends an alert payload directly to Alertmanager, skipping Prometheus metrics/alert flow | 
 
 ### Return type
 
