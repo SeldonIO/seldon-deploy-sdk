@@ -59,6 +59,7 @@ from seldon_deploy_sdk.models.cross_version_object_reference import CrossVersion
 from seldon_deploy_sdk.models.dns_policy import DNSPolicy
 from seldon_deploy_sdk.models.deployment import Deployment
 from seldon_deploy_sdk.models.deployment_feature_data import DeploymentFeatureData
+from seldon_deploy_sdk.models.deployment_inference_logs_download_params import DeploymentInferenceLogsDownloadParams
 from seldon_deploy_sdk.models.deployment_list import DeploymentList
 from seldon_deploy_sdk.models.deployment_spec import DeploymentSpec
 from seldon_deploy_sdk.models.deployment_status import DeploymentStatus
@@ -102,7 +103,9 @@ from seldon_deploy_sdk.models.feature_statistics_response import FeatureStatisti
 from seldon_deploy_sdk.models.feature_stats import FeatureStats
 from seldon_deploy_sdk.models.feature_stats_bucket import FeatureStatsBucket
 from seldon_deploy_sdk.models.fields_v1 import FieldsV1
+from seldon_deploy_sdk.models.file import File
 from seldon_deploy_sdk.models.file_diff import FileDiff
+from seldon_deploy_sdk.models.file_header import FileHeader
 from seldon_deploy_sdk.models.finalizer_name import FinalizerName
 from seldon_deploy_sdk.models.flex_volume_source import FlexVolumeSource
 from seldon_deploy_sdk.models.flocker_volume_source import FlockerVolumeSource
@@ -135,6 +138,7 @@ from seldon_deploy_sdk.models.local_object_reference import LocalObjectReference
 from seldon_deploy_sdk.models.logger import Logger
 from seldon_deploy_sdk.models.logger_mode import LoggerMode
 from seldon_deploy_sdk.models.logging_spec import LoggingSpec
+from seldon_deploy_sdk.models.mime_header import MIMEHeader
 from seldon_deploy_sdk.models.managed_fields_entry import ManagedFieldsEntry
 from seldon_deploy_sdk.models.managed_fields_operation_type import ManagedFieldsOperationType
 from seldon_deploy_sdk.models.message import Message
@@ -142,6 +146,7 @@ from seldon_deploy_sdk.models.metric_source_type import MetricSourceType
 from seldon_deploy_sdk.models.metric_spec import MetricSpec
 from seldon_deploy_sdk.models.metric_target_type import MetricTargetType
 from seldon_deploy_sdk.models.model import Model
+from seldon_deploy_sdk.models.model_inference_logs_download_params import ModelInferenceLogsDownloadParams
 from seldon_deploy_sdk.models.model_spec import ModelSpec
 from seldon_deploy_sdk.models.model_status import ModelStatus
 from seldon_deploy_sdk.models.monitor_input_data import MonitorInputData
@@ -270,7 +275,6 @@ from seldon_deploy_sdk.models.sysctl import Sysctl
 from seldon_deploy_sdk.models.tcp_socket_action import TCPSocketAction
 from seldon_deploy_sdk.models.taint_effect import TaintEffect
 from seldon_deploy_sdk.models.termination_message_policy import TerminationMessagePolicy
-from seldon_deploy_sdk.models.time import Time
 from seldon_deploy_sdk.models.toleration import Toleration
 from seldon_deploy_sdk.models.toleration_operator import TolerationOperator
 from seldon_deploy_sdk.models.topology_spread_constraint import TopologySpreadConstraint
@@ -318,7 +322,11 @@ from seldon_deploy_sdk.models.v1_get_user_groups_response import V1GetUserGroups
 from seldon_deploy_sdk.models.v1_get_users_response import V1GetUsersResponse
 from seldon_deploy_sdk.models.v1_group import V1Group
 from seldon_deploy_sdk.models.v1_group_policy import V1GroupPolicy
+from seldon_deploy_sdk.models.v1_inference_logs_deployment_item import V1InferenceLogsDeploymentItem
+from seldon_deploy_sdk.models.v1_inference_logs_model_item import V1InferenceLogsModelItem
 from seldon_deploy_sdk.models.v1_list_alerts_response import V1ListAlertsResponse
+from seldon_deploy_sdk.models.v1_list_deployment_inference_logs_response import V1ListDeploymentInferenceLogsResponse
+from seldon_deploy_sdk.models.v1_list_model_inference_logs_response import V1ListModelInferenceLogsResponse
 from seldon_deploy_sdk.models.v1_list_secrets_response import V1ListSecretsResponse
 from seldon_deploy_sdk.models.v1_model import V1Model
 from seldon_deploy_sdk.models.v1_model_metadata_create_response import V1ModelMetadataCreateResponse

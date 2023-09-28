@@ -31,7 +31,7 @@ class NamespaceCondition(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'last_transition_time': 'Time',
+        'last_transition_time': 'str',
         'message': 'str',
         'reason': 'str',
         'status': 'ConditionStatus',
@@ -71,9 +71,10 @@ class NamespaceCondition(object):
     def last_transition_time(self):
         """Gets the last_transition_time of this NamespaceCondition.  # noqa: E501
 
+        +optional  # noqa: E501
 
         :return: The last_transition_time of this NamespaceCondition.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._last_transition_time
 
@@ -81,9 +82,10 @@ class NamespaceCondition(object):
     def last_transition_time(self, last_transition_time):
         """Sets the last_transition_time of this NamespaceCondition.
 
+        +optional  # noqa: E501
 
         :param last_transition_time: The last_transition_time of this NamespaceCondition.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._last_transition_time = last_transition_time

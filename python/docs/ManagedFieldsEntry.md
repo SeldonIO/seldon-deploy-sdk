@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **fields_v1** | [**FieldsV1**](FieldsV1.md) |  | [optional] 
 **manager** | **str** | Manager is an identifier of the workflow managing these fields. | [optional] 
 **operation** | [**ManagedFieldsOperationType**](ManagedFieldsOperationType.md) |  | [optional] 
-**time** | [**Time**](Time.md) |  | [optional] 
+**time** | **str** | Time is timestamp of when these fields were set. It should always be empty if Operation is &#39;Apply&#39; +optional | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

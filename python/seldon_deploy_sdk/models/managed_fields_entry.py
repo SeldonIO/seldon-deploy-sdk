@@ -36,7 +36,7 @@ class ManagedFieldsEntry(object):
         'fields_v1': 'FieldsV1',
         'manager': 'str',
         'operation': 'ManagedFieldsOperationType',
-        'time': 'Time'
+        'time': 'str'
     }
 
     attribute_map = {
@@ -187,9 +187,10 @@ class ManagedFieldsEntry(object):
     def time(self):
         """Gets the time of this ManagedFieldsEntry.  # noqa: E501
 
+        Time is timestamp of when these fields were set. It should always be empty if Operation is 'Apply' +optional  # noqa: E501
 
         :return: The time of this ManagedFieldsEntry.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._time
 
@@ -197,9 +198,10 @@ class ManagedFieldsEntry(object):
     def time(self, time):
         """Sets the time of this ManagedFieldsEntry.
 
+        Time is timestamp of when these fields were set. It should always be empty if Operation is 'Apply' +optional  # noqa: E501
 
         :param time: The time of this ManagedFieldsEntry.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._time = time

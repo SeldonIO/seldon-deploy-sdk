@@ -12,6 +12,7 @@ from seldon_deploy_sdk.api.experiments_api import ExperimentsApi
 from seldon_deploy_sdk.api.explain_api import ExplainApi
 from seldon_deploy_sdk.api.git_ops_api import GitOpsApi
 from seldon_deploy_sdk.api.healthcheck_service_api import HealthcheckServiceApi
+from seldon_deploy_sdk.api.inference_logs_service_api import InferenceLogsServiceApi
 from seldon_deploy_sdk.api.kubernetes_resources_api import KubernetesResourcesApi
 from seldon_deploy_sdk.api.loadtest_jobs_api import LoadtestJobsApi
 from seldon_deploy_sdk.api.metrics_server_api import MetricsServerApi

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_transition_time** | [**Time**](Time.md) |  | [optional] 
+**last_transition_time** | **str** | +optional | [optional] 
 **message** | **str** | +optional | [optional] 
 **reason** | **str** | +optional | [optional] 
 **status** | [**ConditionStatus**](ConditionStatus.md) |  | [optional] 

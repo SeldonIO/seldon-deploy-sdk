@@ -99,7 +99,7 @@ definitions:
     description: |-
       ApplicationLogsResponse represents the collection of application logs
       and their total size after being parsed from their raw forms
-      e.g. from json strings or map[string]interface{} types.
+      e.g. from json strings or map[string]any types.
     properties:
       logs:
         items:
@@ -218,6 +218,12 @@ definitions:
       inputData:
         description: S3 URI of input data file
         type: string
+      limitsCpu:
+        description: 'Container Resources for running batch jobs: limits: CPU'
+        type: string
+      limitsMemory:
+        description: 'Container Resources for running batch jobs: limits: Memory'
+        type: string
       objectStoreSecretName:
         description: name of Kubernetes Secret with S3 credentials
         type: string
@@ -227,14 +233,22 @@ definitions:
       pvcSize:
         description: Size of PVC required for the batch job
         type: string
+      requestsCpu:
+        description: 'Container Resources for running batch jobs: requests: CPU'
+        type: string
+      requestsMemory:
+        description: 'Container Resources for running batch jobs: requests: Memory'
+        type: string
     type: object
   BatchJobDescription:
     description: BatchJobDescription describes the workflow of the batch job
     properties:
       FinishedAt:
-        $ref: '#/definitions/Time'
+        description: Time when job finished
+        type: string
       StartedAt:
-        $ref: '#/definitions/Time'
+        description: Time when job started
+        type: string
       workflowName:
         description: Name of related Argo Workflow
         type: string
@@ -788,7 +802,10 @@ definitions:
   ContainerStateRunning:
     properties:
       startedAt:
-        $ref: '#/definitions/Time'
+        description: |-
+          Time at which the container was last (re-)started
+          +optional
+        type: string
     title: ContainerStateRunning is a running state of a container.
     type: object
   ContainerStateTerminated:
@@ -803,7 +820,10 @@ definitions:
         format: int32
         type: integer
       finishedAt:
-        $ref: '#/definitions/Time'
+        description: |-
+          Time at which the container last terminated
+          +optional
+        type: string
       message:
         description: |-
           Message regarding the last termination of the container
@@ -821,7 +841,10 @@ definitions:
         format: int32
         type: integer
       startedAt:
-        $ref: '#/definitions/Time'
+        description: |-
+          Time at which previous execution of the container started
+          +optional
+        type: string
     title: ContainerStateTerminated is a terminated state of a container.
     type: object
   ContainerStateWaiting:
@@ -930,7 +953,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -941,7 +974,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -1124,6 +1177,37 @@ definitions:
       reference_data:
         description: ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)
         type: boolean
+    type: object
+  DeploymentInferenceLogsDownloadParams:
+    description: DeploymentInferenceLogsDownloadParams represents the parameters for downloading seldon deployment inference logs
+    properties:
+      container:
+        description: Container refers to the container of the deployment
+        type: string
+      end_time:
+        description: EndTime refers to the end time of the inference logs
+        format: date-time
+        type: string
+      max_number_logs:
+        description: MaxNumLogs refers to the maximum number of inference logs to return
+        format: int64
+        type: integer
+      name:
+        description: Name refers to the name of the deployment (required)
+        type: string
+      namespace:
+        description: Namespace refers to the namespace of the deployment (required)
+        type: string
+      next_page_token:
+        description: NextPageToken is a token that can be used to resume a read from a previous request
+        type: string
+      predictor:
+        description: Predictor refers to the predictor of the deployment e.g. canary vs default vs shadow
+        type: string
+      start_time:
+        description: StartTime refers to the start time of the inference logs
+        format: date-time
+        type: string
     type: object
   DeploymentList:
     properties:
@@ -1693,7 +1777,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -1704,7 +1798,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -2182,6 +2296,14 @@ definitions:
       +protobuf.options.(gogoproto.goproto_stringer)=false
     title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
     type: object
+  File:
+    properties:
+      Data:
+        $ref: '#/definitions/File'
+      Header:
+        $ref: '#/definitions/FileHeader'
+    title: File represents an uploaded file.
+    type: object
   FileDiff:
     description: |-
       note diff is html that needs to be unicode decoded/unescaped
@@ -2204,6 +2326,17 @@ definitions:
         type: string
       To:
         type: string
+    type: object
+  FileHeader:
+    properties:
+      Filename:
+        type: string
+      Header:
+        $ref: '#/definitions/MIMEHeader'
+      Size:
+        format: int64
+        type: integer
+    title: A FileHeader describes a file part of a multipart request.
     type: object
   FinalizerName:
     title: FinalizerName is the name identifying a finalizer during namespace lifecycle.
@@ -2765,6 +2898,15 @@ definitions:
         format: uint64
         type: integer
     type: object
+  MIMEHeader:
+    additionalProperties:
+      items:
+        type: string
+      type: array
+    description: |-
+      A MIMEHeader represents a MIME-style header mapping
+      keys to sets of values.
+    type: object
   ManagedFieldsEntry:
     description: |-
       ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource
@@ -2790,7 +2932,10 @@ definitions:
       operation:
         $ref: '#/definitions/ManagedFieldsOperationType'
       time:
-        $ref: '#/definitions/Time'
+        description: |-
+          Time is timestamp of when these fields were set. It should always be empty if Operation is 'Apply'
+          +optional
+        type: string
     type: object
   ManagedFieldsOperationType:
     title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry being created.
@@ -2859,7 +3004,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -2870,7 +3025,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -3015,6 +3190,34 @@ definitions:
         $ref: '#/definitions/ModelStatus'
       uid:
         $ref: '#/definitions/UID'
+    type: object
+  ModelInferenceLogsDownloadParams:
+    description: ModelInferenceLogsDownloadParams represents the parameters for downloading seldon model inference logs
+    properties:
+      end_time:
+        description: EndTime refers to the end time of the inference logs
+        format: date-time
+        type: string
+      max_number_logs:
+        description: MaxNumLogs refers to the maximum number of inference logs to return
+        format: int64
+        type: integer
+      model:
+        description: Model refers to a model name in the pipeline
+        type: string
+      namespace:
+        description: Namespace refers to the namespace of the pipeline
+        type: string
+      next_page_token:
+        description: NextPageToken is a token that can be used to resume a read from a previous request
+        type: string
+      pipeline:
+        description: Pipeline refers to the name of the pipeline
+        type: string
+      start_time:
+        description: StartTime refers to the start time of the inference logs
+        format: date-time
+        type: string
     type: object
   ModelSpec:
     description: ModelSpec defines the desired state of Model
@@ -3205,7 +3408,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -3216,7 +3429,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -3366,7 +3599,8 @@ definitions:
   NamespaceCondition:
     properties:
       lastTransitionTime:
-        $ref: '#/definitions/Time'
+        description: +optional
+        type: string
       message:
         description: +optional
         type: string
@@ -3529,7 +3763,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -3540,7 +3784,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -3803,7 +4067,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -3814,7 +4088,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -4013,7 +4307,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -4024,7 +4328,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -4295,7 +4619,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -4306,7 +4640,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -4547,9 +4901,15 @@ definitions:
   PodCondition:
     properties:
       lastProbeTime:
-        $ref: '#/definitions/Time'
+        description: |-
+          Last time we probed the condition.
+          +optional
+        type: string
       lastTransitionTime:
-        $ref: '#/definitions/Time'
+        description: |-
+          Last time the condition transitioned from one status to another.
+          +optional
+        type: string
       message:
         description: |-
           Human-readable message indicating details about last transition.
@@ -5156,7 +5516,11 @@ definitions:
           +optional
         type: string
       startTime:
-        $ref: '#/definitions/Time'
+        description: |-
+          RFC 3339 date and time at which the object was acknowledged by the Kubelet.
+          This is before the Kubelet pulled the container image(s) for the pod.
+          +optional
+        type: string
     type: object
   PodTemplateSpec:
     description: PodTemplateSpec describes the data a pod should have when created from a template
@@ -5179,7 +5543,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -5190,7 +5564,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -6362,7 +6756,17 @@ definitions:
           +optional
         type: string
       creationTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          CreationTimestamp is a timestamp representing the server time when this object was
+          created. It is not guaranteed to be set in happens-before order across separate operations.
+          Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+
+          Populated by the system.
+          Read-only.
+          Null for lists.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       deletionGracePeriodSeconds:
         description: |-
           Number of seconds allowed for this object to gracefully terminate before
@@ -6373,7 +6777,27 @@ definitions:
         format: int64
         type: integer
       deletionTimestamp:
-        $ref: '#/definitions/Time'
+        description: |-
+          DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This
+          field is set by the server when a graceful deletion is requested by the user, and is not
+          directly settable by a client. The resource is expected to be deleted (no longer visible
+          from resource lists, and not reachable by name) after the time in this field, once the
+          finalizers list is empty. As long as the finalizers list contains items, deletion is blocked.
+          Once the deletionTimestamp is set, this value may not be unset or be set further into the
+          future, although it may be shortened or the resource may be deleted prior to this time.
+          For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react
+          by sending a graceful termination signal to the containers in the pod. After that 30 seconds,
+          the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup,
+          remove the pod from the API. In the presence of network partitions, this object may still
+          exist after this timestamp, until an administrator or automated process can determine the
+          resource is fully terminated.
+          If not set, graceful deletion of the object has not been requested.
+
+          Populated by the system when a graceful deletion is requested.
+          Read-only.
+          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+          +optional
+        type: string
       finalizers:
         description: |-
           Must be empty before the object is deleted from the registry. Each entry
@@ -6897,16 +7321,6 @@ definitions:
   TerminationMessagePolicy:
     title: TerminationMessagePolicy describes how termination messages are retrieved from a container.
     type: string
-  Time:
-    description: |-
-      +protobuf.options.marshal=false
-      +protobuf.as=Timestamp
-      +protobuf.options.(gogoproto.goproto_stringer)=false
-    title: |-
-      Time is a wrapper around time.Time which supports correct
-      marshaling to YAML and JSON.  Wrappers are provided for many
-      of the factory methods that the time package offers.
-    type: object
   Toleration:
     description: |-
       The pod this Toleration is attached to tolerates any taint that matches
@@ -7278,7 +7692,7 @@ definitions:
     enum:
       - PROTOCOL_UNKNOWN
       - PROTOCOL_SELDON
-      - PROTOCOL_TENSERFLOW
+      - PROTOCOL_TENSORFLOW
       - PROTOCOL_V2
     default: PROTOCOL_UNKNOWN
   v1DeploymentStatus:
@@ -7471,7 +7885,7 @@ definitions:
     properties:
       defaultProtocol:
         $ref: '#/definitions/v1DefaultProtocol'
-        example: V2
+        example: PROTOCOL_V2
         description: The default protocol used for REST/gRPC requests to the model. It is possible that a model can be used with multiple protocols.
   v1RuntimeMetadata:
     type: object
@@ -7835,6 +8249,58 @@ definitions:
       - ENABLED_AND_UNREACHABLE
       - ENABLED_AND_REACHABLE
     default: UNSPECIFIED
+  v1InferenceLogsDeploymentItem:
+    type: object
+    properties:
+      namespace:
+        type: string
+      name:
+        type: string
+      predictor:
+        type: string
+      container:
+        type: string
+      count:
+        type: integer
+        format: int32
+      startTime:
+        type: string
+        format: date-time
+      endTime:
+        type: string
+        format: date-time
+  v1InferenceLogsModelItem:
+    type: object
+    properties:
+      namespace:
+        type: string
+      pipelineName:
+        type: string
+      modelName:
+        type: string
+      count:
+        type: integer
+        format: int32
+      startTime:
+        type: string
+        format: date-time
+      endTime:
+        type: string
+        format: date-time
+  v1ListDeploymentInferenceLogsResponse:
+    type: object
+    properties:
+      inferenceLogs:
+        type: array
+        items:
+          $ref: '#/definitions/v1InferenceLogsDeploymentItem'
+  v1ListModelInferenceLogsResponse:
+    type: object
+    properties:
+      inferenceLogs:
+        type: array
+        items:
+          $ref: '#/definitions/v1InferenceLogsModelItem'
 host: X.X.X.X
 info:
   description: |-
@@ -7883,6 +8349,62 @@ paths:
           $ref: '#/responses/HealthCheckResponse'
       tags:
         - Environment
+  /inference-logs/models/download:
+    post:
+      description: Download pipeline model inference logs
+      operationId: ModelInferenceLogsDownload
+      parameters:
+        - description: Deployment Inference Logs Identifier and filters
+          in: body
+          name: parameters
+          required: true
+          schema:
+            $ref: '#/definitions/ModelInferenceLogsDownloadParams'
+      produces:
+        - multipart/form-data
+      responses:
+        "200":
+          $ref: '#/responses/ModelInferenceLogsDownloadResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "403":
+          $ref: '#/responses/ErrorDefault'
+        "404":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+        "501":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - InferenceLogsService
+  /inference-logs/seldondeployments/download:
+    post:
+      description: Download seldon deployment inference logs
+      operationId: SeldonDeploymentInferenceLogsDownload
+      parameters:
+        - description: Deployment Inference Logs Identifier and filters
+          in: body
+          name: parameters
+          required: true
+          schema:
+            $ref: '#/definitions/DeploymentInferenceLogsDownloadParams'
+      produces:
+        - multipart/form-data
+      responses:
+        "200":
+          $ref: '#/responses/SeldonDeploymentInferenceLogsDownloadResponse'
+        "400":
+          $ref: '#/responses/ErrorDefault'
+        "403":
+          $ref: '#/responses/ErrorDefault'
+        "404":
+          $ref: '#/responses/ErrorDefault'
+        "500":
+          $ref: '#/responses/ErrorDefault'
+        "501":
+          $ref: '#/responses/ErrorDefault'
+      tags:
+        - InferenceLogsService
   /namespaces/{namespace}/experiments/{name}/gitdiff:
     get:
       description: Read the git diff for an experiment
@@ -8823,8 +9345,7 @@ paths:
         - description: Prediction contains predict payload
           in: body
           name: explaindata
-          schema:
-            type: object
+          schema: {}
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -9024,9 +9545,9 @@ paths:
       tags:
         - LoadtestJobs
     post:
-      description: |-
-        Create Pipeline load test
-        multipart/form-data
+      consumes:
+        - multipart/form-data
+      description: Create Pipeline load test
       operationId: CreateLoadtestPipeline
       parameters:
         - description: Name identifies a resource
@@ -9403,8 +9924,7 @@ paths:
           in: body
           name: prediction
           required: true
-          schema:
-            type: object
+          schema: {}
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -9718,8 +10238,7 @@ paths:
         - description: Prediction contains predict payload
           in: body
           name: explaindata
-          schema:
-            type: object
+          schema: {}
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -9866,9 +10385,9 @@ paths:
       tags:
         - LoadtestJobs
     post:
-      description: |-
-        Create Seldon Deployment load test
-        multipart/form-data
+      consumes:
+        - multipart/form-data
+      description: Create Seldon Deployment load test
       operationId: CreateLoadtestSeldonDeployment
       parameters:
         - description: Name identifies a resource
@@ -10323,8 +10842,7 @@ paths:
           in: body
           name: prediction
           required: true
-          schema:
-            type: object
+          schema: {}
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -10351,8 +10869,7 @@ paths:
           in: body
           name: prediction
           required: true
-          schema:
-            type: object
+          schema: {}
       responses:
         "200":
           $ref: '#/responses/GenericResponse'
@@ -10567,7 +11084,7 @@ paths:
           enum:
             - PROTOCOL_UNKNOWN
             - PROTOCOL_SELDON
-            - PROTOCOL_TENSERFLOW
+            - PROTOCOL_TENSORFLOW
             - PROTOCOL_V2
           default: PROTOCOL_UNKNOWN
       tags:
@@ -11521,6 +12038,91 @@ paths:
             - FLUENTD
       tags:
         - HealthcheckService
+  /inference-logs/models:
+    get:
+      summary: Get inference logs metadata for seldon models.
+      operationId: InferenceLogsService_ListModelInferenceLogs
+      responses:
+        "200":
+          description: Inference logs metadata for seldon models
+          schema:
+            $ref: '#/definitions/v1ListModelInferenceLogsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        "501":
+          description: Service not implemented or enabled
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace that this seldon deployment belongs to.
+          in: query
+          required: true
+          type: string
+        - name: pipelineName
+          description: The name of the seldon pipeline to get inference logs for.
+          in: query
+          required: true
+          type: string
+        - name: modelName
+          description: The name of the seldon model to get inference logs for.
+          in: query
+          required: true
+          type: string
+      tags:
+        - InferenceLogsService
+  /inference-logs/seldondeployments:
+    get:
+      summary: Get inference logs metadata for seldon deployments.
+      operationId: InferenceLogsService_ListDeploymentInferenceLogs
+      responses:
+        "200":
+          description: Inference logs metadata for seldon deployments
+          schema:
+            $ref: '#/definitions/v1ListDeploymentInferenceLogsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+        "501":
+          description: Service not implemented or enabled
+          schema: {}
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      parameters:
+        - name: namespace
+          description: The namespace that this seldon deployment belongs to.
+          in: query
+          required: false
+          type: string
+        - name: deploymentName
+          description: The name of the seldon deployment to get inference logs for.
+          in: query
+          required: false
+          type: string
+        - name: predictorName
+          description: The predictor name of the seldon deployment to get inference logs for. e.g. "default", "canary", "shadow"
+          in: query
+          required: false
+          type: string
+        - name: containerName
+          description: The container name of the seldon deployment to get inference logs for. e.g. "my-container", "input-transformer", "output-transformer"
+          in: query
+          required: false
+          type: string
+      tags:
+        - InferenceLogsService
 produces:
   - application/json
 responses:
@@ -11581,8 +12183,7 @@ responses:
       $ref: '#/definitions/FeatureStatisticsResponse'
   GenericResponse:
     description: Generic
-    schema:
-      type: object
+    schema: {}
   GitDiffResponse:
     description: Git Diff
     schema:
@@ -11607,12 +12208,20 @@ responses:
     description: GenericMessage Message
     schema:
       $ref: '#/definitions/Message'
+  ModelInferenceLogsDownloadResponse:
+    description: ModelInferenceLogsDownloadResponse represents the response for downloading seldon deployment inference logs
+    schema:
+      $ref: '#/definitions/File'
   ResourceListResponse:
     description: Resource list
     schema:
       items:
         $ref: '#/definitions/Component'
       type: array
+  SeldonDeploymentInferenceLogsDownloadResponse:
+    description: SeldonDeploymentInferenceLogsDownloadResponse represents the response for downloading seldon deployment inference logs
+    schema:
+      $ref: '#/definitions/File'
   SeldonDeploymentListResponse:
     description: Seldon Deployment list
     schema:

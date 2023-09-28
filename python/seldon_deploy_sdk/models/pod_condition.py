@@ -31,8 +31,8 @@ class PodCondition(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'last_probe_time': 'Time',
-        'last_transition_time': 'Time',
+        'last_probe_time': 'str',
+        'last_transition_time': 'str',
         'message': 'str',
         'reason': 'str',
         'status': 'ConditionStatus',
@@ -76,9 +76,10 @@ class PodCondition(object):
     def last_probe_time(self):
         """Gets the last_probe_time of this PodCondition.  # noqa: E501
 
+        Last time we probed the condition. +optional  # noqa: E501
 
         :return: The last_probe_time of this PodCondition.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._last_probe_time
 
@@ -86,9 +87,10 @@ class PodCondition(object):
     def last_probe_time(self, last_probe_time):
         """Sets the last_probe_time of this PodCondition.
 
+        Last time we probed the condition. +optional  # noqa: E501
 
         :param last_probe_time: The last_probe_time of this PodCondition.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._last_probe_time = last_probe_time
@@ -97,9 +99,10 @@ class PodCondition(object):
     def last_transition_time(self):
         """Gets the last_transition_time of this PodCondition.  # noqa: E501
 
+        Last time the condition transitioned from one status to another. +optional  # noqa: E501
 
         :return: The last_transition_time of this PodCondition.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._last_transition_time
 
@@ -107,9 +110,10 @@ class PodCondition(object):
     def last_transition_time(self, last_transition_time):
         """Sets the last_transition_time of this PodCondition.
 
+        Last time the condition transitioned from one status to another. +optional  # noqa: E501
 
         :param last_transition_time: The last_transition_time of this PodCondition.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._last_transition_time = last_transition_time

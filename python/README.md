@@ -124,6 +124,10 @@ Class | Method | HTTP request | Description
 *GitOpsApi* | [**seldon_deployment_git_restore**](docs/GitOpsApi.md#seldon_deployment_git_restore) | **POST** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
 *GitOpsApi* | [**seldon_deployment_git_revert**](docs/GitOpsApi.md#seldon_deployment_git_revert) | **POST** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
 *HealthcheckServiceApi* | [**healthcheck_service_get_dependency_health**](docs/HealthcheckServiceApi.md#healthcheck_service_get_dependency_health) | **GET** /healthcheck/{dependency} | List the current health of a specific Seldon Deploy dependency or all of them
+*InferenceLogsServiceApi* | [**inference_logs_service_list_deployment_inference_logs**](docs/InferenceLogsServiceApi.md#inference_logs_service_list_deployment_inference_logs) | **GET** /inference-logs/seldondeployments | Get inference logs metadata for seldon deployments.
+*InferenceLogsServiceApi* | [**inference_logs_service_list_model_inference_logs**](docs/InferenceLogsServiceApi.md#inference_logs_service_list_model_inference_logs) | **GET** /inference-logs/models | Get inference logs metadata for seldon models.
+*InferenceLogsServiceApi* | [**model_inference_logs_download**](docs/InferenceLogsServiceApi.md#model_inference_logs_download) | **POST** /inference-logs/models/download | 
+*InferenceLogsServiceApi* | [**seldon_deployment_inference_logs_download**](docs/InferenceLogsServiceApi.md#seldon_deployment_inference_logs_download) | **POST** /inference-logs/seldondeployments/download | 
 *KubernetesResourcesApi* | [**list_seldon_deployment_resources**](docs/KubernetesResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
 *LoadtestJobsApi* | [**create_loadtest_pipeline**](docs/LoadtestJobsApi.md#create_loadtest_pipeline) | **POST** /namespaces/{namespace}/pipelines/{name}/loadtestjobs | 
 *LoadtestJobsApi* | [**create_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#create_loadtest_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs | 
@@ -246,6 +250,7 @@ Class | Method | HTTP request | Description
  - [DNSPolicy](docs/DNSPolicy.md)
  - [Deployment](docs/Deployment.md)
  - [DeploymentFeatureData](docs/DeploymentFeatureData.md)
+ - [DeploymentInferenceLogsDownloadParams](docs/DeploymentInferenceLogsDownloadParams.md)
  - [DeploymentList](docs/DeploymentList.md)
  - [DeploymentSpec](docs/DeploymentSpec.md)
  - [DeploymentStatus](docs/DeploymentStatus.md)
@@ -289,7 +294,9 @@ Class | Method | HTTP request | Description
  - [FeatureStats](docs/FeatureStats.md)
  - [FeatureStatsBucket](docs/FeatureStatsBucket.md)
  - [FieldsV1](docs/FieldsV1.md)
+ - [File](docs/File.md)
  - [FileDiff](docs/FileDiff.md)
+ - [FileHeader](docs/FileHeader.md)
  - [FinalizerName](docs/FinalizerName.md)
  - [FlexVolumeSource](docs/FlexVolumeSource.md)
  - [FlockerVolumeSource](docs/FlockerVolumeSource.md)
@@ -322,6 +329,7 @@ Class | Method | HTTP request | Description
  - [Logger](docs/Logger.md)
  - [LoggerMode](docs/LoggerMode.md)
  - [LoggingSpec](docs/LoggingSpec.md)
+ - [MIMEHeader](docs/MIMEHeader.md)
  - [ManagedFieldsEntry](docs/ManagedFieldsEntry.md)
  - [ManagedFieldsOperationType](docs/ManagedFieldsOperationType.md)
  - [Message](docs/Message.md)
@@ -329,6 +337,7 @@ Class | Method | HTTP request | Description
  - [MetricSpec](docs/MetricSpec.md)
  - [MetricTargetType](docs/MetricTargetType.md)
  - [Model](docs/Model.md)
+ - [ModelInferenceLogsDownloadParams](docs/ModelInferenceLogsDownloadParams.md)
  - [ModelSpec](docs/ModelSpec.md)
  - [ModelStatus](docs/ModelStatus.md)
  - [MonitorInputData](docs/MonitorInputData.md)
@@ -457,7 +466,6 @@ Class | Method | HTTP request | Description
  - [TCPSocketAction](docs/TCPSocketAction.md)
  - [TaintEffect](docs/TaintEffect.md)
  - [TerminationMessagePolicy](docs/TerminationMessagePolicy.md)
- - [Time](docs/Time.md)
  - [Toleration](docs/Toleration.md)
  - [TolerationOperator](docs/TolerationOperator.md)
  - [TopologySpreadConstraint](docs/TopologySpreadConstraint.md)
@@ -505,7 +513,11 @@ Class | Method | HTTP request | Description
  - [V1GetUsersResponse](docs/V1GetUsersResponse.md)
  - [V1Group](docs/V1Group.md)
  - [V1GroupPolicy](docs/V1GroupPolicy.md)
+ - [V1InferenceLogsDeploymentItem](docs/V1InferenceLogsDeploymentItem.md)
+ - [V1InferenceLogsModelItem](docs/V1InferenceLogsModelItem.md)
  - [V1ListAlertsResponse](docs/V1ListAlertsResponse.md)
+ - [V1ListDeploymentInferenceLogsResponse](docs/V1ListDeploymentInferenceLogsResponse.md)
+ - [V1ListModelInferenceLogsResponse](docs/V1ListModelInferenceLogsResponse.md)
  - [V1ListSecretsResponse](docs/V1ListSecretsResponse.md)
  - [V1Model](docs/V1Model.md)
  - [V1ModelMetadataCreateResponse](docs/V1ModelMetadataCreateResponse.md)
