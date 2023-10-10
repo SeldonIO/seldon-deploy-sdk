@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **pod_i_ps** | [**list[PodIP]**](PodIP.md) | podIPs holds the IP addresses allocated to the pod. If this field is specified, the 0th entry must match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list is empty if no IPs have been allocated yet. +optional +patchStrategy&#x3D;merge +patchMergeKey&#x3D;ip | [optional] 
 **qos_class** | [**PodQOSClass**](PodQOSClass.md) |  | [optional] 
 **reason** | **str** | A brief CamelCase message indicating details about why the pod is in this state. e.g. &#39;Evicted&#39; +optional | [optional] 
-**start_time** | [**Time**](Time.md) |  | [optional] 
+**start_time** | **str** | RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod. +optional | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

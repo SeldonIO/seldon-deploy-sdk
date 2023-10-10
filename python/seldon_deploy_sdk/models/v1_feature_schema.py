@@ -63,8 +63,7 @@ class V1FeatureSchema(object):
         self.discriminator = None
 
         self.name = name
-        if type is not None:
-            self.type = type
+        self.type = type
         if data_type is not None:
             self.data_type = data_type
         if n_categories is not None:
@@ -117,6 +116,8 @@ class V1FeatureSchema(object):
         :param type: The type of this V1FeatureSchema.  # noqa: E501
         :type: V1FeatureType
         """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
 

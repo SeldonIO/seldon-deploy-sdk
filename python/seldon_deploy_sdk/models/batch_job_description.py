@@ -31,8 +31,8 @@ class BatchJobDescription(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'finished_at': 'Time',
-        'started_at': 'Time',
+        'finished_at': 'str',
+        'started_at': 'str',
         'workflow_name': 'str',
         'workflow_status': 'NodePhase',
         'workflow_uid': 'UID'
@@ -71,9 +71,10 @@ class BatchJobDescription(object):
     def finished_at(self):
         """Gets the finished_at of this BatchJobDescription.  # noqa: E501
 
+        Time when job finished  # noqa: E501
 
         :return: The finished_at of this BatchJobDescription.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._finished_at
 
@@ -81,9 +82,10 @@ class BatchJobDescription(object):
     def finished_at(self, finished_at):
         """Sets the finished_at of this BatchJobDescription.
 
+        Time when job finished  # noqa: E501
 
         :param finished_at: The finished_at of this BatchJobDescription.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._finished_at = finished_at
@@ -92,9 +94,10 @@ class BatchJobDescription(object):
     def started_at(self):
         """Gets the started_at of this BatchJobDescription.  # noqa: E501
 
+        Time when job started  # noqa: E501
 
         :return: The started_at of this BatchJobDescription.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._started_at
 
@@ -102,9 +105,10 @@ class BatchJobDescription(object):
     def started_at(self, started_at):
         """Sets the started_at of this BatchJobDescription.
 
+        Time when job started  # noqa: E501
 
         :param started_at: The started_at of this BatchJobDescription.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._started_at = started_at

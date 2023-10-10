@@ -34,9 +34,9 @@ class Pipeline(object):
         'annotations': 'dict(str, str)',
         'api_version': 'str',
         'cluster_name': 'str',
-        'creation_timestamp': 'Time',
+        'creation_timestamp': 'str',
         'deletion_grace_period_seconds': 'int',
-        'deletion_timestamp': 'Time',
+        'deletion_timestamp': 'str',
         'finalizers': 'list[str]',
         'generate_name': 'str',
         'generation': 'int',
@@ -215,9 +215,10 @@ class Pipeline(object):
     def creation_timestamp(self):
         """Gets the creation_timestamp of this Pipeline.  # noqa: E501
 
+        CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.  Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata +optional  # noqa: E501
 
         :return: The creation_timestamp of this Pipeline.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._creation_timestamp
 
@@ -225,9 +226,10 @@ class Pipeline(object):
     def creation_timestamp(self, creation_timestamp):
         """Sets the creation_timestamp of this Pipeline.
 
+        CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.  Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata +optional  # noqa: E501
 
         :param creation_timestamp: The creation_timestamp of this Pipeline.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._creation_timestamp = creation_timestamp
@@ -259,9 +261,10 @@ class Pipeline(object):
     def deletion_timestamp(self):
         """Gets the deletion_timestamp of this Pipeline.  # noqa: E501
 
+        DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.  Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata +optional  # noqa: E501
 
         :return: The deletion_timestamp of this Pipeline.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._deletion_timestamp
 
@@ -269,9 +272,10 @@ class Pipeline(object):
     def deletion_timestamp(self, deletion_timestamp):
         """Sets the deletion_timestamp of this Pipeline.
 
+        DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.  Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata +optional  # noqa: E501
 
         :param deletion_timestamp: The deletion_timestamp of this Pipeline.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._deletion_timestamp = deletion_timestamp

@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.time import Time  # noqa: E501
+from seldon_deploy_sdk.models.body import Body  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestTime(unittest.TestCase):
-    """Time unit test stubs"""
+class TestBody(unittest.TestCase):
+    """Body unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestTime(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testTime(self):
-        """Test Time"""
+    def testBody(self):
+        """Test Body"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.time.Time()  # noqa: E501
+        # model = seldon_deploy_sdk.models.body.Body()  # noqa: E501
         pass
 
 

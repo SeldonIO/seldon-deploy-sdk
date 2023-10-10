@@ -235,43 +235,43 @@ class PermissionManagementServiceApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def permission_management_service_create_policy(self, body, **kwargs):  # noqa: E501
+    def permission_management_service_create_policy(self, policy, **kwargs):  # noqa: E501
         """Create an authorization policy. The user must have `grant` permissions on the resource in the policy.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.permission_management_service_create_policy(body, async_req=True)
+        >>> thread = api.permission_management_service_create_policy(policy, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1Policy body: (required)
+        :param V1Policy policy: (required)
         :return: V1CreatePolicyResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.permission_management_service_create_policy_with_http_info(body, **kwargs)  # noqa: E501
+            return self.permission_management_service_create_policy_with_http_info(policy, **kwargs)  # noqa: E501
         else:
-            (data) = self.permission_management_service_create_policy_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.permission_management_service_create_policy_with_http_info(policy, **kwargs)  # noqa: E501
             return data
 
-    def permission_management_service_create_policy_with_http_info(self, body, **kwargs):  # noqa: E501
+    def permission_management_service_create_policy_with_http_info(self, policy, **kwargs):  # noqa: E501
         """Create an authorization policy. The user must have `grant` permissions on the resource in the policy.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.permission_management_service_create_policy_with_http_info(body, async_req=True)
+        >>> thread = api.permission_management_service_create_policy_with_http_info(policy, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1Policy body: (required)
+        :param V1Policy policy: (required)
         :return: V1CreatePolicyResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['policy']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -286,10 +286,10 @@ class PermissionManagementServiceApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `permission_management_service_create_policy`")  # noqa: E501
+        # verify the required parameter 'policy' is set
+        if ('policy' not in params or
+                params['policy'] is None):
+            raise ValueError("Missing the required parameter `policy` when calling `permission_management_service_create_policy`")  # noqa: E501
 
         collection_formats = {}
 
@@ -303,8 +303,8 @@ class PermissionManagementServiceApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 'policy' in params:
+            body_params = params['policy']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

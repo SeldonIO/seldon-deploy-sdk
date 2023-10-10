@@ -33,11 +33,11 @@ class ContainerStateTerminated(object):
     swagger_types = {
         'container_id': 'str',
         'exit_code': 'int',
-        'finished_at': 'Time',
+        'finished_at': 'str',
         'message': 'str',
         'reason': 'str',
         'signal': 'int',
-        'started_at': 'Time'
+        'started_at': 'str'
     }
 
     attribute_map = {
@@ -127,9 +127,10 @@ class ContainerStateTerminated(object):
     def finished_at(self):
         """Gets the finished_at of this ContainerStateTerminated.  # noqa: E501
 
+        Time at which the container last terminated +optional  # noqa: E501
 
         :return: The finished_at of this ContainerStateTerminated.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._finished_at
 
@@ -137,9 +138,10 @@ class ContainerStateTerminated(object):
     def finished_at(self, finished_at):
         """Sets the finished_at of this ContainerStateTerminated.
 
+        Time at which the container last terminated +optional  # noqa: E501
 
         :param finished_at: The finished_at of this ContainerStateTerminated.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._finished_at = finished_at
@@ -217,9 +219,10 @@ class ContainerStateTerminated(object):
     def started_at(self):
         """Gets the started_at of this ContainerStateTerminated.  # noqa: E501
 
+        Time at which previous execution of the container started +optional  # noqa: E501
 
         :return: The started_at of this ContainerStateTerminated.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._started_at
 
@@ -227,9 +230,10 @@ class ContainerStateTerminated(object):
     def started_at(self, started_at):
         """Sets the started_at of this ContainerStateTerminated.
 
+        Time at which previous execution of the container started +optional  # noqa: E501
 
         :param started_at: The started_at of this ContainerStateTerminated.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._started_at = started_at

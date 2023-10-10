@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**type** | [**V1FeatureType**](V1FeatureType.md) |  | [optional] 
+**type** | [**V1FeatureType**](V1FeatureType.md) |  | 
 **data_type** | [**V1DataType**](V1DataType.md) |  | [optional] 
 **n_categories** | **str** |  | [optional] 
 **category_map** | **dict(str, str)** |  | [optional] 
