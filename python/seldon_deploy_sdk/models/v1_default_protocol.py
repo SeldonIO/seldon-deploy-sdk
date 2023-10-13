@@ -28,7 +28,7 @@ class V1DefaultProtocol(object):
     """
     UNKNOWN = "PROTOCOL_UNKNOWN"
     SELDON = "PROTOCOL_SELDON"
-    TENSERFLOW = "PROTOCOL_TENSERFLOW"
+    TENSORFLOW = "PROTOCOL_TENSORFLOW"
     V2 = "PROTOCOL_V2"
 
     """

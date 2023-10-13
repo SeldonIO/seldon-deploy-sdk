@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permission_management_service_create_policy**
-> V1CreatePolicyResponse permission_management_service_create_policy(body)
+> V1CreatePolicyResponse permission_management_service_create_policy(policy)
 
 Create an authorization policy. The user must have `grant` permissions on the resource in the policy.
 
@@ -142,11 +142,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = seldon_deploy_sdk.PermissionManagementServiceApi(seldon_deploy_sdk.ApiClient(configuration))
-body = seldon_deploy_sdk.V1Policy() # V1Policy | 
+policy = seldon_deploy_sdk.V1Policy() # V1Policy | 
 
 try:
     # Create an authorization policy. The user must have `grant` permissions on the resource in the policy.
-    api_response = api_instance.permission_management_service_create_policy(body)
+    api_response = api_instance.permission_management_service_create_policy(policy)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PermissionManagementServiceApi->permission_management_service_create_policy: %s\n" % e)
@@ -156,7 +156,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**V1Policy**](V1Policy.md)|  | 
+ **policy** | [**V1Policy**](V1Policy.md)|  | 
 
 ### Return type
 

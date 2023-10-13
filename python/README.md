@@ -124,6 +124,10 @@ Class | Method | HTTP request | Description
 *GitOpsApi* | [**seldon_deployment_git_restore**](docs/GitOpsApi.md#seldon_deployment_git_restore) | **POST** /namespaces/{namespace}/seldondeployments/{name}/gitrestore | 
 *GitOpsApi* | [**seldon_deployment_git_revert**](docs/GitOpsApi.md#seldon_deployment_git_revert) | **POST** /namespaces/{namespace}/seldondeployments/{name}/gitrevert | 
 *HealthcheckServiceApi* | [**healthcheck_service_get_dependency_health**](docs/HealthcheckServiceApi.md#healthcheck_service_get_dependency_health) | **GET** /healthcheck/{dependency} | List the current health of a specific Seldon Deploy dependency or all of them
+*InferenceLogsServiceApi* | [**inference_logs_service_get_deployment_inference_logs**](docs/InferenceLogsServiceApi.md#inference_logs_service_get_deployment_inference_logs) | **POST** /inference-logs/namespace/{namespace}/seldondeployments/{deploymentName} | Get inference logs for seldon deployments.
+*InferenceLogsServiceApi* | [**inference_logs_service_get_model_inference_logs**](docs/InferenceLogsServiceApi.md#inference_logs_service_get_model_inference_logs) | **POST** /inference-logs/namespace/{namespace}/pipelines/{pipelineName}/models/{modelName} | Get inference logs for seldon models.
+*InferenceLogsServiceApi* | [**inference_logs_service_list_deployment_inference_logs**](docs/InferenceLogsServiceApi.md#inference_logs_service_list_deployment_inference_logs) | **GET** /inference-logs/seldondeployments | Get inference logs metadata for seldon deployments.
+*InferenceLogsServiceApi* | [**inference_logs_service_list_model_inference_logs**](docs/InferenceLogsServiceApi.md#inference_logs_service_list_model_inference_logs) | **GET** /inference-logs/models | Get inference logs metadata for seldon models.
 *KubernetesResourcesApi* | [**list_seldon_deployment_resources**](docs/KubernetesResourcesApi.md#list_seldon_deployment_resources) | **GET** /namespaces/{namespace}/seldondeployments/{name}/resources | 
 *LoadtestJobsApi* | [**create_loadtest_pipeline**](docs/LoadtestJobsApi.md#create_loadtest_pipeline) | **POST** /namespaces/{namespace}/pipelines/{name}/loadtestjobs | 
 *LoadtestJobsApi* | [**create_loadtest_seldon_deployment**](docs/LoadtestJobsApi.md#create_loadtest_seldon_deployment) | **POST** /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs | 
@@ -221,6 +225,8 @@ Class | Method | HTTP request | Description
  - [BatchJobGetResponse](docs/BatchJobGetResponse.md)
  - [BatchJobPostResponse](docs/BatchJobPostResponse.md)
  - [BatchJobsListResponse](docs/BatchJobsListResponse.md)
+ - [Body](docs/Body.md)
+ - [Body1](docs/Body1.md)
  - [CSIVolumeSource](docs/CSIVolumeSource.md)
  - [Capabilities](docs/Capabilities.md)
  - [Capability](docs/Capability.md)
@@ -457,7 +463,6 @@ Class | Method | HTTP request | Description
  - [TCPSocketAction](docs/TCPSocketAction.md)
  - [TaintEffect](docs/TaintEffect.md)
  - [TerminationMessagePolicy](docs/TerminationMessagePolicy.md)
- - [Time](docs/Time.md)
  - [Toleration](docs/Toleration.md)
  - [TolerationOperator](docs/TolerationOperator.md)
  - [TopologySpreadConstraint](docs/TopologySpreadConstraint.md)
@@ -497,15 +502,22 @@ Class | Method | HTTP request | Description
  - [V1FeatureSchema](docs/V1FeatureSchema.md)
  - [V1FeatureType](docs/V1FeatureType.md)
  - [V1FiringAlert](docs/V1FiringAlert.md)
+ - [V1GetDeploymentInferenceLogsResponse](docs/V1GetDeploymentInferenceLogsResponse.md)
  - [V1GetGroupMembersResponse](docs/V1GetGroupMembersResponse.md)
  - [V1GetGroupsResponse](docs/V1GetGroupsResponse.md)
+ - [V1GetModelInferenceLogsResponse](docs/V1GetModelInferenceLogsResponse.md)
  - [V1GetPermissionsResponse](docs/V1GetPermissionsResponse.md)
  - [V1GetPolicyTargetsResponse](docs/V1GetPolicyTargetsResponse.md)
  - [V1GetUserGroupsResponse](docs/V1GetUserGroupsResponse.md)
  - [V1GetUsersResponse](docs/V1GetUsersResponse.md)
  - [V1Group](docs/V1Group.md)
  - [V1GroupPolicy](docs/V1GroupPolicy.md)
+ - [V1InferenceLogsDeploymentItem](docs/V1InferenceLogsDeploymentItem.md)
+ - [V1InferenceLogsModelItem](docs/V1InferenceLogsModelItem.md)
+ - [V1InferenceLogsRawPayload](docs/V1InferenceLogsRawPayload.md)
  - [V1ListAlertsResponse](docs/V1ListAlertsResponse.md)
+ - [V1ListDeploymentInferenceLogsResponse](docs/V1ListDeploymentInferenceLogsResponse.md)
+ - [V1ListModelInferenceLogsResponse](docs/V1ListModelInferenceLogsResponse.md)
  - [V1ListSecretsResponse](docs/V1ListSecretsResponse.md)
  - [V1Model](docs/V1Model.md)
  - [V1ModelMetadataCreateResponse](docs/V1ModelMetadataCreateResponse.md)

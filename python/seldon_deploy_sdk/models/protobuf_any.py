@@ -31,70 +31,42 @@ class ProtobufAny(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'type_url': 'str',
-        'value': 'str'
+        'type': 'str'
     }
 
     attribute_map = {
-        'type_url': 'typeUrl',
-        'value': 'value'
+        'type': '@type'
     }
 
-    def __init__(self, type_url=None, value=None):  # noqa: E501
+    def __init__(self, type=None):  # noqa: E501
         """ProtobufAny - a model defined in Swagger"""  # noqa: E501
 
-        self._type_url = None
-        self._value = None
+        self._type = None
         self.discriminator = None
 
-        if type_url is not None:
-            self.type_url = type_url
-        if value is not None:
-            self.value = value
+        if type is not None:
+            self.type = type
 
     @property
-    def type_url(self):
-        """Gets the type_url of this ProtobufAny.  # noqa: E501
+    def type(self):
+        """Gets the type of this ProtobufAny.  # noqa: E501
 
 
-        :return: The type_url of this ProtobufAny.  # noqa: E501
+        :return: The type of this ProtobufAny.  # noqa: E501
         :rtype: str
         """
-        return self._type_url
+        return self._type
 
-    @type_url.setter
-    def type_url(self, type_url):
-        """Sets the type_url of this ProtobufAny.
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ProtobufAny.
 
 
-        :param type_url: The type_url of this ProtobufAny.  # noqa: E501
+        :param type: The type of this ProtobufAny.  # noqa: E501
         :type: str
         """
 
-        self._type_url = type_url
-
-    @property
-    def value(self):
-        """Gets the value of this ProtobufAny.  # noqa: E501
-
-
-        :return: The value of this ProtobufAny.  # noqa: E501
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this ProtobufAny.
-
-
-        :param value: The value of this ProtobufAny.  # noqa: E501
-        :type: str
-        """
-        if value is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', value):  # noqa: E501
-            raise ValueError(r"Invalid value for `value`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501
-
-        self._value = value
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

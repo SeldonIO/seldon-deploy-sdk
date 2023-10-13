@@ -31,7 +31,7 @@ class ContainerStateRunning(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'started_at': 'Time'
+        'started_at': 'str'
     }
 
     attribute_map = {
@@ -51,9 +51,10 @@ class ContainerStateRunning(object):
     def started_at(self):
         """Gets the started_at of this ContainerStateRunning.  # noqa: E501
 
+        Time at which the container was last (re-)started +optional  # noqa: E501
 
         :return: The started_at of this ContainerStateRunning.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._started_at
 
@@ -61,9 +62,10 @@ class ContainerStateRunning(object):
     def started_at(self, started_at):
         """Sets the started_at of this ContainerStateRunning.
 
+        Time at which the container was last (re-)started +optional  # noqa: E501
 
         :param started_at: The started_at of this ContainerStateRunning.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._started_at = started_at

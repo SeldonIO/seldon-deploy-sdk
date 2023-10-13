@@ -33,47 +33,47 @@ class SecretsServiceApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def secrets_service_create_gcs_bucket_secret(self, namespace, remote, body, **kwargs):  # noqa: E501
+    def secrets_service_create_gcs_bucket_secret(self, namespace, remote, account_credentials, **kwargs):  # noqa: E501
         """Creates a GCS bucket secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_gcs_bucket_secret(namespace, remote, body, async_req=True)
+        >>> thread = api.secrets_service_create_gcs_bucket_secret(namespace, remote, account_credentials, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
-        :param object body: The GCS account credentials to populate the secret. See documentation for how to generate this. (required)
+        :param object account_credentials: (required)
         :return: V1CreateGCSBucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.secrets_service_create_gcs_bucket_secret_with_http_info(namespace, remote, body, **kwargs)  # noqa: E501
+            return self.secrets_service_create_gcs_bucket_secret_with_http_info(namespace, remote, account_credentials, **kwargs)  # noqa: E501
         else:
-            (data) = self.secrets_service_create_gcs_bucket_secret_with_http_info(namespace, remote, body, **kwargs)  # noqa: E501
+            (data) = self.secrets_service_create_gcs_bucket_secret_with_http_info(namespace, remote, account_credentials, **kwargs)  # noqa: E501
             return data
 
-    def secrets_service_create_gcs_bucket_secret_with_http_info(self, namespace, remote, body, **kwargs):  # noqa: E501
+    def secrets_service_create_gcs_bucket_secret_with_http_info(self, namespace, remote, account_credentials, **kwargs):  # noqa: E501
         """Creates a GCS bucket secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_gcs_bucket_secret_with_http_info(namespace, remote, body, async_req=True)
+        >>> thread = api.secrets_service_create_gcs_bucket_secret_with_http_info(namespace, remote, account_credentials, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
-        :param object body: The GCS account credentials to populate the secret. See documentation for how to generate this. (required)
+        :param object account_credentials: (required)
         :return: V1CreateGCSBucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'remote', 'body']  # noqa: E501
+        all_params = ['namespace', 'remote', 'account_credentials']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -96,10 +96,10 @@ class SecretsServiceApi(object):
         if ('remote' not in params or
                 params['remote'] is None):
             raise ValueError("Missing the required parameter `remote` when calling `secrets_service_create_gcs_bucket_secret`")  # noqa: E501
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `secrets_service_create_gcs_bucket_secret`")  # noqa: E501
+        # verify the required parameter 'account_credentials' is set
+        if ('account_credentials' not in params or
+                params['account_credentials'] is None):
+            raise ValueError("Missing the required parameter `account_credentials` when calling `secrets_service_create_gcs_bucket_secret`")  # noqa: E501
 
         collection_formats = {}
 
@@ -117,8 +117,8 @@ class SecretsServiceApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 'account_credentials' in params:
+            body_params = params['account_credentials']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -146,18 +146,18 @@ class SecretsServiceApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def secrets_service_create_rclone_bucket_secret(self, namespace, remote, body, **kwargs):  # noqa: E501
+    def secrets_service_create_rclone_bucket_secret(self, namespace, remote, rclone_config, **kwargs):  # noqa: E501
         """Creates a generic rclone bucket secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_rclone_bucket_secret(namespace, remote, body, async_req=True)
+        >>> thread = api.secrets_service_create_rclone_bucket_secret(namespace, remote, rclone_config, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
-        :param V1RcloneConfig body: The rclone key value pairs. (required)
+        :param V1RcloneConfig rclone_config: (required)
         :param str format: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
         :return: V1CreateRcloneBucketSecretResponse
                  If the method is called asynchronously,
@@ -165,30 +165,30 @@ class SecretsServiceApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.secrets_service_create_rclone_bucket_secret_with_http_info(namespace, remote, body, **kwargs)  # noqa: E501
+            return self.secrets_service_create_rclone_bucket_secret_with_http_info(namespace, remote, rclone_config, **kwargs)  # noqa: E501
         else:
-            (data) = self.secrets_service_create_rclone_bucket_secret_with_http_info(namespace, remote, body, **kwargs)  # noqa: E501
+            (data) = self.secrets_service_create_rclone_bucket_secret_with_http_info(namespace, remote, rclone_config, **kwargs)  # noqa: E501
             return data
 
-    def secrets_service_create_rclone_bucket_secret_with_http_info(self, namespace, remote, body, **kwargs):  # noqa: E501
+    def secrets_service_create_rclone_bucket_secret_with_http_info(self, namespace, remote, rclone_config, **kwargs):  # noqa: E501
         """Creates a generic rclone bucket secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_rclone_bucket_secret_with_http_info(namespace, remote, body, async_req=True)
+        >>> thread = api.secrets_service_create_rclone_bucket_secret_with_http_info(namespace, remote, rclone_config, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
-        :param V1RcloneConfig body: The rclone key value pairs. (required)
+        :param V1RcloneConfig rclone_config: (required)
         :param str format: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
         :return: V1CreateRcloneBucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'remote', 'body', 'format']  # noqa: E501
+        all_params = ['namespace', 'remote', 'rclone_config', 'format']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -211,10 +211,10 @@ class SecretsServiceApi(object):
         if ('remote' not in params or
                 params['remote'] is None):
             raise ValueError("Missing the required parameter `remote` when calling `secrets_service_create_rclone_bucket_secret`")  # noqa: E501
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `secrets_service_create_rclone_bucket_secret`")  # noqa: E501
+        # verify the required parameter 'rclone_config' is set
+        if ('rclone_config' not in params or
+                params['rclone_config'] is None):
+            raise ValueError("Missing the required parameter `rclone_config` when calling `secrets_service_create_rclone_bucket_secret`")  # noqa: E501
 
         collection_formats = {}
 
@@ -234,8 +234,8 @@ class SecretsServiceApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 'rclone_config' in params:
+            body_params = params['rclone_config']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -263,47 +263,47 @@ class SecretsServiceApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def secrets_service_create_registry_secret(self, namespace, name, body, **kwargs):  # noqa: E501
+    def secrets_service_create_registry_secret(self, namespace, name, credentials_config, **kwargs):  # noqa: E501
         """Creates a registry secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_registry_secret(namespace, name, body, async_req=True)
+        >>> thread = api.secrets_service_create_registry_secret(namespace, name, credentials_config, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str name: The name of the secret to create. (required)
-        :param object body: The raw json docker credentials config. (required)
+        :param object credentials_config: (required)
         :return: V1CreateRegistrySecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.secrets_service_create_registry_secret_with_http_info(namespace, name, body, **kwargs)  # noqa: E501
+            return self.secrets_service_create_registry_secret_with_http_info(namespace, name, credentials_config, **kwargs)  # noqa: E501
         else:
-            (data) = self.secrets_service_create_registry_secret_with_http_info(namespace, name, body, **kwargs)  # noqa: E501
+            (data) = self.secrets_service_create_registry_secret_with_http_info(namespace, name, credentials_config, **kwargs)  # noqa: E501
             return data
 
-    def secrets_service_create_registry_secret_with_http_info(self, namespace, name, body, **kwargs):  # noqa: E501
+    def secrets_service_create_registry_secret_with_http_info(self, namespace, name, credentials_config, **kwargs):  # noqa: E501
         """Creates a registry secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_registry_secret_with_http_info(namespace, name, body, async_req=True)
+        >>> thread = api.secrets_service_create_registry_secret_with_http_info(namespace, name, credentials_config, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str name: The name of the secret to create. (required)
-        :param object body: The raw json docker credentials config. (required)
+        :param object credentials_config: (required)
         :return: V1CreateRegistrySecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'name', 'body']  # noqa: E501
+        all_params = ['namespace', 'name', 'credentials_config']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -326,10 +326,10 @@ class SecretsServiceApi(object):
         if ('name' not in params or
                 params['name'] is None):
             raise ValueError("Missing the required parameter `name` when calling `secrets_service_create_registry_secret`")  # noqa: E501
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `secrets_service_create_registry_secret`")  # noqa: E501
+        # verify the required parameter 'credentials_config' is set
+        if ('credentials_config' not in params or
+                params['credentials_config'] is None):
+            raise ValueError("Missing the required parameter `credentials_config` when calling `secrets_service_create_registry_secret`")  # noqa: E501
 
         collection_formats = {}
 
@@ -347,8 +347,8 @@ class SecretsServiceApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 'credentials_config' in params:
+            body_params = params['credentials_config']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -376,47 +376,47 @@ class SecretsServiceApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def secrets_service_create_s3_bucket_secret(self, namespace, remote, body, **kwargs):  # noqa: E501
+    def secrets_service_create_s3_bucket_secret(self, namespace, remote, s3_credentials, **kwargs):  # noqa: E501
         """Creates a S3 bucket secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_s3_bucket_secret(namespace, remote, body, async_req=True)
+        >>> thread = api.secrets_service_create_s3_bucket_secret(namespace, remote, s3_credentials, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
-        :param V1S3Credentials body: The S3 account credentials to populate the secret. See documentation for how to generate these. (required)
+        :param V1S3Credentials s3_credentials: (required)
         :return: V1CreateS3BucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.secrets_service_create_s3_bucket_secret_with_http_info(namespace, remote, body, **kwargs)  # noqa: E501
+            return self.secrets_service_create_s3_bucket_secret_with_http_info(namespace, remote, s3_credentials, **kwargs)  # noqa: E501
         else:
-            (data) = self.secrets_service_create_s3_bucket_secret_with_http_info(namespace, remote, body, **kwargs)  # noqa: E501
+            (data) = self.secrets_service_create_s3_bucket_secret_with_http_info(namespace, remote, s3_credentials, **kwargs)  # noqa: E501
             return data
 
-    def secrets_service_create_s3_bucket_secret_with_http_info(self, namespace, remote, body, **kwargs):  # noqa: E501
+    def secrets_service_create_s3_bucket_secret_with_http_info(self, namespace, remote, s3_credentials, **kwargs):  # noqa: E501
         """Creates a S3 bucket secret according to specified parameters.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.secrets_service_create_s3_bucket_secret_with_http_info(namespace, remote, body, async_req=True)
+        >>> thread = api.secrets_service_create_s3_bucket_secret_with_http_info(namespace, remote, s3_credentials, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
         :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
-        :param V1S3Credentials body: The S3 account credentials to populate the secret. See documentation for how to generate these. (required)
+        :param V1S3Credentials s3_credentials: (required)
         :return: V1CreateS3BucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'remote', 'body']  # noqa: E501
+        all_params = ['namespace', 'remote', 's3_credentials']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -439,10 +439,10 @@ class SecretsServiceApi(object):
         if ('remote' not in params or
                 params['remote'] is None):
             raise ValueError("Missing the required parameter `remote` when calling `secrets_service_create_s3_bucket_secret`")  # noqa: E501
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `secrets_service_create_s3_bucket_secret`")  # noqa: E501
+        # verify the required parameter 's3_credentials' is set
+        if ('s3_credentials' not in params or
+                params['s3_credentials'] is None):
+            raise ValueError("Missing the required parameter `s3_credentials` when calling `secrets_service_create_s3_bucket_secret`")  # noqa: E501
 
         collection_formats = {}
 
@@ -460,8 +460,8 @@ class SecretsServiceApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 's3_credentials' in params:
+            body_params = params['s3_credentials']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

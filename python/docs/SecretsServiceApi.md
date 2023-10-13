@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **secrets_service_create_gcs_bucket_secret**
-> V1CreateGCSBucketSecretResponse secrets_service_create_gcs_bucket_secret(namespace, remote, body)
+> V1CreateGCSBucketSecretResponse secrets_service_create_gcs_bucket_secret(namespace, remote, account_credentials)
 
 Creates a GCS bucket secret according to specified parameters.
 
@@ -33,11 +33,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.SecretsServiceApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | The namespace to create secret in.
 remote = 'remote_example' # str | The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
-body = NULL # object | The GCS account credentials to populate the secret. See documentation for how to generate this.
+account_credentials = NULL # object | 
 
 try:
     # Creates a GCS bucket secret according to specified parameters.
-    api_response = api_instance.secrets_service_create_gcs_bucket_secret(namespace, remote, body)
+    api_response = api_instance.secrets_service_create_gcs_bucket_secret(namespace, remote, account_credentials)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SecretsServiceApi->secrets_service_create_gcs_bucket_secret: %s\n" % e)
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The namespace to create secret in. | 
  **remote** | **str**| The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. | 
- **body** | **object**| The GCS account credentials to populate the secret. See documentation for how to generate this. | 
+ **account_credentials** | **object**|  | 
 
 ### Return type
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **secrets_service_create_rclone_bucket_secret**
-> V1CreateRcloneBucketSecretResponse secrets_service_create_rclone_bucket_secret(namespace, remote, body, format=format)
+> V1CreateRcloneBucketSecretResponse secrets_service_create_rclone_bucket_secret(namespace, remote, rclone_config, format=format)
 
 Creates a generic rclone bucket secret according to specified parameters.
 
@@ -87,12 +87,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.SecretsServiceApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | The namespace to create secret in.
 remote = 'remote_example' # str | The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
-body = seldon_deploy_sdk.V1RcloneConfig() # V1RcloneConfig | The rclone key value pairs.
+rclone_config = seldon_deploy_sdk.V1RcloneConfig() # V1RcloneConfig | 
 format = 'env_var' # str | The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2. (optional) (default to env_var)
 
 try:
     # Creates a generic rclone bucket secret according to specified parameters.
-    api_response = api_instance.secrets_service_create_rclone_bucket_secret(namespace, remote, body, format=format)
+    api_response = api_instance.secrets_service_create_rclone_bucket_secret(namespace, remote, rclone_config, format=format)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SecretsServiceApi->secrets_service_create_rclone_bucket_secret: %s\n" % e)
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The namespace to create secret in. | 
  **remote** | **str**| The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. | 
- **body** | [**V1RcloneConfig**](V1RcloneConfig.md)| The rclone key value pairs. | 
+ **rclone_config** | [**V1RcloneConfig**](V1RcloneConfig.md)|  | 
  **format** | **str**| The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone&#39;s HTTP API. config_param is suitable for Seldon Core v2. | [optional] [default to env_var]
 
 ### Return type
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **secrets_service_create_registry_secret**
-> V1CreateRegistrySecretResponse secrets_service_create_registry_secret(namespace, name, body)
+> V1CreateRegistrySecretResponse secrets_service_create_registry_secret(namespace, name, credentials_config)
 
 Creates a registry secret according to specified parameters.
 
@@ -143,11 +143,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.SecretsServiceApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | The namespace to create secret in.
 name = 'name_example' # str | The name of the secret to create.
-body = NULL # object | The raw json docker credentials config.
+credentials_config = NULL # object | 
 
 try:
     # Creates a registry secret according to specified parameters.
-    api_response = api_instance.secrets_service_create_registry_secret(namespace, name, body)
+    api_response = api_instance.secrets_service_create_registry_secret(namespace, name, credentials_config)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SecretsServiceApi->secrets_service_create_registry_secret: %s\n" % e)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The namespace to create secret in. | 
  **name** | **str**| The name of the secret to create. | 
- **body** | **object**| The raw json docker credentials config. | 
+ **credentials_config** | **object**|  | 
 
 ### Return type
 
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **secrets_service_create_s3_bucket_secret**
-> V1CreateS3BucketSecretResponse secrets_service_create_s3_bucket_secret(namespace, remote, body)
+> V1CreateS3BucketSecretResponse secrets_service_create_s3_bucket_secret(namespace, remote, s3_credentials)
 
 Creates a S3 bucket secret according to specified parameters.
 
@@ -197,11 +197,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = seldon_deploy_sdk.SecretsServiceApi(seldon_deploy_sdk.ApiClient(configuration))
 namespace = 'namespace_example' # str | The namespace to create secret in.
 remote = 'remote_example' # str | The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
-body = seldon_deploy_sdk.V1S3Credentials() # V1S3Credentials | The S3 account credentials to populate the secret. See documentation for how to generate these.
+s3_credentials = seldon_deploy_sdk.V1S3Credentials() # V1S3Credentials | 
 
 try:
     # Creates a S3 bucket secret according to specified parameters.
-    api_response = api_instance.secrets_service_create_s3_bucket_secret(namespace, remote, body)
+    api_response = api_instance.secrets_service_create_s3_bucket_secret(namespace, remote, s3_credentials)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SecretsServiceApi->secrets_service_create_s3_bucket_secret: %s\n" % e)
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **namespace** | **str**| The namespace to create secret in. | 
  **remote** | **str**| The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. | 
- **body** | [**V1S3Credentials**](V1S3Credentials.md)| The S3 account credentials to populate the secret. See documentation for how to generate these. | 
+ **s3_credentials** | [**V1S3Credentials**](V1S3Credentials.md)|  | 
 
 ### Return type
 

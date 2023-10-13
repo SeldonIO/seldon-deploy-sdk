@@ -12,9 +12,13 @@ Name | Type | Description | Notes
 **batch_transport_protocol** | **str** | Batch Transport Protocol (rest or grpc) | [optional] 
 **batch_workers** | **int** | Number of batch workers | [optional] 
 **input_data** | **str** | S3 URI of input data file | [optional] 
+**limits_cpu** | **str** | Container Resources for running batch jobs: limits: CPU | [optional] 
+**limits_memory** | **str** | Container Resources for running batch jobs: limits: Memory | [optional] 
 **object_store_secret_name** | **str** | name of Kubernetes Secret with S3 credentials | [optional] 
 **output_data** | **str** | S3 URI of output data file | [optional] 
 **pvc_size** | **str** | Size of PVC required for the batch job | [optional] 
+**requests_cpu** | **str** | Container Resources for running batch jobs: requests: CPU | [optional] 
+**requests_memory** | **str** | Container Resources for running batch jobs: requests: Memory | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

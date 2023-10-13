@@ -43,7 +43,7 @@ class PodStatus(object):
         'pod_i_ps': 'list[PodIP]',
         'qos_class': 'PodQOSClass',
         'reason': 'str',
-        'start_time': 'Time'
+        'start_time': 'str'
     }
 
     attribute_map = {
@@ -383,9 +383,10 @@ class PodStatus(object):
     def start_time(self):
         """Gets the start_time of this PodStatus.  # noqa: E501
 
+        RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod. +optional  # noqa: E501
 
         :return: The start_time of this PodStatus.  # noqa: E501
-        :rtype: Time
+        :rtype: str
         """
         return self._start_time
 
@@ -393,9 +394,10 @@ class PodStatus(object):
     def start_time(self, start_time):
         """Sets the start_time of this PodStatus.
 
+        RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod. +optional  # noqa: E501
 
         :param start_time: The start_time of this PodStatus.  # noqa: E501
-        :type: Time
+        :type: str
         """
 
         self._start_time = start_time

@@ -40,9 +40,13 @@ class BatchJobDefinition(object):
         'batch_transport_protocol': 'str',
         'batch_workers': 'int',
         'input_data': 'str',
+        'limits_cpu': 'str',
+        'limits_memory': 'str',
         'object_store_secret_name': 'str',
         'output_data': 'str',
-        'pvc_size': 'str'
+        'pvc_size': 'str',
+        'requests_cpu': 'str',
+        'requests_memory': 'str'
     }
 
     attribute_map = {
@@ -55,12 +59,16 @@ class BatchJobDefinition(object):
         'batch_transport_protocol': 'batchTransportProtocol',
         'batch_workers': 'batchWorkers',
         'input_data': 'inputData',
+        'limits_cpu': 'limitsCpu',
+        'limits_memory': 'limitsMemory',
         'object_store_secret_name': 'objectStoreSecretName',
         'output_data': 'outputData',
-        'pvc_size': 'pvcSize'
+        'pvc_size': 'pvcSize',
+        'requests_cpu': 'requestsCpu',
+        'requests_memory': 'requestsMemory'
     }
 
-    def __init__(self, batch_data_type=None, batch_interval=None, batch_method=None, batch_payload_type=None, batch_retries=None, batch_size=None, batch_transport_protocol=None, batch_workers=None, input_data=None, object_store_secret_name=None, output_data=None, pvc_size=None):  # noqa: E501
+    def __init__(self, batch_data_type=None, batch_interval=None, batch_method=None, batch_payload_type=None, batch_retries=None, batch_size=None, batch_transport_protocol=None, batch_workers=None, input_data=None, limits_cpu=None, limits_memory=None, object_store_secret_name=None, output_data=None, pvc_size=None, requests_cpu=None, requests_memory=None):  # noqa: E501
         """BatchJobDefinition - a model defined in Swagger"""  # noqa: E501
 
         self._batch_data_type = None
@@ -72,9 +80,13 @@ class BatchJobDefinition(object):
         self._batch_transport_protocol = None
         self._batch_workers = None
         self._input_data = None
+        self._limits_cpu = None
+        self._limits_memory = None
         self._object_store_secret_name = None
         self._output_data = None
         self._pvc_size = None
+        self._requests_cpu = None
+        self._requests_memory = None
         self.discriminator = None
 
         if batch_data_type is not None:
@@ -95,12 +107,20 @@ class BatchJobDefinition(object):
             self.batch_workers = batch_workers
         if input_data is not None:
             self.input_data = input_data
+        if limits_cpu is not None:
+            self.limits_cpu = limits_cpu
+        if limits_memory is not None:
+            self.limits_memory = limits_memory
         if object_store_secret_name is not None:
             self.object_store_secret_name = object_store_secret_name
         if output_data is not None:
             self.output_data = output_data
         if pvc_size is not None:
             self.pvc_size = pvc_size
+        if requests_cpu is not None:
+            self.requests_cpu = requests_cpu
+        if requests_memory is not None:
+            self.requests_memory = requests_memory
 
     @property
     def batch_data_type(self):
@@ -310,6 +330,52 @@ class BatchJobDefinition(object):
         self._input_data = input_data
 
     @property
+    def limits_cpu(self):
+        """Gets the limits_cpu of this BatchJobDefinition.  # noqa: E501
+
+        Container Resources for running batch jobs: limits: CPU  # noqa: E501
+
+        :return: The limits_cpu of this BatchJobDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._limits_cpu
+
+    @limits_cpu.setter
+    def limits_cpu(self, limits_cpu):
+        """Sets the limits_cpu of this BatchJobDefinition.
+
+        Container Resources for running batch jobs: limits: CPU  # noqa: E501
+
+        :param limits_cpu: The limits_cpu of this BatchJobDefinition.  # noqa: E501
+        :type: str
+        """
+
+        self._limits_cpu = limits_cpu
+
+    @property
+    def limits_memory(self):
+        """Gets the limits_memory of this BatchJobDefinition.  # noqa: E501
+
+        Container Resources for running batch jobs: limits: Memory  # noqa: E501
+
+        :return: The limits_memory of this BatchJobDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._limits_memory
+
+    @limits_memory.setter
+    def limits_memory(self, limits_memory):
+        """Sets the limits_memory of this BatchJobDefinition.
+
+        Container Resources for running batch jobs: limits: Memory  # noqa: E501
+
+        :param limits_memory: The limits_memory of this BatchJobDefinition.  # noqa: E501
+        :type: str
+        """
+
+        self._limits_memory = limits_memory
+
+    @property
     def object_store_secret_name(self):
         """Gets the object_store_secret_name of this BatchJobDefinition.  # noqa: E501
 
@@ -377,6 +443,52 @@ class BatchJobDefinition(object):
         """
 
         self._pvc_size = pvc_size
+
+    @property
+    def requests_cpu(self):
+        """Gets the requests_cpu of this BatchJobDefinition.  # noqa: E501
+
+        Container Resources for running batch jobs: requests: CPU  # noqa: E501
+
+        :return: The requests_cpu of this BatchJobDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._requests_cpu
+
+    @requests_cpu.setter
+    def requests_cpu(self, requests_cpu):
+        """Sets the requests_cpu of this BatchJobDefinition.
+
+        Container Resources for running batch jobs: requests: CPU  # noqa: E501
+
+        :param requests_cpu: The requests_cpu of this BatchJobDefinition.  # noqa: E501
+        :type: str
+        """
+
+        self._requests_cpu = requests_cpu
+
+    @property
+    def requests_memory(self):
+        """Gets the requests_memory of this BatchJobDefinition.  # noqa: E501
+
+        Container Resources for running batch jobs: requests: Memory  # noqa: E501
+
+        :return: The requests_memory of this BatchJobDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._requests_memory
+
+    @requests_memory.setter
+    def requests_memory(self, requests_memory):
+        """Sets the requests_memory of this BatchJobDefinition.
+
+        Container Resources for running batch jobs: requests: Memory  # noqa: E501
+
+        :param requests_memory: The requests_memory of this BatchJobDefinition.  # noqa: E501
+        :type: str
+        """
+
+        self._requests_memory = requests_memory
 
     def to_dict(self):
         """Returns the model properties as a dict"""

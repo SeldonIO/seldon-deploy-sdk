@@ -33,43 +33,43 @@ class ModelMetadataServiceApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def model_metadata_service_create_model_metadata(self, body, **kwargs):  # noqa: E501
+    def model_metadata_service_create_model_metadata(self, model, **kwargs):  # noqa: E501
         """Create a Model Metadata entry.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.model_metadata_service_create_model_metadata(body, async_req=True)
+        >>> thread = api.model_metadata_service_create_model_metadata(model, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1Model body: (required)
+        :param V1Model model: (required)
         :return: V1ModelMetadataCreateResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.model_metadata_service_create_model_metadata_with_http_info(body, **kwargs)  # noqa: E501
+            return self.model_metadata_service_create_model_metadata_with_http_info(model, **kwargs)  # noqa: E501
         else:
-            (data) = self.model_metadata_service_create_model_metadata_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.model_metadata_service_create_model_metadata_with_http_info(model, **kwargs)  # noqa: E501
             return data
 
-    def model_metadata_service_create_model_metadata_with_http_info(self, body, **kwargs):  # noqa: E501
+    def model_metadata_service_create_model_metadata_with_http_info(self, model, **kwargs):  # noqa: E501
         """Create a Model Metadata entry.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.model_metadata_service_create_model_metadata_with_http_info(body, async_req=True)
+        >>> thread = api.model_metadata_service_create_model_metadata_with_http_info(model, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1Model body: (required)
+        :param V1Model model: (required)
         :return: V1ModelMetadataCreateResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['model']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -84,10 +84,10 @@ class ModelMetadataServiceApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `model_metadata_service_create_model_metadata`")  # noqa: E501
+        # verify the required parameter 'model' is set
+        if ('model' not in params or
+                params['model'] is None):
+            raise ValueError("Missing the required parameter `model` when calling `model_metadata_service_create_model_metadata`")  # noqa: E501
 
         collection_formats = {}
 
@@ -101,8 +101,8 @@ class ModelMetadataServiceApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 'model' in params:
+            body_params = params['model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -254,7 +254,7 @@ class ModelMetadataServiceApi(object):
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
         :param str project:
-        :param str order_by: The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.
+        :param str order_by: Based on https://cloud.google.com/apis/design/design_patterns#sorting_order  The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.
         :param str default_protocol:
         :return: V1ModelMetadataListResponse
                  If the method is called asynchronously,
@@ -290,7 +290,7 @@ class ModelMetadataServiceApi(object):
         :param str page_token: Optional. A pagination token returned from a previous call to `List` that indicates where this listing should continue from.
         :param str list_mask: Optional. Can be used to specify which fields of Model you wish to return in the response. If left empty all fields will be returned.
         :param str project:
-        :param str order_by: The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.
+        :param str order_by: Based on https://cloud.google.com/apis/design/design_patterns#sorting_order  The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.
         :param str default_protocol:
         :return: V1ModelMetadataListResponse
                  If the method is called asynchronously,
@@ -517,43 +517,43 @@ class ModelMetadataServiceApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def model_metadata_service_update_model_metadata(self, body, **kwargs):  # noqa: E501
+    def model_metadata_service_update_model_metadata(self, model, **kwargs):  # noqa: E501
         """Update a Model Metadata entry.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.model_metadata_service_update_model_metadata(body, async_req=True)
+        >>> thread = api.model_metadata_service_update_model_metadata(model, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1Model body: (required)
+        :param V1Model model: (required)
         :return: V1ModelMetadataUpdateResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.model_metadata_service_update_model_metadata_with_http_info(body, **kwargs)  # noqa: E501
+            return self.model_metadata_service_update_model_metadata_with_http_info(model, **kwargs)  # noqa: E501
         else:
-            (data) = self.model_metadata_service_update_model_metadata_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.model_metadata_service_update_model_metadata_with_http_info(model, **kwargs)  # noqa: E501
             return data
 
-    def model_metadata_service_update_model_metadata_with_http_info(self, body, **kwargs):  # noqa: E501
+    def model_metadata_service_update_model_metadata_with_http_info(self, model, **kwargs):  # noqa: E501
         """Update a Model Metadata entry.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.model_metadata_service_update_model_metadata_with_http_info(body, async_req=True)
+        >>> thread = api.model_metadata_service_update_model_metadata_with_http_info(model, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1Model body: (required)
+        :param V1Model model: (required)
         :return: V1ModelMetadataUpdateResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['model']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -568,10 +568,10 @@ class ModelMetadataServiceApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `model_metadata_service_update_model_metadata`")  # noqa: E501
+        # verify the required parameter 'model' is set
+        if ('model' not in params or
+                params['model'] is None):
+            raise ValueError("Missing the required parameter `model` when calling `model_metadata_service_update_model_metadata`")  # noqa: E501
 
         collection_formats = {}
 
@@ -585,8 +585,8 @@ class ModelMetadataServiceApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 'model' in params:
+            body_params = params['model']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
