@@ -32,7 +32,7 @@ config.auth_method = 'password_grant'
 
 auth = OIDCAuthenticator(config)
 
-config.access_token = auth.authenticate()
+config.id_token = auth.authenticate()
 
 print(config.access_token)
 
