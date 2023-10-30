@@ -21,6 +21,7 @@ def call_env():
 
 config = Configuration()
 config.host = "http://x.x.x.x/seldon-deploy/api/v1alpha1"
+config.verify_ssl = False
 config.oidc_client_id = client_id
 config.oidc_server = "http://x.x.x.x/auth/realms/deploy-realm"
 config.username = username
