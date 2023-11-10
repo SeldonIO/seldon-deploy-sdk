@@ -90,7 +90,7 @@ documentation is licensed as follows:
 
 
 charset-normalizer
-3.3.0
+3.3.2
 MIT License
 MIT License
 
@@ -115,7 +115,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 cryptography
-41.0.4
+41.0.5
 Apache Software License; BSD License
 This software is made available under the terms of *either* of the licenses
 found in LICENSE.APACHE or LICENSE.BSD. Contributions to cryptography are made
@@ -427,7 +427,7 @@ Apache Software License
 
 
 seldon-deploy-sdk
-2.1.0
+2.2.0rc8
 UNKNOWN
 UNKNOWN
 
@@ -455,7 +455,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 urllib3
-1.26.17
+1.26.18
 MIT License
 MIT License
 
