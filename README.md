@@ -79,5 +79,5 @@ For Seldon Deploy model metadata service, we are having to patch two additional 
 2. Update [config file](./config/python.json) to bump the package version.
 3. Run `make python` to re-generate the sdk api files from new specifications. If you get error `error: patch failed` then update the template customisation [patch file](./templates/python/metadata_tags_metrics.patch). See templates section above for more details.
 
-4. Run `make -C build push` to build & push latest release to [PyPi](https://pypi.org/project/seldon-deploy-sdk/)
+4. Run `make -C python build push` to build & push latest release to [PyPi](https://pypi.org/project/seldon-deploy-sdk/). There's also the `push-test` target, for testing.
 5. Create a new Github Tag and Release with latest version and notes.
