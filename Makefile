@@ -27,3 +27,5 @@ python:
 	make -C python licenses
 	# Apply patch
 	git apply templates/python/metadata_tags_metrics.patch
+	git apply templates/python/int_or_string.patch
+
