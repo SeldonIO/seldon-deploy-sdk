@@ -26,6 +26,12 @@ or directly from Github:
 pip install git+https://github.com/SeldonIO/seldon-deploy-sdk.git
 ```
 
+or install from source:
+
+```sh
+make install-package
+```
+
 Then import the package:
 ```python
 import seldon_deploy_sdk
