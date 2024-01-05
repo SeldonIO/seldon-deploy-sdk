@@ -20,6 +20,9 @@ test: check-dev
 build:
 	python setup.py sdist bdist_wheel
 
+install-package:
+	pip install -e .
+
 push-test:
 	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
