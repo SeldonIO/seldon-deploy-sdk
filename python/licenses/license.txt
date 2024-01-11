@@ -428,7 +428,7 @@ Apache Software License
 
 
 seldon-deploy-sdk
-2.2.0rc8
+2.2.0rc9
 UNKNOWN
 UNKNOWN
 
