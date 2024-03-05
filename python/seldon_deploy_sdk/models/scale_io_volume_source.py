@@ -96,7 +96,7 @@ class ScaleIOVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this ScaleIOVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\". +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\". +optional  # noqa: E501
 
         :return: The fs_type of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: str
@@ -107,7 +107,7 @@ class ScaleIOVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this ScaleIOVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\". +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\". +optional  # noqa: E501
 
         :param fs_type: The fs_type of this ScaleIOVolumeSource.  # noqa: E501
         :type: str
@@ -119,7 +119,7 @@ class ScaleIOVolumeSource(object):
     def gateway(self):
         """Gets the gateway of this ScaleIOVolumeSource.  # noqa: E501
 
-        The host address of the ScaleIO API Gateway.  # noqa: E501
+        gateway is the host address of the ScaleIO API Gateway.  # noqa: E501
 
         :return: The gateway of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: str
@@ -130,7 +130,7 @@ class ScaleIOVolumeSource(object):
     def gateway(self, gateway):
         """Sets the gateway of this ScaleIOVolumeSource.
 
-        The host address of the ScaleIO API Gateway.  # noqa: E501
+        gateway is the host address of the ScaleIO API Gateway.  # noqa: E501
 
         :param gateway: The gateway of this ScaleIOVolumeSource.  # noqa: E501
         :type: str
@@ -142,7 +142,7 @@ class ScaleIOVolumeSource(object):
     def protection_domain(self):
         """Gets the protection_domain of this ScaleIOVolumeSource.  # noqa: E501
 
-        The name of the ScaleIO Protection Domain for the configured storage. +optional  # noqa: E501
+        protectionDomain is the name of the ScaleIO Protection Domain for the configured storage. +optional  # noqa: E501
 
         :return: The protection_domain of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: str
@@ -153,7 +153,7 @@ class ScaleIOVolumeSource(object):
     def protection_domain(self, protection_domain):
         """Sets the protection_domain of this ScaleIOVolumeSource.
 
-        The name of the ScaleIO Protection Domain for the configured storage. +optional  # noqa: E501
+        protectionDomain is the name of the ScaleIO Protection Domain for the configured storage. +optional  # noqa: E501
 
         :param protection_domain: The protection_domain of this ScaleIOVolumeSource.  # noqa: E501
         :type: str
@@ -165,7 +165,7 @@ class ScaleIOVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this ScaleIOVolumeSource.  # noqa: E501
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :return: The read_only of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: bool
@@ -176,7 +176,7 @@ class ScaleIOVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this ScaleIOVolumeSource.
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :param read_only: The read_only of this ScaleIOVolumeSource.  # noqa: E501
         :type: bool
@@ -209,7 +209,7 @@ class ScaleIOVolumeSource(object):
     def ssl_enabled(self):
         """Gets the ssl_enabled of this ScaleIOVolumeSource.  # noqa: E501
 
-        Flag to enable/disable SSL communication with Gateway, default false +optional  # noqa: E501
+        sslEnabled Flag enable/disable SSL communication with Gateway, default false +optional  # noqa: E501
 
         :return: The ssl_enabled of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: bool
@@ -220,7 +220,7 @@ class ScaleIOVolumeSource(object):
     def ssl_enabled(self, ssl_enabled):
         """Sets the ssl_enabled of this ScaleIOVolumeSource.
 
-        Flag to enable/disable SSL communication with Gateway, default false +optional  # noqa: E501
+        sslEnabled Flag enable/disable SSL communication with Gateway, default false +optional  # noqa: E501
 
         :param ssl_enabled: The ssl_enabled of this ScaleIOVolumeSource.  # noqa: E501
         :type: bool
@@ -232,7 +232,7 @@ class ScaleIOVolumeSource(object):
     def storage_mode(self):
         """Gets the storage_mode of this ScaleIOVolumeSource.  # noqa: E501
 
-        Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned. +optional  # noqa: E501
+        storageMode indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned. +optional  # noqa: E501
 
         :return: The storage_mode of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: str
@@ -243,7 +243,7 @@ class ScaleIOVolumeSource(object):
     def storage_mode(self, storage_mode):
         """Sets the storage_mode of this ScaleIOVolumeSource.
 
-        Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned. +optional  # noqa: E501
+        storageMode indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned. +optional  # noqa: E501
 
         :param storage_mode: The storage_mode of this ScaleIOVolumeSource.  # noqa: E501
         :type: str
@@ -255,7 +255,7 @@ class ScaleIOVolumeSource(object):
     def storage_pool(self):
         """Gets the storage_pool of this ScaleIOVolumeSource.  # noqa: E501
 
-        The ScaleIO Storage Pool associated with the protection domain. +optional  # noqa: E501
+        storagePool is the ScaleIO Storage Pool associated with the protection domain. +optional  # noqa: E501
 
         :return: The storage_pool of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: str
@@ -266,7 +266,7 @@ class ScaleIOVolumeSource(object):
     def storage_pool(self, storage_pool):
         """Sets the storage_pool of this ScaleIOVolumeSource.
 
-        The ScaleIO Storage Pool associated with the protection domain. +optional  # noqa: E501
+        storagePool is the ScaleIO Storage Pool associated with the protection domain. +optional  # noqa: E501
 
         :param storage_pool: The storage_pool of this ScaleIOVolumeSource.  # noqa: E501
         :type: str
@@ -278,7 +278,7 @@ class ScaleIOVolumeSource(object):
     def system(self):
         """Gets the system of this ScaleIOVolumeSource.  # noqa: E501
 
-        The name of the storage system as configured in ScaleIO.  # noqa: E501
+        system is the name of the storage system as configured in ScaleIO.  # noqa: E501
 
         :return: The system of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: str
@@ -289,7 +289,7 @@ class ScaleIOVolumeSource(object):
     def system(self, system):
         """Sets the system of this ScaleIOVolumeSource.
 
-        The name of the storage system as configured in ScaleIO.  # noqa: E501
+        system is the name of the storage system as configured in ScaleIO.  # noqa: E501
 
         :param system: The system of this ScaleIOVolumeSource.  # noqa: E501
         :type: str
@@ -301,7 +301,7 @@ class ScaleIOVolumeSource(object):
     def volume_name(self):
         """Gets the volume_name of this ScaleIOVolumeSource.  # noqa: E501
 
-        The name of a volume already created in the ScaleIO system that is associated with this volume source.  # noqa: E501
+        volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.  # noqa: E501
 
         :return: The volume_name of this ScaleIOVolumeSource.  # noqa: E501
         :rtype: str
@@ -312,7 +312,7 @@ class ScaleIOVolumeSource(object):
     def volume_name(self, volume_name):
         """Sets the volume_name of this ScaleIOVolumeSource.
 
-        The name of a volume already created in the ScaleIO system that is associated with this volume source.  # noqa: E501
+        volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.  # noqa: E501
 
         :param volume_name: The volume_name of this ScaleIOVolumeSource.  # noqa: E501
         :type: str

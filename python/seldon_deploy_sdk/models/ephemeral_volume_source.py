@@ -31,49 +31,21 @@ class EphemeralVolumeSource(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'read_only': 'bool',
         'volume_claim_template': 'PersistentVolumeClaimTemplate'
     }
 
     attribute_map = {
-        'read_only': 'readOnly',
         'volume_claim_template': 'volumeClaimTemplate'
     }
 
-    def __init__(self, read_only=None, volume_claim_template=None):  # noqa: E501
+    def __init__(self, volume_claim_template=None):  # noqa: E501
         """EphemeralVolumeSource - a model defined in Swagger"""  # noqa: E501
 
-        self._read_only = None
         self._volume_claim_template = None
         self.discriminator = None
 
-        if read_only is not None:
-            self.read_only = read_only
         if volume_claim_template is not None:
             self.volume_claim_template = volume_claim_template
-
-    @property
-    def read_only(self):
-        """Gets the read_only of this EphemeralVolumeSource.  # noqa: E501
-
-        Specifies a read-only configuration for the volume. Defaults to false (read/write). +optional  # noqa: E501
-
-        :return: The read_only of this EphemeralVolumeSource.  # noqa: E501
-        :rtype: bool
-        """
-        return self._read_only
-
-    @read_only.setter
-    def read_only(self, read_only):
-        """Sets the read_only of this EphemeralVolumeSource.
-
-        Specifies a read-only configuration for the volume. Defaults to false (read/write). +optional  # noqa: E501
-
-        :param read_only: The read_only of this EphemeralVolumeSource.  # noqa: E501
-        :type: bool
-        """
-
-        self._read_only = read_only
 
     @property
     def volume_claim_template(self):

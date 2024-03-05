@@ -69,6 +69,7 @@ from seldon_deploy_sdk.models.capabilities import Capabilities
 from seldon_deploy_sdk.models.capability import Capability
 from seldon_deploy_sdk.models.ceph_fs_volume_source import CephFSVolumeSource
 from seldon_deploy_sdk.models.cinder_volume_source import CinderVolumeSource
+from seldon_deploy_sdk.models.claim_source import ClaimSource
 from seldon_deploy_sdk.models.client_ip_config import ClientIPConfig
 from seldon_deploy_sdk.models.cluster_info import ClusterInfo
 from seldon_deploy_sdk.models.component import Component
@@ -80,6 +81,9 @@ from seldon_deploy_sdk.models.config_map_projection import ConfigMapProjection
 from seldon_deploy_sdk.models.config_map_volume_source import ConfigMapVolumeSource
 from seldon_deploy_sdk.models.container import Container
 from seldon_deploy_sdk.models.container_port import ContainerPort
+from seldon_deploy_sdk.models.container_resize_policy import ContainerResizePolicy
+from seldon_deploy_sdk.models.container_resource_metric_source import ContainerResourceMetricSource
+from seldon_deploy_sdk.models.container_restart_policy import ContainerRestartPolicy
 from seldon_deploy_sdk.models.container_state import ContainerState
 from seldon_deploy_sdk.models.container_state_running import ContainerStateRunning
 from seldon_deploy_sdk.models.container_state_terminated import ContainerStateTerminated
@@ -137,6 +141,7 @@ from seldon_deploy_sdk.models.finalizer_name import FinalizerName
 from seldon_deploy_sdk.models.flex_volume_source import FlexVolumeSource
 from seldon_deploy_sdk.models.flocker_volume_source import FlockerVolumeSource
 from seldon_deploy_sdk.models.gce_persistent_disk_volume_source import GCEPersistentDiskVolumeSource
+from seldon_deploy_sdk.models.grpc_action import GRPCAction
 from seldon_deploy_sdk.models.git_repo_volume_source import GitRepoVolumeSource
 from seldon_deploy_sdk.models.glusterfs_volume_source import GlusterfsVolumeSource
 from seldon_deploy_sdk.models.hpa_scaling_policy import HPAScalingPolicy
@@ -144,14 +149,15 @@ from seldon_deploy_sdk.models.hpa_scaling_policy_type import HPAScalingPolicyTyp
 from seldon_deploy_sdk.models.hpa_scaling_rules import HPAScalingRules
 from seldon_deploy_sdk.models.http_get_action import HTTPGetAction
 from seldon_deploy_sdk.models.http_header import HTTPHeader
-from seldon_deploy_sdk.models.handler import Handler
 from seldon_deploy_sdk.models.health_check_info import HealthCheckInfo
 from seldon_deploy_sdk.models.horizontal_pod_autoscaler_behavior import HorizontalPodAutoscalerBehavior
 from seldon_deploy_sdk.models.horizontal_pod_autoscaler_config import HorizontalPodAutoscalerConfig
 from seldon_deploy_sdk.models.host_alias import HostAlias
+from seldon_deploy_sdk.models.host_ip import HostIP
 from seldon_deploy_sdk.models.host_path_type import HostPathType
 from seldon_deploy_sdk.models.host_path_volume_source import HostPathVolumeSource
 from seldon_deploy_sdk.models.ip_family import IPFamily
+from seldon_deploy_sdk.models.ip_family_policy import IPFamilyPolicy
 from seldon_deploy_sdk.models.iscsi_volume_source import ISCSIVolumeSource
 from seldon_deploy_sdk.models.int_or_string import IntOrString
 from seldon_deploy_sdk.models.join_type import JoinType
@@ -160,6 +166,7 @@ from seldon_deploy_sdk.models.label_selector import LabelSelector
 from seldon_deploy_sdk.models.label_selector_operator import LabelSelectorOperator
 from seldon_deploy_sdk.models.label_selector_requirement import LabelSelectorRequirement
 from seldon_deploy_sdk.models.lifecycle import Lifecycle
+from seldon_deploy_sdk.models.lifecycle_handler import LifecycleHandler
 from seldon_deploy_sdk.models.list_meta import ListMeta
 from seldon_deploy_sdk.models.local_object_reference import LocalObjectReference
 from seldon_deploy_sdk.models.logger import Logger
@@ -168,8 +175,10 @@ from seldon_deploy_sdk.models.logging_spec import LoggingSpec
 from seldon_deploy_sdk.models.managed_fields_entry import ManagedFieldsEntry
 from seldon_deploy_sdk.models.managed_fields_operation_type import ManagedFieldsOperationType
 from seldon_deploy_sdk.models.message import Message
+from seldon_deploy_sdk.models.metric_identifier import MetricIdentifier
 from seldon_deploy_sdk.models.metric_source_type import MetricSourceType
 from seldon_deploy_sdk.models.metric_spec import MetricSpec
+from seldon_deploy_sdk.models.metric_target import MetricTarget
 from seldon_deploy_sdk.models.metric_target_type import MetricTargetType
 from seldon_deploy_sdk.models.model import Model
 from seldon_deploy_sdk.models.model_spec import ModelSpec
@@ -184,11 +193,12 @@ from seldon_deploy_sdk.models.namespace_phase import NamespacePhase
 from seldon_deploy_sdk.models.namespace_spec import NamespaceSpec
 from seldon_deploy_sdk.models.namespace_status import NamespaceStatus
 from seldon_deploy_sdk.models.node_affinity import NodeAffinity
-from seldon_deploy_sdk.models.node_phase import NodePhase
+from seldon_deploy_sdk.models.node_inclusion_policy import NodeInclusionPolicy
 from seldon_deploy_sdk.models.node_selector import NodeSelector
 from seldon_deploy_sdk.models.node_selector_operator import NodeSelectorOperator
 from seldon_deploy_sdk.models.node_selector_requirement import NodeSelectorRequirement
 from seldon_deploy_sdk.models.node_selector_term import NodeSelectorTerm
+from seldon_deploy_sdk.models.os_name import OSName
 from seldon_deploy_sdk.models.object_field_selector import ObjectFieldSelector
 from seldon_deploy_sdk.models.object_meta import ObjectMeta
 from seldon_deploy_sdk.models.object_metric_source import ObjectMetricSource
@@ -219,9 +229,14 @@ from seldon_deploy_sdk.models.pod_dns_config_option import PodDNSConfigOption
 from seldon_deploy_sdk.models.pod_fs_group_change_policy import PodFSGroupChangePolicy
 from seldon_deploy_sdk.models.pod_ip import PodIP
 from seldon_deploy_sdk.models.pod_list import PodList
+from seldon_deploy_sdk.models.pod_os import PodOS
 from seldon_deploy_sdk.models.pod_phase import PodPhase
 from seldon_deploy_sdk.models.pod_qos_class import PodQOSClass
 from seldon_deploy_sdk.models.pod_readiness_gate import PodReadinessGate
+from seldon_deploy_sdk.models.pod_resize_status import PodResizeStatus
+from seldon_deploy_sdk.models.pod_resource_claim import PodResourceClaim
+from seldon_deploy_sdk.models.pod_resource_claim_status import PodResourceClaimStatus
+from seldon_deploy_sdk.models.pod_scheduling_gate import PodSchedulingGate
 from seldon_deploy_sdk.models.pod_security_context import PodSecurityContext
 from seldon_deploy_sdk.models.pod_spec import PodSpec
 from seldon_deploy_sdk.models.pod_status import PodStatus
@@ -245,11 +260,13 @@ from seldon_deploy_sdk.models.pull_policy import PullPolicy
 from seldon_deploy_sdk.models.quantity import Quantity
 from seldon_deploy_sdk.models.quobyte_volume_source import QuobyteVolumeSource
 from seldon_deploy_sdk.models.rbd_volume_source import RBDVolumeSource
+from seldon_deploy_sdk.models.resource_claim import ResourceClaim
 from seldon_deploy_sdk.models.resource_field_selector import ResourceFieldSelector
 from seldon_deploy_sdk.models.resource_list import ResourceList
 from seldon_deploy_sdk.models.resource_metric_source import ResourceMetricSource
 from seldon_deploy_sdk.models.resource_name import ResourceName
 from seldon_deploy_sdk.models.resource_requirements import ResourceRequirements
+from seldon_deploy_sdk.models.resource_resize_restart_policy import ResourceResizeRestartPolicy
 from seldon_deploy_sdk.models.resource_type import ResourceType
 from seldon_deploy_sdk.models.restart_policy import RestartPolicy
 from seldon_deploy_sdk.models.rolling_update_deployment import RollingUpdateDeployment
@@ -285,7 +302,8 @@ from seldon_deploy_sdk.models.server_type import ServerType
 from seldon_deploy_sdk.models.service import Service
 from seldon_deploy_sdk.models.service_account_token_projection import ServiceAccountTokenProjection
 from seldon_deploy_sdk.models.service_affinity import ServiceAffinity
-from seldon_deploy_sdk.models.service_external_traffic_policy_type import ServiceExternalTrafficPolicyType
+from seldon_deploy_sdk.models.service_external_traffic_policy import ServiceExternalTrafficPolicy
+from seldon_deploy_sdk.models.service_internal_traffic_policy import ServiceInternalTrafficPolicy
 from seldon_deploy_sdk.models.service_list import ServiceList
 from seldon_deploy_sdk.models.service_port import ServicePort
 from seldon_deploy_sdk.models.service_spec import ServiceSpec
@@ -306,6 +324,7 @@ from seldon_deploy_sdk.models.topology_spread_constraint import TopologySpreadCo
 from seldon_deploy_sdk.models.transport import Transport
 from seldon_deploy_sdk.models.type import Type
 from seldon_deploy_sdk.models.typed_local_object_reference import TypedLocalObjectReference
+from seldon_deploy_sdk.models.typed_object_reference import TypedObjectReference
 from seldon_deploy_sdk.models.uid import UID
 from seldon_deploy_sdk.models.uri_scheme import URIScheme
 from seldon_deploy_sdk.models.unsatisfiable_constraint_action import UnsatisfiableConstraintAction
@@ -383,3 +402,4 @@ from seldon_deploy_sdk.models.volume_projection import VolumeProjection
 from seldon_deploy_sdk.models.vsphere_virtual_disk_volume_source import VsphereVirtualDiskVolumeSource
 from seldon_deploy_sdk.models.weighted_pod_affinity_term import WeightedPodAffinityTerm
 from seldon_deploy_sdk.models.windows_security_context_options import WindowsSecurityContextOptions
+from seldon_deploy_sdk.models.workflow_phase import WorkflowPhase

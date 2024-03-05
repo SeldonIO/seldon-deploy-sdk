@@ -66,7 +66,7 @@ class CinderVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this CinderVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
 
         :return: The fs_type of this CinderVolumeSource.  # noqa: E501
         :rtype: str
@@ -77,7 +77,7 @@ class CinderVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this CinderVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
 
         :param fs_type: The fs_type of this CinderVolumeSource.  # noqa: E501
         :type: str
@@ -89,7 +89,7 @@ class CinderVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this CinderVolumeSource.  # noqa: E501
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
 
         :return: The read_only of this CinderVolumeSource.  # noqa: E501
         :rtype: bool
@@ -100,7 +100,7 @@ class CinderVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this CinderVolumeSource.
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md +optional  # noqa: E501
 
         :param read_only: The read_only of this CinderVolumeSource.  # noqa: E501
         :type: bool
@@ -133,7 +133,7 @@ class CinderVolumeSource(object):
     def volume_id(self):
         """Gets the volume_id of this CinderVolumeSource.  # noqa: E501
 
-        volume id used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md  # noqa: E501
+        volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md  # noqa: E501
 
         :return: The volume_id of this CinderVolumeSource.  # noqa: E501
         :rtype: str
@@ -144,7 +144,7 @@ class CinderVolumeSource(object):
     def volume_id(self, volume_id):
         """Sets the volume_id of this CinderVolumeSource.
 
-        volume id used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md  # noqa: E501
+        volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md  # noqa: E501
 
         :param volume_id: The volume_id of this CinderVolumeSource.  # noqa: E501
         :type: str

@@ -71,7 +71,7 @@ class StorageOSVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this StorageOSVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
 
         :return: The fs_type of this StorageOSVolumeSource.  # noqa: E501
         :rtype: str
@@ -82,7 +82,7 @@ class StorageOSVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this StorageOSVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
 
         :param fs_type: The fs_type of this StorageOSVolumeSource.  # noqa: E501
         :type: str
@@ -94,7 +94,7 @@ class StorageOSVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this StorageOSVolumeSource.  # noqa: E501
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :return: The read_only of this StorageOSVolumeSource.  # noqa: E501
         :rtype: bool
@@ -105,7 +105,7 @@ class StorageOSVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this StorageOSVolumeSource.
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :param read_only: The read_only of this StorageOSVolumeSource.  # noqa: E501
         :type: bool
@@ -138,7 +138,7 @@ class StorageOSVolumeSource(object):
     def volume_name(self):
         """Gets the volume_name of this StorageOSVolumeSource.  # noqa: E501
 
-        VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.  # noqa: E501
+        volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.  # noqa: E501
 
         :return: The volume_name of this StorageOSVolumeSource.  # noqa: E501
         :rtype: str
@@ -149,7 +149,7 @@ class StorageOSVolumeSource(object):
     def volume_name(self, volume_name):
         """Sets the volume_name of this StorageOSVolumeSource.
 
-        VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.  # noqa: E501
+        volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.  # noqa: E501
 
         :param volume_name: The volume_name of this StorageOSVolumeSource.  # noqa: E501
         :type: str
@@ -161,7 +161,7 @@ class StorageOSVolumeSource(object):
     def volume_namespace(self):
         """Gets the volume_namespace of this StorageOSVolumeSource.  # noqa: E501
 
-        VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to \"default\" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created. +optional  # noqa: E501
+        volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to \"default\" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created. +optional  # noqa: E501
 
         :return: The volume_namespace of this StorageOSVolumeSource.  # noqa: E501
         :rtype: str
@@ -172,7 +172,7 @@ class StorageOSVolumeSource(object):
     def volume_namespace(self, volume_namespace):
         """Sets the volume_namespace of this StorageOSVolumeSource.
 
-        VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to \"default\" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created. +optional  # noqa: E501
+        volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to \"default\" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created. +optional  # noqa: E501
 
         :param volume_namespace: The volume_namespace of this StorageOSVolumeSource.  # noqa: E501
         :type: str

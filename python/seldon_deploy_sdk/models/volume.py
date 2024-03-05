@@ -574,7 +574,7 @@ class Volume(object):
     def name(self):
         """Gets the name of this Volume.  # noqa: E501
 
-        Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names  # noqa: E501
+        name of the volume. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names  # noqa: E501
 
         :return: The name of this Volume.  # noqa: E501
         :rtype: str
@@ -585,7 +585,7 @@ class Volume(object):
     def name(self, name):
         """Sets the name of this Volume.
 
-        Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names  # noqa: E501
+        name of the volume. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names  # noqa: E501
 
         :param name: The name of this Volume.  # noqa: E501
         :type: str

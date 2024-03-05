@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**container_resource** | [**ContainerResourceMetricSource**](ContainerResourceMetricSource.md) |  | [optional] 
 **external** | [**ExternalMetricSource**](ExternalMetricSource.md) |  | [optional] 
 **object** | [**ObjectMetricSource**](ObjectMetricSource.md) |  | [optional] 
 **pods** | [**PodsMetricSource**](PodsMetricSource.md) |  | [optional] 

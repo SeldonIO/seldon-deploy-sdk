@@ -56,7 +56,7 @@ class HostPathVolumeSource(object):
     def path(self):
         """Gets the path of this HostPathVolumeSource.  # noqa: E501
 
-        Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath  # noqa: E501
+        path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath  # noqa: E501
 
         :return: The path of this HostPathVolumeSource.  # noqa: E501
         :rtype: str
@@ -67,7 +67,7 @@ class HostPathVolumeSource(object):
     def path(self, path):
         """Sets the path of this HostPathVolumeSource.
 
-        Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath  # noqa: E501
+        path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath  # noqa: E501
 
         :param path: The path of this HostPathVolumeSource.  # noqa: E501
         :type: str

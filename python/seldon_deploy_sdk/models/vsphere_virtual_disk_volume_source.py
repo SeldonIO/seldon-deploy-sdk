@@ -66,7 +66,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this VsphereVirtualDiskVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
+        fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
 
         :return: The fs_type of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -77,7 +77,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this VsphereVirtualDiskVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
+        fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
 
         :param fs_type: The fs_type of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :type: str
@@ -89,7 +89,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def storage_policy_id(self):
         """Gets the storage_policy_id of this VsphereVirtualDiskVolumeSource.  # noqa: E501
 
-        Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName. +optional  # noqa: E501
+        storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName. +optional  # noqa: E501
 
         :return: The storage_policy_id of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -100,7 +100,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def storage_policy_id(self, storage_policy_id):
         """Sets the storage_policy_id of this VsphereVirtualDiskVolumeSource.
 
-        Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName. +optional  # noqa: E501
+        storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName. +optional  # noqa: E501
 
         :param storage_policy_id: The storage_policy_id of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :type: str
@@ -112,7 +112,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def storage_policy_name(self):
         """Gets the storage_policy_name of this VsphereVirtualDiskVolumeSource.  # noqa: E501
 
-        Storage Policy Based Management (SPBM) profile name. +optional  # noqa: E501
+        storagePolicyName is the storage Policy Based Management (SPBM) profile name. +optional  # noqa: E501
 
         :return: The storage_policy_name of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -123,7 +123,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def storage_policy_name(self, storage_policy_name):
         """Sets the storage_policy_name of this VsphereVirtualDiskVolumeSource.
 
-        Storage Policy Based Management (SPBM) profile name. +optional  # noqa: E501
+        storagePolicyName is the storage Policy Based Management (SPBM) profile name. +optional  # noqa: E501
 
         :param storage_policy_name: The storage_policy_name of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :type: str
@@ -135,7 +135,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def volume_path(self):
         """Gets the volume_path of this VsphereVirtualDiskVolumeSource.  # noqa: E501
 
-        Path that identifies vSphere volume vmdk  # noqa: E501
+        volumePath is the path that identifies vSphere volume vmdk  # noqa: E501
 
         :return: The volume_path of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -146,7 +146,7 @@ class VsphereVirtualDiskVolumeSource(object):
     def volume_path(self, volume_path):
         """Sets the volume_path of this VsphereVirtualDiskVolumeSource.
 
-        Path that identifies vSphere volume vmdk  # noqa: E501
+        volumePath is the path that identifies vSphere volume vmdk  # noqa: E501
 
         :param volume_path: The volume_path of this VsphereVirtualDiskVolumeSource.  # noqa: E501
         :type: str

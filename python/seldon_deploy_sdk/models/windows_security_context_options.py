@@ -33,20 +33,23 @@ class WindowsSecurityContextOptions(object):
     swagger_types = {
         'gmsa_credential_spec': 'str',
         'gmsa_credential_spec_name': 'str',
+        'host_process': 'bool',
         'run_as_user_name': 'str'
     }
 
     attribute_map = {
         'gmsa_credential_spec': 'gmsaCredentialSpec',
         'gmsa_credential_spec_name': 'gmsaCredentialSpecName',
+        'host_process': 'hostProcess',
         'run_as_user_name': 'runAsUserName'
     }
 
-    def __init__(self, gmsa_credential_spec=None, gmsa_credential_spec_name=None, run_as_user_name=None):  # noqa: E501
+    def __init__(self, gmsa_credential_spec=None, gmsa_credential_spec_name=None, host_process=None, run_as_user_name=None):  # noqa: E501
         """WindowsSecurityContextOptions - a model defined in Swagger"""  # noqa: E501
 
         self._gmsa_credential_spec = None
         self._gmsa_credential_spec_name = None
+        self._host_process = None
         self._run_as_user_name = None
         self.discriminator = None
 
@@ -54,6 +57,8 @@ class WindowsSecurityContextOptions(object):
             self.gmsa_credential_spec = gmsa_credential_spec
         if gmsa_credential_spec_name is not None:
             self.gmsa_credential_spec_name = gmsa_credential_spec_name
+        if host_process is not None:
+            self.host_process = host_process
         if run_as_user_name is not None:
             self.run_as_user_name = run_as_user_name
 
@@ -102,6 +107,29 @@ class WindowsSecurityContextOptions(object):
         """
 
         self._gmsa_credential_spec_name = gmsa_credential_spec_name
+
+    @property
+    def host_process(self):
+        """Gets the host_process of this WindowsSecurityContextOptions.  # noqa: E501
+
+        HostProcess determines if a container should be run as a 'Host Process' container. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers). In addition, if HostProcess is true then HostNetwork must also be set to true. +optional  # noqa: E501
+
+        :return: The host_process of this WindowsSecurityContextOptions.  # noqa: E501
+        :rtype: bool
+        """
+        return self._host_process
+
+    @host_process.setter
+    def host_process(self, host_process):
+        """Sets the host_process of this WindowsSecurityContextOptions.
+
+        HostProcess determines if a container should be run as a 'Host Process' container. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers). In addition, if HostProcess is true then HostNetwork must also be set to true. +optional  # noqa: E501
+
+        :param host_process: The host_process of this WindowsSecurityContextOptions.  # noqa: E501
+        :type: bool
+        """
+
+        self._host_process = host_process
 
     @property
     def run_as_user_name(self):

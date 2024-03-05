@@ -31,8 +31,8 @@ class Lifecycle(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'post_start': 'Handler',
-        'pre_stop': 'Handler'
+        'post_start': 'LifecycleHandler',
+        'pre_stop': 'LifecycleHandler'
     }
 
     attribute_map = {
@@ -58,7 +58,7 @@ class Lifecycle(object):
 
 
         :return: The post_start of this Lifecycle.  # noqa: E501
-        :rtype: Handler
+        :rtype: LifecycleHandler
         """
         return self._post_start
 
@@ -68,7 +68,7 @@ class Lifecycle(object):
 
 
         :param post_start: The post_start of this Lifecycle.  # noqa: E501
-        :type: Handler
+        :type: LifecycleHandler
         """
 
         self._post_start = post_start
@@ -79,7 +79,7 @@ class Lifecycle(object):
 
 
         :return: The pre_stop of this Lifecycle.  # noqa: E501
-        :rtype: Handler
+        :rtype: LifecycleHandler
         """
         return self._pre_stop
 
@@ -89,7 +89,7 @@ class Lifecycle(object):
 
 
         :param pre_stop: The pre_stop of this Lifecycle.  # noqa: E501
-        :type: Handler
+        :type: LifecycleHandler
         """
 
         self._pre_stop = pre_stop

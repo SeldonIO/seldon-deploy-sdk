@@ -56,7 +56,7 @@ class PhotonPersistentDiskVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this PhotonPersistentDiskVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
 
         :return: The fs_type of this PhotonPersistentDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -67,7 +67,7 @@ class PhotonPersistentDiskVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this PhotonPersistentDiskVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
 
         :param fs_type: The fs_type of this PhotonPersistentDiskVolumeSource.  # noqa: E501
         :type: str
@@ -79,7 +79,7 @@ class PhotonPersistentDiskVolumeSource(object):
     def pd_id(self):
         """Gets the pd_id of this PhotonPersistentDiskVolumeSource.  # noqa: E501
 
-        ID that identifies Photon Controller persistent disk  # noqa: E501
+        pdID is the ID that identifies Photon Controller persistent disk  # noqa: E501
 
         :return: The pd_id of this PhotonPersistentDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -90,7 +90,7 @@ class PhotonPersistentDiskVolumeSource(object):
     def pd_id(self, pd_id):
         """Sets the pd_id of this PhotonPersistentDiskVolumeSource.
 
-        ID that identifies Photon Controller persistent disk  # noqa: E501
+        pdID is the ID that identifies Photon Controller persistent disk  # noqa: E501
 
         :param pd_id: The pd_id of this PhotonPersistentDiskVolumeSource.  # noqa: E501
         :type: str

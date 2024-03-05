@@ -56,7 +56,7 @@ class HTTPHeader(object):
     def name(self):
         """Gets the name of this HTTPHeader.  # noqa: E501
 
-        The header field name  # noqa: E501
+        The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.  # noqa: E501
 
         :return: The name of this HTTPHeader.  # noqa: E501
         :rtype: str
@@ -67,7 +67,7 @@ class HTTPHeader(object):
     def name(self, name):
         """Sets the name of this HTTPHeader.
 
-        The header field name  # noqa: E501
+        The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.  # noqa: E501
 
         :param name: The name of this HTTPHeader.  # noqa: E501
         :type: str

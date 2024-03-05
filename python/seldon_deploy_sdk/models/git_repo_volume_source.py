@@ -61,7 +61,7 @@ class GitRepoVolumeSource(object):
     def directory(self):
         """Gets the directory of this GitRepoVolumeSource.  # noqa: E501
 
-        Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name. +optional  # noqa: E501
+        directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name. +optional  # noqa: E501
 
         :return: The directory of this GitRepoVolumeSource.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class GitRepoVolumeSource(object):
     def directory(self, directory):
         """Sets the directory of this GitRepoVolumeSource.
 
-        Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name. +optional  # noqa: E501
+        directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name. +optional  # noqa: E501
 
         :param directory: The directory of this GitRepoVolumeSource.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class GitRepoVolumeSource(object):
     def repository(self):
         """Gets the repository of this GitRepoVolumeSource.  # noqa: E501
 
-        Repository URL  # noqa: E501
+        repository is the URL  # noqa: E501
 
         :return: The repository of this GitRepoVolumeSource.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class GitRepoVolumeSource(object):
     def repository(self, repository):
         """Sets the repository of this GitRepoVolumeSource.
 
-        Repository URL  # noqa: E501
+        repository is the URL  # noqa: E501
 
         :param repository: The repository of this GitRepoVolumeSource.  # noqa: E501
         :type: str
@@ -107,7 +107,7 @@ class GitRepoVolumeSource(object):
     def revision(self):
         """Gets the revision of this GitRepoVolumeSource.  # noqa: E501
 
-        Commit hash for the specified revision. +optional  # noqa: E501
+        revision is the commit hash for the specified revision. +optional  # noqa: E501
 
         :return: The revision of this GitRepoVolumeSource.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class GitRepoVolumeSource(object):
     def revision(self, revision):
         """Sets the revision of this GitRepoVolumeSource.
 
-        Commit hash for the specified revision. +optional  # noqa: E501
+        revision is the commit hash for the specified revision. +optional  # noqa: E501
 
         :param revision: The revision of this GitRepoVolumeSource.  # noqa: E501
         :type: str

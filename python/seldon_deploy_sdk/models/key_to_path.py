@@ -61,7 +61,7 @@ class KeyToPath(object):
     def key(self):
         """Gets the key of this KeyToPath.  # noqa: E501
 
-        The key to project.  # noqa: E501
+        key is the key to project.  # noqa: E501
 
         :return: The key of this KeyToPath.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class KeyToPath(object):
     def key(self, key):
         """Sets the key of this KeyToPath.
 
-        The key to project.  # noqa: E501
+        key is the key to project.  # noqa: E501
 
         :param key: The key of this KeyToPath.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class KeyToPath(object):
     def mode(self):
         """Gets the mode of this KeyToPath.  # noqa: E501
 
-        Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
+        mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
 
         :return: The mode of this KeyToPath.  # noqa: E501
         :rtype: int
@@ -95,7 +95,7 @@ class KeyToPath(object):
     def mode(self, mode):
         """Sets the mode of this KeyToPath.
 
-        Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
+        mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
 
         :param mode: The mode of this KeyToPath.  # noqa: E501
         :type: int
@@ -107,7 +107,7 @@ class KeyToPath(object):
     def path(self):
         """Gets the path of this KeyToPath.  # noqa: E501
 
-        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.  # noqa: E501
+        path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.  # noqa: E501
 
         :return: The path of this KeyToPath.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class KeyToPath(object):
     def path(self, path):
         """Sets the path of this KeyToPath.
 
-        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.  # noqa: E501
+        path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.  # noqa: E501
 
         :param path: The path of this KeyToPath.  # noqa: E501
         :type: str

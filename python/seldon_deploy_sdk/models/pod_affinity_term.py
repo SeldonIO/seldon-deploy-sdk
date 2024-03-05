@@ -32,26 +32,31 @@ class PodAffinityTerm(object):
     """
     swagger_types = {
         'label_selector': 'LabelSelector',
+        'namespace_selector': 'LabelSelector',
         'namespaces': 'list[str]',
         'topology_key': 'str'
     }
 
     attribute_map = {
         'label_selector': 'labelSelector',
+        'namespace_selector': 'namespaceSelector',
         'namespaces': 'namespaces',
         'topology_key': 'topologyKey'
     }
 
-    def __init__(self, label_selector=None, namespaces=None, topology_key=None):  # noqa: E501
+    def __init__(self, label_selector=None, namespace_selector=None, namespaces=None, topology_key=None):  # noqa: E501
         """PodAffinityTerm - a model defined in Swagger"""  # noqa: E501
 
         self._label_selector = None
+        self._namespace_selector = None
         self._namespaces = None
         self._topology_key = None
         self.discriminator = None
 
         if label_selector is not None:
             self.label_selector = label_selector
+        if namespace_selector is not None:
+            self.namespace_selector = namespace_selector
         if namespaces is not None:
             self.namespaces = namespaces
         if topology_key is not None:
@@ -79,10 +84,31 @@ class PodAffinityTerm(object):
         self._label_selector = label_selector
 
     @property
+    def namespace_selector(self):
+        """Gets the namespace_selector of this PodAffinityTerm.  # noqa: E501
+
+
+        :return: The namespace_selector of this PodAffinityTerm.  # noqa: E501
+        :rtype: LabelSelector
+        """
+        return self._namespace_selector
+
+    @namespace_selector.setter
+    def namespace_selector(self, namespace_selector):
+        """Sets the namespace_selector of this PodAffinityTerm.
+
+
+        :param namespace_selector: The namespace_selector of this PodAffinityTerm.  # noqa: E501
+        :type: LabelSelector
+        """
+
+        self._namespace_selector = namespace_selector
+
+    @property
     def namespaces(self):
         """Gets the namespaces of this PodAffinityTerm.  # noqa: E501
 
-        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\" +optional  # noqa: E501
+        namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\". +optional  # noqa: E501
 
         :return: The namespaces of this PodAffinityTerm.  # noqa: E501
         :rtype: list[str]
@@ -93,7 +119,7 @@ class PodAffinityTerm(object):
     def namespaces(self, namespaces):
         """Sets the namespaces of this PodAffinityTerm.
 
-        namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\" +optional  # noqa: E501
+        namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\". +optional  # noqa: E501
 
         :param namespaces: The namespaces of this PodAffinityTerm.  # noqa: E501
         :type: list[str]

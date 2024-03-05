@@ -33,35 +33,41 @@ class Probe(object):
     swagger_types = {
         '_exec': 'ExecAction',
         'failure_threshold': 'int',
+        'grpc': 'GRPCAction',
         'http_get': 'HTTPGetAction',
         'initial_delay_seconds': 'int',
         'period_seconds': 'int',
         'success_threshold': 'int',
         'tcp_socket': 'TCPSocketAction',
+        'termination_grace_period_seconds': 'int',
         'timeout_seconds': 'int'
     }
 
     attribute_map = {
         '_exec': 'exec',
         'failure_threshold': 'failureThreshold',
+        'grpc': 'grpc',
         'http_get': 'httpGet',
         'initial_delay_seconds': 'initialDelaySeconds',
         'period_seconds': 'periodSeconds',
         'success_threshold': 'successThreshold',
         'tcp_socket': 'tcpSocket',
+        'termination_grace_period_seconds': 'terminationGracePeriodSeconds',
         'timeout_seconds': 'timeoutSeconds'
     }
 
-    def __init__(self, _exec=None, failure_threshold=None, http_get=None, initial_delay_seconds=None, period_seconds=None, success_threshold=None, tcp_socket=None, timeout_seconds=None):  # noqa: E501
+    def __init__(self, _exec=None, failure_threshold=None, grpc=None, http_get=None, initial_delay_seconds=None, period_seconds=None, success_threshold=None, tcp_socket=None, termination_grace_period_seconds=None, timeout_seconds=None):  # noqa: E501
         """Probe - a model defined in Swagger"""  # noqa: E501
 
         self.__exec = None
         self._failure_threshold = None
+        self._grpc = None
         self._http_get = None
         self._initial_delay_seconds = None
         self._period_seconds = None
         self._success_threshold = None
         self._tcp_socket = None
+        self._termination_grace_period_seconds = None
         self._timeout_seconds = None
         self.discriminator = None
 
@@ -69,6 +75,8 @@ class Probe(object):
             self._exec = _exec
         if failure_threshold is not None:
             self.failure_threshold = failure_threshold
+        if grpc is not None:
+            self.grpc = grpc
         if http_get is not None:
             self.http_get = http_get
         if initial_delay_seconds is not None:
@@ -79,6 +87,8 @@ class Probe(object):
             self.success_threshold = success_threshold
         if tcp_socket is not None:
             self.tcp_socket = tcp_socket
+        if termination_grace_period_seconds is not None:
+            self.termination_grace_period_seconds = termination_grace_period_seconds
         if timeout_seconds is not None:
             self.timeout_seconds = timeout_seconds
 
@@ -125,6 +135,27 @@ class Probe(object):
         """
 
         self._failure_threshold = failure_threshold
+
+    @property
+    def grpc(self):
+        """Gets the grpc of this Probe.  # noqa: E501
+
+
+        :return: The grpc of this Probe.  # noqa: E501
+        :rtype: GRPCAction
+        """
+        return self._grpc
+
+    @grpc.setter
+    def grpc(self, grpc):
+        """Sets the grpc of this Probe.
+
+
+        :param grpc: The grpc of this Probe.  # noqa: E501
+        :type: GRPCAction
+        """
+
+        self._grpc = grpc
 
     @property
     def http_get(self):
@@ -236,6 +267,29 @@ class Probe(object):
         """
 
         self._tcp_socket = tcp_socket
+
+    @property
+    def termination_grace_period_seconds(self):
+        """Gets the termination_grace_period_seconds of this Probe.  # noqa: E501
+
+        Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset. +optional  # noqa: E501
+
+        :return: The termination_grace_period_seconds of this Probe.  # noqa: E501
+        :rtype: int
+        """
+        return self._termination_grace_period_seconds
+
+    @termination_grace_period_seconds.setter
+    def termination_grace_period_seconds(self, termination_grace_period_seconds):
+        """Sets the termination_grace_period_seconds of this Probe.
+
+        Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset. +optional  # noqa: E501
+
+        :param termination_grace_period_seconds: The termination_grace_period_seconds of this Probe.  # noqa: E501
+        :type: int
+        """
+
+        self._termination_grace_period_seconds = termination_grace_period_seconds
 
     @property
     def timeout_seconds(self):

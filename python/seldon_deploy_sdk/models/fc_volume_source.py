@@ -71,7 +71,7 @@ class FCVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this FCVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :return: The fs_type of this FCVolumeSource.  # noqa: E501
         :rtype: str
@@ -82,7 +82,7 @@ class FCVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this FCVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :param fs_type: The fs_type of this FCVolumeSource.  # noqa: E501
         :type: str
@@ -94,7 +94,7 @@ class FCVolumeSource(object):
     def lun(self):
         """Gets the lun of this FCVolumeSource.  # noqa: E501
 
-        Optional: FC target lun number +optional  # noqa: E501
+        lun is Optional: FC target lun number +optional  # noqa: E501
 
         :return: The lun of this FCVolumeSource.  # noqa: E501
         :rtype: int
@@ -105,7 +105,7 @@ class FCVolumeSource(object):
     def lun(self, lun):
         """Sets the lun of this FCVolumeSource.
 
-        Optional: FC target lun number +optional  # noqa: E501
+        lun is Optional: FC target lun number +optional  # noqa: E501
 
         :param lun: The lun of this FCVolumeSource.  # noqa: E501
         :type: int
@@ -117,7 +117,7 @@ class FCVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this FCVolumeSource.  # noqa: E501
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :return: The read_only of this FCVolumeSource.  # noqa: E501
         :rtype: bool
@@ -128,7 +128,7 @@ class FCVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this FCVolumeSource.
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :param read_only: The read_only of this FCVolumeSource.  # noqa: E501
         :type: bool
@@ -140,7 +140,7 @@ class FCVolumeSource(object):
     def target_ww_ns(self):
         """Gets the target_ww_ns of this FCVolumeSource.  # noqa: E501
 
-        Optional: FC target worldwide names (WWNs) +optional  # noqa: E501
+        targetWWNs is Optional: FC target worldwide names (WWNs) +optional  # noqa: E501
 
         :return: The target_ww_ns of this FCVolumeSource.  # noqa: E501
         :rtype: list[str]
@@ -151,7 +151,7 @@ class FCVolumeSource(object):
     def target_ww_ns(self, target_ww_ns):
         """Sets the target_ww_ns of this FCVolumeSource.
 
-        Optional: FC target worldwide names (WWNs) +optional  # noqa: E501
+        targetWWNs is Optional: FC target worldwide names (WWNs) +optional  # noqa: E501
 
         :param target_ww_ns: The target_ww_ns of this FCVolumeSource.  # noqa: E501
         :type: list[str]
@@ -163,7 +163,7 @@ class FCVolumeSource(object):
     def wwids(self):
         """Gets the wwids of this FCVolumeSource.  # noqa: E501
 
-        Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. +optional  # noqa: E501
+        wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. +optional  # noqa: E501
 
         :return: The wwids of this FCVolumeSource.  # noqa: E501
         :rtype: list[str]
@@ -174,7 +174,7 @@ class FCVolumeSource(object):
     def wwids(self, wwids):
         """Sets the wwids of this FCVolumeSource.
 
-        Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. +optional  # noqa: E501
+        wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. +optional  # noqa: E501
 
         :param wwids: The wwids of this FCVolumeSource.  # noqa: E501
         :type: list[str]

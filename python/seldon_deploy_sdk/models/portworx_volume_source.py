@@ -61,7 +61,7 @@ class PortworxVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this PortworxVolumeSource.  # noqa: E501
 
-        FSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
+        fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
 
         :return: The fs_type of this PortworxVolumeSource.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class PortworxVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this PortworxVolumeSource.
 
-        FSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
+        fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\". Implicitly inferred to be \"ext4\" if unspecified.  # noqa: E501
 
         :param fs_type: The fs_type of this PortworxVolumeSource.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class PortworxVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this PortworxVolumeSource.  # noqa: E501
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :return: The read_only of this PortworxVolumeSource.  # noqa: E501
         :rtype: bool
@@ -95,7 +95,7 @@ class PortworxVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this PortworxVolumeSource.
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :param read_only: The read_only of this PortworxVolumeSource.  # noqa: E501
         :type: bool
@@ -107,7 +107,7 @@ class PortworxVolumeSource(object):
     def volume_id(self):
         """Gets the volume_id of this PortworxVolumeSource.  # noqa: E501
 
-        VolumeID uniquely identifies a Portworx volume  # noqa: E501
+        volumeID uniquely identifies a Portworx volume  # noqa: E501
 
         :return: The volume_id of this PortworxVolumeSource.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class PortworxVolumeSource(object):
     def volume_id(self, volume_id):
         """Sets the volume_id of this PortworxVolumeSource.
 
-        VolumeID uniquely identifies a Portworx volume  # noqa: E501
+        volumeID uniquely identifies a Portworx volume  # noqa: E501
 
         :param volume_id: The volume_id of this PortworxVolumeSource.  # noqa: E501
         :type: str

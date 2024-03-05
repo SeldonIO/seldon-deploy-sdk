@@ -66,7 +66,7 @@ class ConfigMapVolumeSource(object):
     def default_mode(self):
         """Gets the default_mode of this ConfigMapVolumeSource.  # noqa: E501
 
-        Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
+        defaultMode is optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
 
         :return: The default_mode of this ConfigMapVolumeSource.  # noqa: E501
         :rtype: int
@@ -77,7 +77,7 @@ class ConfigMapVolumeSource(object):
     def default_mode(self, default_mode):
         """Sets the default_mode of this ConfigMapVolumeSource.
 
-        Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
+        defaultMode is optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional  # noqa: E501
 
         :param default_mode: The default_mode of this ConfigMapVolumeSource.  # noqa: E501
         :type: int
@@ -89,7 +89,7 @@ class ConfigMapVolumeSource(object):
     def items(self):
         """Gets the items of this ConfigMapVolumeSource.  # noqa: E501
 
-        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. +optional  # noqa: E501
+        items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. +optional  # noqa: E501
 
         :return: The items of this ConfigMapVolumeSource.  # noqa: E501
         :rtype: list[KeyToPath]
@@ -100,7 +100,7 @@ class ConfigMapVolumeSource(object):
     def items(self, items):
         """Sets the items of this ConfigMapVolumeSource.
 
-        If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. +optional  # noqa: E501
+        items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. +optional  # noqa: E501
 
         :param items: The items of this ConfigMapVolumeSource.  # noqa: E501
         :type: list[KeyToPath]
@@ -135,7 +135,7 @@ class ConfigMapVolumeSource(object):
     def optional(self):
         """Gets the optional of this ConfigMapVolumeSource.  # noqa: E501
 
-        Specify whether the ConfigMap or its keys must be defined +optional  # noqa: E501
+        optional specify whether the ConfigMap or its keys must be defined +optional  # noqa: E501
 
         :return: The optional of this ConfigMapVolumeSource.  # noqa: E501
         :rtype: bool
@@ -146,7 +146,7 @@ class ConfigMapVolumeSource(object):
     def optional(self, optional):
         """Sets the optional of this ConfigMapVolumeSource.
 
-        Specify whether the ConfigMap or its keys must be defined +optional  # noqa: E501
+        optional specify whether the ConfigMap or its keys must be defined +optional  # noqa: E501
 
         :param optional: The optional of this ConfigMapVolumeSource.  # noqa: E501
         :type: bool

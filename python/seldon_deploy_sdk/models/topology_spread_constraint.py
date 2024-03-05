@@ -32,31 +32,51 @@ class TopologySpreadConstraint(object):
     """
     swagger_types = {
         'label_selector': 'LabelSelector',
+        'match_label_keys': 'list[str]',
         'max_skew': 'int',
+        'min_domains': 'int',
+        'node_affinity_policy': 'NodeInclusionPolicy',
+        'node_taints_policy': 'NodeInclusionPolicy',
         'topology_key': 'str',
         'when_unsatisfiable': 'UnsatisfiableConstraintAction'
     }
 
     attribute_map = {
         'label_selector': 'labelSelector',
+        'match_label_keys': 'matchLabelKeys',
         'max_skew': 'maxSkew',
+        'min_domains': 'minDomains',
+        'node_affinity_policy': 'nodeAffinityPolicy',
+        'node_taints_policy': 'nodeTaintsPolicy',
         'topology_key': 'topologyKey',
         'when_unsatisfiable': 'whenUnsatisfiable'
     }
 
-    def __init__(self, label_selector=None, max_skew=None, topology_key=None, when_unsatisfiable=None):  # noqa: E501
+    def __init__(self, label_selector=None, match_label_keys=None, max_skew=None, min_domains=None, node_affinity_policy=None, node_taints_policy=None, topology_key=None, when_unsatisfiable=None):  # noqa: E501
         """TopologySpreadConstraint - a model defined in Swagger"""  # noqa: E501
 
         self._label_selector = None
+        self._match_label_keys = None
         self._max_skew = None
+        self._min_domains = None
+        self._node_affinity_policy = None
+        self._node_taints_policy = None
         self._topology_key = None
         self._when_unsatisfiable = None
         self.discriminator = None
 
         if label_selector is not None:
             self.label_selector = label_selector
+        if match_label_keys is not None:
+            self.match_label_keys = match_label_keys
         if max_skew is not None:
             self.max_skew = max_skew
+        if min_domains is not None:
+            self.min_domains = min_domains
+        if node_affinity_policy is not None:
+            self.node_affinity_policy = node_affinity_policy
+        if node_taints_policy is not None:
+            self.node_taints_policy = node_taints_policy
         if topology_key is not None:
             self.topology_key = topology_key
         if when_unsatisfiable is not None:
@@ -84,10 +104,33 @@ class TopologySpreadConstraint(object):
         self._label_selector = label_selector
 
     @property
+    def match_label_keys(self):
+        """Gets the match_label_keys of this TopologySpreadConstraint.  # noqa: E501
+
+        MatchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. MatchLabelKeys cannot be set when LabelSelector isn't set. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector.  This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default). +listType=atomic +optional  # noqa: E501
+
+        :return: The match_label_keys of this TopologySpreadConstraint.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._match_label_keys
+
+    @match_label_keys.setter
+    def match_label_keys(self, match_label_keys):
+        """Sets the match_label_keys of this TopologySpreadConstraint.
+
+        MatchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. MatchLabelKeys cannot be set when LabelSelector isn't set. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector.  This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default). +listType=atomic +optional  # noqa: E501
+
+        :param match_label_keys: The match_label_keys of this TopologySpreadConstraint.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._match_label_keys = match_label_keys
+
+    @property
     def max_skew(self):
         """Gets the max_skew of this TopologySpreadConstraint.  # noqa: E501
 
-        MaxSkew describes the degree to which pods may be unevenly distributed. When `whenUnsatisfiable=DoNotSchedule`, it is the maximum permitted difference between the number of matching pods in the target topology and the global minimum. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 1/1/0: +-------+-------+-------+  zone1 | zone2 | zone3 | +-------+-------+-------+    P   |   P   |       | +-------+-------+-------+ if MaxSkew is 1, incoming pod can only be scheduled to zone3 to become 1/1/1; scheduling it onto zone1(zone2) would make the ActualSkew(2-0) on zone1(zone2) violate MaxSkew(1). if MaxSkew is 2, incoming pod can be scheduled onto any zone. When `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence to topologies that satisfy it. It's a required field. Default value is 1 and 0 is not allowed.  # noqa: E501
+        MaxSkew describes the degree to which pods may be unevenly distributed. When `whenUnsatisfiable=DoNotSchedule`, it is the maximum permitted difference between the number of matching pods in the target topology and the global minimum. The global minimum is the minimum number of matching pods in an eligible domain or zero if the number of eligible domains is less than MinDomains. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 2/2/1: In this case, the global minimum is 1. +-------+-------+-------+  zone1 | zone2 | zone3 | +-------+-------+-------+   P P  |  P P  |   P   | +-------+-------+-------+ if MaxSkew is 1, incoming pod can only be scheduled to zone3 to become 2/2/2; scheduling it onto zone1(zone2) would make the ActualSkew(3-1) on zone1(zone2) violate MaxSkew(1). if MaxSkew is 2, incoming pod can be scheduled onto any zone. When `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence to topologies that satisfy it. It's a required field. Default value is 1 and 0 is not allowed.  # noqa: E501
 
         :return: The max_skew of this TopologySpreadConstraint.  # noqa: E501
         :rtype: int
@@ -98,7 +141,7 @@ class TopologySpreadConstraint(object):
     def max_skew(self, max_skew):
         """Sets the max_skew of this TopologySpreadConstraint.
 
-        MaxSkew describes the degree to which pods may be unevenly distributed. When `whenUnsatisfiable=DoNotSchedule`, it is the maximum permitted difference between the number of matching pods in the target topology and the global minimum. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 1/1/0: +-------+-------+-------+  zone1 | zone2 | zone3 | +-------+-------+-------+    P   |   P   |       | +-------+-------+-------+ if MaxSkew is 1, incoming pod can only be scheduled to zone3 to become 1/1/1; scheduling it onto zone1(zone2) would make the ActualSkew(2-0) on zone1(zone2) violate MaxSkew(1). if MaxSkew is 2, incoming pod can be scheduled onto any zone. When `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence to topologies that satisfy it. It's a required field. Default value is 1 and 0 is not allowed.  # noqa: E501
+        MaxSkew describes the degree to which pods may be unevenly distributed. When `whenUnsatisfiable=DoNotSchedule`, it is the maximum permitted difference between the number of matching pods in the target topology and the global minimum. The global minimum is the minimum number of matching pods in an eligible domain or zero if the number of eligible domains is less than MinDomains. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 2/2/1: In this case, the global minimum is 1. +-------+-------+-------+  zone1 | zone2 | zone3 | +-------+-------+-------+   P P  |  P P  |   P   | +-------+-------+-------+ if MaxSkew is 1, incoming pod can only be scheduled to zone3 to become 2/2/2; scheduling it onto zone1(zone2) would make the ActualSkew(3-1) on zone1(zone2) violate MaxSkew(1). if MaxSkew is 2, incoming pod can be scheduled onto any zone. When `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence to topologies that satisfy it. It's a required field. Default value is 1 and 0 is not allowed.  # noqa: E501
 
         :param max_skew: The max_skew of this TopologySpreadConstraint.  # noqa: E501
         :type: int
@@ -107,10 +150,75 @@ class TopologySpreadConstraint(object):
         self._max_skew = max_skew
 
     @property
+    def min_domains(self):
+        """Gets the min_domains of this TopologySpreadConstraint.  # noqa: E501
+
+        MinDomains indicates a minimum number of eligible domains. When the number of eligible domains with matching topology keys is less than minDomains, Pod Topology Spread treats \"global minimum\" as 0, and then the calculation of Skew is performed. And when the number of eligible domains with matching topology keys equals or greater than minDomains, this value has no effect on scheduling. As a result, when the number of eligible domains is less than minDomains, scheduler won't schedule more than maxSkew Pods to those domains. If value is nil, the constraint behaves as if MinDomains is equal to 1. Valid values are integers greater than 0. When value is not nil, WhenUnsatisfiable must be DoNotSchedule.  For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same labelSelector spread as 2/2/2: +-------+-------+-------+  zone1 | zone2 | zone3 | +-------+-------+-------+   P P  |  P P  |  P P  | +-------+-------+-------+ The number of domains is less than 5(MinDomains), so \"global minimum\" is treated as 0. In this situation, new pod with the same labelSelector cannot be scheduled, because computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones, it will violate MaxSkew.  This is a beta field and requires the MinDomainsInPodTopologySpread feature gate to be enabled (enabled by default). +optional  # noqa: E501
+
+        :return: The min_domains of this TopologySpreadConstraint.  # noqa: E501
+        :rtype: int
+        """
+        return self._min_domains
+
+    @min_domains.setter
+    def min_domains(self, min_domains):
+        """Sets the min_domains of this TopologySpreadConstraint.
+
+        MinDomains indicates a minimum number of eligible domains. When the number of eligible domains with matching topology keys is less than minDomains, Pod Topology Spread treats \"global minimum\" as 0, and then the calculation of Skew is performed. And when the number of eligible domains with matching topology keys equals or greater than minDomains, this value has no effect on scheduling. As a result, when the number of eligible domains is less than minDomains, scheduler won't schedule more than maxSkew Pods to those domains. If value is nil, the constraint behaves as if MinDomains is equal to 1. Valid values are integers greater than 0. When value is not nil, WhenUnsatisfiable must be DoNotSchedule.  For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same labelSelector spread as 2/2/2: +-------+-------+-------+  zone1 | zone2 | zone3 | +-------+-------+-------+   P P  |  P P  |  P P  | +-------+-------+-------+ The number of domains is less than 5(MinDomains), so \"global minimum\" is treated as 0. In this situation, new pod with the same labelSelector cannot be scheduled, because computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones, it will violate MaxSkew.  This is a beta field and requires the MinDomainsInPodTopologySpread feature gate to be enabled (enabled by default). +optional  # noqa: E501
+
+        :param min_domains: The min_domains of this TopologySpreadConstraint.  # noqa: E501
+        :type: int
+        """
+
+        self._min_domains = min_domains
+
+    @property
+    def node_affinity_policy(self):
+        """Gets the node_affinity_policy of this TopologySpreadConstraint.  # noqa: E501
+
+
+        :return: The node_affinity_policy of this TopologySpreadConstraint.  # noqa: E501
+        :rtype: NodeInclusionPolicy
+        """
+        return self._node_affinity_policy
+
+    @node_affinity_policy.setter
+    def node_affinity_policy(self, node_affinity_policy):
+        """Sets the node_affinity_policy of this TopologySpreadConstraint.
+
+
+        :param node_affinity_policy: The node_affinity_policy of this TopologySpreadConstraint.  # noqa: E501
+        :type: NodeInclusionPolicy
+        """
+
+        self._node_affinity_policy = node_affinity_policy
+
+    @property
+    def node_taints_policy(self):
+        """Gets the node_taints_policy of this TopologySpreadConstraint.  # noqa: E501
+
+
+        :return: The node_taints_policy of this TopologySpreadConstraint.  # noqa: E501
+        :rtype: NodeInclusionPolicy
+        """
+        return self._node_taints_policy
+
+    @node_taints_policy.setter
+    def node_taints_policy(self, node_taints_policy):
+        """Sets the node_taints_policy of this TopologySpreadConstraint.
+
+
+        :param node_taints_policy: The node_taints_policy of this TopologySpreadConstraint.  # noqa: E501
+        :type: NodeInclusionPolicy
+        """
+
+        self._node_taints_policy = node_taints_policy
+
+    @property
     def topology_key(self):
         """Gets the topology_key of this TopologySpreadConstraint.  # noqa: E501
 
-        TopologyKey is the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology. We consider each <key, value> as a \"bucket\", and try to put balanced number of pods into each bucket. It's a required field.  # noqa: E501
+        TopologyKey is the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology. We consider each <key, value> as a \"bucket\", and try to put balanced number of pods into each bucket. We define a domain as a particular instance of a topology. Also, we define an eligible domain as a domain whose nodes meet the requirements of nodeAffinityPolicy and nodeTaintsPolicy. e.g. If TopologyKey is \"kubernetes.io/hostname\", each Node is a domain of that topology. And, if TopologyKey is \"topology.kubernetes.io/zone\", each zone is a domain of that topology. It's a required field.  # noqa: E501
 
         :return: The topology_key of this TopologySpreadConstraint.  # noqa: E501
         :rtype: str
@@ -121,7 +229,7 @@ class TopologySpreadConstraint(object):
     def topology_key(self, topology_key):
         """Sets the topology_key of this TopologySpreadConstraint.
 
-        TopologyKey is the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology. We consider each <key, value> as a \"bucket\", and try to put balanced number of pods into each bucket. It's a required field.  # noqa: E501
+        TopologyKey is the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology. We consider each <key, value> as a \"bucket\", and try to put balanced number of pods into each bucket. We define a domain as a particular instance of a topology. Also, we define an eligible domain as a domain whose nodes meet the requirements of nodeAffinityPolicy and nodeTaintsPolicy. e.g. If TopologyKey is \"kubernetes.io/hostname\", each Node is a domain of that topology. And, if TopologyKey is \"topology.kubernetes.io/zone\", each zone is a domain of that topology. It's a required field.  # noqa: E501
 
         :param topology_key: The topology_key of this TopologySpreadConstraint.  # noqa: E501
         :type: str

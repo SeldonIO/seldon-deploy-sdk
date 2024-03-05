@@ -71,7 +71,7 @@ class FlexVolumeSource(object):
     def driver(self):
         """Gets the driver of this FlexVolumeSource.  # noqa: E501
 
-        Driver is the name of the driver to use for this volume.  # noqa: E501
+        driver is the name of the driver to use for this volume.  # noqa: E501
 
         :return: The driver of this FlexVolumeSource.  # noqa: E501
         :rtype: str
@@ -82,7 +82,7 @@ class FlexVolumeSource(object):
     def driver(self, driver):
         """Sets the driver of this FlexVolumeSource.
 
-        Driver is the name of the driver to use for this volume.  # noqa: E501
+        driver is the name of the driver to use for this volume.  # noqa: E501
 
         :param driver: The driver of this FlexVolumeSource.  # noqa: E501
         :type: str
@@ -94,7 +94,7 @@ class FlexVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this FlexVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script. +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script. +optional  # noqa: E501
 
         :return: The fs_type of this FlexVolumeSource.  # noqa: E501
         :rtype: str
@@ -105,7 +105,7 @@ class FlexVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this FlexVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script. +optional  # noqa: E501
+        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script. +optional  # noqa: E501
 
         :param fs_type: The fs_type of this FlexVolumeSource.  # noqa: E501
         :type: str
@@ -117,7 +117,7 @@ class FlexVolumeSource(object):
     def options(self):
         """Gets the options of this FlexVolumeSource.  # noqa: E501
 
-        Optional: Extra command options if any. +optional  # noqa: E501
+        options is Optional: this field holds extra command options if any. +optional  # noqa: E501
 
         :return: The options of this FlexVolumeSource.  # noqa: E501
         :rtype: dict(str, str)
@@ -128,7 +128,7 @@ class FlexVolumeSource(object):
     def options(self, options):
         """Sets the options of this FlexVolumeSource.
 
-        Optional: Extra command options if any. +optional  # noqa: E501
+        options is Optional: this field holds extra command options if any. +optional  # noqa: E501
 
         :param options: The options of this FlexVolumeSource.  # noqa: E501
         :type: dict(str, str)
@@ -140,7 +140,7 @@ class FlexVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this FlexVolumeSource.  # noqa: E501
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :return: The read_only of this FlexVolumeSource.  # noqa: E501
         :rtype: bool
@@ -151,7 +151,7 @@ class FlexVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this FlexVolumeSource.
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :param read_only: The read_only of this FlexVolumeSource.  # noqa: E501
         :type: bool

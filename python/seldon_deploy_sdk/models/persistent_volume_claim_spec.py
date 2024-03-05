@@ -33,6 +33,7 @@ class PersistentVolumeClaimSpec(object):
     swagger_types = {
         'access_modes': 'list[PersistentVolumeAccessMode]',
         'data_source': 'TypedLocalObjectReference',
+        'data_source_ref': 'TypedObjectReference',
         'resources': 'ResourceRequirements',
         'selector': 'LabelSelector',
         'storage_class_name': 'str',
@@ -43,6 +44,7 @@ class PersistentVolumeClaimSpec(object):
     attribute_map = {
         'access_modes': 'accessModes',
         'data_source': 'dataSource',
+        'data_source_ref': 'dataSourceRef',
         'resources': 'resources',
         'selector': 'selector',
         'storage_class_name': 'storageClassName',
@@ -50,11 +52,12 @@ class PersistentVolumeClaimSpec(object):
         'volume_name': 'volumeName'
     }
 
-    def __init__(self, access_modes=None, data_source=None, resources=None, selector=None, storage_class_name=None, volume_mode=None, volume_name=None):  # noqa: E501
+    def __init__(self, access_modes=None, data_source=None, data_source_ref=None, resources=None, selector=None, storage_class_name=None, volume_mode=None, volume_name=None):  # noqa: E501
         """PersistentVolumeClaimSpec - a model defined in Swagger"""  # noqa: E501
 
         self._access_modes = None
         self._data_source = None
+        self._data_source_ref = None
         self._resources = None
         self._selector = None
         self._storage_class_name = None
@@ -66,6 +69,8 @@ class PersistentVolumeClaimSpec(object):
             self.access_modes = access_modes
         if data_source is not None:
             self.data_source = data_source
+        if data_source_ref is not None:
+            self.data_source_ref = data_source_ref
         if resources is not None:
             self.resources = resources
         if selector is not None:
@@ -81,7 +86,7 @@ class PersistentVolumeClaimSpec(object):
     def access_modes(self):
         """Gets the access_modes of this PersistentVolumeClaimSpec.  # noqa: E501
 
-        AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 +optional  # noqa: E501
+        accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 +optional  # noqa: E501
 
         :return: The access_modes of this PersistentVolumeClaimSpec.  # noqa: E501
         :rtype: list[PersistentVolumeAccessMode]
@@ -92,7 +97,7 @@ class PersistentVolumeClaimSpec(object):
     def access_modes(self, access_modes):
         """Sets the access_modes of this PersistentVolumeClaimSpec.
 
-        AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 +optional  # noqa: E501
+        accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 +optional  # noqa: E501
 
         :param access_modes: The access_modes of this PersistentVolumeClaimSpec.  # noqa: E501
         :type: list[PersistentVolumeAccessMode]
@@ -120,6 +125,27 @@ class PersistentVolumeClaimSpec(object):
         """
 
         self._data_source = data_source
+
+    @property
+    def data_source_ref(self):
+        """Gets the data_source_ref of this PersistentVolumeClaimSpec.  # noqa: E501
+
+
+        :return: The data_source_ref of this PersistentVolumeClaimSpec.  # noqa: E501
+        :rtype: TypedObjectReference
+        """
+        return self._data_source_ref
+
+    @data_source_ref.setter
+    def data_source_ref(self, data_source_ref):
+        """Sets the data_source_ref of this PersistentVolumeClaimSpec.
+
+
+        :param data_source_ref: The data_source_ref of this PersistentVolumeClaimSpec.  # noqa: E501
+        :type: TypedObjectReference
+        """
+
+        self._data_source_ref = data_source_ref
 
     @property
     def resources(self):
@@ -167,7 +193,7 @@ class PersistentVolumeClaimSpec(object):
     def storage_class_name(self):
         """Gets the storage_class_name of this PersistentVolumeClaimSpec.  # noqa: E501
 
-        Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1 +optional  # noqa: E501
+        storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1 +optional  # noqa: E501
 
         :return: The storage_class_name of this PersistentVolumeClaimSpec.  # noqa: E501
         :rtype: str
@@ -178,7 +204,7 @@ class PersistentVolumeClaimSpec(object):
     def storage_class_name(self, storage_class_name):
         """Sets the storage_class_name of this PersistentVolumeClaimSpec.
 
-        Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1 +optional  # noqa: E501
+        storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1 +optional  # noqa: E501
 
         :param storage_class_name: The storage_class_name of this PersistentVolumeClaimSpec.  # noqa: E501
         :type: str
@@ -211,7 +237,7 @@ class PersistentVolumeClaimSpec(object):
     def volume_name(self):
         """Gets the volume_name of this PersistentVolumeClaimSpec.  # noqa: E501
 
-        VolumeName is the binding reference to the PersistentVolume backing this claim. +optional  # noqa: E501
+        volumeName is the binding reference to the PersistentVolume backing this claim. +optional  # noqa: E501
 
         :return: The volume_name of this PersistentVolumeClaimSpec.  # noqa: E501
         :rtype: str
@@ -222,7 +248,7 @@ class PersistentVolumeClaimSpec(object):
     def volume_name(self, volume_name):
         """Sets the volume_name of this PersistentVolumeClaimSpec.
 
-        VolumeName is the binding reference to the PersistentVolume backing this claim. +optional  # noqa: E501
+        volumeName is the binding reference to the PersistentVolume backing this claim. +optional  # noqa: E501
 
         :param volume_name: The volume_name of this PersistentVolumeClaimSpec.  # noqa: E501
         :type: str

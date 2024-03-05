@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.node_phase import NodePhase  # noqa: E501
+from seldon_deploy_sdk.models.service_internal_traffic_policy import ServiceInternalTrafficPolicy  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestNodePhase(unittest.TestCase):
-    """NodePhase unit test stubs"""
+class TestServiceInternalTrafficPolicy(unittest.TestCase):
+    """ServiceInternalTrafficPolicy unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestNodePhase(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testNodePhase(self):
-        """Test NodePhase"""
+    def testServiceInternalTrafficPolicy(self):
+        """Test ServiceInternalTrafficPolicy"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.node_phase.NodePhase()  # noqa: E501
+        # model = seldon_deploy_sdk.models.service_internal_traffic_policy.ServiceInternalTrafficPolicy()  # noqa: E501
         pass
 
 

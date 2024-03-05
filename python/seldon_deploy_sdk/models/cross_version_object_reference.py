@@ -61,7 +61,7 @@ class CrossVersionObjectReference(object):
     def api_version(self):
         """Gets the api_version of this CrossVersionObjectReference.  # noqa: E501
 
-        API version of the referent +optional  # noqa: E501
+        apiVersion is the API version of the referent +optional  # noqa: E501
 
         :return: The api_version of this CrossVersionObjectReference.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class CrossVersionObjectReference(object):
     def api_version(self, api_version):
         """Sets the api_version of this CrossVersionObjectReference.
 
-        API version of the referent +optional  # noqa: E501
+        apiVersion is the API version of the referent +optional  # noqa: E501
 
         :param api_version: The api_version of this CrossVersionObjectReference.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class CrossVersionObjectReference(object):
     def kind(self):
         """Gets the kind of this CrossVersionObjectReference.  # noqa: E501
 
-        Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds\"  # noqa: E501
+        kind is the kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds  # noqa: E501
 
         :return: The kind of this CrossVersionObjectReference.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class CrossVersionObjectReference(object):
     def kind(self, kind):
         """Sets the kind of this CrossVersionObjectReference.
 
-        Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds\"  # noqa: E501
+        kind is the kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds  # noqa: E501
 
         :param kind: The kind of this CrossVersionObjectReference.  # noqa: E501
         :type: str
@@ -107,7 +107,7 @@ class CrossVersionObjectReference(object):
     def name(self):
         """Gets the name of this CrossVersionObjectReference.  # noqa: E501
 
-        Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names  # noqa: E501
+        name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names  # noqa: E501
 
         :return: The name of this CrossVersionObjectReference.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class CrossVersionObjectReference(object):
     def name(self, name):
         """Sets the name of this CrossVersionObjectReference.
 
-        Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names  # noqa: E501
+        name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names  # noqa: E501
 
         :param name: The name of this CrossVersionObjectReference.  # noqa: E501
         :type: str

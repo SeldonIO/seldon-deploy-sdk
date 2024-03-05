@@ -56,7 +56,7 @@ class PersistentVolumeClaimVolumeSource(object):
     def claim_name(self):
         """Gets the claim_name of this PersistentVolumeClaimVolumeSource.  # noqa: E501
 
-        ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims  # noqa: E501
+        claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims  # noqa: E501
 
         :return: The claim_name of this PersistentVolumeClaimVolumeSource.  # noqa: E501
         :rtype: str
@@ -67,7 +67,7 @@ class PersistentVolumeClaimVolumeSource(object):
     def claim_name(self, claim_name):
         """Sets the claim_name of this PersistentVolumeClaimVolumeSource.
 
-        ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims  # noqa: E501
+        claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims  # noqa: E501
 
         :param claim_name: The claim_name of this PersistentVolumeClaimVolumeSource.  # noqa: E501
         :type: str
@@ -79,7 +79,7 @@ class PersistentVolumeClaimVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this PersistentVolumeClaimVolumeSource.  # noqa: E501
 
-        Will force the ReadOnly setting in VolumeMounts. Default false. +optional  # noqa: E501
+        readOnly Will force the ReadOnly setting in VolumeMounts. Default false. +optional  # noqa: E501
 
         :return: The read_only of this PersistentVolumeClaimVolumeSource.  # noqa: E501
         :rtype: bool
@@ -90,7 +90,7 @@ class PersistentVolumeClaimVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this PersistentVolumeClaimVolumeSource.
 
-        Will force the ReadOnly setting in VolumeMounts. Default false. +optional  # noqa: E501
+        readOnly Will force the ReadOnly setting in VolumeMounts. Default false. +optional  # noqa: E501
 
         :param read_only: The read_only of this PersistentVolumeClaimVolumeSource.  # noqa: E501
         :type: bool

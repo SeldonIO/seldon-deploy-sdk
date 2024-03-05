@@ -51,7 +51,7 @@ class PodIP(object):
     def ip(self):
         """Gets the ip of this PodIP.  # noqa: E501
 
-        ip is an IP address (IPv4 or IPv6) assigned to the pod  # noqa: E501
+        IP is the IP address assigned to the pod  # noqa: E501
 
         :return: The ip of this PodIP.  # noqa: E501
         :rtype: str
@@ -62,7 +62,7 @@ class PodIP(object):
     def ip(self, ip):
         """Sets the ip of this PodIP.
 
-        ip is an IP address (IPv4 or IPv6) assigned to the pod  # noqa: E501
+        IP is the IP address assigned to the pod  # noqa: E501
 
         :param ip: The ip of this PodIP.  # noqa: E501
         :type: str

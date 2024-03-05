@@ -81,7 +81,7 @@ class ContainerStateTerminated(object):
     def container_id(self):
         """Gets the container_id of this ContainerStateTerminated.  # noqa: E501
 
-        Container's ID in the format 'docker://<container_id>' +optional  # noqa: E501
+        Container's ID in the format '<type>://<container_id>' +optional  # noqa: E501
 
         :return: The container_id of this ContainerStateTerminated.  # noqa: E501
         :rtype: str
@@ -92,7 +92,7 @@ class ContainerStateTerminated(object):
     def container_id(self, container_id):
         """Sets the container_id of this ContainerStateTerminated.
 
-        Container's ID in the format 'docker://<container_id>' +optional  # noqa: E501
+        Container's ID in the format '<type>://<container_id>' +optional  # noqa: E501
 
         :param container_id: The container_id of this ContainerStateTerminated.  # noqa: E501
         :type: str

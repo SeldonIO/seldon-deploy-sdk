@@ -36,6 +36,7 @@ class ManagedFieldsEntry(object):
         'fields_v1': 'FieldsV1',
         'manager': 'str',
         'operation': 'ManagedFieldsOperationType',
+        'subresource': 'str',
         'time': 'str'
     }
 
@@ -45,10 +46,11 @@ class ManagedFieldsEntry(object):
         'fields_v1': 'fieldsV1',
         'manager': 'manager',
         'operation': 'operation',
+        'subresource': 'subresource',
         'time': 'time'
     }
 
-    def __init__(self, api_version=None, fields_type=None, fields_v1=None, manager=None, operation=None, time=None):  # noqa: E501
+    def __init__(self, api_version=None, fields_type=None, fields_v1=None, manager=None, operation=None, subresource=None, time=None):  # noqa: E501
         """ManagedFieldsEntry - a model defined in Swagger"""  # noqa: E501
 
         self._api_version = None
@@ -56,6 +58,7 @@ class ManagedFieldsEntry(object):
         self._fields_v1 = None
         self._manager = None
         self._operation = None
+        self._subresource = None
         self._time = None
         self.discriminator = None
 
@@ -69,6 +72,8 @@ class ManagedFieldsEntry(object):
             self.manager = manager
         if operation is not None:
             self.operation = operation
+        if subresource is not None:
+            self.subresource = subresource
         if time is not None:
             self.time = time
 
@@ -184,10 +189,33 @@ class ManagedFieldsEntry(object):
         self._operation = operation
 
     @property
+    def subresource(self):
+        """Gets the subresource of this ManagedFieldsEntry.  # noqa: E501
+
+        Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.  # noqa: E501
+
+        :return: The subresource of this ManagedFieldsEntry.  # noqa: E501
+        :rtype: str
+        """
+        return self._subresource
+
+    @subresource.setter
+    def subresource(self, subresource):
+        """Sets the subresource of this ManagedFieldsEntry.
+
+        Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.  # noqa: E501
+
+        :param subresource: The subresource of this ManagedFieldsEntry.  # noqa: E501
+        :type: str
+        """
+
+        self._subresource = subresource
+
+    @property
     def time(self):
         """Gets the time of this ManagedFieldsEntry.  # noqa: E501
 
-        Time is timestamp of when these fields were set. It should always be empty if Operation is 'Apply' +optional  # noqa: E501
+        Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. +optional  # noqa: E501
 
         :return: The time of this ManagedFieldsEntry.  # noqa: E501
         :rtype: str
@@ -198,7 +226,7 @@ class ManagedFieldsEntry(object):
     def time(self, time):
         """Sets the time of this ManagedFieldsEntry.
 
-        Time is timestamp of when these fields were set. It should always be empty if Operation is 'Apply' +optional  # noqa: E501
+        Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. +optional  # noqa: E501
 
         :param time: The time of this ManagedFieldsEntry.  # noqa: E501
         :type: str

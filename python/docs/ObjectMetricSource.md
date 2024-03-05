@@ -3,11 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**average_value** | [**Quantity**](Quantity.md) |  | [optional] 
-**metric_name** | **str** | metricName is the name of the metric in question. | [optional] 
-**selector** | [**LabelSelector**](LabelSelector.md) |  | [optional] 
-**target** | [**CrossVersionObjectReference**](CrossVersionObjectReference.md) |  | [optional] 
-**target_value** | [**Quantity**](Quantity.md) |  | [optional] 
+**described_object** | [**CrossVersionObjectReference**](CrossVersionObjectReference.md) |  | [optional] 
+**metric** | [**MetricIdentifier**](MetricIdentifier.md) |  | [optional] 
+**target** | [**MetricTarget**](MetricTarget.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

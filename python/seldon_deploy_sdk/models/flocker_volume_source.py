@@ -56,7 +56,7 @@ class FlockerVolumeSource(object):
     def dataset_name(self):
         """Gets the dataset_name of this FlockerVolumeSource.  # noqa: E501
 
-        Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated +optional  # noqa: E501
+        datasetName is Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated +optional  # noqa: E501
 
         :return: The dataset_name of this FlockerVolumeSource.  # noqa: E501
         :rtype: str
@@ -67,7 +67,7 @@ class FlockerVolumeSource(object):
     def dataset_name(self, dataset_name):
         """Sets the dataset_name of this FlockerVolumeSource.
 
-        Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated +optional  # noqa: E501
+        datasetName is Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated +optional  # noqa: E501
 
         :param dataset_name: The dataset_name of this FlockerVolumeSource.  # noqa: E501
         :type: str
@@ -79,7 +79,7 @@ class FlockerVolumeSource(object):
     def dataset_uuid(self):
         """Gets the dataset_uuid of this FlockerVolumeSource.  # noqa: E501
 
-        UUID of the dataset. This is unique identifier of a Flocker dataset +optional  # noqa: E501
+        datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset +optional  # noqa: E501
 
         :return: The dataset_uuid of this FlockerVolumeSource.  # noqa: E501
         :rtype: str
@@ -90,7 +90,7 @@ class FlockerVolumeSource(object):
     def dataset_uuid(self, dataset_uuid):
         """Sets the dataset_uuid of this FlockerVolumeSource.
 
-        UUID of the dataset. This is unique identifier of a Flocker dataset +optional  # noqa: E501
+        datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset +optional  # noqa: E501
 
         :param dataset_uuid: The dataset_uuid of this FlockerVolumeSource.  # noqa: E501
         :type: str

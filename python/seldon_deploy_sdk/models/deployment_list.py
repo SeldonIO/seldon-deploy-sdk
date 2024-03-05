@@ -219,7 +219,7 @@ class DeploymentList(object):
     def self_link(self):
         """Gets the self_link of this DeploymentList.  # noqa: E501
 
-        selfLink is a URL representing this object. Populated by the system. Read-only.  DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release. +optional  # noqa: E501
+        Deprecated: selfLink is a legacy read-only field that is no longer populated by the system. +optional  # noqa: E501
 
         :return: The self_link of this DeploymentList.  # noqa: E501
         :rtype: str
@@ -230,7 +230,7 @@ class DeploymentList(object):
     def self_link(self, self_link):
         """Sets the self_link of this DeploymentList.
 
-        selfLink is a URL representing this object. Populated by the system. Read-only.  DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release. +optional  # noqa: E501
+        Deprecated: selfLink is a legacy read-only field that is no longer populated by the system. +optional  # noqa: E501
 
         :param self_link: The self_link of this DeploymentList.  # noqa: E501
         :type: str

@@ -76,7 +76,7 @@ class CephFSVolumeSource(object):
     def monitors(self):
         """Gets the monitors of this CephFSVolumeSource.  # noqa: E501
 
-        Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it  # noqa: E501
+        monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it  # noqa: E501
 
         :return: The monitors of this CephFSVolumeSource.  # noqa: E501
         :rtype: list[str]
@@ -87,7 +87,7 @@ class CephFSVolumeSource(object):
     def monitors(self, monitors):
         """Sets the monitors of this CephFSVolumeSource.
 
-        Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it  # noqa: E501
+        monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it  # noqa: E501
 
         :param monitors: The monitors of this CephFSVolumeSource.  # noqa: E501
         :type: list[str]
@@ -99,7 +99,7 @@ class CephFSVolumeSource(object):
     def path(self):
         """Gets the path of this CephFSVolumeSource.  # noqa: E501
 
-        Optional: Used as the mounted root, rather than the full Ceph tree, default is / +optional  # noqa: E501
+        path is Optional: Used as the mounted root, rather than the full Ceph tree, default is / +optional  # noqa: E501
 
         :return: The path of this CephFSVolumeSource.  # noqa: E501
         :rtype: str
@@ -110,7 +110,7 @@ class CephFSVolumeSource(object):
     def path(self, path):
         """Sets the path of this CephFSVolumeSource.
 
-        Optional: Used as the mounted root, rather than the full Ceph tree, default is / +optional  # noqa: E501
+        path is Optional: Used as the mounted root, rather than the full Ceph tree, default is / +optional  # noqa: E501
 
         :param path: The path of this CephFSVolumeSource.  # noqa: E501
         :type: str
@@ -122,7 +122,7 @@ class CephFSVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this CephFSVolumeSource.  # noqa: E501
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
+        readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
 
         :return: The read_only of this CephFSVolumeSource.  # noqa: E501
         :rtype: bool
@@ -133,7 +133,7 @@ class CephFSVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this CephFSVolumeSource.
 
-        Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
+        readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
 
         :param read_only: The read_only of this CephFSVolumeSource.  # noqa: E501
         :type: bool
@@ -145,7 +145,7 @@ class CephFSVolumeSource(object):
     def secret_file(self):
         """Gets the secret_file of this CephFSVolumeSource.  # noqa: E501
 
-        Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
+        secretFile is Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
 
         :return: The secret_file of this CephFSVolumeSource.  # noqa: E501
         :rtype: str
@@ -156,7 +156,7 @@ class CephFSVolumeSource(object):
     def secret_file(self, secret_file):
         """Sets the secret_file of this CephFSVolumeSource.
 
-        Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
+        secretFile is Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
 
         :param secret_file: The secret_file of this CephFSVolumeSource.  # noqa: E501
         :type: str
@@ -189,7 +189,7 @@ class CephFSVolumeSource(object):
     def user(self):
         """Gets the user of this CephFSVolumeSource.  # noqa: E501
 
-        Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
+        user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
 
         :return: The user of this CephFSVolumeSource.  # noqa: E501
         :rtype: str
@@ -200,7 +200,7 @@ class CephFSVolumeSource(object):
     def user(self, user):
         """Sets the user of this CephFSVolumeSource.
 
-        Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
+        user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it +optional  # noqa: E501
 
         :param user: The user of this CephFSVolumeSource.  # noqa: E501
         :type: str

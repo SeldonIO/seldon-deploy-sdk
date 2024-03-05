@@ -66,7 +66,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :return: The fs_type of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :rtype: str
@@ -77,7 +77,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this AWSElasticBlockStoreVolumeSource.
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :param fs_type: The fs_type of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :type: str
@@ -89,7 +89,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def partition(self):
         """Gets the partition of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
 
-        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). +optional  # noqa: E501
+        partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). +optional  # noqa: E501
 
         :return: The partition of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :rtype: int
@@ -100,7 +100,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def partition(self, partition):
         """Sets the partition of this AWSElasticBlockStoreVolumeSource.
 
-        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). +optional  # noqa: E501
+        partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). +optional  # noqa: E501
 
         :param partition: The partition of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :type: int
@@ -112,7 +112,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
 
-        Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\". If omitted, the default is \"false\". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore +optional  # noqa: E501
+        readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore +optional  # noqa: E501
 
         :return: The read_only of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :rtype: bool
@@ -123,7 +123,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this AWSElasticBlockStoreVolumeSource.
 
-        Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\". If omitted, the default is \"false\". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore +optional  # noqa: E501
+        readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore +optional  # noqa: E501
 
         :param read_only: The read_only of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :type: bool
@@ -135,7 +135,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def volume_id(self):
         """Gets the volume_id of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
 
-        Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore  # noqa: E501
+        volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore  # noqa: E501
 
         :return: The volume_id of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :rtype: str
@@ -146,7 +146,7 @@ class AWSElasticBlockStoreVolumeSource(object):
     def volume_id(self, volume_id):
         """Sets the volume_id of this AWSElasticBlockStoreVolumeSource.
 
-        Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore  # noqa: E501
+        volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore  # noqa: E501
 
         :param volume_id: The volume_id of this AWSElasticBlockStoreVolumeSource.  # noqa: E501
         :type: str
