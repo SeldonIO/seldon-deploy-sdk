@@ -71,7 +71,7 @@ class CSIVolumeSource(object):
     def driver(self):
         """Gets the driver of this CSIVolumeSource.  # noqa: E501
 
-        Driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.  # noqa: E501
+        driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.  # noqa: E501
 
         :return: The driver of this CSIVolumeSource.  # noqa: E501
         :rtype: str
@@ -82,7 +82,7 @@ class CSIVolumeSource(object):
     def driver(self, driver):
         """Sets the driver of this CSIVolumeSource.
 
-        Driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.  # noqa: E501
+        driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.  # noqa: E501
 
         :param driver: The driver of this CSIVolumeSource.  # noqa: E501
         :type: str
@@ -94,7 +94,7 @@ class CSIVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this CSIVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Ex. \"ext4\", \"xfs\", \"ntfs\". If not provided, the empty value is passed to the associated CSI driver which will determine the default filesystem to apply. +optional  # noqa: E501
+        fsType to mount. Ex. \"ext4\", \"xfs\", \"ntfs\". If not provided, the empty value is passed to the associated CSI driver which will determine the default filesystem to apply. +optional  # noqa: E501
 
         :return: The fs_type of this CSIVolumeSource.  # noqa: E501
         :rtype: str
@@ -105,7 +105,7 @@ class CSIVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this CSIVolumeSource.
 
-        Filesystem type to mount. Ex. \"ext4\", \"xfs\", \"ntfs\". If not provided, the empty value is passed to the associated CSI driver which will determine the default filesystem to apply. +optional  # noqa: E501
+        fsType to mount. Ex. \"ext4\", \"xfs\", \"ntfs\". If not provided, the empty value is passed to the associated CSI driver which will determine the default filesystem to apply. +optional  # noqa: E501
 
         :param fs_type: The fs_type of this CSIVolumeSource.  # noqa: E501
         :type: str
@@ -138,7 +138,7 @@ class CSIVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this CSIVolumeSource.  # noqa: E501
 
-        Specifies a read-only configuration for the volume. Defaults to false (read/write). +optional  # noqa: E501
+        readOnly specifies a read-only configuration for the volume. Defaults to false (read/write). +optional  # noqa: E501
 
         :return: The read_only of this CSIVolumeSource.  # noqa: E501
         :rtype: bool
@@ -149,7 +149,7 @@ class CSIVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this CSIVolumeSource.
 
-        Specifies a read-only configuration for the volume. Defaults to false (read/write). +optional  # noqa: E501
+        readOnly specifies a read-only configuration for the volume. Defaults to false (read/write). +optional  # noqa: E501
 
         :param read_only: The read_only of this CSIVolumeSource.  # noqa: E501
         :type: bool
@@ -161,7 +161,7 @@ class CSIVolumeSource(object):
     def volume_attributes(self):
         """Gets the volume_attributes of this CSIVolumeSource.  # noqa: E501
 
-        VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values. +optional  # noqa: E501
+        volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values. +optional  # noqa: E501
 
         :return: The volume_attributes of this CSIVolumeSource.  # noqa: E501
         :rtype: dict(str, str)
@@ -172,7 +172,7 @@ class CSIVolumeSource(object):
     def volume_attributes(self, volume_attributes):
         """Sets the volume_attributes of this CSIVolumeSource.
 
-        VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values. +optional  # noqa: E501
+        volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values. +optional  # noqa: E501
 
         :param volume_attributes: The volume_attributes of this CSIVolumeSource.  # noqa: E501
         :type: dict(str, str)

@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.service_external_traffic_policy_type import ServiceExternalTrafficPolicyType  # noqa: E501
+from seldon_deploy_sdk.models.os_name import OSName  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestServiceExternalTrafficPolicyType(unittest.TestCase):
-    """ServiceExternalTrafficPolicyType unit test stubs"""
+class TestOSName(unittest.TestCase):
+    """OSName unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestServiceExternalTrafficPolicyType(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testServiceExternalTrafficPolicyType(self):
-        """Test ServiceExternalTrafficPolicyType"""
+    def testOSName(self):
+        """Test OSName"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.service_external_traffic_policy_type.ServiceExternalTrafficPolicyType()  # noqa: E501
+        # model = seldon_deploy_sdk.models.os_name.OSName()  # noqa: E501
         pass
 
 

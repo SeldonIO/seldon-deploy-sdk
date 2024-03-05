@@ -31,43 +31,51 @@ class ContainerStatus(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'allocated_resources': 'ResourceList',
         'container_id': 'str',
         'image': 'str',
         'image_id': 'str',
         'last_state': 'ContainerState',
         'name': 'str',
         'ready': 'bool',
+        'resources': 'ResourceRequirements',
         'restart_count': 'int',
         'started': 'bool',
         'state': 'ContainerState'
     }
 
     attribute_map = {
+        'allocated_resources': 'allocatedResources',
         'container_id': 'containerID',
         'image': 'image',
         'image_id': 'imageID',
         'last_state': 'lastState',
         'name': 'name',
         'ready': 'ready',
+        'resources': 'resources',
         'restart_count': 'restartCount',
         'started': 'started',
         'state': 'state'
     }
 
-    def __init__(self, container_id=None, image=None, image_id=None, last_state=None, name=None, ready=None, restart_count=None, started=None, state=None):  # noqa: E501
+    def __init__(self, allocated_resources=None, container_id=None, image=None, image_id=None, last_state=None, name=None, ready=None, resources=None, restart_count=None, started=None, state=None):  # noqa: E501
         """ContainerStatus - a model defined in Swagger"""  # noqa: E501
 
+        self._allocated_resources = None
         self._container_id = None
         self._image = None
         self._image_id = None
         self._last_state = None
         self._name = None
         self._ready = None
+        self._resources = None
         self._restart_count = None
         self._started = None
         self._state = None
         self.discriminator = None
 
+        if allocated_resources is not None:
+            self.allocated_resources = allocated_resources
         if container_id is not None:
             self.container_id = container_id
         if image is not None:
@@ -80,6 +88,8 @@ class ContainerStatus(object):
             self.name = name
         if ready is not None:
             self.ready = ready
+        if resources is not None:
+            self.resources = resources
         if restart_count is not None:
             self.restart_count = restart_count
         if started is not None:
@@ -88,10 +98,31 @@ class ContainerStatus(object):
             self.state = state
 
     @property
+    def allocated_resources(self):
+        """Gets the allocated_resources of this ContainerStatus.  # noqa: E501
+
+
+        :return: The allocated_resources of this ContainerStatus.  # noqa: E501
+        :rtype: ResourceList
+        """
+        return self._allocated_resources
+
+    @allocated_resources.setter
+    def allocated_resources(self, allocated_resources):
+        """Sets the allocated_resources of this ContainerStatus.
+
+
+        :param allocated_resources: The allocated_resources of this ContainerStatus.  # noqa: E501
+        :type: ResourceList
+        """
+
+        self._allocated_resources = allocated_resources
+
+    @property
     def container_id(self):
         """Gets the container_id of this ContainerStatus.  # noqa: E501
 
-        Container's ID in the format 'docker://<container_id>'. +optional  # noqa: E501
+        ContainerID is the ID of the container in the format '<type>://<container_id>'. Where type is a container runtime identifier, returned from Version call of CRI API (for example \"containerd\"). +optional  # noqa: E501
 
         :return: The container_id of this ContainerStatus.  # noqa: E501
         :rtype: str
@@ -102,7 +133,7 @@ class ContainerStatus(object):
     def container_id(self, container_id):
         """Sets the container_id of this ContainerStatus.
 
-        Container's ID in the format 'docker://<container_id>'. +optional  # noqa: E501
+        ContainerID is the ID of the container in the format '<type>://<container_id>'. Where type is a container runtime identifier, returned from Version call of CRI API (for example \"containerd\"). +optional  # noqa: E501
 
         :param container_id: The container_id of this ContainerStatus.  # noqa: E501
         :type: str
@@ -114,7 +145,7 @@ class ContainerStatus(object):
     def image(self):
         """Gets the image of this ContainerStatus.  # noqa: E501
 
-        The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images TODO(dchen1107): Which image the container is running with?  # noqa: E501
+        Image is the name of container image that the container is running. The container image may not match the image used in the PodSpec, as it may have been resolved by the runtime. More info: https://kubernetes.io/docs/concepts/containers/images.  # noqa: E501
 
         :return: The image of this ContainerStatus.  # noqa: E501
         :rtype: str
@@ -125,7 +156,7 @@ class ContainerStatus(object):
     def image(self, image):
         """Sets the image of this ContainerStatus.
 
-        The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images TODO(dchen1107): Which image the container is running with?  # noqa: E501
+        Image is the name of container image that the container is running. The container image may not match the image used in the PodSpec, as it may have been resolved by the runtime. More info: https://kubernetes.io/docs/concepts/containers/images.  # noqa: E501
 
         :param image: The image of this ContainerStatus.  # noqa: E501
         :type: str
@@ -137,7 +168,7 @@ class ContainerStatus(object):
     def image_id(self):
         """Gets the image_id of this ContainerStatus.  # noqa: E501
 
-        ImageID of the container's image.  # noqa: E501
+        ImageID is the image ID of the container's image. The image ID may not match the image ID of the image used in the PodSpec, as it may have been resolved by the runtime.  # noqa: E501
 
         :return: The image_id of this ContainerStatus.  # noqa: E501
         :rtype: str
@@ -148,7 +179,7 @@ class ContainerStatus(object):
     def image_id(self, image_id):
         """Sets the image_id of this ContainerStatus.
 
-        ImageID of the container's image.  # noqa: E501
+        ImageID is the image ID of the container's image. The image ID may not match the image ID of the image used in the PodSpec, as it may have been resolved by the runtime.  # noqa: E501
 
         :param image_id: The image_id of this ContainerStatus.  # noqa: E501
         :type: str
@@ -181,7 +212,7 @@ class ContainerStatus(object):
     def name(self):
         """Gets the name of this ContainerStatus.  # noqa: E501
 
-        This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.  # noqa: E501
+        Name is a DNS_LABEL representing the unique name of the container. Each container in a pod must have a unique name across all container types. Cannot be updated.  # noqa: E501
 
         :return: The name of this ContainerStatus.  # noqa: E501
         :rtype: str
@@ -192,7 +223,7 @@ class ContainerStatus(object):
     def name(self, name):
         """Sets the name of this ContainerStatus.
 
-        This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.  # noqa: E501
+        Name is a DNS_LABEL representing the unique name of the container. Each container in a pod must have a unique name across all container types. Cannot be updated.  # noqa: E501
 
         :param name: The name of this ContainerStatus.  # noqa: E501
         :type: str
@@ -204,7 +235,7 @@ class ContainerStatus(object):
     def ready(self):
         """Gets the ready of this ContainerStatus.  # noqa: E501
 
-        Specifies whether the container has passed its readiness probe.  # noqa: E501
+        Ready specifies whether the container is currently passing its readiness check. The value will change as readiness probes keep executing. If no readiness probes are specified, this field defaults to true once the container is fully started (see Started field).  The value is typically used to determine whether a container is ready to accept traffic.  # noqa: E501
 
         :return: The ready of this ContainerStatus.  # noqa: E501
         :rtype: bool
@@ -215,7 +246,7 @@ class ContainerStatus(object):
     def ready(self, ready):
         """Sets the ready of this ContainerStatus.
 
-        Specifies whether the container has passed its readiness probe.  # noqa: E501
+        Ready specifies whether the container is currently passing its readiness check. The value will change as readiness probes keep executing. If no readiness probes are specified, this field defaults to true once the container is fully started (see Started field).  The value is typically used to determine whether a container is ready to accept traffic.  # noqa: E501
 
         :param ready: The ready of this ContainerStatus.  # noqa: E501
         :type: bool
@@ -224,10 +255,31 @@ class ContainerStatus(object):
         self._ready = ready
 
     @property
+    def resources(self):
+        """Gets the resources of this ContainerStatus.  # noqa: E501
+
+
+        :return: The resources of this ContainerStatus.  # noqa: E501
+        :rtype: ResourceRequirements
+        """
+        return self._resources
+
+    @resources.setter
+    def resources(self, resources):
+        """Sets the resources of this ContainerStatus.
+
+
+        :param resources: The resources of this ContainerStatus.  # noqa: E501
+        :type: ResourceRequirements
+        """
+
+        self._resources = resources
+
+    @property
     def restart_count(self):
         """Gets the restart_count of this ContainerStatus.  # noqa: E501
 
-        The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.  # noqa: E501
+        RestartCount holds the number of times the container has been restarted. Kubelet makes an effort to always increment the value, but there are cases when the state may be lost due to node restarts and then the value may be reset to 0. The value is never negative.  # noqa: E501
 
         :return: The restart_count of this ContainerStatus.  # noqa: E501
         :rtype: int
@@ -238,7 +290,7 @@ class ContainerStatus(object):
     def restart_count(self, restart_count):
         """Sets the restart_count of this ContainerStatus.
 
-        The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.  # noqa: E501
+        RestartCount holds the number of times the container has been restarted. Kubelet makes an effort to always increment the value, but there are cases when the state may be lost due to node restarts and then the value may be reset to 0. The value is never negative.  # noqa: E501
 
         :param restart_count: The restart_count of this ContainerStatus.  # noqa: E501
         :type: int
@@ -250,7 +302,7 @@ class ContainerStatus(object):
     def started(self):
         """Gets the started of this ContainerStatus.  # noqa: E501
 
-        Specifies whether the container has passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. Is always true when no startupProbe is defined. +optional  # noqa: E501
+        Started indicates whether the container has finished its postStart lifecycle hook and passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. In both cases, startup probes will run again. Is always true when no startupProbe is defined and container is running and has passed the postStart lifecycle hook. The null value must be treated the same as false. +optional  # noqa: E501
 
         :return: The started of this ContainerStatus.  # noqa: E501
         :rtype: bool
@@ -261,7 +313,7 @@ class ContainerStatus(object):
     def started(self, started):
         """Sets the started of this ContainerStatus.
 
-        Specifies whether the container has passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. Is always true when no startupProbe is defined. +optional  # noqa: E501
+        Started indicates whether the container has finished its postStart lifecycle hook and passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. In both cases, startup probes will run again. Is always true when no startupProbe is defined and container is running and has passed the postStart lifecycle hook. The null value must be treated the same as false. +optional  # noqa: E501
 
         :param started: The started of this ContainerStatus.  # noqa: E501
         :type: bool

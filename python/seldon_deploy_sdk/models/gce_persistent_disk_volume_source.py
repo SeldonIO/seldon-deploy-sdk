@@ -66,7 +66,7 @@ class GCEPersistentDiskVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this GCEPersistentDiskVolumeSource.  # noqa: E501
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :return: The fs_type of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -77,7 +77,7 @@ class GCEPersistentDiskVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this GCEPersistentDiskVolumeSource.
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :param fs_type: The fs_type of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :type: str
@@ -89,7 +89,7 @@ class GCEPersistentDiskVolumeSource(object):
     def partition(self):
         """Gets the partition of this GCEPersistentDiskVolumeSource.  # noqa: E501
 
-        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
+        partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
 
         :return: The partition of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :rtype: int
@@ -100,7 +100,7 @@ class GCEPersistentDiskVolumeSource(object):
     def partition(self, partition):
         """Sets the partition of this GCEPersistentDiskVolumeSource.
 
-        The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
+        partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
 
         :param partition: The partition of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :type: int
@@ -112,7 +112,7 @@ class GCEPersistentDiskVolumeSource(object):
     def pd_name(self):
         """Gets the pd_name of this GCEPersistentDiskVolumeSource.  # noqa: E501
 
-        Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk  # noqa: E501
+        pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk  # noqa: E501
 
         :return: The pd_name of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -123,7 +123,7 @@ class GCEPersistentDiskVolumeSource(object):
     def pd_name(self, pd_name):
         """Sets the pd_name of this GCEPersistentDiskVolumeSource.
 
-        Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk  # noqa: E501
+        pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk  # noqa: E501
 
         :param pd_name: The pd_name of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :type: str
@@ -135,7 +135,7 @@ class GCEPersistentDiskVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this GCEPersistentDiskVolumeSource.  # noqa: E501
 
-        ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
+        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
 
         :return: The read_only of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :rtype: bool
@@ -146,7 +146,7 @@ class GCEPersistentDiskVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this GCEPersistentDiskVolumeSource.
 
-        ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
+        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk +optional  # noqa: E501
 
         :param read_only: The read_only of this GCEPersistentDiskVolumeSource.  # noqa: E501
         :type: bool

@@ -33,20 +33,23 @@ class SeldonHpaSpec(object):
     swagger_types = {
         'max_replicas': 'int',
         'metrics': 'list[MetricSpec]',
+        'metricsv2': 'list[MetricSpec]',
         'min_replicas': 'int'
     }
 
     attribute_map = {
         'max_replicas': 'maxReplicas',
         'metrics': 'metrics',
+        'metricsv2': 'metricsv2',
         'min_replicas': 'minReplicas'
     }
 
-    def __init__(self, max_replicas=None, metrics=None, min_replicas=None):  # noqa: E501
+    def __init__(self, max_replicas=None, metrics=None, metricsv2=None, min_replicas=None):  # noqa: E501
         """SeldonHpaSpec - a model defined in Swagger"""  # noqa: E501
 
         self._max_replicas = None
         self._metrics = None
+        self._metricsv2 = None
         self._min_replicas = None
         self.discriminator = None
 
@@ -54,6 +57,8 @@ class SeldonHpaSpec(object):
             self.max_replicas = max_replicas
         if metrics is not None:
             self.metrics = metrics
+        if metricsv2 is not None:
+            self.metricsv2 = metricsv2
         if min_replicas is not None:
             self.min_replicas = min_replicas
 
@@ -98,6 +103,27 @@ class SeldonHpaSpec(object):
         """
 
         self._metrics = metrics
+
+    @property
+    def metricsv2(self):
+        """Gets the metricsv2 of this SeldonHpaSpec.  # noqa: E501
+
+
+        :return: The metricsv2 of this SeldonHpaSpec.  # noqa: E501
+        :rtype: list[MetricSpec]
+        """
+        return self._metricsv2
+
+    @metricsv2.setter
+    def metricsv2(self, metricsv2):
+        """Sets the metricsv2 of this SeldonHpaSpec.
+
+
+        :param metricsv2: The metricsv2 of this SeldonHpaSpec.  # noqa: E501
+        :type: list[MetricSpec]
+        """
+
+        self._metricsv2 = metricsv2
 
     @property
     def min_replicas(self):

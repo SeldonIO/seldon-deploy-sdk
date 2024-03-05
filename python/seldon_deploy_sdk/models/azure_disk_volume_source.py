@@ -97,7 +97,7 @@ class AzureDiskVolumeSource(object):
     def disk_name(self):
         """Gets the disk_name of this AzureDiskVolumeSource.  # noqa: E501
 
-        The Name of the data disk in the blob storage  # noqa: E501
+        diskName is the Name of the data disk in the blob storage  # noqa: E501
 
         :return: The disk_name of this AzureDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -108,7 +108,7 @@ class AzureDiskVolumeSource(object):
     def disk_name(self, disk_name):
         """Sets the disk_name of this AzureDiskVolumeSource.
 
-        The Name of the data disk in the blob storage  # noqa: E501
+        diskName is the Name of the data disk in the blob storage  # noqa: E501
 
         :param disk_name: The disk_name of this AzureDiskVolumeSource.  # noqa: E501
         :type: str
@@ -120,7 +120,7 @@ class AzureDiskVolumeSource(object):
     def disk_uri(self):
         """Gets the disk_uri of this AzureDiskVolumeSource.  # noqa: E501
 
-        The URI the data disk in the blob storage  # noqa: E501
+        diskURI is the URI of data disk in the blob storage  # noqa: E501
 
         :return: The disk_uri of this AzureDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -131,7 +131,7 @@ class AzureDiskVolumeSource(object):
     def disk_uri(self, disk_uri):
         """Sets the disk_uri of this AzureDiskVolumeSource.
 
-        The URI the data disk in the blob storage  # noqa: E501
+        diskURI is the URI of data disk in the blob storage  # noqa: E501
 
         :param disk_uri: The disk_uri of this AzureDiskVolumeSource.  # noqa: E501
         :type: str
@@ -143,7 +143,7 @@ class AzureDiskVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this AzureDiskVolumeSource.  # noqa: E501
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
+        fsType is Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
 
         :return: The fs_type of this AzureDiskVolumeSource.  # noqa: E501
         :rtype: str
@@ -154,7 +154,7 @@ class AzureDiskVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this AzureDiskVolumeSource.
 
-        Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
+        fsType is Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. +optional  # noqa: E501
 
         :param fs_type: The fs_type of this AzureDiskVolumeSource.  # noqa: E501
         :type: str
@@ -187,7 +187,7 @@ class AzureDiskVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this AzureDiskVolumeSource.  # noqa: E501
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :return: The read_only of this AzureDiskVolumeSource.  # noqa: E501
         :rtype: bool
@@ -198,7 +198,7 @@ class AzureDiskVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this AzureDiskVolumeSource.
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :param read_only: The read_only of this AzureDiskVolumeSource.  # noqa: E501
         :type: bool

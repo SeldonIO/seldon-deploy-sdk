@@ -96,7 +96,7 @@ class PodSecurityContext(object):
     def fs_group(self):
         """Gets the fs_group of this PodSecurityContext.  # noqa: E501
 
-        A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:  1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----  If unset, the Kubelet will not modify the ownership and permissions of any volume. +optional  # noqa: E501
+        A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:  1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----  If unset, the Kubelet will not modify the ownership and permissions of any volume. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The fs_group of this PodSecurityContext.  # noqa: E501
         :rtype: int
@@ -107,7 +107,7 @@ class PodSecurityContext(object):
     def fs_group(self, fs_group):
         """Sets the fs_group of this PodSecurityContext.
 
-        A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:  1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----  If unset, the Kubelet will not modify the ownership and permissions of any volume. +optional  # noqa: E501
+        A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:  1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----  If unset, the Kubelet will not modify the ownership and permissions of any volume. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param fs_group: The fs_group of this PodSecurityContext.  # noqa: E501
         :type: int
@@ -140,7 +140,7 @@ class PodSecurityContext(object):
     def run_as_group(self):
         """Gets the run_as_group of this PodSecurityContext.  # noqa: E501
 
-        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. +optional  # noqa: E501
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The run_as_group of this PodSecurityContext.  # noqa: E501
         :rtype: int
@@ -151,7 +151,7 @@ class PodSecurityContext(object):
     def run_as_group(self, run_as_group):
         """Sets the run_as_group of this PodSecurityContext.
 
-        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. +optional  # noqa: E501
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param run_as_group: The run_as_group of this PodSecurityContext.  # noqa: E501
         :type: int
@@ -186,7 +186,7 @@ class PodSecurityContext(object):
     def run_as_user(self):
         """Gets the run_as_user of this PodSecurityContext.  # noqa: E501
 
-        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. +optional  # noqa: E501
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The run_as_user of this PodSecurityContext.  # noqa: E501
         :rtype: int
@@ -197,7 +197,7 @@ class PodSecurityContext(object):
     def run_as_user(self, run_as_user):
         """Sets the run_as_user of this PodSecurityContext.
 
-        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. +optional  # noqa: E501
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param run_as_user: The run_as_user of this PodSecurityContext.  # noqa: E501
         :type: int
@@ -251,7 +251,7 @@ class PodSecurityContext(object):
     def supplemental_groups(self):
         """Gets the supplemental_groups of this PodSecurityContext.  # noqa: E501
 
-        A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container. +optional  # noqa: E501
+        A list of groups applied to the first process run in each container, in addition to the container's primary GID, the fsGroup (if specified), and group memberships defined in the container image for the uid of the container process. If unspecified, no additional groups are added to any container. Note that group memberships defined in the container image for the uid of the container process are still effective, even if they are not included in this list. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The supplemental_groups of this PodSecurityContext.  # noqa: E501
         :rtype: list[int]
@@ -262,7 +262,7 @@ class PodSecurityContext(object):
     def supplemental_groups(self, supplemental_groups):
         """Sets the supplemental_groups of this PodSecurityContext.
 
-        A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container. +optional  # noqa: E501
+        A list of groups applied to the first process run in each container, in addition to the container's primary GID, the fsGroup (if specified), and group memberships defined in the container image for the uid of the container process. If unspecified, no additional groups are added to any container. Note that group memberships defined in the container image for the uid of the container process are still effective, even if they are not included in this list. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param supplemental_groups: The supplemental_groups of this PodSecurityContext.  # noqa: E501
         :type: list[int]
@@ -274,7 +274,7 @@ class PodSecurityContext(object):
     def sysctls(self):
         """Gets the sysctls of this PodSecurityContext.  # noqa: E501
 
-        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. +optional  # noqa: E501
+        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The sysctls of this PodSecurityContext.  # noqa: E501
         :rtype: list[Sysctl]
@@ -285,7 +285,7 @@ class PodSecurityContext(object):
     def sysctls(self, sysctls):
         """Sets the sysctls of this PodSecurityContext.
 
-        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. +optional  # noqa: E501
+        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param sysctls: The sysctls of this PodSecurityContext.  # noqa: E501
         :type: list[Sysctl]

@@ -99,7 +99,7 @@ class OwnerReference(object):
     def block_owner_deletion(self):
         """Gets the block_owner_deletion of this OwnerReference.  # noqa: E501
 
-        If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional  # noqa: E501
+        If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional  # noqa: E501
 
         :return: The block_owner_deletion of this OwnerReference.  # noqa: E501
         :rtype: bool
@@ -110,7 +110,7 @@ class OwnerReference(object):
     def block_owner_deletion(self, block_owner_deletion):
         """Sets the block_owner_deletion of this OwnerReference.
 
-        If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional  # noqa: E501
+        If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional  # noqa: E501
 
         :param block_owner_deletion: The block_owner_deletion of this OwnerReference.  # noqa: E501
         :type: bool
@@ -168,7 +168,7 @@ class OwnerReference(object):
     def name(self):
         """Gets the name of this OwnerReference.  # noqa: E501
 
-        Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names  # noqa: E501
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names  # noqa: E501
 
         :return: The name of this OwnerReference.  # noqa: E501
         :rtype: str
@@ -179,7 +179,7 @@ class OwnerReference(object):
     def name(self, name):
         """Sets the name of this OwnerReference.
 
-        Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names  # noqa: E501
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names  # noqa: E501
 
         :param name: The name of this OwnerReference.  # noqa: E501
         :type: str

@@ -31,6 +31,7 @@ class MetricSpec(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'container_resource': 'ContainerResourceMetricSource',
         'external': 'ExternalMetricSource',
         'object': 'ObjectMetricSource',
         'pods': 'PodsMetricSource',
@@ -39,6 +40,7 @@ class MetricSpec(object):
     }
 
     attribute_map = {
+        'container_resource': 'containerResource',
         'external': 'external',
         'object': 'object',
         'pods': 'pods',
@@ -46,9 +48,10 @@ class MetricSpec(object):
         'type': 'type'
     }
 
-    def __init__(self, external=None, object=None, pods=None, resource=None, type=None):  # noqa: E501
+    def __init__(self, container_resource=None, external=None, object=None, pods=None, resource=None, type=None):  # noqa: E501
         """MetricSpec - a model defined in Swagger"""  # noqa: E501
 
+        self._container_resource = None
         self._external = None
         self._object = None
         self._pods = None
@@ -56,6 +59,8 @@ class MetricSpec(object):
         self._type = None
         self.discriminator = None
 
+        if container_resource is not None:
+            self.container_resource = container_resource
         if external is not None:
             self.external = external
         if object is not None:
@@ -66,6 +71,27 @@ class MetricSpec(object):
             self.resource = resource
         if type is not None:
             self.type = type
+
+    @property
+    def container_resource(self):
+        """Gets the container_resource of this MetricSpec.  # noqa: E501
+
+
+        :return: The container_resource of this MetricSpec.  # noqa: E501
+        :rtype: ContainerResourceMetricSource
+        """
+        return self._container_resource
+
+    @container_resource.setter
+    def container_resource(self, container_resource):
+        """Sets the container_resource of this MetricSpec.
+
+
+        :param container_resource: The container_resource of this MetricSpec.  # noqa: E501
+        :type: ContainerResourceMetricSource
+        """
+
+        self._container_resource = container_resource
 
     @property
     def external(self):

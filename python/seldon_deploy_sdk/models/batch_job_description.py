@@ -34,7 +34,7 @@ class BatchJobDescription(object):
         'finished_at': 'str',
         'started_at': 'str',
         'workflow_name': 'str',
-        'workflow_status': 'NodePhase',
+        'workflow_status': 'WorkflowPhase',
         'workflow_uid': 'UID'
     }
 
@@ -142,7 +142,7 @@ class BatchJobDescription(object):
 
 
         :return: The workflow_status of this BatchJobDescription.  # noqa: E501
-        :rtype: NodePhase
+        :rtype: WorkflowPhase
         """
         return self._workflow_status
 
@@ -152,7 +152,7 @@ class BatchJobDescription(object):
 
 
         :param workflow_status: The workflow_status of this BatchJobDescription.  # noqa: E501
-        :type: NodePhase
+        :type: WorkflowPhase
         """
 
         self._workflow_status = workflow_status

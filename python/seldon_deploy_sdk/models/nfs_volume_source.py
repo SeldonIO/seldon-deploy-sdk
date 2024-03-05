@@ -61,7 +61,7 @@ class NFSVolumeSource(object):
     def path(self):
         """Gets the path of this NFSVolumeSource.  # noqa: E501
 
-        Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
+        path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
 
         :return: The path of this NFSVolumeSource.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class NFSVolumeSource(object):
     def path(self, path):
         """Sets the path of this NFSVolumeSource.
 
-        Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
+        path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
 
         :param path: The path of this NFSVolumeSource.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class NFSVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this NFSVolumeSource.  # noqa: E501
 
-        ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs +optional  # noqa: E501
+        readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs +optional  # noqa: E501
 
         :return: The read_only of this NFSVolumeSource.  # noqa: E501
         :rtype: bool
@@ -95,7 +95,7 @@ class NFSVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this NFSVolumeSource.
 
-        ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs +optional  # noqa: E501
+        readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs +optional  # noqa: E501
 
         :param read_only: The read_only of this NFSVolumeSource.  # noqa: E501
         :type: bool
@@ -107,7 +107,7 @@ class NFSVolumeSource(object):
     def server(self):
         """Gets the server of this NFSVolumeSource.  # noqa: E501
 
-        Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
+        server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
 
         :return: The server of this NFSVolumeSource.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class NFSVolumeSource(object):
     def server(self, server):
         """Sets the server of this NFSVolumeSource.
 
-        Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
+        server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs  # noqa: E501
 
         :param server: The server of this NFSVolumeSource.  # noqa: E501
         :type: str

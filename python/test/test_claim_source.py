@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import seldon_deploy_sdk
-from seldon_deploy_sdk.models.handler import Handler  # noqa: E501
+from seldon_deploy_sdk.models.claim_source import ClaimSource  # noqa: E501
 from seldon_deploy_sdk.rest import ApiException
 
 
-class TestHandler(unittest.TestCase):
-    """Handler unit test stubs"""
+class TestClaimSource(unittest.TestCase):
+    """ClaimSource unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestHandler(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testHandler(self):
-        """Test Handler"""
+    def testClaimSource(self):
+        """Test ClaimSource"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = seldon_deploy_sdk.models.handler.Handler()  # noqa: E501
+        # model = seldon_deploy_sdk.models.claim_source.ClaimSource()  # noqa: E501
         pass
 
 

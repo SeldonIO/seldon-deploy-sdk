@@ -42,7 +42,9 @@ class Container(object):
         'name': 'str',
         'ports': 'list[ContainerPort]',
         'readiness_probe': 'Probe',
+        'resize_policy': 'list[ContainerResizePolicy]',
         'resources': 'ResourceRequirements',
+        'restart_policy': 'ContainerRestartPolicy',
         'security_context': 'SecurityContext',
         'startup_probe': 'Probe',
         'stdin': 'bool',
@@ -67,7 +69,9 @@ class Container(object):
         'name': 'name',
         'ports': 'ports',
         'readiness_probe': 'readinessProbe',
+        'resize_policy': 'resizePolicy',
         'resources': 'resources',
+        'restart_policy': 'restartPolicy',
         'security_context': 'securityContext',
         'startup_probe': 'startupProbe',
         'stdin': 'stdin',
@@ -80,7 +84,7 @@ class Container(object):
         'working_dir': 'workingDir'
     }
 
-    def __init__(self, args=None, command=None, env=None, env_from=None, image=None, image_pull_policy=None, lifecycle=None, liveness_probe=None, name=None, ports=None, readiness_probe=None, resources=None, security_context=None, startup_probe=None, stdin=None, stdin_once=None, termination_message_path=None, termination_message_policy=None, tty=None, volume_devices=None, volume_mounts=None, working_dir=None):  # noqa: E501
+    def __init__(self, args=None, command=None, env=None, env_from=None, image=None, image_pull_policy=None, lifecycle=None, liveness_probe=None, name=None, ports=None, readiness_probe=None, resize_policy=None, resources=None, restart_policy=None, security_context=None, startup_probe=None, stdin=None, stdin_once=None, termination_message_path=None, termination_message_policy=None, tty=None, volume_devices=None, volume_mounts=None, working_dir=None):  # noqa: E501
         """Container - a model defined in Swagger"""  # noqa: E501
 
         self._args = None
@@ -94,7 +98,9 @@ class Container(object):
         self._name = None
         self._ports = None
         self._readiness_probe = None
+        self._resize_policy = None
         self._resources = None
+        self._restart_policy = None
         self._security_context = None
         self._startup_probe = None
         self._stdin = None
@@ -129,8 +135,12 @@ class Container(object):
             self.ports = ports
         if readiness_probe is not None:
             self.readiness_probe = readiness_probe
+        if resize_policy is not None:
+            self.resize_policy = resize_policy
         if resources is not None:
             self.resources = resources
+        if restart_policy is not None:
+            self.restart_policy = restart_policy
         if security_context is not None:
             self.security_context = security_context
         if startup_probe is not None:
@@ -156,7 +166,7 @@ class Container(object):
     def args(self):
         """Gets the args of this Container.  # noqa: E501
 
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :return: The args of this Container.  # noqa: E501
         :rtype: list[str]
@@ -167,7 +177,7 @@ class Container(object):
     def args(self, args):
         """Sets the args of this Container.
 
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :param args: The args of this Container.  # noqa: E501
         :type: list[str]
@@ -179,7 +189,7 @@ class Container(object):
     def command(self):
         """Gets the command of this Container.  # noqa: E501
 
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Entrypoint array. Not executed within a shell. The container image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :return: The command of this Container.  # noqa: E501
         :rtype: list[str]
@@ -190,7 +200,7 @@ class Container(object):
     def command(self, command):
         """Sets the command of this Container.
 
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Entrypoint array. Not executed within a shell. The container image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :param command: The command of this Container.  # noqa: E501
         :type: list[str]
@@ -248,7 +258,7 @@ class Container(object):
     def image(self):
         """Gets the image of this Container.  # noqa: E501
 
-        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets. +optional  # noqa: E501
+        Container image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets. +optional  # noqa: E501
 
         :return: The image of this Container.  # noqa: E501
         :rtype: str
@@ -259,7 +269,7 @@ class Container(object):
     def image(self, image):
         """Sets the image of this Container.
 
-        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets. +optional  # noqa: E501
+        Container image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets. +optional  # noqa: E501
 
         :param image: The image of this Container.  # noqa: E501
         :type: str
@@ -357,7 +367,7 @@ class Container(object):
     def ports(self):
         """Gets the ports of this Container.  # noqa: E501
 
-        List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default \"0.0.0.0\" address inside a container will be accessible from the network. Cannot be updated. +optional +patchMergeKey=containerPort +patchStrategy=merge +listType=map +listMapKey=containerPort +listMapKey=protocol  # noqa: E501
+        List of ports to expose from the container. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default \"0.0.0.0\" address inside a container will be accessible from the network. Modifying this array with strategic merge patch may corrupt the data. For more information See https://github.com/kubernetes/kubernetes/issues/108255. Cannot be updated. +optional +patchMergeKey=containerPort +patchStrategy=merge +listType=map +listMapKey=containerPort +listMapKey=protocol  # noqa: E501
 
         :return: The ports of this Container.  # noqa: E501
         :rtype: list[ContainerPort]
@@ -368,7 +378,7 @@ class Container(object):
     def ports(self, ports):
         """Sets the ports of this Container.
 
-        List of ports to expose from the container. Exposing a port here gives the system additional information about the network connections a container uses, but is primarily informational. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default \"0.0.0.0\" address inside a container will be accessible from the network. Cannot be updated. +optional +patchMergeKey=containerPort +patchStrategy=merge +listType=map +listMapKey=containerPort +listMapKey=protocol  # noqa: E501
+        List of ports to expose from the container. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default \"0.0.0.0\" address inside a container will be accessible from the network. Modifying this array with strategic merge patch may corrupt the data. For more information See https://github.com/kubernetes/kubernetes/issues/108255. Cannot be updated. +optional +patchMergeKey=containerPort +patchStrategy=merge +listType=map +listMapKey=containerPort +listMapKey=protocol  # noqa: E501
 
         :param ports: The ports of this Container.  # noqa: E501
         :type: list[ContainerPort]
@@ -398,6 +408,29 @@ class Container(object):
         self._readiness_probe = readiness_probe
 
     @property
+    def resize_policy(self):
+        """Gets the resize_policy of this Container.  # noqa: E501
+
+        Resources resize policy for the container. +featureGate=InPlacePodVerticalScaling +optional +listType=atomic  # noqa: E501
+
+        :return: The resize_policy of this Container.  # noqa: E501
+        :rtype: list[ContainerResizePolicy]
+        """
+        return self._resize_policy
+
+    @resize_policy.setter
+    def resize_policy(self, resize_policy):
+        """Sets the resize_policy of this Container.
+
+        Resources resize policy for the container. +featureGate=InPlacePodVerticalScaling +optional +listType=atomic  # noqa: E501
+
+        :param resize_policy: The resize_policy of this Container.  # noqa: E501
+        :type: list[ContainerResizePolicy]
+        """
+
+        self._resize_policy = resize_policy
+
+    @property
     def resources(self):
         """Gets the resources of this Container.  # noqa: E501
 
@@ -417,6 +450,27 @@ class Container(object):
         """
 
         self._resources = resources
+
+    @property
+    def restart_policy(self):
+        """Gets the restart_policy of this Container.  # noqa: E501
+
+
+        :return: The restart_policy of this Container.  # noqa: E501
+        :rtype: ContainerRestartPolicy
+        """
+        return self._restart_policy
+
+    @restart_policy.setter
+    def restart_policy(self, restart_policy):
+        """Sets the restart_policy of this Container.
+
+
+        :param restart_policy: The restart_policy of this Container.  # noqa: E501
+        :type: ContainerRestartPolicy
+        """
+
+        self._restart_policy = restart_policy
 
     @property
     def security_context(self):

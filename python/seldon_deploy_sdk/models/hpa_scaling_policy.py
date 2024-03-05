@@ -61,7 +61,7 @@ class HPAScalingPolicy(object):
     def period_seconds(self):
         """Gets the period_seconds of this HPAScalingPolicy.  # noqa: E501
 
-        PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).  # noqa: E501
+        periodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).  # noqa: E501
 
         :return: The period_seconds of this HPAScalingPolicy.  # noqa: E501
         :rtype: int
@@ -72,7 +72,7 @@ class HPAScalingPolicy(object):
     def period_seconds(self, period_seconds):
         """Sets the period_seconds of this HPAScalingPolicy.
 
-        PeriodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).  # noqa: E501
+        periodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).  # noqa: E501
 
         :param period_seconds: The period_seconds of this HPAScalingPolicy.  # noqa: E501
         :type: int
@@ -105,7 +105,7 @@ class HPAScalingPolicy(object):
     def value(self):
         """Gets the value of this HPAScalingPolicy.  # noqa: E501
 
-        Value contains the amount of change which is permitted by the policy. It must be greater than zero  # noqa: E501
+        value contains the amount of change which is permitted by the policy. It must be greater than zero  # noqa: E501
 
         :return: The value of this HPAScalingPolicy.  # noqa: E501
         :rtype: int
@@ -116,7 +116,7 @@ class HPAScalingPolicy(object):
     def value(self, value):
         """Sets the value of this HPAScalingPolicy.
 
-        Value contains the amount of change which is permitted by the policy. It must be greater than zero  # noqa: E501
+        value contains the amount of change which is permitted by the policy. It must be greater than zero  # noqa: E501
 
         :param value: The value of this HPAScalingPolicy.  # noqa: E501
         :type: int

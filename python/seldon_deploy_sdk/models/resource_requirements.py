@@ -31,26 +31,54 @@ class ResourceRequirements(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'claims': 'list[ResourceClaim]',
         'limits': 'ResourceList',
         'requests': 'ResourceList'
     }
 
     attribute_map = {
+        'claims': 'claims',
         'limits': 'limits',
         'requests': 'requests'
     }
 
-    def __init__(self, limits=None, requests=None):  # noqa: E501
+    def __init__(self, claims=None, limits=None, requests=None):  # noqa: E501
         """ResourceRequirements - a model defined in Swagger"""  # noqa: E501
 
+        self._claims = None
         self._limits = None
         self._requests = None
         self.discriminator = None
 
+        if claims is not None:
+            self.claims = claims
         if limits is not None:
             self.limits = limits
         if requests is not None:
             self.requests = requests
+
+    @property
+    def claims(self):
+        """Gets the claims of this ResourceRequirements.  # noqa: E501
+
+        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.  This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.  This field is immutable. It can only be set for containers.  +listType=map +listMapKey=name +featureGate=DynamicResourceAllocation +optional  # noqa: E501
+
+        :return: The claims of this ResourceRequirements.  # noqa: E501
+        :rtype: list[ResourceClaim]
+        """
+        return self._claims
+
+    @claims.setter
+    def claims(self, claims):
+        """Sets the claims of this ResourceRequirements.
+
+        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.  This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.  This field is immutable. It can only be set for containers.  +listType=map +listMapKey=name +featureGate=DynamicResourceAllocation +optional  # noqa: E501
+
+        :param claims: The claims of this ResourceRequirements.  # noqa: E501
+        :type: list[ResourceClaim]
+        """
+
+        self._claims = claims
 
     @property
     def limits(self):

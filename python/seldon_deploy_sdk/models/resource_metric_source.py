@@ -32,30 +32,25 @@ class ResourceMetricSource(object):
     """
     swagger_types = {
         'name': 'ResourceName',
-        'target_average_utilization': 'int',
-        'target_average_value': 'Quantity'
+        'target': 'MetricTarget'
     }
 
     attribute_map = {
         'name': 'name',
-        'target_average_utilization': 'targetAverageUtilization',
-        'target_average_value': 'targetAverageValue'
+        'target': 'target'
     }
 
-    def __init__(self, name=None, target_average_utilization=None, target_average_value=None):  # noqa: E501
+    def __init__(self, name=None, target=None):  # noqa: E501
         """ResourceMetricSource - a model defined in Swagger"""  # noqa: E501
 
         self._name = None
-        self._target_average_utilization = None
-        self._target_average_value = None
+        self._target = None
         self.discriminator = None
 
         if name is not None:
             self.name = name
-        if target_average_utilization is not None:
-            self.target_average_utilization = target_average_utilization
-        if target_average_value is not None:
-            self.target_average_value = target_average_value
+        if target is not None:
+            self.target = target
 
     @property
     def name(self):
@@ -79,48 +74,25 @@ class ResourceMetricSource(object):
         self._name = name
 
     @property
-    def target_average_utilization(self):
-        """Gets the target_average_utilization of this ResourceMetricSource.  # noqa: E501
+    def target(self):
+        """Gets the target of this ResourceMetricSource.  # noqa: E501
 
-        targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. +optional  # noqa: E501
 
-        :return: The target_average_utilization of this ResourceMetricSource.  # noqa: E501
-        :rtype: int
+        :return: The target of this ResourceMetricSource.  # noqa: E501
+        :rtype: MetricTarget
         """
-        return self._target_average_utilization
+        return self._target
 
-    @target_average_utilization.setter
-    def target_average_utilization(self, target_average_utilization):
-        """Sets the target_average_utilization of this ResourceMetricSource.
+    @target.setter
+    def target(self, target):
+        """Sets the target of this ResourceMetricSource.
 
-        targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. +optional  # noqa: E501
 
-        :param target_average_utilization: The target_average_utilization of this ResourceMetricSource.  # noqa: E501
-        :type: int
+        :param target: The target of this ResourceMetricSource.  # noqa: E501
+        :type: MetricTarget
         """
 
-        self._target_average_utilization = target_average_utilization
-
-    @property
-    def target_average_value(self):
-        """Gets the target_average_value of this ResourceMetricSource.  # noqa: E501
-
-
-        :return: The target_average_value of this ResourceMetricSource.  # noqa: E501
-        :rtype: Quantity
-        """
-        return self._target_average_value
-
-    @target_average_value.setter
-    def target_average_value(self, target_average_value):
-        """Sets the target_average_value of this ResourceMetricSource.
-
-
-        :param target_average_value: The target_average_value of this ResourceMetricSource.  # noqa: E501
-        :type: Quantity
-        """
-
-        self._target_average_value = target_average_value
+        self._target = target
 
     def to_dict(self):
         """Returns the model properties as a dict"""

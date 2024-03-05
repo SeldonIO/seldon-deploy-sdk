@@ -35,6 +35,7 @@ class PodStatus(object):
         'container_statuses': 'list[ContainerStatus]',
         'ephemeral_container_statuses': 'list[ContainerStatus]',
         'host_ip': 'str',
+        'host_i_ps': 'list[HostIP]',
         'init_container_statuses': 'list[ContainerStatus]',
         'message': 'str',
         'nominated_node_name': 'str',
@@ -43,6 +44,8 @@ class PodStatus(object):
         'pod_i_ps': 'list[PodIP]',
         'qos_class': 'PodQOSClass',
         'reason': 'str',
+        'resize': 'PodResizeStatus',
+        'resource_claim_statuses': 'list[PodResourceClaimStatus]',
         'start_time': 'str'
     }
 
@@ -51,6 +54,7 @@ class PodStatus(object):
         'container_statuses': 'containerStatuses',
         'ephemeral_container_statuses': 'ephemeralContainerStatuses',
         'host_ip': 'hostIP',
+        'host_i_ps': 'hostIPs',
         'init_container_statuses': 'initContainerStatuses',
         'message': 'message',
         'nominated_node_name': 'nominatedNodeName',
@@ -59,16 +63,19 @@ class PodStatus(object):
         'pod_i_ps': 'podIPs',
         'qos_class': 'qosClass',
         'reason': 'reason',
+        'resize': 'resize',
+        'resource_claim_statuses': 'resourceClaimStatuses',
         'start_time': 'startTime'
     }
 
-    def __init__(self, conditions=None, container_statuses=None, ephemeral_container_statuses=None, host_ip=None, init_container_statuses=None, message=None, nominated_node_name=None, phase=None, pod_ip=None, pod_i_ps=None, qos_class=None, reason=None, start_time=None):  # noqa: E501
+    def __init__(self, conditions=None, container_statuses=None, ephemeral_container_statuses=None, host_ip=None, host_i_ps=None, init_container_statuses=None, message=None, nominated_node_name=None, phase=None, pod_ip=None, pod_i_ps=None, qos_class=None, reason=None, resize=None, resource_claim_statuses=None, start_time=None):  # noqa: E501
         """PodStatus - a model defined in Swagger"""  # noqa: E501
 
         self._conditions = None
         self._container_statuses = None
         self._ephemeral_container_statuses = None
         self._host_ip = None
+        self._host_i_ps = None
         self._init_container_statuses = None
         self._message = None
         self._nominated_node_name = None
@@ -77,6 +84,8 @@ class PodStatus(object):
         self._pod_i_ps = None
         self._qos_class = None
         self._reason = None
+        self._resize = None
+        self._resource_claim_statuses = None
         self._start_time = None
         self.discriminator = None
 
@@ -88,6 +97,8 @@ class PodStatus(object):
             self.ephemeral_container_statuses = ephemeral_container_statuses
         if host_ip is not None:
             self.host_ip = host_ip
+        if host_i_ps is not None:
+            self.host_i_ps = host_i_ps
         if init_container_statuses is not None:
             self.init_container_statuses = init_container_statuses
         if message is not None:
@@ -104,6 +115,10 @@ class PodStatus(object):
             self.qos_class = qos_class
         if reason is not None:
             self.reason = reason
+        if resize is not None:
+            self.resize = resize
+        if resource_claim_statuses is not None:
+            self.resource_claim_statuses = resource_claim_statuses
         if start_time is not None:
             self.start_time = start_time
 
@@ -134,7 +149,7 @@ class PodStatus(object):
     def container_statuses(self):
         """Gets the container_statuses of this PodStatus.  # noqa: E501
 
-        The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status +optional  # noqa: E501
+        The list has one entry per container in the manifest. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status +optional  # noqa: E501
 
         :return: The container_statuses of this PodStatus.  # noqa: E501
         :rtype: list[ContainerStatus]
@@ -145,7 +160,7 @@ class PodStatus(object):
     def container_statuses(self, container_statuses):
         """Sets the container_statuses of this PodStatus.
 
-        The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status +optional  # noqa: E501
+        The list has one entry per container in the manifest. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status +optional  # noqa: E501
 
         :param container_statuses: The container_statuses of this PodStatus.  # noqa: E501
         :type: list[ContainerStatus]
@@ -157,7 +172,7 @@ class PodStatus(object):
     def ephemeral_container_statuses(self):
         """Gets the ephemeral_container_statuses of this PodStatus.  # noqa: E501
 
-        Status for any ephemeral containers that have run in this pod. This field is alpha-level and is only populated by servers that enable the EphemeralContainers feature. +optional  # noqa: E501
+        Status for any ephemeral containers that have run in this pod. +optional  # noqa: E501
 
         :return: The ephemeral_container_statuses of this PodStatus.  # noqa: E501
         :rtype: list[ContainerStatus]
@@ -168,7 +183,7 @@ class PodStatus(object):
     def ephemeral_container_statuses(self, ephemeral_container_statuses):
         """Sets the ephemeral_container_statuses of this PodStatus.
 
-        Status for any ephemeral containers that have run in this pod. This field is alpha-level and is only populated by servers that enable the EphemeralContainers feature. +optional  # noqa: E501
+        Status for any ephemeral containers that have run in this pod. +optional  # noqa: E501
 
         :param ephemeral_container_statuses: The ephemeral_container_statuses of this PodStatus.  # noqa: E501
         :type: list[ContainerStatus]
@@ -180,7 +195,7 @@ class PodStatus(object):
     def host_ip(self):
         """Gets the host_ip of this PodStatus.  # noqa: E501
 
-        IP address of the host to which the pod is assigned. Empty if not yet scheduled. +optional  # noqa: E501
+        hostIP holds the IP address of the host to which the pod is assigned. Empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns mean that HostIP will not be updated even if there is a node is assigned to pod +optional  # noqa: E501
 
         :return: The host_ip of this PodStatus.  # noqa: E501
         :rtype: str
@@ -191,13 +206,36 @@ class PodStatus(object):
     def host_ip(self, host_ip):
         """Sets the host_ip of this PodStatus.
 
-        IP address of the host to which the pod is assigned. Empty if not yet scheduled. +optional  # noqa: E501
+        hostIP holds the IP address of the host to which the pod is assigned. Empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns mean that HostIP will not be updated even if there is a node is assigned to pod +optional  # noqa: E501
 
         :param host_ip: The host_ip of this PodStatus.  # noqa: E501
         :type: str
         """
 
         self._host_ip = host_ip
+
+    @property
+    def host_i_ps(self):
+        """Gets the host_i_ps of this PodStatus.  # noqa: E501
+
+        hostIPs holds the IP addresses allocated to the host. If this field is specified, the first entry must match the hostIP field. This list is empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns means that HostIPs will not be updated even if there is a node is assigned to this pod. +optional +patchStrategy=merge +patchMergeKey=ip +listType=atomic  # noqa: E501
+
+        :return: The host_i_ps of this PodStatus.  # noqa: E501
+        :rtype: list[HostIP]
+        """
+        return self._host_i_ps
+
+    @host_i_ps.setter
+    def host_i_ps(self, host_i_ps):
+        """Sets the host_i_ps of this PodStatus.
+
+        hostIPs holds the IP addresses allocated to the host. If this field is specified, the first entry must match the hostIP field. This list is empty if the pod has not started yet. A pod can be assigned to a node that has a problem in kubelet which in turns means that HostIPs will not be updated even if there is a node is assigned to this pod. +optional +patchStrategy=merge +patchMergeKey=ip +listType=atomic  # noqa: E501
+
+        :param host_i_ps: The host_i_ps of this PodStatus.  # noqa: E501
+        :type: list[HostIP]
+        """
+
+        self._host_i_ps = host_i_ps
 
     @property
     def init_container_statuses(self):
@@ -293,7 +331,7 @@ class PodStatus(object):
     def pod_ip(self):
         """Gets the pod_ip of this PodStatus.  # noqa: E501
 
-        IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated. +optional  # noqa: E501
+        podIP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated. +optional  # noqa: E501
 
         :return: The pod_ip of this PodStatus.  # noqa: E501
         :rtype: str
@@ -304,7 +342,7 @@ class PodStatus(object):
     def pod_ip(self, pod_ip):
         """Sets the pod_ip of this PodStatus.
 
-        IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated. +optional  # noqa: E501
+        podIP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated. +optional  # noqa: E501
 
         :param pod_ip: The pod_ip of this PodStatus.  # noqa: E501
         :type: str
@@ -378,6 +416,50 @@ class PodStatus(object):
         """
 
         self._reason = reason
+
+    @property
+    def resize(self):
+        """Gets the resize of this PodStatus.  # noqa: E501
+
+
+        :return: The resize of this PodStatus.  # noqa: E501
+        :rtype: PodResizeStatus
+        """
+        return self._resize
+
+    @resize.setter
+    def resize(self, resize):
+        """Sets the resize of this PodStatus.
+
+
+        :param resize: The resize of this PodStatus.  # noqa: E501
+        :type: PodResizeStatus
+        """
+
+        self._resize = resize
+
+    @property
+    def resource_claim_statuses(self):
+        """Gets the resource_claim_statuses of this PodStatus.  # noqa: E501
+
+        Status of resource claims. +patchMergeKey=name +patchStrategy=merge,retainKeys +listType=map +listMapKey=name +featureGate=DynamicResourceAllocation +optional  # noqa: E501
+
+        :return: The resource_claim_statuses of this PodStatus.  # noqa: E501
+        :rtype: list[PodResourceClaimStatus]
+        """
+        return self._resource_claim_statuses
+
+    @resource_claim_statuses.setter
+    def resource_claim_statuses(self, resource_claim_statuses):
+        """Sets the resource_claim_statuses of this PodStatus.
+
+        Status of resource claims. +patchMergeKey=name +patchStrategy=merge,retainKeys +listType=map +listMapKey=name +featureGate=DynamicResourceAllocation +optional  # noqa: E501
+
+        :param resource_claim_statuses: The resource_claim_statuses of this PodStatus.  # noqa: E501
+        :type: list[PodResourceClaimStatus]
+        """
+
+        self._resource_claim_statuses = resource_claim_statuses
 
     @property
     def start_time(self):

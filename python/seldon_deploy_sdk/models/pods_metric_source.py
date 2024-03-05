@@ -31,96 +31,68 @@ class PodsMetricSource(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'metric_name': 'str',
-        'selector': 'LabelSelector',
-        'target_average_value': 'Quantity'
+        'metric': 'MetricIdentifier',
+        'target': 'MetricTarget'
     }
 
     attribute_map = {
-        'metric_name': 'metricName',
-        'selector': 'selector',
-        'target_average_value': 'targetAverageValue'
+        'metric': 'metric',
+        'target': 'target'
     }
 
-    def __init__(self, metric_name=None, selector=None, target_average_value=None):  # noqa: E501
+    def __init__(self, metric=None, target=None):  # noqa: E501
         """PodsMetricSource - a model defined in Swagger"""  # noqa: E501
 
-        self._metric_name = None
-        self._selector = None
-        self._target_average_value = None
+        self._metric = None
+        self._target = None
         self.discriminator = None
 
-        if metric_name is not None:
-            self.metric_name = metric_name
-        if selector is not None:
-            self.selector = selector
-        if target_average_value is not None:
-            self.target_average_value = target_average_value
+        if metric is not None:
+            self.metric = metric
+        if target is not None:
+            self.target = target
 
     @property
-    def metric_name(self):
-        """Gets the metric_name of this PodsMetricSource.  # noqa: E501
+    def metric(self):
+        """Gets the metric of this PodsMetricSource.  # noqa: E501
 
-        metricName is the name of the metric in question  # noqa: E501
 
-        :return: The metric_name of this PodsMetricSource.  # noqa: E501
-        :rtype: str
+        :return: The metric of this PodsMetricSource.  # noqa: E501
+        :rtype: MetricIdentifier
         """
-        return self._metric_name
+        return self._metric
 
-    @metric_name.setter
-    def metric_name(self, metric_name):
-        """Sets the metric_name of this PodsMetricSource.
+    @metric.setter
+    def metric(self, metric):
+        """Sets the metric of this PodsMetricSource.
 
-        metricName is the name of the metric in question  # noqa: E501
 
-        :param metric_name: The metric_name of this PodsMetricSource.  # noqa: E501
-        :type: str
+        :param metric: The metric of this PodsMetricSource.  # noqa: E501
+        :type: MetricIdentifier
         """
 
-        self._metric_name = metric_name
+        self._metric = metric
 
     @property
-    def selector(self):
-        """Gets the selector of this PodsMetricSource.  # noqa: E501
+    def target(self):
+        """Gets the target of this PodsMetricSource.  # noqa: E501
 
 
-        :return: The selector of this PodsMetricSource.  # noqa: E501
-        :rtype: LabelSelector
+        :return: The target of this PodsMetricSource.  # noqa: E501
+        :rtype: MetricTarget
         """
-        return self._selector
+        return self._target
 
-    @selector.setter
-    def selector(self, selector):
-        """Sets the selector of this PodsMetricSource.
-
-
-        :param selector: The selector of this PodsMetricSource.  # noqa: E501
-        :type: LabelSelector
-        """
-
-        self._selector = selector
-
-    @property
-    def target_average_value(self):
-        """Gets the target_average_value of this PodsMetricSource.  # noqa: E501
+    @target.setter
+    def target(self, target):
+        """Sets the target of this PodsMetricSource.
 
 
-        :return: The target_average_value of this PodsMetricSource.  # noqa: E501
-        :rtype: Quantity
-        """
-        return self._target_average_value
-
-    @target_average_value.setter
-    def target_average_value(self, target_average_value):
-        """Sets the target_average_value of this PodsMetricSource.
-
-
-        :param target_average_value: The target_average_value of this PodsMetricSource.  # noqa: E501
-        :type: Quantity
+        :param target: The target of this PodsMetricSource.  # noqa: E501
+        :type: MetricTarget
         """
 
-        self._target_average_value = target_average_value
+        self._target = target
 
     def to_dict(self):
         """Returns the model properties as a dict"""

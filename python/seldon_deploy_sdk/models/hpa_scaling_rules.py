@@ -105,7 +105,7 @@ class HPAScalingRules(object):
     def stabilization_window_seconds(self):
         """Gets the stabilization_window_seconds of this HPAScalingRules.  # noqa: E501
 
-        StabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: For scale up: 0 (i.e. no stabilization is done). For scale down: 300 (i.e. the stabilization window is 300 seconds long). +optional  # noqa: E501
+        stabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: For scale up: 0 (i.e. no stabilization is done). For scale down: 300 (i.e. the stabilization window is 300 seconds long). +optional  # noqa: E501
 
         :return: The stabilization_window_seconds of this HPAScalingRules.  # noqa: E501
         :rtype: int
@@ -116,7 +116,7 @@ class HPAScalingRules(object):
     def stabilization_window_seconds(self, stabilization_window_seconds):
         """Sets the stabilization_window_seconds of this HPAScalingRules.
 
-        StabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: For scale up: 0 (i.e. no stabilization is done). For scale down: 300 (i.e. the stabilization window is 300 seconds long). +optional  # noqa: E501
+        stabilizationWindowSeconds is the number of seconds for which past recommendations should be considered while scaling up or scaling down. StabilizationWindowSeconds must be greater than or equal to zero and less than or equal to 3600 (one hour). If not set, use the default values: For scale up: 0 (i.e. no stabilization is done). For scale down: 300 (i.e. the stabilization window is 300 seconds long). +optional  # noqa: E501
 
         :param stabilization_window_seconds: The stabilization_window_seconds of this HPAScalingRules.  # noqa: E501
         :type: int

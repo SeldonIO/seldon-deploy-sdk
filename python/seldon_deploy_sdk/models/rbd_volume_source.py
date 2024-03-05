@@ -86,7 +86,7 @@ class RBDVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this RBDVolumeSource.  # noqa: E501
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :return: The fs_type of this RBDVolumeSource.  # noqa: E501
         :rtype: str
@@ -97,7 +97,7 @@ class RBDVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this RBDVolumeSource.
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :param fs_type: The fs_type of this RBDVolumeSource.  # noqa: E501
         :type: str
@@ -109,7 +109,7 @@ class RBDVolumeSource(object):
     def image(self):
         """Gets the image of this RBDVolumeSource.  # noqa: E501
 
-        The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
+        image is the rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
 
         :return: The image of this RBDVolumeSource.  # noqa: E501
         :rtype: str
@@ -120,7 +120,7 @@ class RBDVolumeSource(object):
     def image(self, image):
         """Sets the image of this RBDVolumeSource.
 
-        The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
+        image is the rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
 
         :param image: The image of this RBDVolumeSource.  # noqa: E501
         :type: str
@@ -132,7 +132,7 @@ class RBDVolumeSource(object):
     def keyring(self):
         """Gets the keyring of this RBDVolumeSource.  # noqa: E501
 
-        Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :return: The keyring of this RBDVolumeSource.  # noqa: E501
         :rtype: str
@@ -143,7 +143,7 @@ class RBDVolumeSource(object):
     def keyring(self, keyring):
         """Sets the keyring of this RBDVolumeSource.
 
-        Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :param keyring: The keyring of this RBDVolumeSource.  # noqa: E501
         :type: str
@@ -155,7 +155,7 @@ class RBDVolumeSource(object):
     def monitors(self):
         """Gets the monitors of this RBDVolumeSource.  # noqa: E501
 
-        A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
+        monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
 
         :return: The monitors of this RBDVolumeSource.  # noqa: E501
         :rtype: list[str]
@@ -166,7 +166,7 @@ class RBDVolumeSource(object):
     def monitors(self, monitors):
         """Sets the monitors of this RBDVolumeSource.
 
-        A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
+        monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it  # noqa: E501
 
         :param monitors: The monitors of this RBDVolumeSource.  # noqa: E501
         :type: list[str]
@@ -178,7 +178,7 @@ class RBDVolumeSource(object):
     def pool(self):
         """Gets the pool of this RBDVolumeSource.  # noqa: E501
 
-        The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        pool is the rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :return: The pool of this RBDVolumeSource.  # noqa: E501
         :rtype: str
@@ -189,7 +189,7 @@ class RBDVolumeSource(object):
     def pool(self, pool):
         """Sets the pool of this RBDVolumeSource.
 
-        The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        pool is the rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :param pool: The pool of this RBDVolumeSource.  # noqa: E501
         :type: str
@@ -201,7 +201,7 @@ class RBDVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this RBDVolumeSource.  # noqa: E501
 
-        ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :return: The read_only of this RBDVolumeSource.  # noqa: E501
         :rtype: bool
@@ -212,7 +212,7 @@ class RBDVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this RBDVolumeSource.
 
-        ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :param read_only: The read_only of this RBDVolumeSource.  # noqa: E501
         :type: bool
@@ -245,7 +245,7 @@ class RBDVolumeSource(object):
     def user(self):
         """Gets the user of this RBDVolumeSource.  # noqa: E501
 
-        The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :return: The user of this RBDVolumeSource.  # noqa: E501
         :rtype: str
@@ -256,7 +256,7 @@ class RBDVolumeSource(object):
     def user(self, user):
         """Sets the user of this RBDVolumeSource.
 
-        The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
+        user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it +optional  # noqa: E501
 
         :param user: The user of this RBDVolumeSource.  # noqa: E501
         :type: str

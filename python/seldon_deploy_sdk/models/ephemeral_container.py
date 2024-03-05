@@ -42,7 +42,9 @@ class EphemeralContainer(object):
         'name': 'str',
         'ports': 'list[ContainerPort]',
         'readiness_probe': 'Probe',
+        'resize_policy': 'list[ContainerResizePolicy]',
         'resources': 'ResourceRequirements',
+        'restart_policy': 'ContainerRestartPolicy',
         'security_context': 'SecurityContext',
         'startup_probe': 'Probe',
         'stdin': 'bool',
@@ -68,7 +70,9 @@ class EphemeralContainer(object):
         'name': 'name',
         'ports': 'ports',
         'readiness_probe': 'readinessProbe',
+        'resize_policy': 'resizePolicy',
         'resources': 'resources',
+        'restart_policy': 'restartPolicy',
         'security_context': 'securityContext',
         'startup_probe': 'startupProbe',
         'stdin': 'stdin',
@@ -82,7 +86,7 @@ class EphemeralContainer(object):
         'working_dir': 'workingDir'
     }
 
-    def __init__(self, args=None, command=None, env=None, env_from=None, image=None, image_pull_policy=None, lifecycle=None, liveness_probe=None, name=None, ports=None, readiness_probe=None, resources=None, security_context=None, startup_probe=None, stdin=None, stdin_once=None, target_container_name=None, termination_message_path=None, termination_message_policy=None, tty=None, volume_devices=None, volume_mounts=None, working_dir=None):  # noqa: E501
+    def __init__(self, args=None, command=None, env=None, env_from=None, image=None, image_pull_policy=None, lifecycle=None, liveness_probe=None, name=None, ports=None, readiness_probe=None, resize_policy=None, resources=None, restart_policy=None, security_context=None, startup_probe=None, stdin=None, stdin_once=None, target_container_name=None, termination_message_path=None, termination_message_policy=None, tty=None, volume_devices=None, volume_mounts=None, working_dir=None):  # noqa: E501
         """EphemeralContainer - a model defined in Swagger"""  # noqa: E501
 
         self._args = None
@@ -96,7 +100,9 @@ class EphemeralContainer(object):
         self._name = None
         self._ports = None
         self._readiness_probe = None
+        self._resize_policy = None
         self._resources = None
+        self._restart_policy = None
         self._security_context = None
         self._startup_probe = None
         self._stdin = None
@@ -132,8 +138,12 @@ class EphemeralContainer(object):
             self.ports = ports
         if readiness_probe is not None:
             self.readiness_probe = readiness_probe
+        if resize_policy is not None:
+            self.resize_policy = resize_policy
         if resources is not None:
             self.resources = resources
+        if restart_policy is not None:
+            self.restart_policy = restart_policy
         if security_context is not None:
             self.security_context = security_context
         if startup_probe is not None:
@@ -161,7 +171,7 @@ class EphemeralContainer(object):
     def args(self):
         """Gets the args of this EphemeralContainer.  # noqa: E501
 
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :return: The args of this EphemeralContainer.  # noqa: E501
         :rtype: list[str]
@@ -172,7 +182,7 @@ class EphemeralContainer(object):
     def args(self, args):
         """Sets the args of this EphemeralContainer.
 
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :param args: The args of this EphemeralContainer.  # noqa: E501
         :type: list[str]
@@ -184,7 +194,7 @@ class EphemeralContainer(object):
     def command(self):
         """Gets the command of this EphemeralContainer.  # noqa: E501
 
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :return: The command of this EphemeralContainer.  # noqa: E501
         :rtype: list[str]
@@ -195,7 +205,7 @@ class EphemeralContainer(object):
     def command(self, command):
         """Sets the command of this EphemeralContainer.
 
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
+        Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell +optional  # noqa: E501
 
         :param command: The command of this EphemeralContainer.  # noqa: E501
         :type: list[str]
@@ -253,7 +263,7 @@ class EphemeralContainer(object):
     def image(self):
         """Gets the image of this EphemeralContainer.  # noqa: E501
 
-        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images  # noqa: E501
+        Container image name. More info: https://kubernetes.io/docs/concepts/containers/images  # noqa: E501
 
         :return: The image of this EphemeralContainer.  # noqa: E501
         :rtype: str
@@ -264,7 +274,7 @@ class EphemeralContainer(object):
     def image(self, image):
         """Sets the image of this EphemeralContainer.
 
-        Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images  # noqa: E501
+        Container image name. More info: https://kubernetes.io/docs/concepts/containers/images  # noqa: E501
 
         :param image: The image of this EphemeralContainer.  # noqa: E501
         :type: str
@@ -362,7 +372,7 @@ class EphemeralContainer(object):
     def ports(self):
         """Gets the ports of this EphemeralContainer.  # noqa: E501
 
-        Ports are not allowed for ephemeral containers.  # noqa: E501
+        Ports are not allowed for ephemeral containers. +optional +patchMergeKey=containerPort +patchStrategy=merge +listType=map +listMapKey=containerPort +listMapKey=protocol  # noqa: E501
 
         :return: The ports of this EphemeralContainer.  # noqa: E501
         :rtype: list[ContainerPort]
@@ -373,7 +383,7 @@ class EphemeralContainer(object):
     def ports(self, ports):
         """Sets the ports of this EphemeralContainer.
 
-        Ports are not allowed for ephemeral containers.  # noqa: E501
+        Ports are not allowed for ephemeral containers. +optional +patchMergeKey=containerPort +patchStrategy=merge +listType=map +listMapKey=containerPort +listMapKey=protocol  # noqa: E501
 
         :param ports: The ports of this EphemeralContainer.  # noqa: E501
         :type: list[ContainerPort]
@@ -403,6 +413,29 @@ class EphemeralContainer(object):
         self._readiness_probe = readiness_probe
 
     @property
+    def resize_policy(self):
+        """Gets the resize_policy of this EphemeralContainer.  # noqa: E501
+
+        Resources resize policy for the container. +featureGate=InPlacePodVerticalScaling +optional +listType=atomic  # noqa: E501
+
+        :return: The resize_policy of this EphemeralContainer.  # noqa: E501
+        :rtype: list[ContainerResizePolicy]
+        """
+        return self._resize_policy
+
+    @resize_policy.setter
+    def resize_policy(self, resize_policy):
+        """Sets the resize_policy of this EphemeralContainer.
+
+        Resources resize policy for the container. +featureGate=InPlacePodVerticalScaling +optional +listType=atomic  # noqa: E501
+
+        :param resize_policy: The resize_policy of this EphemeralContainer.  # noqa: E501
+        :type: list[ContainerResizePolicy]
+        """
+
+        self._resize_policy = resize_policy
+
+    @property
     def resources(self):
         """Gets the resources of this EphemeralContainer.  # noqa: E501
 
@@ -422,6 +455,27 @@ class EphemeralContainer(object):
         """
 
         self._resources = resources
+
+    @property
+    def restart_policy(self):
+        """Gets the restart_policy of this EphemeralContainer.  # noqa: E501
+
+
+        :return: The restart_policy of this EphemeralContainer.  # noqa: E501
+        :rtype: ContainerRestartPolicy
+        """
+        return self._restart_policy
+
+    @restart_policy.setter
+    def restart_policy(self, restart_policy):
+        """Sets the restart_policy of this EphemeralContainer.
+
+
+        :param restart_policy: The restart_policy of this EphemeralContainer.  # noqa: E501
+        :type: ContainerRestartPolicy
+        """
+
+        self._restart_policy = restart_policy
 
     @property
     def security_context(self):
@@ -515,7 +569,7 @@ class EphemeralContainer(object):
     def target_container_name(self):
         """Gets the target_container_name of this EphemeralContainer.  # noqa: E501
 
-        If set, the name of the container from PodSpec that this ephemeral container targets. The ephemeral container will be run in the namespaces (IPC, PID, etc) of this container. If not set then the ephemeral container is run in whatever namespaces are shared for the pod. Note that the container runtime must support this feature. +optional  # noqa: E501
+        If set, the name of the container from PodSpec that this ephemeral container targets. The ephemeral container will be run in the namespaces (IPC, PID, etc) of this container. If not set then the ephemeral container uses the namespaces configured in the Pod spec.  The container runtime must implement support for this feature. If the runtime does not support namespace targeting then the result of setting this field is undefined. +optional  # noqa: E501
 
         :return: The target_container_name of this EphemeralContainer.  # noqa: E501
         :rtype: str
@@ -526,7 +580,7 @@ class EphemeralContainer(object):
     def target_container_name(self, target_container_name):
         """Sets the target_container_name of this EphemeralContainer.
 
-        If set, the name of the container from PodSpec that this ephemeral container targets. The ephemeral container will be run in the namespaces (IPC, PID, etc) of this container. If not set then the ephemeral container is run in whatever namespaces are shared for the pod. Note that the container runtime must support this feature. +optional  # noqa: E501
+        If set, the name of the container from PodSpec that this ephemeral container targets. The ephemeral container will be run in the namespaces (IPC, PID, etc) of this container. If not set then the ephemeral container uses the namespaces configured in the Pod spec.  The container runtime must implement support for this feature. If the runtime does not support namespace targeting then the result of setting this field is undefined. +optional  # noqa: E501
 
         :param target_container_name: The target_container_name of this EphemeralContainer.  # noqa: E501
         :type: str
@@ -628,7 +682,7 @@ class EphemeralContainer(object):
     def volume_mounts(self):
         """Gets the volume_mounts of this EphemeralContainer.  # noqa: E501
 
-        Pod volumes to mount into the container's filesystem. Cannot be updated. +optional +patchMergeKey=mountPath +patchStrategy=merge  # noqa: E501
+        Pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated. +optional +patchMergeKey=mountPath +patchStrategy=merge  # noqa: E501
 
         :return: The volume_mounts of this EphemeralContainer.  # noqa: E501
         :rtype: list[VolumeMount]
@@ -639,7 +693,7 @@ class EphemeralContainer(object):
     def volume_mounts(self, volume_mounts):
         """Sets the volume_mounts of this EphemeralContainer.
 
-        Pod volumes to mount into the container's filesystem. Cannot be updated. +optional +patchMergeKey=mountPath +patchStrategy=merge  # noqa: E501
+        Pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated. +optional +patchMergeKey=mountPath +patchStrategy=merge  # noqa: E501
 
         :param volume_mounts: The volume_mounts of this EphemeralContainer.  # noqa: E501
         :type: list[VolumeMount]

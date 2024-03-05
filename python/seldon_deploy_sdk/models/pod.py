@@ -33,7 +33,6 @@ class Pod(object):
     swagger_types = {
         'annotations': 'dict(str, str)',
         'api_version': 'str',
-        'cluster_name': 'str',
         'creation_timestamp': 'str',
         'deletion_grace_period_seconds': 'int',
         'deletion_timestamp': 'str',
@@ -56,7 +55,6 @@ class Pod(object):
     attribute_map = {
         'annotations': 'annotations',
         'api_version': 'apiVersion',
-        'cluster_name': 'clusterName',
         'creation_timestamp': 'creationTimestamp',
         'deletion_grace_period_seconds': 'deletionGracePeriodSeconds',
         'deletion_timestamp': 'deletionTimestamp',
@@ -76,12 +74,11 @@ class Pod(object):
         'uid': 'uid'
     }
 
-    def __init__(self, annotations=None, api_version=None, cluster_name=None, creation_timestamp=None, deletion_grace_period_seconds=None, deletion_timestamp=None, finalizers=None, generate_name=None, generation=None, kind=None, labels=None, managed_fields=None, name=None, namespace=None, owner_references=None, resource_version=None, self_link=None, spec=None, status=None, uid=None):  # noqa: E501
+    def __init__(self, annotations=None, api_version=None, creation_timestamp=None, deletion_grace_period_seconds=None, deletion_timestamp=None, finalizers=None, generate_name=None, generation=None, kind=None, labels=None, managed_fields=None, name=None, namespace=None, owner_references=None, resource_version=None, self_link=None, spec=None, status=None, uid=None):  # noqa: E501
         """Pod - a model defined in Swagger"""  # noqa: E501
 
         self._annotations = None
         self._api_version = None
-        self._cluster_name = None
         self._creation_timestamp = None
         self._deletion_grace_period_seconds = None
         self._deletion_timestamp = None
@@ -105,8 +102,6 @@ class Pod(object):
             self.annotations = annotations
         if api_version is not None:
             self.api_version = api_version
-        if cluster_name is not None:
-            self.cluster_name = cluster_name
         if creation_timestamp is not None:
             self.creation_timestamp = creation_timestamp
         if deletion_grace_period_seconds is not None:
@@ -146,7 +141,7 @@ class Pod(object):
     def annotations(self):
         """Gets the annotations of this Pod.  # noqa: E501
 
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional  # noqa: E501
+        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations +optional  # noqa: E501
 
         :return: The annotations of this Pod.  # noqa: E501
         :rtype: dict(str, str)
@@ -157,7 +152,7 @@ class Pod(object):
     def annotations(self, annotations):
         """Sets the annotations of this Pod.
 
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional  # noqa: E501
+        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations +optional  # noqa: E501
 
         :param annotations: The annotations of this Pod.  # noqa: E501
         :type: dict(str, str)
@@ -187,29 +182,6 @@ class Pod(object):
         """
 
         self._api_version = api_version
-
-    @property
-    def cluster_name(self):
-        """Gets the cluster_name of this Pod.  # noqa: E501
-
-        The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional  # noqa: E501
-
-        :return: The cluster_name of this Pod.  # noqa: E501
-        :rtype: str
-        """
-        return self._cluster_name
-
-    @cluster_name.setter
-    def cluster_name(self, cluster_name):
-        """Sets the cluster_name of this Pod.
-
-        The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request. +optional  # noqa: E501
-
-        :param cluster_name: The cluster_name of this Pod.  # noqa: E501
-        :type: str
-        """
-
-        self._cluster_name = cluster_name
 
     @property
     def creation_timestamp(self):
@@ -307,7 +279,7 @@ class Pod(object):
     def generate_name(self):
         """Gets the generate_name of this Pod.  # noqa: E501
 
-        GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.  If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).  Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency +optional  # noqa: E501
+        GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.  If this field is specified and the generated name exists, the server will return a 409.  Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency +optional  # noqa: E501
 
         :return: The generate_name of this Pod.  # noqa: E501
         :rtype: str
@@ -318,7 +290,7 @@ class Pod(object):
     def generate_name(self, generate_name):
         """Sets the generate_name of this Pod.
 
-        GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.  If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).  Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency +optional  # noqa: E501
+        GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.  If this field is specified and the generated name exists, the server will return a 409.  Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency +optional  # noqa: E501
 
         :param generate_name: The generate_name of this Pod.  # noqa: E501
         :type: str
@@ -376,7 +348,7 @@ class Pod(object):
     def labels(self):
         """Gets the labels of this Pod.  # noqa: E501
 
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels +optional  # noqa: E501
+        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels +optional  # noqa: E501
 
         :return: The labels of this Pod.  # noqa: E501
         :rtype: dict(str, str)
@@ -387,7 +359,7 @@ class Pod(object):
     def labels(self, labels):
         """Sets the labels of this Pod.
 
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels +optional  # noqa: E501
+        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels +optional  # noqa: E501
 
         :param labels: The labels of this Pod.  # noqa: E501
         :type: dict(str, str)
@@ -422,7 +394,7 @@ class Pod(object):
     def name(self):
         """Gets the name of this Pod.  # noqa: E501
 
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional  # noqa: E501
+        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names +optional  # noqa: E501
 
         :return: The name of this Pod.  # noqa: E501
         :rtype: str
@@ -433,7 +405,7 @@ class Pod(object):
     def name(self, name):
         """Sets the name of this Pod.
 
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional  # noqa: E501
+        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names +optional  # noqa: E501
 
         :param name: The name of this Pod.  # noqa: E501
         :type: str
@@ -445,7 +417,7 @@ class Pod(object):
     def namespace(self):
         """Gets the namespace of this Pod.  # noqa: E501
 
-        Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces +optional  # noqa: E501
+        Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces +optional  # noqa: E501
 
         :return: The namespace of this Pod.  # noqa: E501
         :rtype: str
@@ -456,7 +428,7 @@ class Pod(object):
     def namespace(self, namespace):
         """Sets the namespace of this Pod.
 
-        Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces +optional  # noqa: E501
+        Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.  Must be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces +optional  # noqa: E501
 
         :param namespace: The namespace of this Pod.  # noqa: E501
         :type: str
@@ -514,7 +486,7 @@ class Pod(object):
     def self_link(self):
         """Gets the self_link of this Pod.  # noqa: E501
 
-        SelfLink is a URL representing this object. Populated by the system. Read-only.  DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release. +optional  # noqa: E501
+        Deprecated: selfLink is a legacy read-only field that is no longer populated by the system. +optional  # noqa: E501
 
         :return: The self_link of this Pod.  # noqa: E501
         :rtype: str
@@ -525,7 +497,7 @@ class Pod(object):
     def self_link(self, self_link):
         """Sets the self_link of this Pod.
 
-        SelfLink is a URL representing this object. Populated by the system. Read-only.  DEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release. +optional  # noqa: E501
+        Deprecated: selfLink is a legacy read-only field that is no longer populated by the system. +optional  # noqa: E501
 
         :param self_link: The self_link of this Pod.  # noqa: E501
         :type: str

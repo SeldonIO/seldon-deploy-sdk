@@ -101,7 +101,7 @@ class ISCSIVolumeSource(object):
     def chap_auth_discovery(self):
         """Gets the chap_auth_discovery of this ISCSIVolumeSource.  # noqa: E501
 
-        whether support iSCSI Discovery CHAP authentication +optional  # noqa: E501
+        chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication +optional  # noqa: E501
 
         :return: The chap_auth_discovery of this ISCSIVolumeSource.  # noqa: E501
         :rtype: bool
@@ -112,7 +112,7 @@ class ISCSIVolumeSource(object):
     def chap_auth_discovery(self, chap_auth_discovery):
         """Sets the chap_auth_discovery of this ISCSIVolumeSource.
 
-        whether support iSCSI Discovery CHAP authentication +optional  # noqa: E501
+        chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication +optional  # noqa: E501
 
         :param chap_auth_discovery: The chap_auth_discovery of this ISCSIVolumeSource.  # noqa: E501
         :type: bool
@@ -124,7 +124,7 @@ class ISCSIVolumeSource(object):
     def chap_auth_session(self):
         """Gets the chap_auth_session of this ISCSIVolumeSource.  # noqa: E501
 
-        whether support iSCSI Session CHAP authentication +optional  # noqa: E501
+        chapAuthSession defines whether support iSCSI Session CHAP authentication +optional  # noqa: E501
 
         :return: The chap_auth_session of this ISCSIVolumeSource.  # noqa: E501
         :rtype: bool
@@ -135,7 +135,7 @@ class ISCSIVolumeSource(object):
     def chap_auth_session(self, chap_auth_session):
         """Sets the chap_auth_session of this ISCSIVolumeSource.
 
-        whether support iSCSI Session CHAP authentication +optional  # noqa: E501
+        chapAuthSession defines whether support iSCSI Session CHAP authentication +optional  # noqa: E501
 
         :param chap_auth_session: The chap_auth_session of this ISCSIVolumeSource.  # noqa: E501
         :type: bool
@@ -147,7 +147,7 @@ class ISCSIVolumeSource(object):
     def fs_type(self):
         """Gets the fs_type of this ISCSIVolumeSource.  # noqa: E501
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :return: The fs_type of this ISCSIVolumeSource.  # noqa: E501
         :rtype: str
@@ -158,7 +158,7 @@ class ISCSIVolumeSource(object):
     def fs_type(self, fs_type):
         """Sets the fs_type of this ISCSIVolumeSource.
 
-        Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
+        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi TODO: how do we prevent errors in the filesystem from compromising the machine +optional  # noqa: E501
 
         :param fs_type: The fs_type of this ISCSIVolumeSource.  # noqa: E501
         :type: str
@@ -170,7 +170,7 @@ class ISCSIVolumeSource(object):
     def initiator_name(self):
         """Gets the initiator_name of this ISCSIVolumeSource.  # noqa: E501
 
-        Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection. +optional  # noqa: E501
+        initiatorName is the custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection. +optional  # noqa: E501
 
         :return: The initiator_name of this ISCSIVolumeSource.  # noqa: E501
         :rtype: str
@@ -181,7 +181,7 @@ class ISCSIVolumeSource(object):
     def initiator_name(self, initiator_name):
         """Sets the initiator_name of this ISCSIVolumeSource.
 
-        Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection. +optional  # noqa: E501
+        initiatorName is the custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection. +optional  # noqa: E501
 
         :param initiator_name: The initiator_name of this ISCSIVolumeSource.  # noqa: E501
         :type: str
@@ -193,7 +193,7 @@ class ISCSIVolumeSource(object):
     def iqn(self):
         """Gets the iqn of this ISCSIVolumeSource.  # noqa: E501
 
-        Target iSCSI Qualified Name.  # noqa: E501
+        iqn is the target iSCSI Qualified Name.  # noqa: E501
 
         :return: The iqn of this ISCSIVolumeSource.  # noqa: E501
         :rtype: str
@@ -204,7 +204,7 @@ class ISCSIVolumeSource(object):
     def iqn(self, iqn):
         """Sets the iqn of this ISCSIVolumeSource.
 
-        Target iSCSI Qualified Name.  # noqa: E501
+        iqn is the target iSCSI Qualified Name.  # noqa: E501
 
         :param iqn: The iqn of this ISCSIVolumeSource.  # noqa: E501
         :type: str
@@ -216,7 +216,7 @@ class ISCSIVolumeSource(object):
     def iscsi_interface(self):
         """Gets the iscsi_interface of this ISCSIVolumeSource.  # noqa: E501
 
-        iSCSI Interface Name that uses an iSCSI transport. Defaults to 'default' (tcp). +optional  # noqa: E501
+        iscsiInterface is the interface Name that uses an iSCSI transport. Defaults to 'default' (tcp). +optional  # noqa: E501
 
         :return: The iscsi_interface of this ISCSIVolumeSource.  # noqa: E501
         :rtype: str
@@ -227,7 +227,7 @@ class ISCSIVolumeSource(object):
     def iscsi_interface(self, iscsi_interface):
         """Sets the iscsi_interface of this ISCSIVolumeSource.
 
-        iSCSI Interface Name that uses an iSCSI transport. Defaults to 'default' (tcp). +optional  # noqa: E501
+        iscsiInterface is the interface Name that uses an iSCSI transport. Defaults to 'default' (tcp). +optional  # noqa: E501
 
         :param iscsi_interface: The iscsi_interface of this ISCSIVolumeSource.  # noqa: E501
         :type: str
@@ -239,7 +239,7 @@ class ISCSIVolumeSource(object):
     def lun(self):
         """Gets the lun of this ISCSIVolumeSource.  # noqa: E501
 
-        iSCSI Target Lun number.  # noqa: E501
+        lun represents iSCSI Target Lun number.  # noqa: E501
 
         :return: The lun of this ISCSIVolumeSource.  # noqa: E501
         :rtype: int
@@ -250,7 +250,7 @@ class ISCSIVolumeSource(object):
     def lun(self, lun):
         """Sets the lun of this ISCSIVolumeSource.
 
-        iSCSI Target Lun number.  # noqa: E501
+        lun represents iSCSI Target Lun number.  # noqa: E501
 
         :param lun: The lun of this ISCSIVolumeSource.  # noqa: E501
         :type: int
@@ -262,7 +262,7 @@ class ISCSIVolumeSource(object):
     def portals(self):
         """Gets the portals of this ISCSIVolumeSource.  # noqa: E501
 
-        iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). +optional  # noqa: E501
+        portals is the iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). +optional  # noqa: E501
 
         :return: The portals of this ISCSIVolumeSource.  # noqa: E501
         :rtype: list[str]
@@ -273,7 +273,7 @@ class ISCSIVolumeSource(object):
     def portals(self, portals):
         """Sets the portals of this ISCSIVolumeSource.
 
-        iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). +optional  # noqa: E501
+        portals is the iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). +optional  # noqa: E501
 
         :param portals: The portals of this ISCSIVolumeSource.  # noqa: E501
         :type: list[str]
@@ -285,7 +285,7 @@ class ISCSIVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this ISCSIVolumeSource.  # noqa: E501
 
-        ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. +optional  # noqa: E501
+        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. +optional  # noqa: E501
 
         :return: The read_only of this ISCSIVolumeSource.  # noqa: E501
         :rtype: bool
@@ -296,7 +296,7 @@ class ISCSIVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this ISCSIVolumeSource.
 
-        ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. +optional  # noqa: E501
+        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. +optional  # noqa: E501
 
         :param read_only: The read_only of this ISCSIVolumeSource.  # noqa: E501
         :type: bool
@@ -329,7 +329,7 @@ class ISCSIVolumeSource(object):
     def target_portal(self):
         """Gets the target_portal of this ISCSIVolumeSource.  # noqa: E501
 
-        iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).  # noqa: E501
+        targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).  # noqa: E501
 
         :return: The target_portal of this ISCSIVolumeSource.  # noqa: E501
         :rtype: str
@@ -340,7 +340,7 @@ class ISCSIVolumeSource(object):
     def target_portal(self, target_portal):
         """Sets the target_portal of this ISCSIVolumeSource.
 
-        iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).  # noqa: E501
+        targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).  # noqa: E501
 
         :param target_portal: The target_portal of this ISCSIVolumeSource.  # noqa: E501
         :type: str

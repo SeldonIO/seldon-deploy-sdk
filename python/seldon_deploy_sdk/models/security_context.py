@@ -101,7 +101,7 @@ class SecurityContext(object):
     def allow_privilege_escalation(self):
         """Gets the allow_privilege_escalation of this SecurityContext.  # noqa: E501
 
-        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional  # noqa: E501
+        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The allow_privilege_escalation of this SecurityContext.  # noqa: E501
         :rtype: bool
@@ -112,7 +112,7 @@ class SecurityContext(object):
     def allow_privilege_escalation(self, allow_privilege_escalation):
         """Sets the allow_privilege_escalation of this SecurityContext.
 
-        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN +optional  # noqa: E501
+        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param allow_privilege_escalation: The allow_privilege_escalation of this SecurityContext.  # noqa: E501
         :type: bool
@@ -145,7 +145,7 @@ class SecurityContext(object):
     def privileged(self):
         """Gets the privileged of this SecurityContext.  # noqa: E501
 
-        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional  # noqa: E501
+        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The privileged of this SecurityContext.  # noqa: E501
         :rtype: bool
@@ -156,7 +156,7 @@ class SecurityContext(object):
     def privileged(self, privileged):
         """Sets the privileged of this SecurityContext.
 
-        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. +optional  # noqa: E501
+        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param privileged: The privileged of this SecurityContext.  # noqa: E501
         :type: bool
@@ -189,7 +189,7 @@ class SecurityContext(object):
     def read_only_root_filesystem(self):
         """Gets the read_only_root_filesystem of this SecurityContext.  # noqa: E501
 
-        Whether this container has a read-only root filesystem. Default is false. +optional  # noqa: E501
+        Whether this container has a read-only root filesystem. Default is false. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The read_only_root_filesystem of this SecurityContext.  # noqa: E501
         :rtype: bool
@@ -200,7 +200,7 @@ class SecurityContext(object):
     def read_only_root_filesystem(self, read_only_root_filesystem):
         """Sets the read_only_root_filesystem of this SecurityContext.
 
-        Whether this container has a read-only root filesystem. Default is false. +optional  # noqa: E501
+        Whether this container has a read-only root filesystem. Default is false. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param read_only_root_filesystem: The read_only_root_filesystem of this SecurityContext.  # noqa: E501
         :type: bool
@@ -212,7 +212,7 @@ class SecurityContext(object):
     def run_as_group(self):
         """Gets the run_as_group of this SecurityContext.  # noqa: E501
 
-        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional  # noqa: E501
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The run_as_group of this SecurityContext.  # noqa: E501
         :rtype: int
@@ -223,7 +223,7 @@ class SecurityContext(object):
     def run_as_group(self, run_as_group):
         """Sets the run_as_group of this SecurityContext.
 
-        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional  # noqa: E501
+        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param run_as_group: The run_as_group of this SecurityContext.  # noqa: E501
         :type: int
@@ -258,7 +258,7 @@ class SecurityContext(object):
     def run_as_user(self):
         """Gets the run_as_user of this SecurityContext.  # noqa: E501
 
-        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional  # noqa: E501
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :return: The run_as_user of this SecurityContext.  # noqa: E501
         :rtype: int
@@ -269,7 +269,7 @@ class SecurityContext(object):
     def run_as_user(self, run_as_user):
         """Sets the run_as_user of this SecurityContext.
 
-        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional  # noqa: E501
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows. +optional  # noqa: E501
 
         :param run_as_user: The run_as_user of this SecurityContext.  # noqa: E501
         :type: int

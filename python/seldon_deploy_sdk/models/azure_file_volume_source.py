@@ -61,7 +61,7 @@ class AzureFileVolumeSource(object):
     def read_only(self):
         """Gets the read_only of this AzureFileVolumeSource.  # noqa: E501
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :return: The read_only of this AzureFileVolumeSource.  # noqa: E501
         :rtype: bool
@@ -72,7 +72,7 @@ class AzureFileVolumeSource(object):
     def read_only(self, read_only):
         """Sets the read_only of this AzureFileVolumeSource.
 
-        Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
+        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. +optional  # noqa: E501
 
         :param read_only: The read_only of this AzureFileVolumeSource.  # noqa: E501
         :type: bool
@@ -84,7 +84,7 @@ class AzureFileVolumeSource(object):
     def secret_name(self):
         """Gets the secret_name of this AzureFileVolumeSource.  # noqa: E501
 
-        the name of secret that contains Azure Storage Account Name and Key  # noqa: E501
+        secretName is the  name of secret that contains Azure Storage Account Name and Key  # noqa: E501
 
         :return: The secret_name of this AzureFileVolumeSource.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class AzureFileVolumeSource(object):
     def secret_name(self, secret_name):
         """Sets the secret_name of this AzureFileVolumeSource.
 
-        the name of secret that contains Azure Storage Account Name and Key  # noqa: E501
+        secretName is the  name of secret that contains Azure Storage Account Name and Key  # noqa: E501
 
         :param secret_name: The secret_name of this AzureFileVolumeSource.  # noqa: E501
         :type: str
@@ -107,7 +107,7 @@ class AzureFileVolumeSource(object):
     def share_name(self):
         """Gets the share_name of this AzureFileVolumeSource.  # noqa: E501
 
-        Share Name  # noqa: E501
+        shareName is the azure share Name  # noqa: E501
 
         :return: The share_name of this AzureFileVolumeSource.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class AzureFileVolumeSource(object):
     def share_name(self, share_name):
         """Sets the share_name of this AzureFileVolumeSource.
 
-        Share Name  # noqa: E501
+        shareName is the azure share Name  # noqa: E501
 
         :param share_name: The share_name of this AzureFileVolumeSource.  # noqa: E501
         :type: str

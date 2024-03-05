@@ -31,106 +31,73 @@ class ObjectMetricSource(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'average_value': 'Quantity',
-        'metric_name': 'str',
-        'selector': 'LabelSelector',
-        'target': 'CrossVersionObjectReference',
-        'target_value': 'Quantity'
+        'described_object': 'CrossVersionObjectReference',
+        'metric': 'MetricIdentifier',
+        'target': 'MetricTarget'
     }
 
     attribute_map = {
-        'average_value': 'averageValue',
-        'metric_name': 'metricName',
-        'selector': 'selector',
-        'target': 'target',
-        'target_value': 'targetValue'
+        'described_object': 'describedObject',
+        'metric': 'metric',
+        'target': 'target'
     }
 
-    def __init__(self, average_value=None, metric_name=None, selector=None, target=None, target_value=None):  # noqa: E501
+    def __init__(self, described_object=None, metric=None, target=None):  # noqa: E501
         """ObjectMetricSource - a model defined in Swagger"""  # noqa: E501
 
-        self._average_value = None
-        self._metric_name = None
-        self._selector = None
+        self._described_object = None
+        self._metric = None
         self._target = None
-        self._target_value = None
         self.discriminator = None
 
-        if average_value is not None:
-            self.average_value = average_value
-        if metric_name is not None:
-            self.metric_name = metric_name
-        if selector is not None:
-            self.selector = selector
+        if described_object is not None:
+            self.described_object = described_object
+        if metric is not None:
+            self.metric = metric
         if target is not None:
             self.target = target
-        if target_value is not None:
-            self.target_value = target_value
 
     @property
-    def average_value(self):
-        """Gets the average_value of this ObjectMetricSource.  # noqa: E501
+    def described_object(self):
+        """Gets the described_object of this ObjectMetricSource.  # noqa: E501
 
 
-        :return: The average_value of this ObjectMetricSource.  # noqa: E501
-        :rtype: Quantity
+        :return: The described_object of this ObjectMetricSource.  # noqa: E501
+        :rtype: CrossVersionObjectReference
         """
-        return self._average_value
+        return self._described_object
 
-    @average_value.setter
-    def average_value(self, average_value):
-        """Sets the average_value of this ObjectMetricSource.
+    @described_object.setter
+    def described_object(self, described_object):
+        """Sets the described_object of this ObjectMetricSource.
 
 
-        :param average_value: The average_value of this ObjectMetricSource.  # noqa: E501
-        :type: Quantity
+        :param described_object: The described_object of this ObjectMetricSource.  # noqa: E501
+        :type: CrossVersionObjectReference
         """
 
-        self._average_value = average_value
+        self._described_object = described_object
 
     @property
-    def metric_name(self):
-        """Gets the metric_name of this ObjectMetricSource.  # noqa: E501
+    def metric(self):
+        """Gets the metric of this ObjectMetricSource.  # noqa: E501
 
-        metricName is the name of the metric in question.  # noqa: E501
 
-        :return: The metric_name of this ObjectMetricSource.  # noqa: E501
-        :rtype: str
+        :return: The metric of this ObjectMetricSource.  # noqa: E501
+        :rtype: MetricIdentifier
         """
-        return self._metric_name
+        return self._metric
 
-    @metric_name.setter
-    def metric_name(self, metric_name):
-        """Sets the metric_name of this ObjectMetricSource.
+    @metric.setter
+    def metric(self, metric):
+        """Sets the metric of this ObjectMetricSource.
 
-        metricName is the name of the metric in question.  # noqa: E501
 
-        :param metric_name: The metric_name of this ObjectMetricSource.  # noqa: E501
-        :type: str
+        :param metric: The metric of this ObjectMetricSource.  # noqa: E501
+        :type: MetricIdentifier
         """
 
-        self._metric_name = metric_name
-
-    @property
-    def selector(self):
-        """Gets the selector of this ObjectMetricSource.  # noqa: E501
-
-
-        :return: The selector of this ObjectMetricSource.  # noqa: E501
-        :rtype: LabelSelector
-        """
-        return self._selector
-
-    @selector.setter
-    def selector(self, selector):
-        """Sets the selector of this ObjectMetricSource.
-
-
-        :param selector: The selector of this ObjectMetricSource.  # noqa: E501
-        :type: LabelSelector
-        """
-
-        self._selector = selector
+        self._metric = metric
 
     @property
     def target(self):
@@ -138,7 +105,7 @@ class ObjectMetricSource(object):
 
 
         :return: The target of this ObjectMetricSource.  # noqa: E501
-        :rtype: CrossVersionObjectReference
+        :rtype: MetricTarget
         """
         return self._target
 
@@ -148,31 +115,10 @@ class ObjectMetricSource(object):
 
 
         :param target: The target of this ObjectMetricSource.  # noqa: E501
-        :type: CrossVersionObjectReference
+        :type: MetricTarget
         """
 
         self._target = target
-
-    @property
-    def target_value(self):
-        """Gets the target_value of this ObjectMetricSource.  # noqa: E501
-
-
-        :return: The target_value of this ObjectMetricSource.  # noqa: E501
-        :rtype: Quantity
-        """
-        return self._target_value
-
-    @target_value.setter
-    def target_value(self, target_value):
-        """Sets the target_value of this ObjectMetricSource.
-
-
-        :param target_value: The target_value of this ObjectMetricSource.  # noqa: E501
-        :type: Quantity
-        """
-
-        self._target_value = target_value
 
     def to_dict(self):
         """Returns the model properties as a dict"""

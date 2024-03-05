@@ -61,7 +61,7 @@ class LabelSelectorRequirement(object):
     def key(self):
         """Gets the key of this LabelSelectorRequirement.  # noqa: E501
 
-        key is the label key that the selector applies to. +patchMergeKey=key +patchStrategy=merge  # noqa: E501
+        key is the label key that the selector applies to.  # noqa: E501
 
         :return: The key of this LabelSelectorRequirement.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class LabelSelectorRequirement(object):
     def key(self, key):
         """Sets the key of this LabelSelectorRequirement.
 
-        key is the label key that the selector applies to. +patchMergeKey=key +patchStrategy=merge  # noqa: E501
+        key is the label key that the selector applies to.  # noqa: E501
 
         :param key: The key of this LabelSelectorRequirement.  # noqa: E501
         :type: str
