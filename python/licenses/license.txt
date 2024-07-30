@@ -114,7 +114,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 cryptography
-42.0.8
+43.0.0
 Apache Software License; BSD License
 This software is made available under the terms of *either* of the licenses
 found in LICENSE.APACHE or LICENSE.BSD. Contributions to cryptography are made
@@ -428,7 +428,7 @@ Apache Software License
 
 
 seldon-deploy-sdk
-2.3.0
+2.3.1
 UNKNOWN
 UNKNOWN
 
