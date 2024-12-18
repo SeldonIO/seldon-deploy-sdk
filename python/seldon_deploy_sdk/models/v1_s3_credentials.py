@@ -56,6 +56,7 @@ class V1S3Credentials(object):
     def s3_access_key_id(self):
         """Gets the s3_access_key_id of this V1S3Credentials.  # noqa: E501
 
+        The S3 access key ID.  # noqa: E501
 
         :return: The s3_access_key_id of this V1S3Credentials.  # noqa: E501
         :rtype: str
@@ -66,6 +67,7 @@ class V1S3Credentials(object):
     def s3_access_key_id(self, s3_access_key_id):
         """Sets the s3_access_key_id of this V1S3Credentials.
 
+        The S3 access key ID.  # noqa: E501
 
         :param s3_access_key_id: The s3_access_key_id of this V1S3Credentials.  # noqa: E501
         :type: str
@@ -77,6 +79,7 @@ class V1S3Credentials(object):
     def s3_secret_access_key(self):
         """Gets the s3_secret_access_key of this V1S3Credentials.  # noqa: E501
 
+        The S3 secret access key.  # noqa: E501
 
         :return: The s3_secret_access_key of this V1S3Credentials.  # noqa: E501
         :rtype: str
@@ -87,6 +90,7 @@ class V1S3Credentials(object):
     def s3_secret_access_key(self, s3_secret_access_key):
         """Sets the s3_secret_access_key of this V1S3Credentials.
 
+        The S3 secret access key.  # noqa: E501
 
         :param s3_secret_access_key: The s3_secret_access_key of this V1S3Credentials.  # noqa: E501
         :type: str

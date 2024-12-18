@@ -217,6 +217,7 @@ class DetectorDeploymentConfiguration(object):
     def protocol(self):
         """Gets the protocol of this DetectorDeploymentConfiguration.  # noqa: E501
 
+        For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>The corresponding protocol OIP value for Seldon Deployment detectors is 'kfserving.http'. For Seldon ML Pipelines, this is the only supported protocol.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2  # noqa: E501
 
         :return: The protocol of this DetectorDeploymentConfiguration.  # noqa: E501
         :rtype: str
@@ -227,6 +228,7 @@ class DetectorDeploymentConfiguration(object):
     def protocol(self, protocol):
         """Sets the protocol of this DetectorDeploymentConfiguration.
 
+        For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>The corresponding protocol OIP value for Seldon Deployment detectors is 'kfserving.http'. For Seldon ML Pipelines, this is the only supported protocol.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2  # noqa: E501
 
         :param protocol: The protocol of this DetectorDeploymentConfiguration.  # noqa: E501
         :type: str

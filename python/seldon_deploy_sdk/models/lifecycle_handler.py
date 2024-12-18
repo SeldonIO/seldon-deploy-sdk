@@ -33,20 +33,23 @@ class LifecycleHandler(object):
     swagger_types = {
         '_exec': 'ExecAction',
         'http_get': 'HTTPGetAction',
+        'sleep': 'SleepAction',
         'tcp_socket': 'TCPSocketAction'
     }
 
     attribute_map = {
         '_exec': 'exec',
         'http_get': 'httpGet',
+        'sleep': 'sleep',
         'tcp_socket': 'tcpSocket'
     }
 
-    def __init__(self, _exec=None, http_get=None, tcp_socket=None):  # noqa: E501
+    def __init__(self, _exec=None, http_get=None, sleep=None, tcp_socket=None):  # noqa: E501
         """LifecycleHandler - a model defined in Swagger"""  # noqa: E501
 
         self.__exec = None
         self._http_get = None
+        self._sleep = None
         self._tcp_socket = None
         self.discriminator = None
 
@@ -54,6 +57,8 @@ class LifecycleHandler(object):
             self._exec = _exec
         if http_get is not None:
             self.http_get = http_get
+        if sleep is not None:
+            self.sleep = sleep
         if tcp_socket is not None:
             self.tcp_socket = tcp_socket
 
@@ -98,6 +103,27 @@ class LifecycleHandler(object):
         """
 
         self._http_get = http_get
+
+    @property
+    def sleep(self):
+        """Gets the sleep of this LifecycleHandler.  # noqa: E501
+
+
+        :return: The sleep of this LifecycleHandler.  # noqa: E501
+        :rtype: SleepAction
+        """
+        return self._sleep
+
+    @sleep.setter
+    def sleep(self, sleep):
+        """Sets the sleep of this LifecycleHandler.
+
+
+        :param sleep: The sleep of this LifecycleHandler.  # noqa: E501
+        :type: SleepAction
+        """
+
+        self._sleep = sleep
 
     @property
     def tcp_socket(self):

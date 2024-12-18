@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **memory_requirement** | **str** |  | [optional] 
 **model_name** | **str** |  | [optional] 
 **prom_scraping** | **bool** |  | [optional] 
-**protocol** | **str** |  | [optional] 
+**protocol** | **str** | For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.&lt;br&gt;The corresponding protocol OIP value for Seldon Deployment detectors is &#39;kfserving.http&#39;. For Seldon ML Pipelines, this is the only supported protocol.&lt;br&gt;For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2 | [optional] 
 **reply_url** | **str** |  | [optional] 
 **user_permission** | **int** |  | [optional] 
 

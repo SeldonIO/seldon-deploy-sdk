@@ -31,6 +31,7 @@ class VolumeProjection(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'cluster_trust_bundle': 'ClusterTrustBundleProjection',
         'config_map': 'ConfigMapProjection',
         'downward_api': 'DownwardAPIProjection',
         'secret': 'SecretProjection',
@@ -38,21 +39,25 @@ class VolumeProjection(object):
     }
 
     attribute_map = {
+        'cluster_trust_bundle': 'clusterTrustBundle',
         'config_map': 'configMap',
         'downward_api': 'downwardAPI',
         'secret': 'secret',
         'service_account_token': 'serviceAccountToken'
     }
 
-    def __init__(self, config_map=None, downward_api=None, secret=None, service_account_token=None):  # noqa: E501
+    def __init__(self, cluster_trust_bundle=None, config_map=None, downward_api=None, secret=None, service_account_token=None):  # noqa: E501
         """VolumeProjection - a model defined in Swagger"""  # noqa: E501
 
+        self._cluster_trust_bundle = None
         self._config_map = None
         self._downward_api = None
         self._secret = None
         self._service_account_token = None
         self.discriminator = None
 
+        if cluster_trust_bundle is not None:
+            self.cluster_trust_bundle = cluster_trust_bundle
         if config_map is not None:
             self.config_map = config_map
         if downward_api is not None:
@@ -61,6 +66,27 @@ class VolumeProjection(object):
             self.secret = secret
         if service_account_token is not None:
             self.service_account_token = service_account_token
+
+    @property
+    def cluster_trust_bundle(self):
+        """Gets the cluster_trust_bundle of this VolumeProjection.  # noqa: E501
+
+
+        :return: The cluster_trust_bundle of this VolumeProjection.  # noqa: E501
+        :rtype: ClusterTrustBundleProjection
+        """
+        return self._cluster_trust_bundle
+
+    @cluster_trust_bundle.setter
+    def cluster_trust_bundle(self, cluster_trust_bundle):
+        """Sets the cluster_trust_bundle of this VolumeProjection.
+
+
+        :param cluster_trust_bundle: The cluster_trust_bundle of this VolumeProjection.  # noqa: E501
+        :type: ClusterTrustBundleProjection
+        """
+
+        self._cluster_trust_bundle = cluster_trust_bundle
 
     @property
     def config_map(self):

@@ -33,7 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 certifi
-2024.7.4
+2024.12.14
 Mozilla Public License 2.0 (MPL 2.0)
 This package contains a modified version of ca-bundle.crt:
 
@@ -58,7 +58,7 @@ one at http://mozilla.org/MPL/2.0/.
 
 
 cffi
-1.16.0
+1.17.1
 MIT License
 
 Except when otherwise stated (look for LICENSE files in directories or
@@ -89,7 +89,7 @@ documentation is licensed as follows:
 
 
 charset-normalizer
-3.3.2
+3.4.0
 MIT License
 MIT License
 
@@ -114,7 +114,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 cryptography
-43.0.0
+44.0.0
 Apache Software License; BSD License
 This software is made available under the terms of *either* of the licenses
 found in LICENSE.APACHE or LICENSE.BSD. Contributions to cryptography are made
@@ -122,7 +122,7 @@ under the terms of *both* these licenses.
 
 
 idna
-3.7
+3.10
 BSD License
 BSD 3-Clause License
 
@@ -428,14 +428,14 @@ Apache Software License
 
 
 seldon-deploy-sdk
-2.3.1
+2.4.0
 UNKNOWN
 UNKNOWN
 
 six
-1.16.0
+1.17.0
 MIT License
-Copyright (c) 2010-2020 Benjamin Peterson
+Copyright (c) 2010-2024 Benjamin Peterson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -456,7 +456,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 urllib3
-2.2.2
+2.2.3
 MIT License
 MIT License
 

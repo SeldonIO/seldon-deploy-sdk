@@ -33,21 +33,24 @@ class V1Secret(object):
     swagger_types = {
         'secret_name': 'str',
         'secret_type': 'V1SecretType',
-        'bucket_secret_format': 'V1BucketSecretFormat'
+        'bucket_secret_format': 'V1BucketSecretFormat',
+        'remote_name': 'str'
     }
 
     attribute_map = {
         'secret_name': 'secretName',
         'secret_type': 'secretType',
-        'bucket_secret_format': 'bucketSecretFormat'
+        'bucket_secret_format': 'bucketSecretFormat',
+        'remote_name': 'remoteName'
     }
 
-    def __init__(self, secret_name=None, secret_type=None, bucket_secret_format=None):  # noqa: E501
+    def __init__(self, secret_name=None, secret_type=None, bucket_secret_format=None, remote_name=None):  # noqa: E501
         """V1Secret - a model defined in Swagger"""  # noqa: E501
 
         self._secret_name = None
         self._secret_type = None
         self._bucket_secret_format = None
+        self._remote_name = None
         self.discriminator = None
 
         if secret_name is not None:
@@ -56,6 +59,8 @@ class V1Secret(object):
             self.secret_type = secret_type
         if bucket_secret_format is not None:
             self.bucket_secret_format = bucket_secret_format
+        if remote_name is not None:
+            self.remote_name = remote_name
 
     @property
     def secret_name(self):
@@ -103,7 +108,7 @@ class V1Secret(object):
     def bucket_secret_format(self):
         """Gets the bucket_secret_format of this V1Secret.  # noqa: E501
 
-        Only available for bucket secrets.  # noqa: E501
+        The format of the bucket secret. Only available for bucket secrets.  # noqa: E501
 
         :return: The bucket_secret_format of this V1Secret.  # noqa: E501
         :rtype: V1BucketSecretFormat
@@ -114,13 +119,36 @@ class V1Secret(object):
     def bucket_secret_format(self, bucket_secret_format):
         """Sets the bucket_secret_format of this V1Secret.
 
-        Only available for bucket secrets.  # noqa: E501
+        The format of the bucket secret. Only available for bucket secrets.  # noqa: E501
 
         :param bucket_secret_format: The bucket_secret_format of this V1Secret.  # noqa: E501
         :type: V1BucketSecretFormat
         """
 
         self._bucket_secret_format = bucket_secret_format
+
+    @property
+    def remote_name(self):
+        """Gets the remote_name of this V1Secret.  # noqa: E501
+
+        The remote name of the secret. Used by the user as a prefix to a model uri and by RClone as a config during download of artefacts. Only available for bucket secrets.  # noqa: E501
+
+        :return: The remote_name of this V1Secret.  # noqa: E501
+        :rtype: str
+        """
+        return self._remote_name
+
+    @remote_name.setter
+    def remote_name(self, remote_name):
+        """Sets the remote_name of this V1Secret.
+
+        The remote name of the secret. Used by the user as a prefix to a model uri and by RClone as a config during download of artefacts. Only available for bucket secrets.  # noqa: E501
+
+        :param remote_name: The remote_name of this V1Secret.  # noqa: E501
+        :type: str
+        """
+
+        self._remote_name = remote_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""
