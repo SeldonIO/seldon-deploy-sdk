@@ -1,6 +1,6 @@
 {
   "projectName": "seldon-deploy-sdk",
   "packageName": "seldon_deploy_sdk",
-  "packageVersion": "2.3.1",
-  "packageUrl": "https://deploy.seldon.io"
+  "packageVersion": "2.4.0",
+  "packageUrl": "https://docs.seldon.ai/seldon-enterprise-platform"
 }

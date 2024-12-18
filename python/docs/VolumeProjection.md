@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**cluster_trust_bundle** | [**ClusterTrustBundleProjection**](ClusterTrustBundleProjection.md) |  | [optional] 
 **config_map** | [**ConfigMapProjection**](ConfigMapProjection.md) |  | [optional] 
 **downward_api** | [**DownwardAPIProjection**](DownwardAPIProjection.md) |  | [optional] 
 **secret** | [**SecretProjection**](SecretProjection.md) |  | [optional] 

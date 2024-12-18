@@ -32,6 +32,8 @@ class PodAffinityTerm(object):
     """
     swagger_types = {
         'label_selector': 'LabelSelector',
+        'match_label_keys': 'list[str]',
+        'mismatch_label_keys': 'list[str]',
         'namespace_selector': 'LabelSelector',
         'namespaces': 'list[str]',
         'topology_key': 'str'
@@ -39,15 +41,19 @@ class PodAffinityTerm(object):
 
     attribute_map = {
         'label_selector': 'labelSelector',
+        'match_label_keys': 'matchLabelKeys',
+        'mismatch_label_keys': 'mismatchLabelKeys',
         'namespace_selector': 'namespaceSelector',
         'namespaces': 'namespaces',
         'topology_key': 'topologyKey'
     }
 
-    def __init__(self, label_selector=None, namespace_selector=None, namespaces=None, topology_key=None):  # noqa: E501
+    def __init__(self, label_selector=None, match_label_keys=None, mismatch_label_keys=None, namespace_selector=None, namespaces=None, topology_key=None):  # noqa: E501
         """PodAffinityTerm - a model defined in Swagger"""  # noqa: E501
 
         self._label_selector = None
+        self._match_label_keys = None
+        self._mismatch_label_keys = None
         self._namespace_selector = None
         self._namespaces = None
         self._topology_key = None
@@ -55,6 +61,10 @@ class PodAffinityTerm(object):
 
         if label_selector is not None:
             self.label_selector = label_selector
+        if match_label_keys is not None:
+            self.match_label_keys = match_label_keys
+        if mismatch_label_keys is not None:
+            self.mismatch_label_keys = mismatch_label_keys
         if namespace_selector is not None:
             self.namespace_selector = namespace_selector
         if namespaces is not None:
@@ -82,6 +92,52 @@ class PodAffinityTerm(object):
         """
 
         self._label_selector = label_selector
+
+    @property
+    def match_label_keys(self):
+        """Gets the match_label_keys of this PodAffinityTerm.  # noqa: E501
+
+        MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. Also, MatchLabelKeys cannot be set when LabelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate. +listType=atomic +optional  # noqa: E501
+
+        :return: The match_label_keys of this PodAffinityTerm.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._match_label_keys
+
+    @match_label_keys.setter
+    def match_label_keys(self, match_label_keys):
+        """Sets the match_label_keys of this PodAffinityTerm.
+
+        MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. Also, MatchLabelKeys cannot be set when LabelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate. +listType=atomic +optional  # noqa: E501
+
+        :param match_label_keys: The match_label_keys of this PodAffinityTerm.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._match_label_keys = match_label_keys
+
+    @property
+    def mismatch_label_keys(self):
+        """Gets the mismatch_label_keys of this PodAffinityTerm.  # noqa: E501
+
+        MismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector. Also, MismatchLabelKeys cannot be set when LabelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate. +listType=atomic +optional  # noqa: E501
+
+        :return: The mismatch_label_keys of this PodAffinityTerm.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._mismatch_label_keys
+
+    @mismatch_label_keys.setter
+    def mismatch_label_keys(self, mismatch_label_keys):
+        """Sets the mismatch_label_keys of this PodAffinityTerm.
+
+        MismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector. Also, MismatchLabelKeys cannot be set when LabelSelector isn't set. This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate. +listType=atomic +optional  # noqa: E501
+
+        :param mismatch_label_keys: The mismatch_label_keys of this PodAffinityTerm.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._mismatch_label_keys = mismatch_label_keys
 
     @property
     def namespace_selector(self):

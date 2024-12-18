@@ -44,6 +44,7 @@ from seldon_deploy_sdk.models.cinder_volume_source import CinderVolumeSource
 from seldon_deploy_sdk.models.claim_source import ClaimSource
 from seldon_deploy_sdk.models.client_ip_config import ClientIPConfig
 from seldon_deploy_sdk.models.cluster_info import ClusterInfo
+from seldon_deploy_sdk.models.cluster_trust_bundle_projection import ClusterTrustBundleProjection
 from seldon_deploy_sdk.models.component import Component
 from seldon_deploy_sdk.models.condition_status import ConditionStatus
 from seldon_deploy_sdk.models.conditions import Conditions
@@ -282,6 +283,7 @@ from seldon_deploy_sdk.models.service_spec import ServiceSpec
 from seldon_deploy_sdk.models.service_status import ServiceStatus
 from seldon_deploy_sdk.models.service_type import ServiceType
 from seldon_deploy_sdk.models.session_affinity_config import SessionAffinityConfig
+from seldon_deploy_sdk.models.sleep_action import SleepAction
 from seldon_deploy_sdk.models.status_state import StatusState
 from seldon_deploy_sdk.models.storage_medium import StorageMedium
 from seldon_deploy_sdk.models.storage_os_volume_source import StorageOSVolumeSource
@@ -363,6 +365,7 @@ from seldon_deploy_sdk.models.v1_runtime_metadata_list_response import V1Runtime
 from seldon_deploy_sdk.models.v1_s3_credentials import V1S3Credentials
 from seldon_deploy_sdk.models.v1_secret import V1Secret
 from seldon_deploy_sdk.models.v1_secret_type import V1SecretType
+from seldon_deploy_sdk.models.v1_secret_version import V1SecretVersion
 from seldon_deploy_sdk.models.v1_trigger_test_alert_response import V1TriggerTestAlertResponse
 from seldon_deploy_sdk.models.v1_user import V1User
 from seldon_deploy_sdk.models.v1_user_policy import V1UserPolicy
@@ -371,6 +374,7 @@ from seldon_deploy_sdk.models.volume import Volume
 from seldon_deploy_sdk.models.volume_device import VolumeDevice
 from seldon_deploy_sdk.models.volume_mount import VolumeMount
 from seldon_deploy_sdk.models.volume_projection import VolumeProjection
+from seldon_deploy_sdk.models.volume_resource_requirements import VolumeResourceRequirements
 from seldon_deploy_sdk.models.vsphere_virtual_disk_volume_source import VsphereVirtualDiskVolumeSource
 from seldon_deploy_sdk.models.weighted_pod_affinity_term import WeightedPodAffinityTerm
 from seldon_deploy_sdk.models.windows_security_context_options import WindowsSecurityContextOptions

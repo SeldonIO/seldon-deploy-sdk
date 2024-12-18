@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "seldon-deploy-sdk"
-VERSION = "2.3.1"
+VERSION = "2.4.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -37,7 +37,7 @@ setup(
     version=VERSION,
     description="Seldon Deploy API",
     author_email="hello@seldon.io",
-    url="https://deploy.seldon.io",
+    url="https://docs.seldon.ai/seldon-enterprise-platform",
     keywords=["Swagger", "Seldon Deploy API"],
     install_requires=REQUIRES,
     packages=find_packages(),

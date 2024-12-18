@@ -480,6 +480,40 @@ definitions:
           $ref: '#/definitions/Namespace'
         type: array
     type: object
+  ClusterTrustBundleProjection:
+    description: |-
+      ClusterTrustBundleProjection describes how to select a set of
+      ClusterTrustBundle objects and project their contents into the pod
+      filesystem.
+    properties:
+      labelSelector:
+        $ref: '#/definitions/LabelSelector'
+      name:
+        description: |-
+          Select a single ClusterTrustBundle by object name.  Mutually-exclusive
+          with signerName and labelSelector.
+          +optional
+        type: string
+      optional:
+        description: |-
+          If true, don't block pod startup if the referenced ClusterTrustBundle(s)
+          aren't available.  If using name, then the named ClusterTrustBundle is
+          allowed not to exist.  If using signerName, then the combination of
+          signerName and labelSelector is allowed to match zero
+          ClusterTrustBundles.
+          +optional
+        type: boolean
+      path:
+        description: Relative path from the volume root to write the bundle.
+        type: string
+      signerName:
+        description: |-
+          Select all ClusterTrustBundles that match this signer name.
+          Mutually-exclusive with name.  The contents of all selected
+          ClusterTrustBundles will be unified and deduplicated.
+          +optional
+        type: string
+    type: object
   Component:
     properties:
       component:
@@ -1442,6 +1476,7 @@ definitions:
         type: boolean
       protocol:
         type: string
+        description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>The corresponding protocol OIP value for Seldon Deployment detectors is ''kfserving.http''. For Seldon ML Pipelines, this is the only supported protocol.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
       reply_url:
         type: string
       user_permission:
@@ -2853,6 +2888,8 @@ definitions:
         $ref: '#/definitions/ExecAction'
       httpGet:
         $ref: '#/definitions/HTTPGetAction'
+      sleep:
+        $ref: '#/definitions/SleepAction'
       tcpSocket:
         $ref: '#/definitions/TCPSocketAction'
     type: object
@@ -4036,13 +4073,30 @@ definitions:
       dataSourceRef:
         $ref: '#/definitions/TypedObjectReference'
       resources:
-        $ref: '#/definitions/ResourceRequirements'
+        $ref: '#/definitions/VolumeResourceRequirements'
       selector:
         $ref: '#/definitions/LabelSelector'
       storageClassName:
         description: |-
           storageClassName is the name of the StorageClass required by the claim.
           More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+          +optional
+        type: string
+      volumeAttributesClassName:
+        description: |-
+          volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.
+          If specified, the CSI driver will create or update the volume with the attributes defined
+          in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,
+          it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass
+          will be applied to the claim but it's not allowed to reset this field to empty string once it is set.
+          If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass
+          will be set by the persistentvolume controller if it exists.
+          If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
+          set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
+          exists.
+          More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#volumeattributesclass
+          (Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.
+          +featureGate=VolumeAttributesClass
           +optional
         type: string
       volumeMode:
@@ -4811,6 +4865,38 @@ definitions:
     properties:
       labelSelector:
         $ref: '#/definitions/LabelSelector'
+      matchLabelKeys:
+        description: |-
+          MatchLabelKeys is a set of pod label keys to select which pods will
+          be taken into consideration. The keys are used to lookup values from the
+          incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`
+          to select the group of existing pods which pods will be taken into consideration
+          for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
+          pod labels will be ignored. The default value is empty.
+          The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.
+          Also, MatchLabelKeys cannot be set when LabelSelector isn't set.
+          This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+          +listType=atomic
+          +optional
+        items:
+          type: string
+        type: array
+      mismatchLabelKeys:
+        description: |-
+          MismatchLabelKeys is a set of pod label keys to select which pods will
+          be taken into consideration. The keys are used to lookup values from the
+          incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`
+          to select the group of existing pods which pods will be taken into consideration
+          for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
+          pod labels will be ignored. The default value is empty.
+          The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.
+          Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.
+          This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+          +listType=atomic
+          +optional
+        items:
+          type: string
+        type: array
       namespaceSelector:
         $ref: '#/definitions/LabelSelector'
       namespaces:
@@ -6023,6 +6109,7 @@ definitions:
     type: object
   Protocol:
     type: string
+    description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>The corresponding protocol OIP value for Seldon Deployments is ''v2''. For Seldon ML Pipelines, this is the only supported protocol.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
   PullPolicy:
     description: |-
       PullPolicy describes a policy for if/when to pull a container image
@@ -7210,7 +7297,7 @@ definitions:
           RFC-6335 and https://www.iana.org/assignments/service-names).
 
           Kubernetes-defined prefixed names:
-          'kubernetes.io/h2c' - HTTP/2 over cleartext as described in https://www.rfc-editor.org/rfc/rfc7540
+          'kubernetes.io/h2c' - HTTP/2 prior knowledge over cleartext as described in https://www.rfc-editor.org/rfc/rfc9113.html#name-starting-http-2-with-prior-
           'kubernetes.io/ws'  - WebSocket over cleartext as described in https://www.rfc-editor.org/rfc/rfc6455
           'kubernetes.io/wss' - WebSocket over TLS as described in https://www.rfc-editor.org/rfc/rfc6455
 
@@ -7477,6 +7564,14 @@ definitions:
       clientIP:
         $ref: '#/definitions/ClientIPConfig'
     title: SessionAffinityConfig represents the configurations of session affinity.
+    type: object
+  SleepAction:
+    properties:
+      seconds:
+        description: Seconds is the number of seconds to sleep.
+        format: int64
+        type: integer
+    title: SleepAction describes a "sleep" action.
     type: object
   StatusState:
     type: string
@@ -7894,6 +7989,8 @@ definitions:
   VolumeProjection:
     description: Projection that may be projected along with other supported volume types
     properties:
+      clusterTrustBundle:
+        $ref: '#/definitions/ClusterTrustBundleProjection'
       configMap:
         $ref: '#/definitions/ConfigMapProjection'
       downwardAPI:
@@ -7902,6 +7999,14 @@ definitions:
         $ref: '#/definitions/SecretProjection'
       serviceAccountToken:
         $ref: '#/definitions/ServiceAccountTokenProjection'
+    type: object
+  VolumeResourceRequirements:
+    properties:
+      limits:
+        $ref: '#/definitions/ResourceList'
+      requests:
+        $ref: '#/definitions/ResourceList'
+    title: VolumeResourceRequirements describes the storage resource requirements for a volume.
     type: object
   VsphereVirtualDiskVolumeSource:
     properties:
@@ -8027,6 +8132,7 @@ definitions:
       - PROTOCOL_TENSORFLOW
       - PROTOCOL_V2
     default: PROTOCOL_UNKNOWN
+    description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>This value is managed internally by the Seldon Enterprise Platform. For Seldon Deployments using the OIP, the protocol value is ''PROTOCOL_V2''. For Seldon ML Pipelines, it is ''PROTOCOL_UNKNOWN''.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
   v1DeploymentStatus:
     type: string
     enum:
@@ -8486,6 +8592,11 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/v1Secret'
+      nextPageToken:
+        type: string
+        description: |-
+          A pagination token returned from a previous call to `List`
+          that indicates from where listing should continue.
   v1RcloneConfig:
     type: object
     properties:
@@ -8503,8 +8614,10 @@ definitions:
     properties:
       s3AccessKeyId:
         type: string
+        description: The S3 access key ID.
       s3SecretAccessKey:
         type: string
+        description: The S3 secret access key.
   v1Secret:
     type: object
     properties:
@@ -8514,7 +8627,10 @@ definitions:
         $ref: '#/definitions/v1SecretType'
       bucketSecretFormat:
         $ref: '#/definitions/v1BucketSecretFormat'
-        description: Only available for bucket secrets.
+        description: The format of the bucket secret. Only available for bucket secrets.
+      remoteName:
+        type: string
+        description: The remote name of the secret. Used by the user as a prefix to a model uri and by RClone as a config during download of artefacts. Only available for bucket secrets.
   v1SecretType:
     type: string
     enum:
@@ -8523,6 +8639,12 @@ definitions:
       - registry
     default: all
     description: 'Note: intentionally lower case so that the URL format accepts lowercase.'
+  v1SecretVersion:
+    type: string
+    enum:
+      - CORE_1
+      - CORE_2
+    default: CORE_1
   v1DependencyHealthResponse:
     type: object
     properties:
@@ -12095,6 +12217,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/v1CreateGCSBucketSecretResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
         "500":
           description: Internal Server Error
           schema: {}
@@ -12109,7 +12237,7 @@ paths:
           required: true
           type: string
         - name: remote
-          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          description: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively.
           in: path
           required: true
           type: string
@@ -12119,6 +12247,15 @@ paths:
           schema:
             type: object
             description: The GCS account credentials to populate the secret. See documentation for how to generate this.
+        - name: secretVersion
+          description: The version of the secret to use (CORE_V1 or CORE_V2). Default value is CORE_V1
+          in: query
+          required: false
+          type: string
+          enum:
+            - CORE_1
+            - CORE_2
+          default: CORE_1
       tags:
         - SecretsService
   /secrets/{namespace}/bucket/rclone/{remote}:
@@ -12130,6 +12267,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/v1CreateRcloneBucketSecretResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
         "500":
           description: Internal Server Error
           schema: {}
@@ -12144,7 +12287,7 @@ paths:
           required: true
           type: string
         - name: remote
-          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          description: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively.
           in: path
           required: true
           type: string
@@ -12174,6 +12317,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/v1CreateS3BucketSecretResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
         "500":
           description: Internal Server Error
           schema: {}
@@ -12188,7 +12337,7 @@ paths:
           required: true
           type: string
         - name: remote
-          description: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket.
+          description: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively.
           in: path
           required: true
           type: string
@@ -12198,6 +12347,15 @@ paths:
           schema:
             $ref: '#/definitions/v1S3Credentials'
             description: The S3 account credentials to populate the secret. See documentation for how to generate these.
+        - name: secretVersion
+          description: The version of the secret to use (CORE_1 or CORE_2). Default value is CORE_1
+          in: query
+          required: false
+          type: string
+          enum:
+            - CORE_1
+            - CORE_2
+          default: CORE_1
       tags:
         - SecretsService
   /secrets/{namespace}/registry/{name}:
@@ -12209,6 +12367,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/v1CreateRegistrySecretResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
         "500":
           description: Internal Server Error
           schema: {}
@@ -12223,7 +12387,7 @@ paths:
           required: true
           type: string
         - name: name
-          description: The name of the secret to create.
+          description: The secret name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length.
           in: path
           required: true
           type: string
@@ -12244,6 +12408,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/v1ListSecretsResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
         "500":
           description: Internal Server Error
           schema: {}
@@ -12275,6 +12445,22 @@ paths:
             - env_var
             - config_param
           default: env_var
+        - name: pageSize
+          description: Optional The maximum number of Secrets to return in the response.
+          in: query
+          required: false
+          type: string
+          format: int64
+        - name: pageToken
+          description: Optional pagination token returned from a previous call to List that indicates where this listing should continue from.
+          in: query
+          required: false
+          type: string
+        - name: search
+          description: Optional search string for secrets.
+          in: query
+          required: false
+          type: string
       tags:
         - SecretsService
   /secrets/{namespace}/{secretType}/{name}:
@@ -12286,6 +12472,15 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/v1DeleteSecretResponse'
+        "400":
+          description: Bad Request
+          schema: {}
+        "403":
+          description: Forbidden
+          schema: {}
+        "404":
+          description: Not Found
+          schema: {}
         "500":
           description: Internal Server Error
           schema: {}

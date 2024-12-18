@@ -43,8 +43,9 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
+        :param str remote: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively. (required)
         :param object account_credentials: (required)
+        :param str secret_version: The version of the secret to use (CORE_V1 or CORE_V2). Default value is CORE_V1
         :return: V1CreateGCSBucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,14 +67,15 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
+        :param str remote: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively. (required)
         :param object account_credentials: (required)
+        :param str secret_version: The version of the secret to use (CORE_V1 or CORE_V2). Default value is CORE_V1
         :return: V1CreateGCSBucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'remote', 'account_credentials']  # noqa: E501
+        all_params = ['namespace', 'remote', 'account_credentials', 'secret_version']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -110,6 +112,8 @@ class SecretsServiceApi(object):
             path_params['remote'] = params['remote']  # noqa: E501
 
         query_params = []
+        if 'secret_version' in params:
+            query_params.append(('secretVersion', params['secret_version']))  # noqa: E501
 
         header_params = {}
 
@@ -156,7 +160,7 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
+        :param str remote: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively. (required)
         :param V1RcloneConfig rclone_config: (required)
         :param str format: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
         :return: V1CreateRcloneBucketSecretResponse
@@ -180,7 +184,7 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
+        :param str remote: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively. (required)
         :param V1RcloneConfig rclone_config: (required)
         :param str format: The format for the secret. Must be one of (env_var, config_param). env_var formats the secret as environment variables, each with a key and a value. env_var is suitable for Seldon Core v1 and Argo Workflows. config_param formats the secret to be compatible with Rclone's HTTP API. config_param is suitable for Seldon Core v2.
         :return: V1CreateRcloneBucketSecretResponse
@@ -273,7 +277,7 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str name: The name of the secret to create. (required)
+        :param str name: The secret name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. (required)
         :param object credentials_config: (required)
         :return: V1CreateRegistrySecretResponse
                  If the method is called asynchronously,
@@ -296,7 +300,7 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str name: The name of the secret to create. (required)
+        :param str name: The secret name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. (required)
         :param object credentials_config: (required)
         :return: V1CreateRegistrySecretResponse
                  If the method is called asynchronously,
@@ -386,8 +390,9 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
+        :param str remote: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively. (required)
         :param V1S3Credentials s3_credentials: (required)
+        :param str secret_version: The version of the secret to use (CORE_1 or CORE_2). Default value is CORE_1
         :return: V1CreateS3BucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -409,14 +414,15 @@ class SecretsServiceApi(object):
 
         :param async_req bool
         :param str namespace: The namespace to create secret in. (required)
-        :param str remote: The name of the remote to create, can be lowercase characters or numbers up to 10 characters long. The created secret will be named {remote}-bucket. (required)
+        :param str remote: The remote name must contain only lowercase letters, digits or dashes, must start and end with a lowercase letter or digit and must be no more than 30 characters in length. The created secret will be named {remote}-bucket-envvars or {remote}-bucket-params, for Core 1 or Core 2, respectively. (required)
         :param V1S3Credentials s3_credentials: (required)
+        :param str secret_version: The version of the secret to use (CORE_1 or CORE_2). Default value is CORE_1
         :return: V1CreateS3BucketSecretResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'remote', 's3_credentials']  # noqa: E501
+        all_params = ['namespace', 'remote', 's3_credentials', 'secret_version']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -453,6 +459,8 @@ class SecretsServiceApi(object):
             path_params['remote'] = params['remote']  # noqa: E501
 
         query_params = []
+        if 'secret_version' in params:
+            query_params.append(('secretVersion', params['secret_version']))  # noqa: E501
 
         header_params = {}
 
@@ -614,6 +622,9 @@ class SecretsServiceApi(object):
         :param str namespace: The namespace to list secrets in. (required)
         :param str secret_type: The secret type, can be one of (`bucket`, `registry`) or `all` to list all secrets used by Seldon Deploy. (required)
         :param str bucket_secret_format: Optional filter for the format of bucket secrets. Only applicable when `secret_type` is `bucket.`
+        :param str page_size: Optional The maximum number of Secrets to return in the response.
+        :param str page_token: Optional pagination token returned from a previous call to List that indicates where this listing should continue from.
+        :param str search: Optional search string for secrets.
         :return: V1ListSecretsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -637,12 +648,15 @@ class SecretsServiceApi(object):
         :param str namespace: The namespace to list secrets in. (required)
         :param str secret_type: The secret type, can be one of (`bucket`, `registry`) or `all` to list all secrets used by Seldon Deploy. (required)
         :param str bucket_secret_format: Optional filter for the format of bucket secrets. Only applicable when `secret_type` is `bucket.`
+        :param str page_size: Optional The maximum number of Secrets to return in the response.
+        :param str page_token: Optional pagination token returned from a previous call to List that indicates where this listing should continue from.
+        :param str search: Optional search string for secrets.
         :return: V1ListSecretsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['namespace', 'secret_type', 'bucket_secret_format']  # noqa: E501
+        all_params = ['namespace', 'secret_type', 'bucket_secret_format', 'page_size', 'page_token', 'search']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -677,6 +691,12 @@ class SecretsServiceApi(object):
         query_params = []
         if 'bucket_secret_format' in params:
             query_params.append(('bucketSecretFormat', params['bucket_secret_format']))  # noqa: E501
+        if 'page_size' in params:
+            query_params.append(('pageSize', params['page_size']))  # noqa: E501
+        if 'page_token' in params:
+            query_params.append(('pageToken', params['page_token']))  # noqa: E501
+        if 'search' in params:
+            query_params.append(('search', params['search']))  # noqa: E501
 
         header_params = {}
 
